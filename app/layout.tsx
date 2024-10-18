@@ -1,6 +1,9 @@
+// app/layout.tsx (Server Component)
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "@/components/templates/footer";
+import RootLayoutClient from "@/components/RootLayoutClient"; // Client Component
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* Include the client-side logic here */}
+        <RootLayoutClient>{children}</RootLayoutClient>
+        <Footer />
       </body>
     </html>
   );
