@@ -22,8 +22,8 @@ const MapViewHomeListing: React.FC<MapViewHomeListingProps> = ({
   const mapRef = useRef<google.maps.Map | null>(null);
   const [bounds, setBounds] = useState<google.maps.LatLngBounds | null>(null);
   const [initialCenter] = useState({
-    lat: properties[0]?.Coordinates[1] || 0,
-    lng: properties[0]?.Coordinates[0] || 0,
+    lat: properties[0]?.Coordinates[1] || 42.2808,
+    lng: properties[0]?.Coordinates[0] || -83.743,
   });
 
   const onLoad = useCallback((map: google.maps.Map) => {
