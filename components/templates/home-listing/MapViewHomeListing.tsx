@@ -1,5 +1,5 @@
 // components/home-listing/MapViewHomeListing.tsx
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import MapRadiusListenerHomeListing from "./MapRadiusListenerHomeListing";
 
@@ -10,10 +10,12 @@ interface Property {
 
 interface MapViewHomeListingProps {
   properties: Property[];
+  setPolygon: (polygon: string) => void;
 }
 
 const MapViewHomeListing: React.FC<MapViewHomeListingProps> = ({
   properties,
+  setPolygon,
 }) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
@@ -28,7 +30,6 @@ const MapViewHomeListing: React.FC<MapViewHomeListingProps> = ({
 
   const onLoad = useCallback((map: google.maps.Map) => {
     mapRef.current = map;
-
     map.addListener("idle", () => {
       if (mapRef.current) {
         const newBounds = mapRef.current.getBounds();
@@ -38,6 +39,10 @@ const MapViewHomeListing: React.FC<MapViewHomeListingProps> = ({
       }
     });
   }, []);
+
+  const handleBoundsChange = (polygon: string) => {
+    setPolygon(polygon);
+  };
 
   if (!isLoaded) return <p>Loading Map...</p>;
 
@@ -60,7 +65,10 @@ const MapViewHomeListing: React.FC<MapViewHomeListingProps> = ({
         ))}
       </GoogleMap>
 
-      <MapRadiusListenerHomeListing bounds={bounds} />
+      <MapRadiusListenerHomeListing
+        bounds={bounds}
+        onBoundsChange={handleBoundsChange}
+      />
     </div>
   );
 };

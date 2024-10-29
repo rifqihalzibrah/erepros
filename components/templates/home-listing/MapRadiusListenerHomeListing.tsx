@@ -3,10 +3,12 @@ import React, { useEffect } from "react";
 
 interface MapRadiusListenerProps {
   bounds: google.maps.LatLngBounds | null;
+  onBoundsChange: (polygon: string) => void;
 }
 
 const MapRadiusListenerHomeListing: React.FC<MapRadiusListenerProps> = ({
   bounds,
+  onBoundsChange,
 }) => {
   useEffect(() => {
     if (bounds) {
@@ -27,12 +29,11 @@ const MapRadiusListenerHomeListing: React.FC<MapRadiusListenerProps> = ({
         lng: bounds.getNorthEast().lng(),
       };
 
-      console.log("Top Left:", topLeft);
-      console.log("Top Right:", topRight);
-      console.log("Bottom Left:", bottomLeft);
-      console.log("Bottom Right:", bottomRight);
+      const polygon = `POLYGON((${topLeft.lng} ${topLeft.lat}, ${topRight.lng} ${topRight.lat}, ${bottomRight.lng} ${bottomRight.lat}, ${bottomLeft.lng} ${bottomLeft.lat}, ${topLeft.lng} ${topLeft.lat}))`;
+
+      onBoundsChange(polygon);
     }
-  }, [bounds]);
+  }, [bounds, onBoundsChange]);
 
   return null;
 };

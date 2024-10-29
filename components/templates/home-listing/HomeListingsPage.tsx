@@ -1,6 +1,5 @@
 "use client";
 
-// components/home-listing/HomeListingsPage.tsx
 import { useState, useEffect } from "react";
 import SearchBarHomeListing from "./SearchBarHomeListing";
 import ListingsGridHomeListing from "./ListingsGridHomeListing";
@@ -12,11 +11,13 @@ const HomeListingsPage: React.FC = () => {
   const [properties, setProperties] = useState<any[]>([]);
   const [pagination, setPagination] = useState({ page: 1, totalPages: 1 });
   const [loading, setLoading] = useState(false);
+  const [polygon, setPolygon] = useState<string | null>(null);
 
-  const loadProperties = async (pageNumber: number) => {
+  // Function to load properties based on page number and polygon
+  const loadProperties = async (pageNumber: number, polygon: string) => {
     setLoading(true);
     try {
-      const data = await fetchProperties(pageNumber);
+      const data = await fetchProperties(pageNumber, polygon);
       setProperties(data);
       setPagination({
         page: pageNumber,
@@ -29,9 +30,12 @@ const HomeListingsPage: React.FC = () => {
     }
   };
 
+  // Effect to load properties when page or polygon updates
   useEffect(() => {
-    loadProperties(pagination.page);
-  }, [pagination.page]);
+    if (polygon) {
+      loadProperties(pagination.page, polygon);
+    }
+  }, [pagination.page, polygon]);
 
   return (
     <div className="home-listings-page space-y-4">
@@ -46,7 +50,10 @@ const HomeListingsPage: React.FC = () => {
           />
         </div>
         <div className="map-container w-full md:w-3/5 h-[500px]">
-          <MapViewHomeListing properties={properties.slice(0, 10)} />
+          <MapViewHomeListing
+            properties={properties.slice(0, 10)}
+            setPolygon={setPolygon} // Pass setPolygon to MapViewHomeListing
+          />
         </div>
       </div>
       <PaginationHomeListing
