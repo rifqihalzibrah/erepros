@@ -3,10 +3,10 @@ import type { Config } from "tailwindcss";
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -19,8 +19,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Mulish', 'sans-serif'], // Adding Mulish as the default sans font
-        marcellus: ['Marcellus', 'serif'], // Adding Marcellus as a custom font
+        sans: ["Mulish", "sans-serif"], // Adding Mulish as the default sans font
+        marcellus: ["Marcellus", "serif"], // Adding Marcellus as a custom font
       },
       colors: {
         border: "hsl(var(--border))",
@@ -74,10 +74,27 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        spin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        dash: {
+          "0%": { "stroke-dashoffset": "283" },
+          "50%": {
+            "stroke-dashoffset": "75",
+            transform: "rotate(45deg)",
+          },
+          "100%": {
+            "stroke-dashoffset": "283",
+            transform: "rotate(360deg)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "spin-custom":
+          "spin 2s linear infinite, dash 1.5s ease-in-out infinite",
       },
     },
   },

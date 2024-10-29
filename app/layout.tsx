@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/templates/header";
 import Footer from "@/components/templates/footer";
 import RootLayoutClient from "@/components/RootLayoutClient"; // Client Component
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Include the client-side logic here */}
+        <Header />
         <RootLayoutClient>{children}</RootLayoutClient>
         <Footer />
       </body>
