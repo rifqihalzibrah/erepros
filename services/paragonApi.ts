@@ -30,7 +30,7 @@ export const fetchProperties = async (
     access_token: API_TOKEN,
     $skip: skip,
     $orderby: "ListPrice desc",
-    $top: 10,
+    // $top: 200,
     $filter: `geo.intersects(Coordinates, ${polygon})`,
   };
 
