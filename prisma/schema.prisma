@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  createdAt    DateTime      @default(now())
+  applications Application[] // Relation to Application model
+}
+
+model Application {
+  id                     Int         @id @default(autoincrement())
+  propertyId             String
+  address                String
+  bedrooms               String
+  moveInDate             DateTime
+  fee                    Float
+  transactionMethod      String
+  fullName               String
+  birthday               DateTime
+  ssn                    String
+  phone                  String
+  licenseId              String
+  state                  String
+  email                  String
+  currentAddress         String
+  dateOfMoveIn           DateTime
+  rentAmount             Float
+  reasonForMoving        String
+  landlordName           String
+  landlordPhone          String
+  employer               String
+  jobTitle               String
+  employerAddress        String
+  contactPhone           String
+  supervisorName         String
+  startDate              DateTime
+  income                 Float
+  assistanceReceived     Boolean
+  assistanceAmount       Float?
+  additionalIncome       Boolean
+  additionalIncomeAmount Float?
+  eviction               Boolean
+  refusedRent            Boolean
+  refusedRentExplanation String?
+  felony                 Boolean
+  felonyExplanation      String?
+  emergencyName          String
+  emergencyPhone         String
+  emergencyRelationship  String
+  paymentStatus          String      @default("pending")
+  stripePaymentId        String?
+  createdAt              DateTime    @default(now())
+  updatedAt              DateTime    @updatedAt
+  others                 Other[]
+  references             Reference[]
+  userId                 Int
+  user                   User        @relation(fields: [userId], references: [id])
+  documents              Document[]  @relation("ApplicationDocuments")
+}
+
+model Other {
+  id            Int         @id @default(autoincrement())
+  name          String
+  birthday      DateTime
+  ssnLast4      String
+  relationship  String
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int
+}
+
+model Reference {
+  id            Int         @id @default(autoincrement())
+  name          String
+  phone         String
+  relationship  String
+  application   Application @relation(fields: [applicationId], references: [id])
+  applicationId Int
+}
+
+model Document {
+  id            Int         @id @default(autoincrement())
+  name          String
+  url           String      @db.Text // Allow longer URLs by using Text type
+  applicationId Int
+  application   Application @relation("ApplicationDocuments", fields: [applicationId], references: [id])
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
