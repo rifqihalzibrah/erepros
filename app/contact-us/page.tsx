@@ -1,140 +1,140 @@
-'use client';
+import React from "react";
 
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast'; // Adjust the import path based on your project structure
-import Image from "next/image";
-
-const ContactUs: React.FC = () => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: '',
-    });
-    const { toast } = useToast(); // Initialize the toast
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        try {
-            const res = await fetch('/api/contact-us', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (!res.ok) {
-                const errorResult = await res.json().catch(() => ({ message: 'An error occurred' }));
-                toast({
-                    title: "Error",
-                    description: errorResult.message,
-                    variant: "destructive", // assuming ShadCN UI has variants like "destructive" for error messages
-                });
-                return;
-            }
-
-            const result = await res.json();
-            toast({
-                title: "Success",
-                description: result.message || "Your message has been sent successfully!",
-            });
-            setFormData({ firstName: '', lastName: '', email: '', message: '' });
-        } catch (error) {
-            toast({
-                title: "Error",
-                description: "An error occurred. Please try again later.",
-                variant: "destructive",
-            });
-            console.error('Submission error:', error);
-        }
-    };
-
+const AboutUs = () => {
     return (
-        <div className="flex justify-center items-start pt-[136px] px-4">
-            <div className="flex flex-col md:flex-row max-w-5xl w-full">
-                {/* Left Section */}
-                <div className="w-full md:w-1/2 p-8 flex flex-col items-center md:items-start">
-                    <Image
-                        src="https://erepros.com/wp-content/uploads/2024/08/pexels-tatianasyrikova-3975590-1024x683.jpg"
-                        alt="Contact Us Image"
-                        width={400}
-                        height={250}
-                        priority
-                    />
-                    <div className="text-center md:text-left mt-6">
-                        <h3 className="text-lg font-marcellus text-gold mb-2">ELITE REAL ESTATE & PROFESSIONAL MANAGEMENT</h3>
-                        <p className="text-gray-600 mb-1">(810) 715-5486</p>
-                        <p className="text-gray-600 mb-1">info@erepros.com</p>
-                        <p className="text-gray-600">5349 Fenton Rd, Grand Blanc MI 48507</p>
+        <>
+            <section className="about-us-container max-w-7xl mx-auto py-16 px-8">
+                <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between lg:min-h-[500px]">
+                    {/* Left Image Section with Jennifer's Name */}
+                    <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-center text-center lg:text-left lg:pr-12">
+                        <img
+                            src="https://erepros.com/wp-content/uploads/2024/07/IMG_8514-1024x1024.jpg"
+                            alt="Jennifer Oliver"
+                            className="rounded-lg w-full h-auto object-cover mb-4"
+                        />
+                        <div className="mt-4">
+                            <h3 className="text-2xl text-[#9a7648]">JENNIFER OLIVER</h3>
+                            <p className="text-lg text-gray-600 text-center">Founder & CEO</p>
+                        </div>
+                    </div>
+
+                    {/* Right Text Section */}
+                    <div className="w-full lg:w-1/2 flex items-center justify-center lg:pl-12">
+                        <div className="max-w-prose">
+                            <h2 className="text-5xl fontbold text-[#917648] mb-6 text-center lg:text-left">
+                                ABOUT US
+                            </h2>
+                            <p className="text-lg text-gray-700 mb-6 leading-relaxed text-justify">
+                                Welcome to Elite Real Estate & Professional Management, a
+                                woman-owned business that has grown from humble beginnings to
+                                become a leading force in the Michigan real estate market.
+                                Founded with determination and a vision for excellence, we now
+                                proudly own and manage over 2,000 properties across the state.
+                            </p>
+                            <p className="text-lg text-gray-700 mb-6 leading-relaxed text-justify">
+                                Our story is one of resilience and ambition. Starting from
+                                nothing, our founder transformed a passion for real estate into
+                                a thriving business empire. Through hard work, dedication, and a
+                                commitment to integrity, we have become a trusted name in real
+                                estate and property management.
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                {/* Right Section */}
-                <div className="w-full md:w-1/2 p-8">
-                    <h2 className="text-2xl font-marcellus text-gold mb-4">CONTACT US</h2>
-                    <p className="text-gray-600 mb-6 text-justify">
-                        Looking to buy, sell, or simply curious about real estate in Michigan? Sign up below for our monthly market updates or schedule a chat with us. We cover rentals, property management, real estate, and HOA services. We look forward to hearing from you!
-                    </p>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="flex space-x-4">
-                            <input
-                                type="text"
-                                name="firstName"
-                                placeholder="First Name"
-                                required
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                className="w-1/2 p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                            />
-                            <input
-                                type="text"
-                                name="lastName"
-                                placeholder="Last Name"
-                                required
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                className="w-1/2 p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                            />
+            <section className="mission-vision-container max-w-7xl mx-auto py-16 px-8">
+                <div className="flex flex-col lg:flex-row items-center justify-between lg:space-x-12">
+                    {/* Left Text Section */}
+                    <div className="w-full lg:w-1/2">
+                        {/* Mission Section */}
+                        <div className="mb-12 text-center">
+                            <h2 className="text-4xl  text-[#917648] mb-6 text-center">
+                                MISSION
+                            </h2>
+                            <p className="text-lg text-gray-700 leading-relaxed text-justify">
+                                Our mission is to deliver exceptional service that goes above
+                                and beyond our clients' expectations. We are dedicated to
+                                helping you achieve your real estate goals by offering
+                                personalized service, expert guidance, and innovative solutions.
+                                Whether you are buying, selling, leasing, or need professional
+                                property management, we are here to support you every step of
+                                the way.
+                            </p>
                         </div>
-                        <div>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email"
-                                required
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                            />
+
+                        {/* Vision Section */}
+                        <div className="text-center">
+                            <h2 className="text-4xl  text-[#917648] mb-6 text-center">
+                                VISION
+                            </h2>
+                            <p className="text-lg text-gray-700 leading-relaxed text-justify">
+                                At the core of our business are the values of professionalism,
+                                integrity, and customer satisfaction. These principles guide
+                                every transaction and interaction, ensuring that we provide the
+                                highest standard of service. We believe in building long-lasting
+                                relationships based on trust and transparency, leading to mutual
+                                success.
+                            </p>
                         </div>
-                        <div>
-                            <textarea
-                                name="message"
-                                placeholder="Your Message"
-                                required
-                                value={formData.message}
-                                onChange={handleChange}
-                                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                                rows={4}
-                            ></textarea>
-                        </div>
-                        <button
-                            type="submit"
-                            className="w-full p-3 bg-gold text-white rounded hover:bg-[#725836] transition-colors"
-                        >
-                            Submit
-                        </button>
-                    </form>
+                    </div>
+
+                    {/* Right Image Section */}
+                    <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
+                        <img
+                            src="https://erepros.com/wp-content/uploads/2024/08/pexels-a-darmel-7641903-683x1024-2.jpg"
+                            alt="Happy Couple with Keys"
+                            className="rounded-lg w-full h-auto object-cover"
+                        />
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+
+            <section className="why-choose-us-container max-w-7xl mx-auto py-16 px-8">
+                <div className="flex flex-col lg:flex-row items-center justify-between lg:space-x-12">
+                    {/* Left Image Section */}
+                    <div className="w-full lg:w-1/2">
+                        <img
+                            src="https://erepros.com/wp-content/uploads/2024/08/pexels-orlovamaria-4946438-683x1024-1.jpg"
+                            alt="Beautiful Balcony with Flowers"
+                            className="rounded-lg w-full h-auto object-cover"
+                        />
+                    </div>
+
+                    {/* Right Text Section */}
+                    <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
+                        <h2 className="text-4xl text-[#917648] mb-6 text-center">
+                            WHY CHOOSE US?
+                        </h2>
+                        <p className="text-lg text-gray-700 leading-relaxed text-justify mb-6">
+                            Choosing Elite Real Estate & Professional Management means
+                            partnering with a team that is dedicated to your success. Our
+                            reputation for excellence is built on our unwavering commitment to
+                            our clients and our ability to deliver results that exceed
+                            expectations.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed text-justify mb-6">
+                            As a women-owned business, we are proud of our journey and the
+                            impact we have made in the Michigan real estate market. Our story
+                            is a testament to the power of hard work, resilience, and a
+                            commitment to excellence.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed text-justify mb-6">
+                            Thank you for considering Elite Real Estate & Professional
+                            Management for your real estate needs. We look forward to the
+                            opportunity to serve you with dedication and expertise, helping
+                            you navigate the real estate landscape with confidence and ease.
+                        </p>
+                        <p className="text-lg text-gray-700 leading-relaxed text-justify">
+                            Discover the difference with Elite Real Estate & Professional
+                            Management. Let us help you turn your real estate dreams into
+                            reality.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </>
     );
 };
 
-export default ContactUs;
+export default AboutUs;
