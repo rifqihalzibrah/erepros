@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 
@@ -8,10 +9,12 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Layer 1: Logo - Left Aligned */}
         <div className="flex justify-start mb-8">
-          <img
+          <Image
             src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-real-logo-2-1024x642.png"
             alt="Company Logo"
             className="w-36 md:w-48"
+            width={300}
+            height={150}
           />
         </div>
 
