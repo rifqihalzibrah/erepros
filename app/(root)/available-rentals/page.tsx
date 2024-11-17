@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Property } from "../../types/types"; // Ensure your Property type is correctly imported
-import { getAccessKey, fetchData } from "../../services/propertywareAPI"; // Import your API functions
+import { Property } from "../../../types/types"; // Ensure your Property type is correctly imported
+import { getAccessKey, fetchData } from "../../../services/propertywareAPI"; // Import your API functions
 
 const AvailableRentals = () => {
   const [properties, setProperties] = useState<Property[]>([]);

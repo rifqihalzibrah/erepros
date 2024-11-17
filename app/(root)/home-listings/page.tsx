@@ -1,5 +1,5 @@
 // app/home-listing/page.tsx
-import HomeListingsPage from "../../components/templates/home-listing/HomeListingsPage";
+import HomeListingsPage from "../../../components/templates/home-listing/HomeListingsPage";
 
 const Page = () => {
   return <HomeListingsPage />;
