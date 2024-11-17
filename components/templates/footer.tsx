@@ -2,11 +2,10 @@ import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 
-// components/Footer.js
 const Footer = () => {
   return (
     <footer className="bg-white py-12">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Layer 1: Logo - Left Aligned */}
         <div className="flex justify-start mb-8">
           <Image

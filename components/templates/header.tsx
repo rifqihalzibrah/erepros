@@ -6,24 +6,27 @@ export default function Header() {
         {
             label: 'Tenant',
             subItems: [
-                { href: '/top-menu-item1', label: 'Top Menu Item 1' },
-                { href: '/top-menu-item2', label: 'Top Menu Item 2' },
-                { href: '/top-menu-item1', label: 'Top Menu Item 1' },
-                { href: '/top-menu-item2', label: 'Top Menu Item 2' },
+                { href: '/top-menu-item1', label: 'Tenant Portal Login' },
+                { href: '/top-menu-item2', label: 'Apply Now' },
+                { href: '/top-menu-item1', label: 'Move In Move Out' },
+                { href: '/top-menu-item2', label: 'Tenant FAQ' },
+                { href: '/top-menu-item2', label: 'Tenant Service Request' },
+                { href: '/top-menu-item2', label: 'Tenant Benefit Package' },
             ],
         },
         {
             label: 'Owner',
             subItems: [
-                { href: '/top-menu-item1', label: 'Top Menu Item 1' },
-                { href: '/top-menu-item2', label: 'Top Menu Item 2' },
+                { href: '/top-menu-item1', label: 'Owner Portal' },
+                { href: '/top-menu-item2', label: 'Owner FAQ' },
             ],
         },
         {
             label: 'HOA',
             subItems: [
-                { href: '/top-menu-item1', label: 'Top Menu Item 1' },
-                { href: '/top-menu-item2', label: 'Top Menu Item 2' },
+                { href: '/top-menu-item1', label: 'Resident Portal Login HOA' },
+                { href: '/top-menu-item2', label: 'HOA Resident FAQ' },
+                { href: '/top-menu-item2', label: 'HOA Homeowner FAQ' },
             ],
         },
         // Add more top menu items if needed
@@ -50,12 +53,13 @@ export default function Header() {
                 label="What We Do"
                 subItems={[
                     {
-                        label: "HOA Management",
+                        label: "Property Management",
                         nestedSubItems: [
                             { href: "/overview", label: "Overview" },
                             { href: "/pricing", label: "Pricing" },
                         ],
                     },
+                    { href: "/hoa-management", label: "HOA Management" },
                     { href: "/reso-property", label: "Real Estate" },
                 ]}
             />

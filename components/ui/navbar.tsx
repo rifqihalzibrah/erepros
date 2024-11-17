@@ -111,7 +111,7 @@ const TopMenuItem: React.FC<{ item: TopMenuItemProps }> = ({ item }) => {
         </span>
       </Link>
       {hasSubItems && isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-gold z-[100]">
+        <div className="absolute right-0 mt-2 w-56 p-2 bg-gold z-[100]">
           {item.subItems.map((subItem, subIdx) => (
             <Link
               key={subIdx}
@@ -291,7 +291,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
       </div>
       {/* Dropdown for sub-items */}
       {hasSubItems && isOpenSubItems && (
-        <div className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-60 bg-gold shadow-lg opacity-100 z-50 p-4 transition-opacity duration-300">
+        <div className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-60 bg-gold shadow-lg opacity-100 z-50 p-3 transition-opacity duration-300">
           <div className="py-1">{renderSubItems()}</div>
         </div>
       )}
@@ -449,7 +449,7 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
     <>
       <nav
         className={`fixed w-full z-50 transition-transform duration-500 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'
-          } ${isSticky ? 'bg-gold' : 'bg-gold xl:bg-transparent'}`}
+          } ${isSticky || !isHomePage ? 'bg-gold' : 'bg-gold xl:bg-transparent'}`}
       >
         {/* Render TopMenu if topMenuItems are provided */}
         {topMenuItems && <TopMenu items={topMenuItems} />}
