@@ -1,5 +1,4 @@
 // app/layout.tsx (Server Component)
-import RootLayoutClient from "@/components/RootLayoutClient"; // Client Component
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -19,7 +18,7 @@ export default function RootLayout({
                 className={`antialiased`}
             >
                 {/* Include the client-side logic here */}
-                <RootLayoutClient>{children}</RootLayoutClient>
+                {children}
             </body>
         </html>
     );
