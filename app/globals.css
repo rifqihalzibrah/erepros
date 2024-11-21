@@ -74,3 +74,55 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Add this to your global styles or Tailwind CSS custom file */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px); /* Start from below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at the normal position */
+  }
+}
+
+@layer utilities {
+  .fade-up {
+    animation: fadeUp 1s ease-out;
+  }
+
+  .fade-up-1s {
+    animation: fadeUp 1s ease-out;
+  }
+
+  .fade-up-2s {
+    animation: fadeUp 2s ease-out;
+  }
+
+  .fade-up-3s {
+    animation: fadeUp 3s ease-out;
+  }
+
+  /* Add more if needed */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.carousel {
+  width: calc(100%); /* Ensure it can fit all duplicate logos */
+  display: flex;
+  animation: scroll 15s linear infinite;
+}
+
+.carousel div {
+  flex: 0 0 25%; /* Each logo takes up 25% width, so 4 logos fit in the viewport */
+  box-sizing: border-box;
+}
