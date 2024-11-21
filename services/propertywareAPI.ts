@@ -37,9 +37,10 @@ export const fetchData = async (accessKey: string) => {
     }
 
     const data = await response.json();
-    return data.filter(
-      (property: { property_type: string }) =>
-        property.property_type.toLowerCase() !== "other"
+    return data.filter((property: { property_type: string }) =>
+      ["apartment", "house", "other"].includes(
+        property.property_type.toLowerCase()
+      )
     );
   } catch (error) {
     console.error("Error fetching property data:", error);
