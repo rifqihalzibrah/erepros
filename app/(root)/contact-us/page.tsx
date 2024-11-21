@@ -1,32 +1,51 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from 'zod';
+import {
+    Form,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormControl,
+    FormMessage
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
+import { cn } from "@/lib/utils"; // If you use class name utilities
+
+const formSchema = z.object({
+    firstName: z.string().min(1, 'First Name is required'),
+    lastName: z.string().min(1, 'Last Name is required'),
+    email: z.string().email('Invalid email address'),
+    message: z.string().min(1, 'Message is required'),
+});
 
 const ContactUs: React.FC = () => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: '',
-    });
     const { toast } = useToast();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: '',
+        },
+    });
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
+    const onSubmit = async (values) => {
         try {
             const res = await fetch('/api/contact-us', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(values),
             });
 
             if (!res.ok) {
@@ -44,7 +63,7 @@ const ContactUs: React.FC = () => {
                 title: "Success",
                 description: result.message || "Your message has been sent successfully!",
             });
-            setFormData({ firstName: '', lastName: '', email: '', message: '' });
+            form.reset();
         } catch (error) {
             toast({
                 title: "Error",
@@ -84,56 +103,93 @@ const ContactUs: React.FC = () => {
                         <p className="text-gray-600 mb-6 text-justify">
                             Looking to buy, sell, or simply curious about real estate in Michigan? Sign up below for our monthly market updates or schedule a chat with us. We cover rentals, property management, real estate, and HOA services. We look forward to hearing from you!
                         </p>
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <div className="flex space-x-4">
-                                <input
-                                    type="text"
-                                    name="firstName"
-                                    placeholder="First Name"
-                                    required
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                    className="w-1/2 p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                                />
-                                <input
-                                    type="text"
-                                    name="lastName"
-                                    placeholder="Last Name"
-                                    required
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                    className="w-1/2 p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                                />
-                            </div>
-                            <div>
-                                <input
-                                    type="email"
+                        <Form {...form}>
+                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                                <div className="flex space-x-4">
+                                    {/* First Name */}
+                                    <FormField
+                                        control={form.control}
+                                        name="firstName"
+                                        render={({ field }) => (
+                                            <FormItem className="w-1/2">
+                                                <FormLabel>First Name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="First Name"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    {/* Last Name */}
+                                    <FormField
+                                        control={form.control}
+                                        name="lastName"
+                                        render={({ field }) => (
+                                            <FormItem className="w-1/2">
+                                                <FormLabel>Last Name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Last Name"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+
+                                {/* Email */}
+                                <FormField
+                                    control={form.control}
                                     name="email"
-                                    placeholder="Email"
-                                    required
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Email</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="email"
+                                                    placeholder="Email"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
                                 />
-                            </div>
-                            <div>
-                                <textarea
+
+                                {/* Message */}
+                                <FormField
+                                    control={form.control}
                                     name="message"
-                                    placeholder="Your Message"
-                                    required
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-500"
-                                    rows={4}
-                                ></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                className="w-full p-3 bg-gold text-white rounded hover:bg-[#725836] transition-colors"
-                            >
-                                Submit
-                            </button>
-                        </form>
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Your Message</FormLabel>
+                                            <FormControl>
+                                                <Textarea
+                                                    placeholder="Your Message"
+                                                    {...field}
+                                                    rows={4}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                {/* Submit Button */}
+                                <Button
+                                    type="submit"
+                                    className="w-full p-3 bg-gold text-white rounded hover:bg-[#725836] transition-colors"
+                                >
+                                    Submit
+                                </Button>
+                            </form>
+                        </Form>
                     </div>
                 </div>
             </div>

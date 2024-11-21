@@ -1,5 +1,5 @@
 // components/Header.tsx
-import { Menu, MenuItem } from "../ui/navbar"; // Adjust the import path accordingly
+import { Menu, MenuItem } from "../../ui/navbar"; // Adjust the import path accordingly
 
 export default function Header() {
     const topMenuItems = [

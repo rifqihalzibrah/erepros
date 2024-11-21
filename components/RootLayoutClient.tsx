@@ -1,8 +1,7 @@
-// components/RootLayoutClient.tsx (Client Component)
 "use client";
 
 import { usePathname } from "next/navigation";
-import TopFooter from "@/components/templates/TopFooter";
+import TopFooter from "@/components/templates/base/TopFooter";
 
 export default function RootLayoutClient({
   children,
@@ -11,11 +10,16 @@ export default function RootLayoutClient({
 }>) {
   const pathname = usePathname();
 
+  // Determine if the current path should exclude the TopFooter
+  const shouldExcludeFooter =
+    pathname === "/contact-us" ||
+    pathname.startsWith("/erepros-management-control");
+
   return (
     <>
       {children}
       {/* Conditionally render TopFooter based on the route */}
-      {pathname !== "/contact-us" && <TopFooter />}
+      {!shouldExcludeFooter && <TopFooter />}
     </>
   );
 }

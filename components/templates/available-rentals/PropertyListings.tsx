@@ -2,7 +2,7 @@
 
 // components/templates/PropertyListings.tsx
 import React from "react";
-import { Property } from "../../types/types"; // Import Property interface
+import { Property } from "../../../types/types"; // Import Property interface
 
 interface PropertyListingsProps {
   properties: Property[];

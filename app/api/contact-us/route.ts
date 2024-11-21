@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
     try {
         // Save submission to the database
-        const newSubmission = await db.contactSubmission.create({
+        const newSubmission = await db.contact.create({
             data: {
                 firstName,
                 lastName,

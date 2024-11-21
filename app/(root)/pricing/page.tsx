@@ -1,18 +1,138 @@
+"use client";
+
 import React from "react";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils"; // Classname utility function
 
-const PricingPage = () => {
+const formSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(1, "Phone number is required"),
+  hearAbout: z.string().min(1, "This field is required"),
+  propertyType: z.string().min(1, "Property type is required"),
+  propertyAddress: z.string().min(1, "Property address is required"),
+  occupancyStatus: z.string().min(1, "Occupancy status is required"),
+  numberUnits: z
+    .union([z.string(), z.number()])
+    .transform((val) => Number(val))
+    .refine((val) => !isNaN(val) && val >= 1 && val <= 1000, {
+      message: "Number of units must be between 1 and 1000",
+    }),
+  unitMix: z.string().min(1, "Unit mix is required"),
+  grossIncome: z
+    .union([z.string(), z.number()])
+    .transform((val) => Number(val))
+    .refine((val) => !isNaN(val) && val >= 0, {
+      message: "Gross monthly income is required",
+    }),
+  desiredServices: z.string().min(1, "Desired services is required"),
+  startDate: z.date({
+    required_error: "Start date is required",
+    invalid_type_error: "Invalid date",
+  }),
+  additionalInfo: z.string().optional(),
+});
+
+const Pricing = () => {
+  const { toast } = useToast();
+
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      hearAbout: "",
+      propertyType: "",
+      propertyAddress: "",
+      occupancyStatus: "",
+      numberUnits: "",
+      unitMix: "",
+      grossIncome: "",
+      desiredServices: "",
+      startDate: null,
+      additionalInfo: "",
+    },
+  });
+
+  const onSubmit = async (values) => {
+    try {
+      const res = await fetch("/api/pricing", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          startDate: values.startDate ? values.startDate.toISOString() : null,
+        }),
+      });
+
+      if (!res.ok) {
+        const errorResult = await res
+          .json()
+          .catch(() => ({ message: "An error occurred" }));
+        toast({
+          title: "Error",
+          description: errorResult.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      const result = await res.json();
+      toast({
+        title: "Success",
+        description:
+          result.message || "Your request has been sent successfully!",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An error occurred. Please try again later.",
+        variant: "destructive",
+      });
+      console.error("Submission error:", error);
+    }
+  };
+
   return (
     <div className="pt-[136px] bg-white">
       <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
@@ -957,214 +1077,374 @@ const PricingPage = () => {
         {/* Add more rows as needed */}
       </div>
 
-      <div>
+      <div className="justify-center flex p-4">
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="outline">Property Management Quote Request</Button>
+            <Button className="bg-gold hover:bg-[#725836]">Get Quote</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[600px] h-[80vh]">
             <DialogHeader>
               <DialogTitle className="text-center text-2xl font-bold">
                 PROPERTY MANAGEMENT QUOTE REQUEST
               </DialogTitle>
-              <DialogDescription className="text-center text-sm text-gray-600">
-                Your Rental Property Information
-              </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 p-4 overflow-y-auto max-h-[60vh]">
-              <div className="grid gap-4">
-                <Label htmlFor="name" className="text-sm font-medium">
-                  Name (First & Last)
-                </Label>
-                <Input
-                  id="name"
-                  placeholder="Enter your full name"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="grid gap-4 p-4 overflow-y-auto max-h-[60vh]"
+              >
+                <DialogDescription className="text-center text-sm text-gray-600">
+                  Your Contact Info
+                </DialogDescription>
+
+                {/* Name */}
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name (First & Last)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your full name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div className="grid gap-4">
-                <Label htmlFor="email" className="text-sm font-medium">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+
+                {/* Email */}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="Enter your email"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div className="grid gap-4">
-                <Label htmlFor="phone" className="text-sm font-medium">
-                  Phone
-                </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="Enter your phone number"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+
+                {/* Phone */}
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              <div className="grid gap-4">
-                <Label htmlFor="hear-about" className="text-sm font-medium">
-                  Where did you hear about us?
-                </Label>
-                <select
-                  id="hear-about"
-                  defaultValue=""
-                  className="border border-gray-300 rounded-md px-4 py-2"
-                >
-                  <option value="" disabled>
-                    -- Please select --
-                  </option>
-                  <option value="google">Google</option>
-                  <option value="social">Social Media</option>
-                  <option value="friend">Friend</option>
-                </select>
-              </div>
-              {/* Property Type */}
-              <div className="grid gap-2">
-                <Label htmlFor="property-type" className="text-sm font-medium">
-                  Property Type
-                </Label>
-                <select
-                  id="property-type"
-                  defaultValue=""
-                  className="border border-gray-300 rounded-md px-4 py-2"
-                >
-                  <option value="" disabled>
-                    -- Please select --
-                  </option>
-                  <option value="apartment">Apartment</option>
-                  <option value="house">House</option>
-                  <option value="condo">Condo</option>
-                </select>
-              </div>
-              {/* Property Address */}
-              <div className="grid gap-2">
-                <Label htmlFor="property-address" className="text-sm font-medium">
-                  Property Address
-                </Label>
-                <Input
-                  id="property-address"
-                  placeholder="Enter property address"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+
+                {/* Where did you hear about us? */}
+                <FormField
+                  control={form.control}
+                  name="hearAbout"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Where did you hear about us?</FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={(value) => field.onChange(value)}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="-- Please select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="google-ad">Google Ad</SelectItem>
+                              <SelectItem value="biggerpockets">BiggerPockets</SelectItem>
+                              <SelectItem value="agent-referral">Agent Referral</SelectItem>
+                              <SelectItem value="owner-referral">Owner Referral</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              {/* Occupancy Status */}
-              <div className="grid gap-2">
-                <Label htmlFor="occupancy-status" className="text-sm font-medium">
-                  Occupancy Status
-                </Label>
-                <select
-                  id="occupancy-status"
-                  defaultValue=""
-                  className="border border-gray-300 rounded-md px-4 py-2"
-                >
-                  <option value="" disabled>
-                    -- Please select --
-                  </option>
-                  <option value="occupied">Occupied</option>
-                  <option value="vacant">Vacant</option>
-                </select>
-              </div>
-              {/* Number of Units */}
-              <div className="grid gap-2">
-                <Label htmlFor="number-units" className="text-sm font-medium">
-                  Number of Units
-                </Label>
-                <Input
-                  id="number-units"
-                  type="number"
-                  placeholder="Enter number of units"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+
+                <DialogDescription className="text-center text-sm text-gray-600">
+                  Your Rental Property Information
+                </DialogDescription>
+
+                {/* Property Type */}
+                <FormField
+                  control={form.control}
+                  name="propertyType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Property Type</FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={(value) => field.onChange(value)}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="-- Please select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="apartment-16">
+                                Apartment (16+ Units)
+                              </SelectItem>
+                              <SelectItem value="apartment-45">
+                                Apartment (4-5 Units)
+                              </SelectItem>
+                              <SelectItem value="triplex">Triplex</SelectItem>
+                              <SelectItem value="duplex">Duplex</SelectItem>
+                              <SelectItem value="condo">Condo</SelectItem>
+                              <SelectItem value="townhouse">Townhouse</SelectItem>
+                              <SelectItem value="single-family-home">
+                                Single Family Home
+                              </SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              {/* Unit Mix/Types */}
-              <div className="grid gap-2">
-                <Label htmlFor="unit-mix" className="text-sm font-medium">
-                  Unit Mix/Types
-                </Label>
-                <Input
-                  id="unit-mix"
-                  placeholder="Enter unit mix/types"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+
+                {/* Property Address */}
+                <FormField
+                  control={form.control}
+                  name="propertyAddress"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Property Address</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter property address"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              {/* Gross Monthly Income */}
-              <div className="grid gap-2">
-                <Label htmlFor="gross-income" className="text-sm font-medium">
-                  Gross Monthly Income
-                </Label>
-                <Input
-                  id="gross-income"
-                  type="number"
-                  placeholder="Enter gross monthly income"
-                  className="border border-gray-300 rounded-md px-4 py-2"
+
+                {/* Occupancy Status */}
+                <FormField
+                  control={form.control}
+                  name="occupancyStatus"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Occupancy Status</FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={(value) => field.onChange(value)}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="-- Please select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="vacant">Vacant</SelectItem>
+                              <SelectItem value="occupied-by-owner">
+                                Occupied by Owner
+                              </SelectItem>
+                              <SelectItem value="occupied-by-tenant">
+                                Occupied by Tenant(s)
+                              </SelectItem>
+                              <SelectItem value="repositioning">
+                                Multifamily, occupancy under 90% (Repositioning)
+                              </SelectItem>
+                              <SelectItem value="stabilized">
+                                Multifamily, occupancy over 90% (Stabilized)
+                              </SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-              </div>
-              {/* Desired Services */}
-              <div className="grid gap-2">
-                <Label htmlFor="desired-services" className="text-sm font-medium">
-                  Desired Services
-                </Label>
-                <select
-                  id="desired-services"
-                  defaultValue=""
-                  className="border border-gray-300 rounded-md px-4 py-2"
-                >
-                  <option value="" disabled>
-                    -- Please select --
-                  </option>
-                  <option value="full-service">Full Service</option>
-                  <option value="leasing">Leasing Only</option>
-                  <option value="maintenance">Maintenance Only</option>
-                </select>
-              </div>
-              {/* Desired Start Date */}
-              <div className="grid gap-2">
-                <Label htmlFor="start-date" className="text-sm font-medium">
-                  Desired Start Date
-                </Label>
-                <div className="relative">
-                  <Input
-                    id="start-date"
-                    type="date"
-                    className="border border-gray-300 rounded-md px-4 py-2"
-                  />
-                  <span className="absolute right-3 top-2/4 transform -translate-y-2/4 text-gray-400">
-                    📅
-                  </span>
+
+                {/* Number of Units */}
+                <FormField
+                  control={form.control}
+                  name="numberUnits"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Number of Units</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Enter number of units"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Unit Mix/Types */}
+                <FormField
+                  control={form.control}
+                  name="unitMix"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Unit Mix/Types</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter unit mix/types" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Gross Monthly Income */}
+                <FormField
+                  control={form.control}
+                  name="grossIncome"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Gross Monthly Income</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Enter gross monthly income"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <DialogDescription className="text-center text-sm text-gray-600">
+                  Management Services
+                </DialogDescription>
+
+                {/* Desired Services */}
+                <FormField
+                  control={form.control}
+                  name="desiredServices"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Desired Services</FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={(value) => field.onChange(value)}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="-- Please select --" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              <SelectItem value="monthly-management">
+                                Full Service
+                              </SelectItem>
+                              <SelectItem value="leasing-only">Leasing Only</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Desired Start Date */}
+                <FormField
+                  control={form.control}
+                  name="startDate"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Desired Start Date</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Select Date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={(date) => {
+                              field.onChange(date);
+                              form.trigger("startDate");
+                            }}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Additional Information */}
+                <FormField
+                  control={form.control}
+                  name="additionalInfo"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Additional Information</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Enter any additional information here"
+                          rows={4}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="flex justify-center">
+                  <Button
+                    type="submit"
+                    className="px-6 py-2 bg-[#9A7648] text-white hover:bg-[#7b5c36]"
+                  >
+                    Submit Request
+                  </Button>
                 </div>
-              </div>
-              {/* Additional Information */}
-              <div className="grid gap-2">
-                <Label htmlFor="additional-info" className="text-sm font-medium">
-                  Additional Information
-                </Label>
-                <textarea
-                  id="additional-info"
-                  placeholder="Enter any additional information here"
-                  rows="4"
-                  className="border border-gray-300 rounded-md px-4 py-2"
-                ></textarea>
-              </div>
-            </div>
-            <DialogFooter>
-              <div className="flex justify-center">
-                <Button
-                  type="submit"
-                  className="px-6 py-2 bg-[#9A7648] text-white hover:bg-[#7b5c36]"
-                >
-                  Submit Request
-                </Button>
-              </div>
-            </DialogFooter>
+              </form>
+            </Form>
           </DialogContent>
         </Dialog>
       </div>
-
     </div>
   );
 };
 
-export default PricingPage;
+export default Pricing;
