@@ -208,12 +208,11 @@ const PropertyDetails = () => {
   return (
     <div className="container mx-auto p-6 pt-[136px]">
       {/* Back and navigation buttons */}
-      <div className="flex items-center justify-between bg-white mb-4 sticky top-16 ">
+      <div className="flex items-center justify-between  bg-white mb-4 sticky top-16 ">
         <div>
           <a
-            href="/avaible-rentals"
+            href="/available-rentals"
             className="text-blue-500 hover:text-blue-700"
-            onClick={(e) => handleSmoothScroll(e, "property-description")}
           >
             &larr; Back to Listings
           </a>
