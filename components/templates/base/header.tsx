@@ -67,7 +67,7 @@ export default function Header() {
                 label="Resources"
                 subItems={[
                     { href: "/mortgage-calculator", label: "Mortgage Calculator" },
-                    { href: "", label: "Free Home Evaluation" },
+                    { href: "/free-home-evaluation", label: "Free Home Evaluation" },
                 ]}
             />
             <MenuItem href="/contact-us" label="Contact Us" />

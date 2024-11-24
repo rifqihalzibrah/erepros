@@ -127,3 +127,13 @@ model Management {
   additionalInfo  String?
   createdAt       DateTime  @default(now())
 }
+
+model Evaluation {
+  id        Int      @id @default(autoincrement())
+  fullName  String
+  email     String
+  phone     String
+  address   String
+  consent   Boolean
+  createdAt DateTime @default(now())
+}
