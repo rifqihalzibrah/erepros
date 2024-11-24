@@ -1,5 +1,5 @@
 // components/Header.tsx
-import { Menu, MenuItem } from "../ui/navbar"; // Adjust the import path accordingly
+import { Menu, MenuItem } from "../../ui/navbar"; // Adjust the import path accordingly
 
 export default function Header() {
     const topMenuItems = [
@@ -9,8 +9,8 @@ export default function Header() {
                 { href: '/top-menu-item1', label: 'Tenant Portal Login' },
                 { href: '/top-menu-item2', label: 'Apply Now' },
                 { href: '/top-menu-item1', label: 'Move In Move Out' },
-                { href: '/top-menu-item2', label: 'Tenant FAQ' },
-                { href: '/top-menu-item2', label: 'Tenant Service Request' },
+                { href: '/tenant-faq', label: 'Tenant FAQ' },
+                { href: '/tenant-service-request', label: 'Tenant Service Request' },
                 { href: '/top-menu-item2', label: 'Tenant Benefit Package' },
             ],
         },
@@ -67,7 +67,7 @@ export default function Header() {
                 label="Resources"
                 subItems={[
                     { href: "/mortgage-calculator", label: "Mortgage Calculator" },
-                    { href: "", label: "Free Home Evaluation" },
+                    { href: "/free-home-evaluation", label: "Free Home Evaluation" },
                 ]}
             />
             <MenuItem href="/contact-us" label="Contact Us" />

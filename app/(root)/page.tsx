@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Accordion from "../components/templates/home-page/Accordion";
-import LogoCarousel from "../components/templates/home-page/logo-carousel";
-import PropertyCarousel from "../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
+import Accordion from "../../components/templates/home-page/Accordion";
+import LogoCarousel from "../../components/templates/home-page/logo-carousel";
+import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
 
 const images = [
   {
@@ -24,6 +24,7 @@ const images = [
 export default function HomePage() {
   const [activeLocation, setActiveLocation] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [currentTarget, setCurrentTarget] = useState(null);
 
   const locations = [
     {
@@ -94,11 +95,15 @@ export default function HomePage() {
     if (activeLocation?.name === location.name) {
       // Close the pop-up if the same hotspot is clicked again
       setActiveLocation(null);
+      setCurrentTarget(event.target); 
       return;
     }
 
     const rect = event.target.getBoundingClientRect(); // Get hotspot position
-    setPopupPosition({ x: rect.left + rect.width + 10, y: rect.top - 260 }); // Adjust popup position
+    setPopupPosition({
+      x: rect.left + rect.width / 2, // Center horizontally
+      y: rect.top + rect.height + 10, // Add a margin below
+    }); // Adjust popup position
     setActiveLocation(location); // Set active location
   };
 
@@ -120,6 +125,24 @@ export default function HomePage() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [activeLocation]);
+
+  useEffect(() => {
+  const handleScroll = () => {
+    if (currentTarget) {
+      const rect = currentTarget.getBoundingClientRect();
+      setPopupPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height + 10,
+      });
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [currentTarget]);
+
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTextAnimating, setIsTextAnimating] = useState(false);
@@ -157,9 +180,8 @@ export default function HomePage() {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
               style={{
                 backgroundImage: `url(${image.url})`,
               }}
@@ -170,13 +192,12 @@ export default function HomePage() {
           {images.map((image, index) => (
             <h1
               key={index}
-              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${
-                index === currentIndex
-                  ? isTextAnimating
-                    ? "opacity-0 translate-y-8"
-                    : "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
+              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${index === currentIndex
+                ? isTextAnimating
+                  ? "opacity-0 translate-y-8"
+                  : "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+                }`}
             >
               {image.text}
             </h1>
@@ -374,7 +395,7 @@ export default function HomePage() {
         {/* Pop-Up */}
         {activeLocation && (
           <div
-            className="absolute popup-container z-50 w-64 bg-white rounded-lg shadow-lg p-4"
+            className="fixed popup-container z-50 w-64 bg-white rounded-lg shadow-lg p-4"
             style={{
               left: `${popupPosition.x}px`,
               top: `${popupPosition.y}px`,

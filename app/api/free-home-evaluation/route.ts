@@ -3,20 +3,22 @@ import db from '@/lib/db';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-    const { firstName, lastName, email, message } = await req.json();
+    const { fullName, email, phone, address, consent } = await req.json();
 
-    if (!firstName || !lastName || !email || !message) {
+    // Validate the required fields
+    if (!fullName || !email || !phone || !address || !consent) {
         return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
     }
 
     try {
         // Save submission to the database
-        const newSubmission = await db.contact.create({
+        const newSubmission = await db.Evaluation.create({
             data: {
-                firstName,
-                lastName,
+                fullName,
                 email,
-                message,
+                phone,
+                address,
+                consent,
             },
         });
 
@@ -33,10 +35,10 @@ export async function POST(req: Request) {
 
         // Email options
         const mailOptions = {
-            from: `"Contact Form" <${process.env.SMTP_USER}>`,
+            from: `"Home Evaluation Form" <${process.env.SMTP_USER}>`,
             to: 'rifqihalzibrahmuhammad@gmail.com',
-            subject: 'New Contact Form Submission',
-            text: `You have a new submission:\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nMessage: ${message}`,
+            subject: 'New Home Evaluation Submission',
+            text: `You have a new home evaluation submission:\n\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}`,
         };
 
         // Send the email

@@ -21,7 +21,7 @@ const AvailableRentals = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const propertiesPerPage = 10; // Number of properties per page
+  const propertiesPerPage = 12; // Number of properties per page
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -148,8 +148,7 @@ const AvailableRentals = () => {
                 ${property.target_rent}
               </p>
               <p className="text-gray-500">
-                ${(property.target_rent / property.total_area).toFixed(2)} per
-                sqft
+                ${property.property_type} per sqft
               </p>
               <p className="text-sm text-gray-600 mt-2">
                 {property.no_bedrooms} Beds • {property.no_bathrooms} Baths •{" "}
