@@ -15,7 +15,7 @@ export default function RootLayout({
   const pathname = usePathname();
 
   // Exclude TopFooter for specific routes
-  const excludeTopFooter = ["/", "/contact-us"].includes(pathname);
+  const excludeTopFooter = ["/contact-us"].includes(pathname);
 
   return (
     <>
