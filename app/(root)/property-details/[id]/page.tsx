@@ -8,13 +8,48 @@ import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
 import GoogleMapComponent from "@/components/ui/GoogleMap";
 
+const PropertyDetailsSkeleton = () => (
+  <div className="container mx-auto p-6 pt-[136px]">
+    {/* Back Button */}
+    <div className="h-4 bg-gray-300 rounded w-1/4 mb-6"></div>
+
+    {/* Main Image Skeleton */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+      <div className="h-96 bg-gray-300 rounded-lg md:col-span-2"></div>
+      <div className="grid grid-cols-2 gap-2">
+        {Array.from({ length: 4 }).map((_, index) => (
+          <div key={index} className="h-40 bg-gray-300 rounded-lg"></div>
+        ))}
+        <div className="h-12 bg-gray-300 rounded-lg col-span-2"></div>
+      </div>
+    </div>
+
+    {/* Property Info Skeleton */}
+    <div className="h-6 bg-gray-300 rounded w-1/3 mb-4"></div>
+    <div className="h-4 bg-gray-300 rounded w-1/4 mb-4"></div>
+
+    {/* Price and Details */}
+    <div className="h-6 bg-gray-300 rounded w-1/4 mb-6"></div>
+    <div className="grid grid-cols-2 gap-6">
+      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+    </div>
+
+    {/* Features & Details */}
+    <div className="mt-10">
+      {Array.from({ length: 8 }).map((_, index) => (
+        <div key={index} className="h-4 bg-gray-300 rounded w-full mb-4"></div>
+      ))}
+    </div>
+  </div>
+);
+
 const PropertyDetails = () => {
   const { id } = useParams();
   const router = useRouter();
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Modal management state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -41,11 +76,21 @@ const PropertyDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <PropertyDetailsSkeleton />;
   }
 
   if (!property) {
-    return <div>No property found</div>;
+    return (
+      <div className="container mx-auto p-6 pt-[136px] text-center">
+        <h1 className="text-3xl font-bold mb-4">Property Not Found</h1>
+        <button
+          onClick={() => router.push("/available-rentals")}
+          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
+        >
+          Back to Listings
+        </button>
+      </div>
+    );
   }
 
   const openModal = (index: number) => {

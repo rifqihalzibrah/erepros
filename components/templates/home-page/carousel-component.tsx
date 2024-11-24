@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Property } from "../../../types/types"; // Ensure your Property type is correctly imported
 import { getAccessKey, fetchData } from "../../../services/propertywareAPI"; // Import your API functions
+import PropertyModal from "@/components/ui/PropertyModal"; // Import the modal
 
 interface PropertyCarouselProps {
   filterType?: string; // Optional filter prop to filter properties by type
@@ -10,9 +11,11 @@ interface PropertyCarouselProps {
 
 const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
   const [properties, setProperties] = useState<Property[]>([]);
-  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(
+    null
+  ); // For the modal
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -23,12 +26,13 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
         // Apply filter if filterType is provided
         const filtered = filterType
           ? data.filter(
-              (property: Property) => property.property_type === filterType
+              (property: Property) =>
+                property.property_type.toLowerCase() ===
+                filterType.toLowerCase()
             )
           : data;
 
         setProperties(filtered);
-        setFilteredProperties(filtered.slice(0, 1000)); // Optionally limit displayed properties
         setLoading(false);
       } catch (error) {
         console.error("Error fetching properties:", error);
@@ -40,17 +44,25 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
   }, [filterType]);
 
   const nextSlide = () => {
-    if (filteredProperties.length <= 3) return;
+    if (properties.length <= 3) return;
     setCurrentIndex((prevIndex) =>
-      prevIndex === filteredProperties.length - 3 ? 0 : prevIndex + 1
+      prevIndex === properties.length - 3 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
-    if (filteredProperties.length <= 3) return;
+    if (properties.length <= 3) return;
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? filteredProperties.length - 3 : prevIndex - 1
+      prevIndex === 0 ? properties.length - 3 : prevIndex - 1
     );
+  };
+
+  const openModal = (property: Property) => {
+    setSelectedProperty(property);
+  };
+
+  const closeModal = () => {
+    setSelectedProperty(null);
   };
 
   return (
@@ -78,14 +90,15 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
             className="relative flex w-full transition-transform duration-300"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {filteredProperties.map((property: Property) => (
+            {properties.map((property: Property) => (
               <div
                 key={property.id}
                 className="flex-shrink-0 w-1/3 p-2"
                 style={{ flexBasis: "33.3333%" }}
+                onClick={() => openModal(property)}
               >
                 {/* Property Card */}
-                <div className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+                <div className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
                   <img
                     src={
                       property.images[0]?.original_image_url ||
@@ -102,8 +115,8 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
                     ${property.target_rent}
                   </p>
                   <p className="text-sm text-gray-500">
-                    {property.property_type} Beds • {property.no_bathrooms}{" "}
-                    Baths • {property.total_area} Sq Ft
+                    {property.no_bedrooms} Beds • {property.no_bathrooms} Baths
+                    • {property.total_area} Sq Ft
                   </p>
                 </div>
               </div>
@@ -124,6 +137,13 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
           </button>
         </div>
       )}
+
+      {/* Modal */}
+      <PropertyModal
+        property={selectedProperty}
+        isOpen={!!selectedProperty}
+        onClose={closeModal}
+      />
     </div>
   );
 };

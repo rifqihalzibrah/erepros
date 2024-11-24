@@ -14,7 +14,7 @@ const RealEstatePage = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40" />
         {/* Text Content */}
         <div className="relative flex items-center justify-center h-full text-center">
-          <h1 className="text-white text-5xl font-bold tracking-wider">
+          <h1 className="text-white font-marcellus text-5xl tracking-wider">
             REAL ESTATE
           </h1>
         </div>
@@ -33,7 +33,7 @@ const RealEstatePage = () => {
 
         {/* Text Section */}
         <div className="flex-grow">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-center md:text-left text-[#9A7648] mb-4">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-marcellus text-center md:text-left text-[#9A7648] mb-4">
             Your Trusted Real Estate Partner
           </h2>
           <p className="text-gray-700 text-justify leading-relaxed">
@@ -53,7 +53,7 @@ const RealEstatePage = () => {
 
       {/* Buyers Section */}
       <div className="bg-[#9A7648] py-6 px-6 md:px-12 lg:px-24">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-marcellus text-white">
           For Buyers: Find Your Dream Home
         </h2>
       </div>
@@ -107,7 +107,7 @@ const RealEstatePage = () => {
 
       {/* Buyers Section */}
       <div className="bg-[#9A7648] py-6 px-6 md:px-12 lg:px-24">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-marcellus text-white">
           For Sellers: Sell Your Property with Confidence
         </h2>
       </div>
