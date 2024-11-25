@@ -45,8 +45,8 @@ const formSchema = z.object({
     email: z.string().email("Invalid email address"),
     phone: z.string().min(1, "Phone number is required"),
     hearAbout: z.string().min(1, "This field is required"),
-    hoaType: z.string().min(1, "HOA type is required"),
-    hoaAddress: z.string().min(1, "HOA address is required"),
+    type: z.string().min(1, "HOA type is required"),
+    address: z.string().min(1, "HOA address is required"),
     occupancyStatus: z.string().min(1, "Occupancy status is required"),
     numberUnits: z
         .union([z.string(), z.number()])
@@ -79,8 +79,8 @@ const HOAManagement = () => {
             email: "",
             phone: "",
             hearAbout: "",
-            hoaType: "",
-            hoaAddress: "",
+            type: "",
+            address: "",
             occupancyStatus: "",
             numberUnits: "",
             unitMix: "",
@@ -311,7 +311,7 @@ const HOAManagement = () => {
                                 {/* HOA Type */}
                                 <FormField
                                     control={form.control}
-                                    name="hoaType"
+                                    name="type"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>HOA Type</FormLabel>
@@ -340,7 +340,7 @@ const HOAManagement = () => {
                                 {/* HOA Address */}
                                 <FormField
                                     control={form.control}
-                                    name="hoaAddress"
+                                    name="address"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>HOA Address</FormLabel>

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
     try {
         // Save submission to the database
-        const newSubmission = await db.contact.create({
+        const newSubmission = await db.mail.create({
             data: {
                 firstName,
                 lastName,

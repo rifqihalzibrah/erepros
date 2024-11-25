@@ -83,6 +83,7 @@ export async function POST(req: NextRequest) {
                         create: {
                             name: full_name, // or any default value if creating a new user
                             email,
+                            phone,
                         },
                     },
                 },

@@ -502,9 +502,10 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
               </div>
             )}
 
-            <div className="absolute right-16 top-[85px] transform -translate-y-1/2 hidden xl:flex items-center justify-center">
-              <button className="bg-white text-gold border-2 border-gold rounded-lg px-6 py-3 font-semibold text-center hover:bg-gold hover:text-white transition flex flex-col items-center justify-center h-12 w-auto text-sm">
-                <span>REGISTER INTEREST</span>
+            <div className="absolute right-24 top-[85px] transform -translate-y-1/2 hidden xl:flex items-center justify-center">
+              <button className="bg-white text-gold border-2 border-gold rounded-lg px-8 py-8 font-semibold text-center hover:bg-gold hover:text-white transition flex flex-col items-center justify-center h-12 w-auto text-sm">
+                <p>REGISTER</p>
+                <p>INTEREST</p>
               </button>
             </div>
 

@@ -1819,9 +1819,8 @@ const ApplyTenants = () => {
                             </Button>
 
                             {currentStep < totalSteps ? (
-                                <Button asChild>
+                                <Button className="bg-gold hover:bg-[#725836] text-white px-4 py-2 rounded" asChild>
                                     <button
-                                        className="bg-gold hover:bg-[#725836]"
                                         type="button"
                                         onClick={nextStep}
                                     >

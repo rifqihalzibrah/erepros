@@ -1,43 +1,47 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
-import { format } from "date-fns" // Import the format function from date-fns
-import { MoreHorizontal } from "lucide-react"
+import { ColumnDef } from "@tanstack/react-table";
+import { format } from "date-fns"; // Import the format function from date-fns
+import { MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-import { ArrowUp } from "lucide-react"
+import { ArrowUp } from "lucide-react";
 
-// Update the type for applications.
-export type Application = {
-    id: string
-    fullName: string
-    email: string
-    createdAt: string // Assuming createdAt is a string ISO date from the API
-    paymentStatus: "pending" | "processing" | "approved" | "rejected"
-}
+// Update the type for mails.
+export type Mail = {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    message: string;
+    createdAt: string; // Assuming createdAt is a string ISO date from the API
+};
 
-// Define the columns for applications.
-export const columns: ColumnDef<Application>[] = [
+// Define the columns for mails.
+export const columns: ColumnDef<Mail>[] = [
     {
-        accessorKey: "propertyId",
-        header: "Property ID",
+        accessorKey: "firstName", // Optional, not directly used in the cell
+        header: "Sender",
+        cell: ({ row }) => {
+            const { firstName, lastName } = row.original;
+            return `${firstName} ${lastName}`;
+        },
     },
     {
         accessorKey: "email",
         header: "Email",
     },
     {
-        accessorKey: "fullName",
-        header: "Applicant Name",
+        accessorKey: "message",
+        header: "Message",
     },
     {
         accessorKey: "createdAt",
@@ -48,7 +52,7 @@ export const columns: ColumnDef<Application>[] = [
                     variant="ghost"
                     onClick={() => column.toggleSorting(isSorted === "asc")}
                 >
-                    Created At
+                    Received At
                     {isSorted === "asc" && (
                         <ArrowUp className="ml-2 h-4 w-4 rotate-180" /> // Show arrow up
                     )}
@@ -69,13 +73,9 @@ export const columns: ColumnDef<Application>[] = [
         },
     },
     {
-        accessorKey: "paymentStatus",
-        header: "Payment Status",
-    },
-    {
         id: "actions",
         cell: ({ row }) => {
-            const application = row.original
+            const mail = row.original;
 
             return (
                 <DropdownMenu>
@@ -87,11 +87,10 @@ export const columns: ColumnDef<Application>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>View applicant</DropdownMenuItem>
-                        <DropdownMenuItem>View application details</DropdownMenuItem>
+                        <DropdownMenuItem>View mail</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-            )
+            );
         },
     },
-]
+];

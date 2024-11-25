@@ -1,43 +1,43 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
-import { format } from "date-fns" // Import the format function from date-fns
-import { MoreHorizontal } from "lucide-react"
+import { ColumnDef } from "@tanstack/react-table";
+import { format } from "date-fns"; // Import the format function from date-fns
+import { MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-import { ArrowUp } from "lucide-react"
+import { ArrowUp } from "lucide-react";
 
-// Update the type for applications.
-export type Application = {
-    id: string
-    fullName: string
-    email: string
-    createdAt: string // Assuming createdAt is a string ISO date from the API
-    paymentStatus: "pending" | "processing" | "approved" | "rejected"
-}
+// Define the type for evaluations.
+export type Evaluation = {
+    id: string;
+    fullName: string;
+    email: string;
+    phone: number;
+    createdAt: string;
+    evaluationStatus: string;
+};
 
-// Define the columns for applications.
-export const columns: ColumnDef<Application>[] = [
+// Define the columns for evaluations.
+export const columns: ColumnDef<Evaluation>[] = [
     {
-        accessorKey: "propertyId",
-        header: "Property ID",
+        accessorKey: "fullName",
+        header: "Name",
     },
     {
         accessorKey: "email",
         header: "Email",
     },
     {
-        accessorKey: "fullName",
-        header: "Applicant Name",
+        accessorKey: "phone",
+        header: "Phone",
     },
     {
         accessorKey: "createdAt",
@@ -69,13 +69,13 @@ export const columns: ColumnDef<Application>[] = [
         },
     },
     {
-        accessorKey: "paymentStatus",
-        header: "Payment Status",
+        accessorKey: "evaluationStatus",
+        header: "Status",
     },
     {
         id: "actions",
         cell: ({ row }) => {
-            const application = row.original
+            const evaluation = row.original;
 
             return (
                 <DropdownMenu>
@@ -87,11 +87,11 @@ export const columns: ColumnDef<Application>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>View applicant</DropdownMenuItem>
-                        <DropdownMenuItem>View application details</DropdownMenuItem>
+                        <DropdownMenuItem>View Evaluation</DropdownMenuItem>
+                        <DropdownMenuItem>Download Report</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-            )
+            );
         },
     },
-]
+];

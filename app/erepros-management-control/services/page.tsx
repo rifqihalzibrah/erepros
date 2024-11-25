@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 import { DataTable } from "@/components/templates/erepros-management-control/data-table"; // Update the import path if needed
-import { Application, columns } from "./columns"; // Replace with your actual column definition
+import { Service, columns } from "./columns"; // Replace with your actual column definition
 
-import Link from "next/link"
+import Link from "next/link";
 
 import {
     Breadcrumb,
@@ -14,24 +14,24 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
+} from "@/components/ui/breadcrumb";
 
-export default function ApplicationsPage() {
-    const [data, setData] = useState<Application[] | null>(null); // State to hold applications data
+export default function ServicesPage() {
+    const [data, setData] = useState<Service[] | null>(null); // State to hold Service data
 
     // Fetch data using useEffect
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch("/api/erepros-management-control/applications");
+                const response = await fetch("/api/erepros-management-control/services");
                 if (response.ok) {
                     const result = await response.json(); // Parse the full response
                     setData(result.data); // Extract and set the `data` array
                 } else {
-                    console.error("Failed to fetch applications:", response.statusText);
+                    console.error("Failed to fetch Service data:", response.statusText);
                 }
             } catch (error) {
-                console.error("Error fetching applications:", error);
+                console.error("Error fetching Service data:", error);
             }
         }
 
@@ -41,7 +41,7 @@ export default function ApplicationsPage() {
     return (
         <>
             <div className="flex items-center">
-                <h1 className="text-lg font-semibold md:text-2xl">Applications</h1>
+                <h1 className="text-lg font-semibold md:text-2xl">Services</h1>
             </div>
             <div className="flex items-center">
                 <Breadcrumb>
@@ -53,7 +53,7 @@ export default function ApplicationsPage() {
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbPage>Applications</BreadcrumbPage>
+                            <BreadcrumbPage>Services</BreadcrumbPage>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>

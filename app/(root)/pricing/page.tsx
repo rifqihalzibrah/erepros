@@ -45,8 +45,8 @@ const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1, "Phone number is required"),
   hearAbout: z.string().min(1, "This field is required"),
-  propertyType: z.string().min(1, "Property type is required"),
-  propertyAddress: z.string().min(1, "Property address is required"),
+  type: z.string().min(1, "Property type is required"),
+  address: z.string().min(1, "Property address is required"),
   occupancyStatus: z.string().min(1, "Occupancy status is required"),
   numberUnits: z
     .union([z.string(), z.number()])
@@ -79,8 +79,8 @@ const Pricing = () => {
       email: "",
       phone: "",
       hearAbout: "",
-      propertyType: "",
-      propertyAddress: "",
+      type: "",
+      address: "",
       occupancyStatus: "",
       numberUnits: "",
       unitMix: "",
@@ -1188,7 +1188,7 @@ const Pricing = () => {
                 {/* Property Type */}
                 <FormField
                   control={form.control}
-                  name="propertyType"
+                  name="type"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Property Type</FormLabel>
@@ -1227,7 +1227,7 @@ const Pricing = () => {
                 {/* Property Address */}
                 <FormField
                   control={form.control}
-                  name="propertyAddress"
+                  name="address"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Property Address</FormLabel>
