@@ -10,7 +10,7 @@ export default function Header() {
                 { href: '/top-menu-item2', label: 'Apply Now' },
                 { href: '/top-menu-item1', label: 'Move In Move Out' },
                 { href: '/tenant-faq', label: 'Tenant FAQ' },
-                { href: '/top-menu-item2', label: 'Tenant Service Request' },
+                { href: '/tenant-service-request', label: 'Tenant Service Request' },
                 { href: '/top-menu-item2', label: 'Tenant Benefit Package' },
             ],
         },
