@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Property } from "../../../../types/types";
 import { getAccessKey, fetchData } from "../../../../services/propertywareAPI";
@@ -49,6 +49,8 @@ const PropertyDetails = () => {
   const router = useRouter();
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const searchParams = useSearchParams(); // Use useSearchParams to access query params
+  const page = searchParams.get("page"); // Get the current "page" query parameter
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -84,7 +86,7 @@ const PropertyDetails = () => {
       <div className="container mx-auto p-6 pt-[136px] text-center">
         <h1 className="text-3xl font-bold mb-4">Property Not Found</h1>
         <button
-          onClick={() => router.push("/available-rentals")}
+          onClick={() => router.push(`/available-rentals?page=${page || 1}`)}
           className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition"
         >
           Back to Listings
