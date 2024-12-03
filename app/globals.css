@@ -119,7 +119,7 @@ html {
 .carousel {
   width: calc(100%); /* Ensure it can fit all duplicate logos */
   display: flex;
-  animation: scroll 15s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 
 .carousel div {

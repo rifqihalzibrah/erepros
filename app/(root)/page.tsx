@@ -5,6 +5,9 @@ import Image from "next/image";
 import Accordion from "../../components/templates/home-page/Accordion";
 import LogoCarousel from "../../components/templates/home-page/logo-carousel";
 import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const images = [
   {
@@ -20,6 +23,30 @@ const images = [
     text: "FIND YOUR PERFECT PLACE TO LIVE.",
   },
 ];
+
+const InViewCounter = ({ heading, startNumber, endNumber, suffix, highlightedText, subText }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
+  return (
+    <div ref={ref}>
+      {/* Heading */}
+      <h2 className="text-2xl md:text-4xl font-marcellus text-gray-900 leading-snug">
+        {heading}
+      </h2>
+      {/* CountUp with Highlighted Text */}
+      <h2 className="text-2xl md:text-4xl font-marcellus leading-snug">
+        <span className="text-gold">{inView && <CountUp start={startNumber} end={endNumber} duration={2} suffix={suffix} />}</span> {highlightedText}
+      </h2>
+      {/* Subtext */}
+      <h2 className="text-2xl md:text-4xl font-marcellus text-gray-900 leading-snug">
+        {subText}
+      </h2>
+    </div>
+  );
+};
 
 export default function HomePage() {
   const [activeLocation, setActiveLocation] = useState(null);
@@ -95,7 +122,7 @@ export default function HomePage() {
     if (activeLocation?.name === location.name) {
       // Close the pop-up if the same hotspot is clicked again
       setActiveLocation(null);
-      setCurrentTarget(event.target); 
+      setCurrentTarget(event.target);
       return;
     }
 
@@ -127,21 +154,21 @@ export default function HomePage() {
   }, [activeLocation]);
 
   useEffect(() => {
-  const handleScroll = () => {
-    if (currentTarget) {
-      const rect = currentTarget.getBoundingClientRect();
-      setPopupPosition({
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height + 10,
-      });
-    }
-  };
+    const handleScroll = () => {
+      if (currentTarget) {
+        const rect = currentTarget.getBoundingClientRect();
+        setPopupPosition({
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height + 10,
+        });
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [currentTarget]);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [currentTarget]);
 
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -218,7 +245,7 @@ export default function HomePage() {
       </div>
 
       {/* What We Offer Section */}
-      <section className="bg-white py-16">
+      <section className="max-w-7xl mx-auto py-16 px-8 transition-opacity duration-1000">
         <div className="container mx-auto flex flex-col items-center justify-between gap-8 px-4 md:flex-row">
           <div className="relative flex md:w-1/2">
             <div className="absolute top-0 left-0 z-10 w-[70%] translate-y-[-20%] translate-x-[10%] md:translate-x-[40%] rounded-lg shadow-lg">
@@ -309,38 +336,55 @@ export default function HomePage() {
       </section>
 
       {/* Statistics Section */}
-      <section className="bg-white py-16 text-center">
-        <div className="container mx-auto space-y-12 px-4">
-          <div>
-            <h2 className="text-2xl font-marcellus text-gray-800 md:text-4xl">
-              OWNING AND MANAGING OVER{" "}
-              <span className="text-gold">2000+ PROPERTIES</span> ACROSS
-              MICHIGAN
-            </h2>
-          </div>
-          <div>
-            <h2 className="text-2xl font-marcellus text-gray-800 md:text-4xl">
-              STARTED IN 2005, WITH OVER{" "}
-              <span className="text-gold">20+ YEARS</span> OF EXPERIENCE
-            </h2>
-          </div>
+      <section className="bg-white py-24 flex flex-col items-center justify-center text-center">
+        <div className="space-y-16 max-w-4xl">
+          {/* First Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <InViewCounter
+              heading="OWNING AND MANAGING OVER"
+              startNumber={1990}
+              endNumber={2000}
+              suffix="+"
+              highlightedText="PROPERTIES ACROSS"
+              subText="MICHIGAN"
+            />
+          </motion.div>
+
+          {/* Second Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          >
+            <InViewCounter
+              heading="STARTED IN 2005, WITH OVER"
+              startNumber={10}
+              endNumber={20}
+              suffix="+"
+              highlightedText="YEARS"
+              subText="OF EXPERIENCE"
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* Interior Section */}
-      <section className="relative h-[500px] w-full bg-gray-100">
-        <div className="absolute inset-0">
-          <img
-            src="https://erepros.com/wp-content/uploads/2024/08/pexels-jonathanborba-5570222-1-scaled.jpg"
-            alt="Interior Design"
-            className="h-full w-full object-cover"
-          />
-        </div>
+      <section className="relative h-[500px] w-full bg-gray-100 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-cover"
+          style={{
+            backgroundImage: `url('https://erepros.com/wp-content/uploads/2024/08/pexels-jonathanborba-5570222-1-scaled.jpg')`,
+          }}
+        ></div>
       </section>
 
       {/* Map Section */}
-      <section className="relative bg-white py-16">
-        <div className="container mx-auto flex flex-col items-center justify-between gap-8 px-4 md:flex-row">
+      <section className="max-w-7xl mx-auto py-16 px-8 transition-opacity duration-1000 relative bg-white">
+        <div className="mx-auto flex flex-col items-center justify-between md:flex-row">
           {/* Left Text Content */}
           <div className="md:w-1/2">
             <h2 className="mb-4 text-2xl font-marcellus text-black md:text-3xl">
@@ -359,7 +403,7 @@ export default function HomePage() {
             <img
               src="https://erepros.com/wp-content/uploads/2024/08/MAP-Newest-2-cropped-1024x920.jpg"
               alt="Map of Michigan"
-              className="rounded-lg "
+              className="rounded-lg"
             />
 
             {/* SVG Overlay */}
@@ -432,20 +476,20 @@ export default function HomePage() {
       {/* Other sections... */}
 
       {/* Other sections */}
-      <section>
+      <section className="max-w-7xl mx-auto py-16 px-8 transition-opacity duration-1000">
         <LogoCarousel />
       </section>
       {/* Other sections */}
 
       {/* 8 sections of the home page */}
-      <section className="bg-gray-100 py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+      <section className="max-w-7xl mx-auto py-16 transition-opacity duration-1000">
+        <h2 className="font-marcellus text-3xl text-center mb-8">
           Featured Rentals
         </h2>
         <PropertyCarousel />
       </section>
 
-      <section>
+      <section className="max-w-7xl mx-auto pb-16 transition-opacity duration-1000">
         <PropertyCarousel filterType="Other" />
       </section>
     </div>
