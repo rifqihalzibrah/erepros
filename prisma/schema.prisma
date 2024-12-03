@@ -110,21 +110,21 @@ model Mail {
 }
 
 model Service {
-  id                   Int       @id @default(autoincrement())
-  name                 String
-  email                String
-  phone                String
-  hearAbout            String?
-  type                 String?
-  address              String?
-  occupancyevaluationS String?
-  numberUnits          Int?
-  unitMix              String?
-  grossIncome          Float?
-  desiredServices      String?
-  startDate            DateTime?
-  additionalInfo       String?
-  createdAt            DateTime  @default(now())
+  id              Int       @id @default(autoincrement())
+  name            String
+  email           String
+  phone           String
+  hearAbout       String?
+  type            String?
+  address         String?
+  occupancyStatus String?
+  numberUnits     Int?
+  unitMix         String?
+  grossIncome     Float?
+  desiredServices String?
+  startDate       DateTime?
+  additionalInfo  String?
+  createdAt       DateTime  @default(now())
 }
 
 model Evaluation {

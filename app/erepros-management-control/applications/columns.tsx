@@ -16,6 +16,8 @@ import {
 
 import { ArrowUp } from "lucide-react"
 
+import { useRouter } from "next/navigation";
+
 // Update the type for applications.
 export type Application = {
     id: string
@@ -75,6 +77,7 @@ export const columns: ColumnDef<Application>[] = [
     {
         id: "actions",
         cell: ({ row }) => {
+            const router = useRouter();
             const application = row.original
 
             return (
@@ -88,7 +91,7 @@ export const columns: ColumnDef<Application>[] = [
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem>View applicant</DropdownMenuItem>
-                        <DropdownMenuItem>View application details</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => router.push(`/erepros-management-control/applications/${application.id}`)}>View application details</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )
