@@ -1,9 +1,9 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { format } from 'date-fns';
+import Link from 'next/link';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 import {
     Breadcrumb,
@@ -15,7 +15,6 @@ import {
 } from '@/components/ui/breadcrumb'; // Adjust path as needed
 
 const ApplicationDetail = () => {
-    const router = useRouter();
     const params = useParams();
     const { id } = params; // Get the application ID from the URL
     const [application, setApplication] = useState(null);

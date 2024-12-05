@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import Accordion from "@/components/ui/Accordion";
 import PropertyModal from "@/components/ui/PropertyModal";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { fetchData, getAccessKey } from "../../../services/propertywareAPI";
 import { Property } from "../../../types/types";
-import { getAccessKey, fetchData } from "../../../services/propertywareAPI";
 
 const faqs = [
   {
@@ -175,46 +174,46 @@ const StorageUnitPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {loading
             ? Array.from({ length: 6 }).map((_, index) => (
-                <div
-                  key={index}
-                  className="border rounded-lg p-4 animate-pulse bg-gray-200"
-                >
-                  <div className="h-64 bg-gray-300 rounded-md mb-4"></div>
-                  <div className="h-6 bg-gray-300 rounded-md mb-2"></div>
-                  <div className="h-4 bg-gray-300 rounded-md"></div>
-                </div>
-              ))
+              <div
+                key={index}
+                className="border rounded-lg p-4 animate-pulse bg-gray-200"
+              >
+                <div className="h-64 bg-gray-300 rounded-md mb-4"></div>
+                <div className="h-6 bg-gray-300 rounded-md mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded-md"></div>
+              </div>
+            ))
             : properties
-                .slice(0, properties.length - (properties.length % 3)) // Exclude the last row
-                .map((property) => (
-                  <div
-                    key={property.id}
-                    className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                    onClick={() => openModal(property)} // Open modal on click
-                  >
-                    <img
-                      src={
-                        property.images[0]?.original_image_url ||
-                        "/placeholder-image.svg"
-                      }
-                      alt={property.address}
-                      className="w-full h-64 object-cover rounded-md mb-4"
-                    />
-                    <h2 className="text-2xl font-semibold">
-                      {property.address}
-                    </h2>
-                    <p className="text-gray-600">
-                      {property.city}, {property.state} {property.zip}
-                    </p>
-                    <p className="text-lg font-bold text-gray-900">
-                      ${property.target_rent}
-                    </p>
-                    <p className="text-gray-500">Storage Unit</p>
-                    <p className="text-sm text-gray-600 mt-2">
-                      {property.total_area} Sq Ft
-                    </p>
-                  </div>
-                ))}
+              .slice(0, properties.length - (properties.length % 3)) // Exclude the last row
+              .map((property) => (
+                <div
+                  key={property.id}
+                  className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                  onClick={() => openModal(property)} // Open modal on click
+                >
+                  <img
+                    src={
+                      property.images[0]?.original_image_url ||
+                      "/placeholder-image.svg"
+                    }
+                    alt={property.address}
+                    className="w-full h-64 object-cover rounded-md mb-4"
+                  />
+                  <h2 className="text-2xl font-semibold">
+                    {property.address}
+                  </h2>
+                  <p className="text-gray-600">
+                    {property.city}, {property.state} {property.zip}
+                  </p>
+                  <p className="text-lg font-bold text-gray-900">
+                    ${property.target_rent}
+                  </p>
+                  <p className="text-gray-500">Storage Unit</p>
+                  <p className="text-sm text-gray-600 mt-2">
+                    {property.total_area} Sq Ft
+                  </p>
+                </div>
+              ))}
         </div>
 
         {/* Center the last row if it has fewer items */}

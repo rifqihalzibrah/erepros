@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Accordion from "../../components/templates/home-page/Accordion";
-import LogoCarousel from "../../components/templates/home-page/logo-carousel";
-import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import Accordion from "../../components/templates/home-page/Accordion";
+import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
+import LogoCarousel from "../../components/templates/home-page/logo-carousel";
 
 const images = [
   {
@@ -324,7 +324,7 @@ export default function HomePage() {
                   </h3>
                   <p className="text-gray-600">
                     Elevate your real estate ventures with our premier services.
-                    Whether you're buying, selling, or investing, our expert
+                    Whether you&apos;re buying, selling, or investing, our expert
                     team provides personalized solutions to meet your goals. We
                     turn your real estate aspirations into reality.
                   </p>

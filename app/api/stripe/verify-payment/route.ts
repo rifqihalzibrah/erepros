@@ -47,10 +47,19 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
         }
-    } catch (error: any) {
-        console.error('Error verifying payment:', error.message);
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.error('Error verifying payment:', error.message);
+            return NextResponse.json(
+                { error: 'Unable to verify payment' },
+                { status: 500 }
+            );
+        }
+
+        // Handle unexpected error types
+        console.error('Unknown error verifying payment');
         return NextResponse.json(
-            { error: 'Unable to verify payment' },
+            { error: 'An unexpected error occurred' },
             { status: 500 }
         );
     }

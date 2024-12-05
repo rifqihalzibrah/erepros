@@ -1,19 +1,6 @@
 "use client"; // Ensure this file runs in the client-side environment
-import { useEffect, useState } from "react";
-import Script from "next/script";
-import { useToast } from "@/hooks/use-toast";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -23,9 +10,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Script from "next/script";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   fullName: z.string().min(1, "Full Name is required"),
@@ -320,8 +319,8 @@ const FreeHomeEvaluation = () => {
             WHAT’S YOUR PROPERTY WORTH?
           </h2>
           <p className="text-lg text-gray-700 mb-4">
-            Understanding your home's value is crucial for making informed
-            decisions about your property. Whether you're planning to sell,
+            Understanding your home&apos;s value is crucial for making informed
+            decisions about your property. Whether you&apos;re planning to sell,
             refinance, or simply want to stay updated on your equity, accurate
             property valuation is key.
           </p>
@@ -351,8 +350,8 @@ const FreeHomeEvaluation = () => {
             </h3>
             <p className="text-gray-700">
               A professional home valuation gives you an accurate assessment of
-              your property's market value. This is crucial for real estate
-              transactions and ensuring you don't over-borrow. If you're getting
+              your property&apos;s market value. This is crucial for real estate
+              transactions and ensuring you don&apos;t over-borrow. If you&apos;re getting
               a mortgage, the home serves as collateral, and a thorough
               valuation helps protect both your interests and those of your
               lender.

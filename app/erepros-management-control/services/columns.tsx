@@ -74,8 +74,7 @@ export const columns: ColumnDef<Service>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const service = row.original;
+        cell: () => {
 
             return (
                 <DropdownMenu>

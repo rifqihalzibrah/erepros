@@ -74,8 +74,7 @@ export const columns: ColumnDef<Evaluation>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const evaluation = row.original;
+        cell: () => {
 
             return (
                 <DropdownMenu>
