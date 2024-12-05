@@ -3,22 +3,22 @@ import db from '@/lib/db';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-    const { fullName, email, phone, address, consent } = await req.json();
+    const { fullName, email, phone, address } = await req.json();
 
     // Validate the required fields
-    if (!fullName || !email || !phone || !address || !consent) {
+    if (!fullName || !email || !phone || !address) {
         return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
     }
 
     try {
-        // Save submission to the database
+        // Save submission to the database with evaluationStatus = 'pending'
         const newSubmission = await db.Evaluation.create({
             data: {
                 fullName,
                 email,
                 phone,
                 address,
-                consent,
+                evaluationStatus: 'pending', // Add evaluationStatus field
             },
         });
 

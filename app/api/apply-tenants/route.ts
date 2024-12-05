@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
         // Parse the request body
         const {
-            user_id,
+            // user_id,
             property_id,
             address,
             bedrooms,
@@ -83,6 +83,7 @@ export async function POST(req: NextRequest) {
                         create: {
                             name: full_name, // or any default value if creating a new user
                             email,
+                            phone,
                         },
                     },
                 },

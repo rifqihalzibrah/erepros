@@ -17,7 +17,7 @@ export default function LogoCarousel() {
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-1/2 flex justify-center items-center"
+            className="flex-shrink-0 w-1/2 flex justify-center items-center border-l-2 border-gray-200 p-4"
           >
             <img
               src={logo}

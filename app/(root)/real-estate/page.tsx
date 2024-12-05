@@ -181,7 +181,7 @@ const RealEstatePage = () => {
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
               <h3 className="text-white text-lg font-semibold uppercase">
-                What's My <br /> Home Worth?
+                What&apos;s My <br /> Home Worth?
               </h3>
             </div>
           </div>

@@ -12,8 +12,8 @@ export async function POST(request: Request) {
             email,
             phone,
             hearAbout,
-            propertyType,
-            propertyAddress,
+            type,
+            address,
             occupancyStatus,
             numberUnits,
             unitMix,
@@ -32,14 +32,14 @@ export async function POST(request: Request) {
         }
 
         // Save submission to the database
-        const newSubmission = await db.management.create({
+        const newSubmission = await db.service.create({
             data: {
                 name,
                 email,
                 phone,
                 hearAbout,
-                propertyType,
-                propertyAddress,
+                type,
+                address,
                 occupancyStatus,
                 numberUnits,
                 unitMix,
@@ -71,8 +71,8 @@ export async function POST(request: Request) {
             Email: ${email}\n
             Phone: ${phone}\n
             Where they heard about us: ${hearAbout || 'N/A'}\n
-            Property Type: ${propertyType || 'N/A'}\n
-            Property Address: ${propertyAddress || 'N/A'}\n
+            Property Type: ${type || 'N/A'}\n
+            Property Address: ${address || 'N/A'}\n
             Occupancy Status: ${occupancyStatus || 'N/A'}\n
             Number of Units: ${numberUnits || 'N/A'}\n
             Unit Mix: ${unitMix || 'N/A'}\n

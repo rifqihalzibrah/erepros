@@ -12,8 +12,8 @@ export async function POST(request: Request) {
             email,
             phone,
             hearAbout,
-            hoaType,
-            hoaAddress,
+            type,
+            address,
             occupancyStatus,
             numberUnits,
             unitMix,
@@ -32,14 +32,14 @@ export async function POST(request: Request) {
         }
 
         // Save submission to the database
-        const newSubmission = await db.management.create({
+        const newSubmission = await db.service.create({
             data: {
                 name,
                 email,
                 phone,
                 hearAbout,
-                hoaType,
-                hoaAddress,
+                type,
+                address,
                 occupancyStatus,
                 numberUnits,
                 unitMix,
@@ -71,8 +71,8 @@ export async function POST(request: Request) {
             Email: ${email}\n
             Phone: ${phone}\n
             Where they heard about us: ${hearAbout || 'N/A'}\n
-            HOA Type: ${hoaType || 'N/A'}\n
-            HOA Address: ${hoaAddress || 'N/A'}\n
+            HOA Type: ${type || 'N/A'}\n
+            HOA Address: ${address || 'N/A'}\n
             Occupancy Status: ${occupancyStatus || 'N/A'}\n
             Number of Units: ${numberUnits || 'N/A'}\n
             Unit Mix: ${unitMix || 'N/A'}\n

@@ -9,6 +9,7 @@ export default async function handler(
     const data = await getParagonListings(); // Fetch the Paragon API data
     res.status(200).json(data); // Send the data as JSON response
   } catch (error) {
+    console.error("Error fetching listings from Paragon API:", error); // Log the error
     res.status(500).json({ error: "Error fetching listings from Paragon API" });
   }
 }

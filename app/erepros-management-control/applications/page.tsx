@@ -1,98 +1,75 @@
-import { Payment, columns } from "./columns"
-import { DataTable } from "./data-table"
+"use client";
 
-async function getData(): Promise<Payment[]> {
-    // Fetch data from your API here.
-    return [
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
+import { useEffect, useState } from "react";
 
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        {
-            id: "728ed52f",
-            amount: 100,
-            status: "pending",
-            email: "m@example.com",
-        },
-        // ...
-    ]
-}
+import { DataTable } from "@/components/templates/erepros-management-control/data-table"; // Update the import path if needed
+import { Application, columns } from "./columns"; // Replace with your actual column definition
 
-export default async function Applications() {
-    const data = await getData()
+import Link from "next/link"
+
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
+export default function ApplicationsPage() {
+    const [data, setData] = useState<Application[] | null>(null); // State to hold applications data
+
+    // Fetch data using useEffect
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch("/api/erepros-management-control/applications");
+                if (response.ok) {
+                    const result = await response.json(); // Parse the full response
+                    setData(result.data); // Extract and set the `data` array
+                } else {
+                    console.error("Failed to fetch applications:", response.statusText);
+                }
+            } catch (error) {
+                console.error("Error fetching applications:", error);
+            }
+        }
+
+        fetchData();
+    }, []);
 
     return (
-        <div className="container mx-auto py-10">
-            <DataTable columns={columns} data={data} />
-        </div>
-    )
+        <>
+            <div className="flex items-center">
+                <h1 className="text-lg font-semibold md:text-2xl">Applications</h1>
+            </div>
+            <div className="flex items-center">
+                <Breadcrumb>
+                    <BreadcrumbList>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink asChild>
+                                <Link href="/erepros-management-control">Dashboard</Link>
+                            </BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                            <BreadcrumbPage>Applications</BreadcrumbPage>
+                        </BreadcrumbItem>
+                    </BreadcrumbList>
+                </Breadcrumb>
+            </div>
+            <div className="flex flex-1 justify-center rounded-lg border border-dashed shadow-sm">
+                <div className="flex flex-col gap-1 w-full p-4">
+                    {data ? (
+                        <DataTable
+                            data={data}
+                            columns={columns}
+                        />
+                    ) : (
+                        <div className="text-center items-center">Loading...</div> // Show loading message while data is being fetched
+                    )}
+                </div>
+            </div>
+        </>
+    );
 }

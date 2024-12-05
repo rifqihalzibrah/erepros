@@ -23,7 +23,14 @@ export async function POST(req: Request) {
             mode: 'payment',
             success_url: `${process.env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/cancel`,
-            metadata: { applicationId }, // Store application ID as metadata
+            metadata: {
+                applicationId: applicationId.toString(), // Ensure it's a string
+            },
+            payment_intent_data: {
+                metadata: {
+                    applicationId: applicationId.toString(),
+                },
+            },
         });
 
         // Return session ID to the frontend

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
     Dialog,
     DialogContent,
@@ -10,43 +10,40 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
     Form,
+    FormControl,
     FormField,
     FormItem,
     FormLabel,
-    FormControl,
     FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
+import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
     Select,
     SelectContent,
     SelectGroup,
     SelectItem,
-    SelectLabel,
     SelectTrigger,
-    SelectValue,
+    SelectValue
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils"; // Classname utility function
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
     phone: z.string().min(1, "Phone number is required"),
     hearAbout: z.string().min(1, "This field is required"),
-    hoaType: z.string().min(1, "HOA type is required"),
-    hoaAddress: z.string().min(1, "HOA address is required"),
+    type: z.string().min(1, "HOA type is required"),
+    address: z.string().min(1, "HOA address is required"),
     occupancyStatus: z.string().min(1, "Occupancy status is required"),
     numberUnits: z
         .union([z.string(), z.number()])
@@ -79,8 +76,8 @@ const HOAManagement = () => {
             email: "",
             phone: "",
             hearAbout: "",
-            hoaType: "",
-            hoaAddress: "",
+            type: "",
+            address: "",
             occupancyStatus: "",
             numberUnits: "",
             unitMix: "",
@@ -184,7 +181,7 @@ const HOAManagement = () => {
                         <li>Resolving disputes between owners</li>
                         <li>Facilitating communication with residents</li>
                         <li>Collecting dues and assessments, even pursuing unpaid balances</li>
-                        <li>Crafting and managing the association's budget</li>
+                        <li>Crafting and managing the association&apos;s budget</li>
                         <li>Ensuring the upkeep of common areas</li>
                     </ul>
                     <ul className="list-disc pl-6 space-y-2 text-gray-700">
@@ -311,7 +308,7 @@ const HOAManagement = () => {
                                 {/* HOA Type */}
                                 <FormField
                                     control={form.control}
-                                    name="hoaType"
+                                    name="type"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>HOA Type</FormLabel>
@@ -340,7 +337,7 @@ const HOAManagement = () => {
                                 {/* HOA Address */}
                                 <FormField
                                     control={form.control}
-                                    name="hoaAddress"
+                                    name="address"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>HOA Address</FormLabel>

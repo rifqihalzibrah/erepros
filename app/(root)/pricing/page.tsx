@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
   DialogContent,
@@ -10,43 +10,40 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
+import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils"; // Classname utility function
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1, "Phone number is required"),
   hearAbout: z.string().min(1, "This field is required"),
-  propertyType: z.string().min(1, "Property type is required"),
-  propertyAddress: z.string().min(1, "Property address is required"),
+  type: z.string().min(1, "Property type is required"),
+  address: z.string().min(1, "Property address is required"),
   occupancyStatus: z.string().min(1, "Occupancy status is required"),
   numberUnits: z
     .union([z.string(), z.number()])
@@ -79,8 +76,8 @@ const Pricing = () => {
       email: "",
       phone: "",
       hearAbout: "",
-      propertyType: "",
-      propertyAddress: "",
+      type: "",
+      address: "",
       occupancyStatus: "",
       numberUnits: "",
       unitMix: "",
@@ -169,13 +166,13 @@ const Pricing = () => {
             Tenant Placement Fee
           </div>
           <div className="p-4 bg-white border-l border-t border-[#9A7648]">
-            50% of 1st Month's Rent
+            50% of 1st Month&apos;s Rent
           </div>
           <div className="p-4 bg-white border-l border-t border-[#9A7648]">
-            75% of 1st Month's Rent
+            75% of 1st Month&apos;s Rent
           </div>
           <div className="p-4 bg-white border-l border-t border-r border-[#9A7648]">
-            100% of 1st Month's Rent
+            100% of 1st Month&apos;s Rent
           </div>
         </div>
 
@@ -1188,7 +1185,7 @@ const Pricing = () => {
                 {/* Property Type */}
                 <FormField
                   control={form.control}
-                  name="propertyType"
+                  name="type"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Property Type</FormLabel>
@@ -1227,7 +1224,7 @@ const Pricing = () => {
                 {/* Property Address */}
                 <FormField
                   control={form.control}
-                  name="propertyAddress"
+                  name="address"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Property Address</FormLabel>

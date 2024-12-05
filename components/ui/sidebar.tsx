@@ -4,6 +4,7 @@ import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { usePathname } from 'next/navigation';
 
 interface Links {
   label: string;
@@ -165,16 +166,29 @@ export const SidebarLink = ({
   props?: LinkProps;
 }) => {
   const { open, animate } = useSidebar();
+  const pathname = usePathname();
+  const isActive = pathname === link.href;
+
+  // Clone the icon and apply conditional classNames
+  const icon = React.cloneElement(link.icon as React.ReactElement, {
+    className: cn(
+      (link.icon as React.ReactElement).props.className,
+      "h-5 w-5 flex-shrink-0",
+      isActive ? "text-gold" : "text-neutral-700 dark:text-neutral-200"
+    ),
+  });
+
   return (
     <Link
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
+        "flex items-center justify-start gap-2 group/sidebar py-2 px-1",
+        isActive ? "rounded-md shadow-md bg-white dark:bg-neutral-800" : "",
         className
       )}
       {...props}
     >
-      {link.icon}
+      {icon}
 
       <motion.span
         animate={{

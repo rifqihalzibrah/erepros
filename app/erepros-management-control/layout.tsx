@@ -1,5 +1,3 @@
-// app/layout.tsx
-
 "use client";
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../../components/ui/sidebar";
@@ -7,10 +5,12 @@ import {
     IconArrowLeft,
     IconLayoutDashboard,
     IconSettings,
-    IconUserBolt,
+    IconUserCheck,
     IconHome,
     IconUsers,
-    IconMail
+    IconMail,
+    IconBuildingWarehouse,
+    IconHomeDollar,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -27,49 +27,63 @@ export default function RootLayout({
             label: "Dashboard",
             href: "/erepros-management-control",
             icon: (
-                <IconLayoutDashboard className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconLayoutDashboard className="h-5 w-5 flex-shrink-0" />
             ),
         },
         {
             label: "Applications",
             href: "/erepros-management-control/applications",
             icon: (
-                <IconHome className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconHome className="h-5 w-5 flex-shrink-0" />
             ),
         },
         {
             label: "Mails",
             href: "/erepros-management-control/mails",
             icon: (
-                <IconMail className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconMail className="h-5 w-5 flex-shrink-0" />
+            ),
+        },
+        {
+            label: "Services",
+            href: "/erepros-management-control/services",
+            icon: (
+                <IconBuildingWarehouse className="h-5 w-5 flex-shrink-0" />
+            ),
+        },
+        {
+            label: "Evaluations",
+            href: "/erepros-management-control/evaluations",
+            icon: (
+                <IconHomeDollar className="h-5 w-5 flex-shrink-0" />
             ),
         },
         {
             label: "User",
             href: "/erepros-management-control/user",
             icon: (
-                <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconUserCheck className="h-5 w-5 flex-shrink-0" />
             ),
         },
         {
-            label: "Team",
-            href: "/erepros-management-control/team",
+            label: "Teams",
+            href: "/erepros-management-control/teams",
             icon: (
-                <IconUsers className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconUsers className="h-5 w-5 flex-shrink-0" />
             ),
         },
         {
             label: "Settings",
             href: "/erepros-management-control/settings",
             icon: (
-                <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconSettings className="h-5 w-5 flex-shrink-0" />
             ),
         },
         {
             label: "Logout",
             href: "#",
             icon: (
-                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <IconArrowLeft className="h-5 w-5 flex-shrink-0" />
             ),
         },
     ];
@@ -126,13 +140,21 @@ export const Logo = () => {
             href="/erepros-management-control"
             className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
         >
-            <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
+            <div className="flex items-center justify-center h-6 w-7 flex-shrink-0">
+                <Image
+                    src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-real-logo-2-1024x642.png"
+                    alt="Company Logo"
+                    className="w-36 md:w-48"
+                    width={300}
+                    height={150}
+                />
+            </div>
             <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="font-medium text-black dark:text-white whitespace-pre"
             >
-                Acet Labs
+                EREPROS MANAGEMENT
             </motion.span>
         </Link>
     );
@@ -144,7 +166,15 @@ export const LogoIcon = () => {
             href="#"
             className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
         >
-            <div className="h-5 w-6 bg-black dark:bg-white rounded-br-lg rounded-tr-sm rounded-tl-lg rounded-bl-sm flex-shrink-0" />
+            <div className="flex items-center justify-center h-6 w-7 flex-shrink-0">
+                <Image
+                    src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-real-logo-2-1024x642.png"
+                    alt="Company Logo"
+                    className="w-36 md:w-48"
+                    width={300}
+                    height={150}
+                />
+            </div>
         </Link>
     );
 };

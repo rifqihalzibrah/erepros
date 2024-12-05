@@ -1,11 +1,17 @@
 "use client"
 
+import * as React from "react"
 import {
     ColumnDef,
+    SortingState,
     flexRender,
     getCoreRowModel,
+    getFilteredRowModel,
     getPaginationRowModel,
+    getSortedRowModel,
     useReactTable,
+    Row,
+    FilterFn,
 } from "@tanstack/react-table"
 
 import {
@@ -18,6 +24,26 @@ import {
 } from "@/components/ui/table"
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+
+type RowData = {
+    id: number;
+    fullName: string;
+    email: string;
+    createdAt: string;
+    paymentStatus: string;
+};
+
+// Define a global filter function
+const globalFilterFn: FilterFn<RowData> = (row: Row<RowData>, columnId: string, filterValue: string) => {
+    return row
+        .getVisibleCells()
+        .some((cell) =>
+            String(cell.getValue())
+                .toLowerCase()
+                .includes(filterValue.toLowerCase())
+        );
+};
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -28,11 +54,22 @@ export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
+    const [sorting, setSorting] = React.useState<SortingState>([])
+    const [globalFilter, setGlobalFilter] = React.useState("")
+
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        onSortingChange: setSorting,
+        state: {
+            sorting,
+            globalFilter,
+        },
+        globalFilterFn,
         initialState: {
             pagination: {
                 pageSize: 5, // Set the default number of rows per page to 5
@@ -42,6 +79,14 @@ export function DataTable<TData, TValue>({
 
     return (
         <div>
+            <div className="flex items-center py-4">
+                <Input
+                    placeholder="Search data..."
+                    value={globalFilter ?? ""}
+                    onChange={(event) => setGlobalFilter(event.target.value)}
+                    className="max-w-sm"
+                />
+            </div>
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>
