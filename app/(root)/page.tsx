@@ -21,6 +21,8 @@ const images = [
   },
 ];
 
+const sentence = "OWNING AND MANAGING OVER 2000+ PROPERTIES ACROSS MICHIGAN";
+
 export default function HomePage() {
   const [activeLocation, setActiveLocation] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -95,7 +97,7 @@ export default function HomePage() {
     if (activeLocation?.name === location.name) {
       // Close the pop-up if the same hotspot is clicked again
       setActiveLocation(null);
-      setCurrentTarget(event.target); 
+      setCurrentTarget(event.target);
       return;
     }
 
@@ -127,22 +129,21 @@ export default function HomePage() {
   }, [activeLocation]);
 
   useEffect(() => {
-  const handleScroll = () => {
-    if (currentTarget) {
-      const rect = currentTarget.getBoundingClientRect();
-      setPopupPosition({
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height + 10,
-      });
-    }
-  };
+    const handleScroll = () => {
+      if (currentTarget) {
+        const rect = currentTarget.getBoundingClientRect();
+        setPopupPosition({
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height + 10,
+        });
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, [currentTarget]);
-
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [currentTarget]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTextAnimating, setIsTextAnimating] = useState(false);
@@ -180,8 +181,9 @@ export default function HomePage() {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
+              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
               style={{
                 backgroundImage: `url(${image.url})`,
               }}
@@ -192,12 +194,13 @@ export default function HomePage() {
           {images.map((image, index) => (
             <h1
               key={index}
-              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${index === currentIndex
-                ? isTextAnimating
-                  ? "opacity-0 translate-y-8"
-                  : "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
+              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${
+                index === currentIndex
+                  ? isTextAnimating
+                    ? "opacity-0 translate-y-8"
+                    : "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
             >
               {image.text}
             </h1>
@@ -313,15 +316,15 @@ export default function HomePage() {
         <div className="container mx-auto space-y-12 px-4">
           <div>
             <h2 className="text-2xl font-marcellus text-gray-800 md:text-4xl">
-              OWNING AND MANAGING OVER{" "}
-              <span className="text-gold">2000+ PROPERTIES</span> ACROSS
-              MICHIGAN
-            </h2>
-          </div>
-          <div>
-            <h2 className="text-2xl font-marcellus text-gray-800 md:text-4xl">
-              STARTED IN 2005, WITH OVER{" "}
-              <span className="text-gold">20+ YEARS</span> OF EXPERIENCE
+              {sentence.split(" ").map((word, index) => (
+                <span
+                  key={index}
+                  className="inline-block opacity-0 animate-fadeUpWord"
+                  style={{ animationDelay: `${index * 0.2}s` }} // Delay each word
+                >
+                  {word}&nbsp; {/* Add a space after each word */}
+                </span>
+              ))}
             </h2>
           </div>
         </div>

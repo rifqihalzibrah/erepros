@@ -74,6 +74,10 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
         spin: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
@@ -89,12 +93,18 @@ const config = {
             transform: "rotate(360deg)",
           },
         },
+        fadeUpWord: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "spin-custom":
           "spin 2s linear infinite, dash 1.5s ease-in-out infinite",
+        fadeUp: "fadeUp 0.5s ease-in-out",
+        fadeUpWord: "fadeUpWord 0.5s ease-in-out forwards", // Add `forwards` to preserve the final state
       },
     },
   },
