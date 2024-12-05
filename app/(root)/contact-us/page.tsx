@@ -1,22 +1,21 @@
 "use client";
 
-import { useToast } from '@/hooks/use-toast';
-import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from 'zod';
+import { Button } from "@/components/ui/button";
 import {
     Form,
+    FormControl,
     FormField,
     FormItem,
     FormLabel,
-    FormControl,
     FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
-import { cn } from "@/lib/utils"; // If you use class name utilities
+import { useToast } from '@/hooks/use-toast';
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { z } from 'zod';
 
 const formSchema = z.object({
     firstName: z.string().min(1, 'First Name is required'),

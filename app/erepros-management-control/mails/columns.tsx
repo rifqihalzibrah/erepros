@@ -74,8 +74,7 @@ export const columns: ColumnDef<Mail>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const mail = row.original;
+        cell: () => {
 
             return (
                 <DropdownMenu>

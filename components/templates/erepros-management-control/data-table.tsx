@@ -10,6 +10,7 @@ import {
     getPaginationRowModel,
     getSortedRowModel,
     useReactTable,
+    Row,
     FilterFn,
 } from "@tanstack/react-table"
 
@@ -25,16 +26,24 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+type RowData = {
+    id: number;
+    fullName: string;
+    email: string;
+    createdAt: string;
+    paymentStatus: string;
+};
+
 // Define a global filter function
-const globalFilterFn: FilterFn<any> = (row, columnId, filterValue) => {
+const globalFilterFn: FilterFn<RowData> = (row: Row<RowData>, columnId: string, filterValue: string) => {
     return row
         .getVisibleCells()
         .some((cell) =>
             String(cell.getValue())
                 .toLowerCase()
-                .includes(String(filterValue).toLowerCase())
-        )
-}
+                .includes(filterValue.toLowerCase())
+        );
+};
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]

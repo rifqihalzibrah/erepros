@@ -2,12 +2,12 @@
 
 import { storage } from "@/lib/firebaseConfig";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { loadStripe } from '@stripe/stripe-js';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
-import { loadStripe } from '@stripe/stripe-js';
 
 // shadcn/ui components
 import { Button } from "@/components/ui/button";
@@ -109,7 +109,6 @@ const formSchema = z.object({
 })
 
 const ApplyTenants = () => {
-    const router = useRouter(); // Initialize useRouter (only if you need it for navigation)
     const searchParams = useSearchParams(); // For accessing query parameters
     const [currentStep, setCurrentStep] = useState(1)
     const totalSteps = 8
@@ -1126,7 +1125,7 @@ const ApplyTenants = () => {
                                     name="employer"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Applicant's Employer</FormLabel>
+                                            <FormLabel>Applicant&apos;s Employer</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     placeholder="Employer"
@@ -1170,7 +1169,7 @@ const ApplyTenants = () => {
                                     name="employer_address"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Employer's Address</FormLabel>
+                                            <FormLabel>Employer&apos;s Address</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     placeholder="Employer's Address"
@@ -1215,7 +1214,7 @@ const ApplyTenants = () => {
                                     name="supervisor_name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Supervisor's Name</FormLabel>
+                                            <FormLabel>Supervisor&apos;s Name</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     placeholder="Supervisor's Name"

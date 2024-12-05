@@ -25,10 +25,20 @@ export async function GET(req: NextRequest) {
 
         // Return the session data to the frontend
         return NextResponse.json({ session });
-    } catch (error: any) {
-        console.error('Error fetching session:', error.message);
+    } catch (error: unknown) {
+        // Narrow the type of error
+        if (error instanceof Error) {
+            console.error('Error fetching session:', error.message);
+            return NextResponse.json(
+                { error: 'Unable to retrieve session' },
+                { status: 500 }
+            );
+        }
+
+        // Handle unexpected error types
+        console.error('Unknown error fetching session');
         return NextResponse.json(
-            { error: 'Unable to retrieve session' },
+            { error: 'An unexpected error occurred' },
             { status: 500 }
         );
     }

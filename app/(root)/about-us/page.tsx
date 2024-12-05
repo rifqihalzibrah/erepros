@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const AboutUs = () => {
   // Define state for each section visibility
@@ -124,7 +124,7 @@ const AboutUs = () => {
                   }`}
               >
                 Our mission is to deliver exceptional service that goes above
-                and beyond our clients' expectations. We are dedicated to
+                and beyond our clients&apos; expectations. We are dedicated to
                 helping you achieve your real estate goals by offering
                 personalized service, expert guidance, and innovative solutions.
                 Whether you are buying, selling, leasing, or need professional

@@ -1,7 +1,7 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { format } from "date-fns" // Import the format function from date-fns
+import { format } from "date-fns"; // Import the format function from date-fns
 import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -10,13 +10,12 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
+    DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 
 import { ArrowUp } from "lucide-react"
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 
 // Update the type for applications.
 export type Application = {
@@ -76,25 +75,35 @@ export const columns: ColumnDef<Application>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const router = useRouter();
-            const application = row.original
-
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>View applicant</DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => router.push(`/erepros-management-control/applications/${application.id}`)}>View application details</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )
-        },
+        cell: ActionsCell, // Reference the new React component here
     },
 ]
+
+function ActionsCell({ row }: { row: any }) {
+    const router = useRouter()
+    const application = row.original
+
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                    <span className="sr-only">Open menu</span>
+                    <MoreHorizontal className="h-4 w-4" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuItem>View applicant</DropdownMenuItem>
+                <DropdownMenuItem
+                    onClick={() =>
+                        router.push(
+                            `/erepros-management-control/applications/${application.id}`
+                        )
+                    }
+                >
+                    View application details
+                </DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    )
+}

@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
         // Parse the request body
         const {
-            user_id,
+            // user_id,
             property_id,
             address,
             bedrooms,

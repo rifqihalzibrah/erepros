@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Accordion from "../../components/templates/home-page/Accordion";
-import LogoCarousel from "../../components/templates/home-page/logo-carousel";
-import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import Accordion from "../../components/templates/home-page/Accordion";
+import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
+import LogoCarousel from "../../components/templates/home-page/logo-carousel";
 
 const images = [
   {
@@ -24,29 +24,7 @@ const images = [
   },
 ];
 
-const InViewCounter = ({ heading, startNumber, endNumber, suffix, highlightedText, subText }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.5,
-  });
-
-  return (
-    <div ref={ref}>
-      {/* Heading */}
-      <h2 className="text-2xl md:text-4xl font-marcellus text-gray-900 leading-snug">
-        {heading}
-      </h2>
-      {/* CountUp with Highlighted Text */}
-      <h2 className="text-2xl md:text-4xl font-marcellus leading-snug">
-        <span className="text-gold">{inView && <CountUp start={startNumber} end={endNumber} duration={2} suffix={suffix} />}</span> {highlightedText}
-      </h2>
-      {/* Subtext */}
-      <h2 className="text-2xl md:text-4xl font-marcellus text-gray-900 leading-snug">
-        {subText}
-      </h2>
-    </div>
-  );
-};
+const sentence = "OWNING AND MANAGING OVER 2000+ PROPERTIES ACROSS MICHIGAN";
 
 export default function HomePage() {
   const [activeLocation, setActiveLocation] = useState(null);
@@ -123,6 +101,7 @@ export default function HomePage() {
       // Close the pop-up if the same hotspot is clicked again
       setActiveLocation(null);
       setCurrentTarget(event.target);
+      setCurrentTarget(event.target);
       return;
     }
 
@@ -163,13 +142,21 @@ export default function HomePage() {
         });
       }
     };
+    const handleScroll = () => {
+      if (currentTarget) {
+        const rect = currentTarget.getBoundingClientRect();
+        setPopupPosition({
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height + 10,
+        });
+      }
+    };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [currentTarget]);
-
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTextAnimating, setIsTextAnimating] = useState(false);
@@ -207,8 +194,9 @@ export default function HomePage() {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
+              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
               style={{
                 backgroundImage: `url(${image.url})`,
               }}
@@ -219,12 +207,13 @@ export default function HomePage() {
           {images.map((image, index) => (
             <h1
               key={index}
-              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${index === currentIndex
-                ? isTextAnimating
-                  ? "opacity-0 translate-y-8"
-                  : "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-                }`}
+              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${
+                index === currentIndex
+                  ? isTextAnimating
+                    ? "opacity-0 translate-y-8"
+                    : "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
             >
               {image.text}
             </h1>
@@ -324,9 +313,9 @@ export default function HomePage() {
                   </h3>
                   <p className="text-gray-600">
                     Elevate your real estate ventures with our premier services.
-                    Whether you're buying, selling, or investing, our expert
-                    team provides personalized solutions to meet your goals. We
-                    turn your real estate aspirations into reality.
+                    Whether you&apos;re buying, selling, or investing, our
+                    expert team provides personalized solutions to meet your
+                    goals. We turn your real estate aspirations into reality.
                   </p>
                 </div>
               </div>
@@ -336,39 +325,21 @@ export default function HomePage() {
       </section>
 
       {/* Statistics Section */}
-      <section className="bg-white py-24 flex flex-col items-center justify-center text-center">
-        <div className="space-y-16 max-w-4xl">
-          {/* First Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <InViewCounter
-              heading="OWNING AND MANAGING OVER"
-              startNumber={1990}
-              endNumber={2000}
-              suffix="+"
-              highlightedText="PROPERTIES ACROSS"
-              subText="MICHIGAN"
-            />
-          </motion.div>
-
-          {/* Second Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-          >
-            <InViewCounter
-              heading="STARTED IN 2005, WITH OVER"
-              startNumber={10}
-              endNumber={20}
-              suffix="+"
-              highlightedText="YEARS"
-              subText="OF EXPERIENCE"
-            />
-          </motion.div>
+      <section className="bg-white py-16 text-center">
+        <div className="container mx-auto space-y-12 px-4">
+          <div>
+            <h2 className="text-2xl font-marcellus text-gray-800 md:text-4xl">
+              {sentence.split(" ").map((word, index) => (
+                <span
+                  key={index}
+                  className="inline-block opacity-0 animate-fadeUpWord"
+                  style={{ animationDelay: `${index * 0.2}s` }} // Delay each word
+                >
+                  {word}&nbsp; {/* Add a space after each word */}
+                </span>
+              ))}
+            </h2>
+          </div>
         </div>
       </section>
 

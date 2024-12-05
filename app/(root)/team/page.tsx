@@ -89,7 +89,7 @@ const Team = () => {
             </h1>
             <p className="mt-4 text-lg text-gray-700 leading-relaxed text-justify">
               Our team is a dynamic and diverse group of professionals who are
-              passionate about Elite Real Estate & Professional Management's
+              passionate about Elite Real Estate & Professional Management&apos;s
               vision and values. They are dedicated to delivering exceptional
               experiences for both property owners and residents while fostering
               growth and development within their teams.

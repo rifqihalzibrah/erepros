@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
   DialogContent,
@@ -10,35 +10,32 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
+import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils"; // Classname utility function
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -169,13 +166,13 @@ const Pricing = () => {
             Tenant Placement Fee
           </div>
           <div className="p-4 bg-white border-l border-t border-[#9A7648]">
-            50% of 1st Month's Rent
+            50% of 1st Month&apos;s Rent
           </div>
           <div className="p-4 bg-white border-l border-t border-[#9A7648]">
-            75% of 1st Month's Rent
+            75% of 1st Month&apos;s Rent
           </div>
           <div className="p-4 bg-white border-l border-t border-r border-[#9A7648]">
-            100% of 1st Month's Rent
+            100% of 1st Month&apos;s Rent
           </div>
         </div>
 
