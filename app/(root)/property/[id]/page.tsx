@@ -32,7 +32,7 @@ const PropertyDetailsSkeleton = () => (
 );
 
 const PropertyDetails = () => {
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
   const router = useRouter();
   // const searchParams = useSearchParams();
   // const page = searchParams.get("page");
@@ -214,8 +214,9 @@ const PropertyDetails = () => {
                 property.Media[activeImageIndex]?.MediaURL || "/placeholder.jpg"
               }
               alt={`Image ${activeImageIndex + 1}`}
-              className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${isImageLoading ? "opacity-0" : "opacity-100"
-                }`}
+              className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${
+                isImageLoading ? "opacity-0" : "opacity-100"
+              }`}
               onLoad={() => setIsImageLoading(false)}
               onError={() => {
                 setIsImageLoading(false);
@@ -304,7 +305,7 @@ const PropertyDetails = () => {
             {/* Right Column */}
             <div className="space-y-4">
               <p className="text-gray-700">
-                {property.description || "No description available."}
+                {property.ListingId || "No description available."}
               </p>
               <div className="flex justify-between">
                 <div>
@@ -337,10 +338,10 @@ const PropertyDetails = () => {
               />
               <div>
                 <h2 className="text-lg font-bold">
-                  {property.propertyManagers?.[0]?.name || "Jennifer Oliver"}
+                  {property.ListingId || "Jennifer Oliver"}
                 </h2>
                 <p className="text-sm text-gray-600">
-                  {property.propertyManagers?.[0]?.company || "N/A"}
+                  {property.ListingId || "N/A"}
                 </p>
               </div>
             </div>
@@ -348,17 +349,14 @@ const PropertyDetails = () => {
             <div className="text-sm text-gray-600 space-y-2 w-full">
               <div className="flex justify-between">
                 <p className="font-semibold">Mobile number</p>
-                <p>{property.propertyManagers?.[0]?.phone || "N/A"}</p>
+                <p>{property.ListingId || "N/A"}</p>
               </div>
 
               <hr className="border-t border-gray-300 my-4" />
 
               <div className="flex justify-between">
                 <p className="font-semibold">Email</p>
-                <p>
-                  {property.propertyManagers?.[0]?.email ||
-                    "Leasing@erepros.com"}
-                </p>
+                <p>{property.ListingId || "Leasing@erepros.com"}</p>
               </div>
             </div>
 
@@ -384,8 +382,10 @@ const PropertyDetails = () => {
         <button
           onClick={() =>
             router.push(
-              `/apply-tenants?property_id=${property.ListingKey
-              }&address=${encodeURIComponent(property.City)}&bedrooms=${property.BedroomsTotal || "N/A"
+              `/apply-tenants?property_id=${
+                property.ListingKey
+              }&address=${encodeURIComponent(property.City)}&bedrooms=${
+                property.BedroomsTotal || "N/A"
               }`
             )
           }
