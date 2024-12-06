@@ -3,10 +3,10 @@ import db from '@/lib/db';
 
 export async function GET(
     req: Request,
-    context: { params: { id: string } } // Destructure params correctly
+    { params }: { params: { id: string } } // Correctly destructure params
 ) {
     try {
-        const { id } = context.params; // Access params.id correctly
+        const { id } = params; // Access id from params
 
         if (!id) {
             return NextResponse.json(
@@ -15,14 +15,13 @@ export async function GET(
             );
         }
 
-        // Fetch the application and related tables
         const application = await db.application.findUnique({
             where: {
-                id: parseInt(id, 10), // Ensure the ID is parsed as an integer
+                id: parseInt(id, 10),
             },
             include: {
-                references: true, // Include related data from 'reference' table
-                others: true, // Include related data from 'other' table
+                references: true,
+                others: true,
             },
         });
 
@@ -38,8 +37,8 @@ export async function GET(
                 message: 'Application fetched successfully',
                 data: {
                     ...application,
-                    references: application.references, // Related references
-                    others: application.others, // Related others
+                    references: application.references,
+                    others: application.others,
                 },
             },
             { status: 200 }
