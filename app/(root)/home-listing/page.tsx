@@ -31,14 +31,12 @@ const HomePage: React.FC = () => {
       try {
         setLoading(true);
         const fetchedProperties = await fetchPropertiesByPage(page, pageSize);
+        if (!fetchedProperties || !Array.isArray(fetchedProperties)) {
+          throw new Error("Invalid properties data");
+        }
         setProperties(fetchedProperties);
-
-        // Assuming the total count of properties is returned in the API
-        // and you calculate totalPages from it. Otherwise, set it manually.
-        const totalCount = 100; // Replace with API response if available
+        const totalCount = 100; // Replace with actual API response if available
         setTotalPages(Math.ceil(totalCount / pageSize));
-      } catch {
-        setError("Failed to load properties");
       } finally {
         setLoading(false);
       }

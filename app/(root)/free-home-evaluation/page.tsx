@@ -40,7 +40,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const FreeHomeEvaluation = () => {
-  const [place, setPlace] = useState<google.maps.places.PlaceResult | null>(null);
+  const [place, setPlace] = useState<google.maps.places.PlaceResult | null>(
+    null
+  );
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -70,7 +72,7 @@ const FreeHomeEvaluation = () => {
         setPlace(selectedPlace);
         form.setValue("address", selectedPlace.formatted_address || "");
       });
-    }
+    };
 
     if (typeof google !== "undefined") {
       initializeAutocomplete();
@@ -216,7 +218,11 @@ const FreeHomeEvaluation = () => {
                           <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="Email" {...field} />
+                              <Input
+                                type="email"
+                                placeholder="Email"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -229,7 +235,11 @@ const FreeHomeEvaluation = () => {
                           <FormItem>
                             <FormLabel>Phone</FormLabel>
                             <FormControl>
-                              <Input type="tel" placeholder="Phone" {...field} />
+                              <Input
+                                type="tel"
+                                placeholder="Phone"
+                                {...field}
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -352,10 +362,10 @@ const FreeHomeEvaluation = () => {
             <p className="text-gray-700">
               A professional home valuation gives you an accurate assessment of
               your property&apos;s market value. This is crucial for real estate
-              transactions and ensuring you don&apos;t over-borrow. If you&apos;re getting
-              a mortgage, the home serves as collateral, and a thorough
-              valuation helps protect both your interests and those of your
-              lender.
+              transactions and ensuring you don&apos;t over-borrow. If
+              you&apos;re getting a mortgage, the home serves as collateral, and
+              a thorough valuation helps protect both your interests and those
+              of your lender.
             </p>
           </div>
           <div className="border rounded-lg shadow-sm p-6">
