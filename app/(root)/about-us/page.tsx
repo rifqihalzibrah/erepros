@@ -7,18 +7,22 @@ const AboutUs = () => {
   const [isSection1Visible, setIsSection1Visible] = useState(false);
   const [isSection2Visible, setIsSection2Visible] = useState(false);
   const [isSection3Visible, setIsSection3Visible] = useState(false);
-  const section1Ref = useRef(null);
-  const section2Ref = useRef(null);
-  const section3Ref = useRef(null);
+
+  const section1Ref = useRef<HTMLDivElement>(null);
+  const section2Ref = useRef<HTMLDivElement>(null);
+  const section3Ref = useRef<HTMLDivElement>(null);
 
   // Function to handle visibility change for each section
-  const handleVisibilityChange = (ref, setVisibility) => {
+  const handleVisibilityChange = (
+    ref: React.RefObject<HTMLDivElement>,
+    setVisibility: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setVisibility(entry.isIntersecting);
       },
-      { threshold: 0.3 }
-    ); // 30% of the section must be visible to trigger
+      { threshold: 0.3 } // 30% of the section must be visible to trigger
+    );
 
     if (ref.current) {
       observer.observe(ref.current);
@@ -32,9 +36,16 @@ const AboutUs = () => {
   };
 
   useEffect(() => {
-    handleVisibilityChange(section1Ref, setIsSection1Visible);
-    handleVisibilityChange(section2Ref, setIsSection2Visible);
-    handleVisibilityChange(section3Ref, setIsSection3Visible);
+    const cleanup1 = handleVisibilityChange(section1Ref, setIsSection1Visible);
+    const cleanup2 = handleVisibilityChange(section2Ref, setIsSection2Visible);
+    const cleanup3 = handleVisibilityChange(section3Ref, setIsSection3Visible);
+
+    // Cleanup observers on unmount
+    return () => {
+      cleanup1?.();
+      cleanup2?.();
+      cleanup3?.();
+    };
   }, []);
 
   return (

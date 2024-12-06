@@ -29,6 +29,10 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
+interface FormValues {
+    [key: string]: any; // Replace `any` with specific types for better type safety
+}
+
 const formSchema = z.object({
     // Step 1: Rental Application
     property_id: z.string(),
@@ -118,7 +122,14 @@ const ApplyTenants = () => {
     const address = searchParams.get("address") || "";
     const bedrooms = searchParams.get("bedrooms") || "";
 
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+    // Ensure the environment variable is defined
+    const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+    if (!stripePublishableKey) {
+        throw new Error("Stripe publishable key is not defined in the environment variables.");
+    }
+
+    const stripePromise = loadStripe(stripePublishableKey);
 
     const stepFields: { [key: number]: string[] } = {
         1: [
@@ -253,7 +264,7 @@ const ApplyTenants = () => {
         },
     })
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values: FormValues) => {
         try {
             // Initialize an array to hold upload promises
             const fileUploadPromises = [];
