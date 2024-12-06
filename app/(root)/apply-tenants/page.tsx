@@ -1070,11 +1070,11 @@ const ApplyTenants = () => {
                                                                     <Checkbox
                                                                         checked={field.value?.includes(pet)}
                                                                         onCheckedChange={(checked) => {
-                                                                            checked
-                                                                                ? field.onChange([...field.value, pet])
-                                                                                : field.onChange(
-                                                                                    field.value?.filter((value) => value !== pet)
-                                                                                )
+                                                                            if (checked) {
+                                                                                field.onChange([...field.value, pet]);
+                                                                            } else {
+                                                                                field.onChange(field.value?.filter((value) => value !== pet));
+                                                                            }
                                                                         }}
                                                                     />
                                                                 </FormControl>

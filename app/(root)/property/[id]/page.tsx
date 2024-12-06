@@ -1,12 +1,11 @@
 "use client";
 
-import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Property } from "@/services/mlsAPI"; // Import the Property type
-import { fetchSingleProperty } from "@/services/mlsAPI"; // Import the API call function
-import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from "react-icons/ai";
-import { PulseLoader } from "react-spinners";
 import GoogleMapComponent from "@/components/ui/GoogleMap";
+import { fetchSingleProperty, Property } from "@/services/mlsAPI"; // Import the Property type
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { PulseLoader } from "react-spinners";
 
 const PropertyDetailsSkeleton = () => (
   <div className="container mx-auto p-6 pt-[136px]">
