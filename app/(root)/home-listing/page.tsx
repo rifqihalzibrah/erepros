@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import { fetchPropertiesByPage, Property } from "@/services/mlsAPI";
-import PropertyList from "../../../components/ui/home-listing/PropertyList";
-import MapView from "../../../components/ui/home-listing/MapView";
+import React, { useEffect, useState } from "react";
 import FilterBar from "../../../components/ui/home-listing/FilterBar";
+import MapView from "../../../components/ui/home-listing/MapView";
+import PropertyList from "../../../components/ui/home-listing/PropertyList";
 
 const HomePage: React.FC = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
   const [page, setPage] = useState(1); // Current page
   const [totalPages, setTotalPages] = useState(1); // Total pages (optional, depends on API)
 

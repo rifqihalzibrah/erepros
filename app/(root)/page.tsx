@@ -69,13 +69,20 @@ const InViewCounter: React.FC<InViewCounterProps> = ({
   );
 };
 
+interface Location {
+  name: string;
+  cx: number;
+  cy: number;
+  image: string;
+  description: string;
+}
 
 export default function HomePage() {
-  const [activeLocation, setActiveLocation] = useState(null);
+  const [activeLocation, setActiveLocation] = useState<Location | null>(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
-  const [currentTarget, setCurrentTarget] = useState(null);
+  const [currentTarget, setCurrentTarget] = useState<SVGCircleElement | null>(null);
 
-  const locations = [
+  const locations: Location[] = [
     {
       name: "",
       cx: 436.8, // Adjust coordinates based on the map
@@ -140,15 +147,7 @@ export default function HomePage() {
     },
   ];
 
-  interface Location {
-    name: string;
-    cx: number;
-    cy: number;
-    image: string;
-    description: string;
-  }
-
-  const openPopup = (location: Location, event: React.MouseEvent<SVGCircleElement, MouseEvent>) => {
+  const openPopup = (location: Location, event: React.MouseEvent<SVGCircleElement>) => {
     if (activeLocation?.name === location.name) {
       // Close the pop-up if the same hotspot is clicked again
       setActiveLocation(null);
@@ -166,18 +165,17 @@ export default function HomePage() {
 
   // Close the pop-up when clicking anywhere outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      // Check if the click is outside the pop-up
+    const handleClickOutside = (event: MouseEvent) => {
       if (
-        !event.target.closest(".popup-container") && // Pop-up
-        !event.target.closest("circle") // Hotspot
+        !event.target ||
+        !(event.target as HTMLElement).closest(".popup-container") &&
+        !(event.target as HTMLElement).closest("circle")
       ) {
         setActiveLocation(null);
       }
     };
 
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -205,10 +203,14 @@ export default function HomePage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      moveToNext();
-    }, 5000); // Change slides every 5 seconds
+      setIsTextAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setIsTextAnimating(false);
+      }, 500);
+    }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, []);
 
   const moveToNext = () => {
     setIsTextAnimating(true); // Trigger text animation
