@@ -22,11 +22,11 @@ const AvailableRentals = () => {
   // Filter state
   const [filters, setFilters] = useState({
     search: "",
-    forRent: true,
-    priceRange: "Any price",
-    propertyType: [],
-    beds: "Any",
-    baths: "Any",
+    forRent: false,
+    priceRange: "",
+    propertyType: [] as string[], // Define as string[]
+    beds: "",
+    baths: "",
     minPrice: "",
     maxPrice: "",
   });

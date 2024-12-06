@@ -24,10 +24,12 @@ const formSchema = z.object({
     message: z.string().min(1, 'Message is required'),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
 const ContactUs: React.FC = () => {
     const { toast } = useToast();
 
-    const form = useForm({
+    const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             firstName: '',
@@ -37,7 +39,7 @@ const ContactUs: React.FC = () => {
         },
     });
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values: FormValues) => {
         try {
             const res = await fetch('/api/contact-us', {
                 method: 'POST',

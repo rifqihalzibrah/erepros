@@ -24,11 +24,28 @@ const images = [
   },
 ];
 
-const InViewCounter = ({ heading, startNumber, endNumber, suffix, highlightedText, subText }) => {
+interface InViewCounterProps {
+  heading: string;
+  startNumber: number;
+  endNumber: number;
+  suffix?: string; // Optional
+  highlightedText: string;
+  subText: string;
+}
+
+const InViewCounter: React.FC<InViewCounterProps> = ({
+  heading,
+  startNumber,
+  endNumber,
+  suffix = "",
+  highlightedText,
+  subText,
+}) => {
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.5,
   });
+
   return (
     <div ref={ref}>
       {/* Heading */}
@@ -37,7 +54,12 @@ const InViewCounter = ({ heading, startNumber, endNumber, suffix, highlightedTex
       </h2>
       {/* CountUp with Highlighted Text */}
       <h2 className="text-2xl md:text-4xl font-marcellus leading-snug">
-        <span className="text-gold">{inView && <CountUp start={startNumber} end={endNumber} duration={2} suffix={suffix} />}</span> {highlightedText}
+        <span className="text-gold">
+          {inView && (
+            <CountUp start={startNumber} end={endNumber} duration={2} suffix={suffix} />
+          )}
+        </span>{" "}
+        {highlightedText}
       </h2>
       {/* Subtext */}
       <h2 className="text-2xl md:text-4xl font-marcellus text-gray-900 leading-snug">
@@ -46,6 +68,7 @@ const InViewCounter = ({ heading, startNumber, endNumber, suffix, highlightedTex
     </div>
   );
 };
+
 
 export default function HomePage() {
   const [activeLocation, setActiveLocation] = useState(null);
@@ -117,16 +140,23 @@ export default function HomePage() {
     },
   ];
 
-  const openPopup = (location, event) => {
+  interface Location {
+    name: string;
+    cx: number;
+    cy: number;
+    image: string;
+    description: string;
+  }
+
+  const openPopup = (location: Location, event: React.MouseEvent<SVGCircleElement, MouseEvent>) => {
     if (activeLocation?.name === location.name) {
       // Close the pop-up if the same hotspot is clicked again
       setActiveLocation(null);
-      setCurrentTarget(event.target);
-      setCurrentTarget(event.target);
+      setCurrentTarget(event.target as SVGCircleElement);
       return;
     }
 
-    const rect = event.target.getBoundingClientRect(); // Get hotspot position
+    const rect = (event.target as SVGCircleElement).getBoundingClientRect(); // Get hotspot position
     setPopupPosition({
       x: rect.left + rect.width / 2, // Center horizontally
       y: rect.top + rect.height + 10, // Add a margin below

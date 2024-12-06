@@ -8,19 +8,22 @@ const MoveInMoveOutSection = () => {
   const [isSection2Visible, setIsSection2Visible] = useState(false);
   const [isSection3Visible, setIsSection3Visible] = useState(false);
   const [isSection4Visible, setIsSection4Visible] = useState(false);
-  const section1Ref = useRef(null);
-  const section2Ref = useRef(null);
-  const section3Ref = useRef(null);
-  const section4Ref = useRef(null);
+  const section1Ref = useRef<HTMLElement | null>(null);
+  const section2Ref = useRef<HTMLElement | null>(null);
+  const section3Ref = useRef<HTMLElement | null>(null);
+  const section4Ref = useRef<HTMLElement | null>(null);
 
   // Function to handle visibility change for each section
-  const handleVisibilityChange = (ref, setVisibility) => {
+  const handleVisibilityChange = (
+    ref: React.RefObject<HTMLElement>,
+    setVisibility: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setVisibility(entry.isIntersecting);
       },
       { threshold: 0.3 }
-    ); // 30% of the section must be visible to trigger
+    );
 
     if (ref.current) {
       observer.observe(ref.current);
@@ -34,10 +37,17 @@ const MoveInMoveOutSection = () => {
   };
 
   useEffect(() => {
-    handleVisibilityChange(section1Ref, setIsSection1Visible);
-    handleVisibilityChange(section2Ref, setIsSection2Visible);
-    handleVisibilityChange(section3Ref, setIsSection3Visible);
-    handleVisibilityChange(section4Ref, setIsSection4Visible);
+    const cleanupFns = [
+      handleVisibilityChange(section1Ref, setIsSection1Visible),
+      handleVisibilityChange(section2Ref, setIsSection2Visible),
+      handleVisibilityChange(section3Ref, setIsSection3Visible),
+      handleVisibilityChange(section4Ref, setIsSection4Visible),
+    ];
+
+    // Cleanup observers on unmount
+    return () => {
+      cleanupFns.forEach((cleanup) => cleanup && cleanup());
+    };
   }, []);
 
   return (
@@ -45,9 +55,8 @@ const MoveInMoveOutSection = () => {
       {/* First Section */}
       <section
         ref={section1Ref}
-        className={`flex justify-center items-center h-40 bg-white transition-opacity duration-1000 transform ${
-          isSection1Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-        }`}
+        className={`flex justify-center items-center h-40 bg-white transition-opacity duration-1000 transform ${isSection1Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+          }`}
       >
         <h1 className="text-4xl md:text-5xl font-serif text-[#9A7648]">
           MOVING IN OR OUT
@@ -57,9 +66,8 @@ const MoveInMoveOutSection = () => {
       {/* Second Section */}
       <section
         ref={section2Ref}
-        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${
-          isSection2Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-        }`}
+        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${isSection2Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+          }`}
       >
         {/* Left Side: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
@@ -101,9 +109,8 @@ const MoveInMoveOutSection = () => {
       {/* Third Section */}
       <section
         ref={section3Ref}
-        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${
-          isSection3Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-        }`}
+        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${isSection3Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+          }`}
       >
         {/* Left Side: Text Content */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left px-4 md:pr-10">
@@ -153,9 +160,8 @@ const MoveInMoveOutSection = () => {
       {/* Fourth Section */}
       <section
         ref={section4Ref}
-        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${
-          isSection4Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-        }`}
+        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${isSection4Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+          }`}
       >
         {/* Left Side: Image */}
         <div className="w-full md:w-1/2 flex justify-center">

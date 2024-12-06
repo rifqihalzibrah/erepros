@@ -29,9 +29,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
-interface FormValues {
-    [key: string]: any; // Replace `any` with specific types for better type safety
-}
+type FormValues = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
     // Step 1: Rental Application
@@ -107,9 +105,15 @@ const formSchema = z.object({
     emergency_phone: z.string(),
     emergency_relationship: z.string(),
     // Step 8: Required Documents
-    documents_1: z.instanceof(File),
-    documents_2: z.instanceof(File),
-    documents_3: z.instanceof(File),
+    documents_1: z.instanceof(File).optional(),
+    documents_2: z.instanceof(File).optional(),
+    documents_3: z.instanceof(File).optional(),
+    documents: z.array(
+        z.object({
+            name: z.string(),
+            url: z.string().url(),
+        })
+    ).optional(),
 })
 
 const ApplyTenants = () => {
@@ -271,23 +275,13 @@ const ApplyTenants = () => {
 
             // Loop through the documents and upload them to Firebase Storage
             for (let i = 1; i <= 3; i++) {
-                const fileKey = `documents_${i}`;
+                const fileKey = `documents_${i}` as keyof FormValues;
                 const file = values[fileKey];
-                if (file) {
-                    // Create a reference using the Firebase v9 modular syntax
+                if (file instanceof File) {
                     const fileRef = ref(storage, `applications/${Date.now()}_${file.name}`);
-
-                    // Upload the file to Firebase Storage
-                    const uploadTask = uploadBytes(fileRef, file);
-
-                    // Create a promise to handle the upload
-                    const uploadPromise = uploadTask
-                        .then((snapshot) => getDownloadURL(snapshot.ref))
-                        .then((downloadURL) => ({
-                            name: file.name,
-                            url: downloadURL,
-                        }));
-
+                    const uploadPromise = uploadBytes(fileRef, file)
+                        .then(snapshot => getDownloadURL(snapshot.ref))
+                        .then(downloadURL => ({ name: file.name, url: downloadURL }));
                     fileUploadPromises.push(uploadPromise);
                 }
             }
@@ -328,11 +322,16 @@ const ApplyTenants = () => {
 
             // Redirect to Stripe Checkout
             const stripe = await stripePromise;
+
+            if (!stripe) {
+                throw new Error("Stripe initialization failed. Please check your Stripe publishable key.");
+            }
+
             const { error } = await stripe.redirectToCheckout({ sessionId });
 
             if (error) {
-                console.error('Stripe checkout error:', error);
-                throw new Error('Failed to initiate payment');
+                console.error("Stripe checkout error:", error);
+                throw new Error("Failed to initiate payment. Please try again.");
             }
         } catch (error) {
             console.error('Submission error:', error);
@@ -341,13 +340,11 @@ const ApplyTenants = () => {
     };
 
     const nextStep = async () => {
-        const fieldsToValidate = stepFields[currentStep]
+        const fieldsToValidate = stepFields[currentStep];
 
-        // If the step includes dynamic fields (arrays), you may need to handle them separately
-        let isValid = true
+        let isValid = true;
 
         if (currentStep === 3) {
-            // Validate all fields in the "others" array
             isValid = await form.trigger(
                 form
                     .getValues("others")
@@ -357,36 +354,32 @@ const ApplyTenants = () => {
                         `others.${index}.ssn_last4`,
                         `others.${index}.relationship`,
                     ])
-                    .flat()
-            )
+                    .flat() as (keyof FormValues)[]
+            );
         } else if (currentStep === 6) {
-            // Validate all fields in the "references" array
-            isValid = await form.trigger(
-                form
-                    .getValues("references")
-                    .map((_, index) => [
-                        `references.${index}.name`,
-                        `references.${index}.phone`,
-                        `references.${index}.relationship`,
-                    ])
-                    .flat()
-            )
-            // Validate other fields in step 6
+            const referencesFields = form
+                .getValues("references")
+                .map((_, index) => [
+                    `references.${index}.name`,
+                    `references.${index}.phone`,
+                    `references.${index}.relationship`,
+                ])
+                .flat() as (keyof FormValues)[];
             const otherFields = stepFields[6].filter(
                 (field) => field !== "references"
-            )
-            isValid = isValid && (await form.trigger(otherFields))
+            ) as (keyof FormValues)[];
+            isValid = await form.trigger([...referencesFields, ...otherFields]);
         } else {
-            isValid = await form.trigger(fieldsToValidate)
+            isValid = await form.trigger(fieldsToValidate as (keyof FormValues)[]);
         }
 
-        console.log("Form valid:", isValid)
+        console.log("Form valid:", isValid);
 
         if (isValid) {
-            setCurrentStep((prev) => Math.min(prev + 1, totalSteps))
-            window.scrollTo({ top: 0, behavior: "smooth" })
+            setCurrentStep((prev) => Math.min(prev + 1, totalSteps));
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
-    }
+    };
 
     const previousStep = () => {
         setCurrentStep((prev) => Math.max(prev - 1, 1))
@@ -1048,7 +1041,7 @@ const ApplyTenants = () => {
                                     onClick={() =>
                                         appendPerson({
                                             name: "",
-                                            birthday: undefined,
+                                            birthday: new Date(),
                                             ssn_last4: "",
                                             relationship: "",
                                         })
@@ -1762,7 +1755,12 @@ const ApplyTenants = () => {
                                                     <Input
                                                         type="file"
                                                         accept=".pdf,.png,.jpg,.jpeg,.psd"
-                                                        onChange={(e) => field.onChange(e.target.files[0])}
+                                                        onChange={(e) => {
+                                                            const files = e.target.files;
+                                                            if (files && files[0]) {
+                                                                field.onChange(files[0]);
+                                                            }
+                                                        }}
                                                         required
                                                     />
                                                 </FormControl>
@@ -1783,7 +1781,12 @@ const ApplyTenants = () => {
                                                     <Input
                                                         type="file"
                                                         accept=".pdf,.png,.jpg,.jpeg,.psd"
-                                                        onChange={(e) => field.onChange(e.target.files[0])}
+                                                        onChange={(e) => {
+                                                            const files = e.target.files;
+                                                            if (files && files[0]) {
+                                                                field.onChange(files[0]);
+                                                            }
+                                                        }}
                                                         required
                                                     />
                                                 </FormControl>
@@ -1804,7 +1807,12 @@ const ApplyTenants = () => {
                                                     <Input
                                                         type="file"
                                                         accept=".pdf,.png,.jpg,.jpeg,.psd"
-                                                        onChange={(e) => field.onChange(e.target.files[0])}
+                                                        onChange={(e) => {
+                                                            const files = e.target.files;
+                                                            if (files && files[0]) {
+                                                                field.onChange(files[0]);
+                                                            }
+                                                        }}
                                                         required
                                                     />
                                                 </FormControl>

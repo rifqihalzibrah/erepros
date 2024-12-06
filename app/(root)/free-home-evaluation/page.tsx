@@ -36,11 +36,14 @@ const formSchema = z.object({
   address: z.string().min(1, "Address is required"),
 });
 
+// Infer the type for FormValues
+type FormValues = z.infer<typeof formSchema>;
+
 const FreeHomeEvaluation = () => {
   const [place, setPlace] = useState<google.maps.places.PlaceResult | null>(null);
   const { toast } = useToast();
 
-  const form = useForm({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
@@ -91,10 +94,12 @@ const FreeHomeEvaluation = () => {
   };
 
   const handleDialogOpen = () => {
-    if (place && place.geometry) {
+    if (place && place.geometry && place.geometry.location) {
       const lat = place.geometry.location.lat();
       const lng = place.geometry.location.lng();
       initializeMap(lat, lng);
+    } else {
+      console.error("Location information is missing in the selected place.");
     }
   };
 

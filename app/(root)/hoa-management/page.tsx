@@ -66,10 +66,13 @@ const formSchema = z.object({
     additionalInfo: z.string().optional(),
 });
 
+// Infer the type for FormValues
+type FormValues = z.infer<typeof formSchema>;
+
 const HOAManagement = () => {
     const { toast } = useToast();
 
-    const form = useForm({
+    const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
@@ -79,16 +82,16 @@ const HOAManagement = () => {
             type: "",
             address: "",
             occupancyStatus: "",
-            numberUnits: "",
+            numberUnits: 0,
             unitMix: "",
-            grossIncome: "",
+            grossIncome: 0,
             desiredServices: "",
-            startDate: null,
+            startDate: undefined,
             additionalInfo: "",
         },
     });
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values: FormValues) => {
         try {
             const res = await fetch("/api/hoa-management", {
                 method: "POST",
