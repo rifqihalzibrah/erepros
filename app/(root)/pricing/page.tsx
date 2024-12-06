@@ -19,14 +19,18 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea"; // Assuming you have a Textarea component
 import { useToast } from "@/hooks/use-toast";
@@ -59,17 +63,20 @@ const formSchema = z.object({
       message: "Gross monthly income is required",
     }),
   desiredServices: z.string().min(1, "Desired services is required"),
-  startDate: z.date({
-    required_error: "Start date is required",
-    invalid_type_error: "Invalid date",
-  }),
+  startDate: z
+    .date({
+      required_error: "Start date is required",
+      invalid_type_error: "Invalid date",
+    })
+    .nullable(), // Allow null
+
   additionalInfo: z.string().optional(),
 });
 
 const Pricing = () => {
   const { toast } = useToast();
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -79,16 +86,16 @@ const Pricing = () => {
       type: "",
       address: "",
       occupancyStatus: "",
-      numberUnits: "",
+      numberUnits: 0, // Use a number here instead of a string
       unitMix: "",
-      grossIncome: "",
+      grossIncome: 0, // Use a number here instead of a string
       desiredServices: "",
       startDate: null,
       additionalInfo: "",
     },
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const res = await fetch("/api/pricing", {
         method: "POST",
@@ -769,20 +776,70 @@ const Pricing = () => {
             Property Maintenance
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -793,20 +850,70 @@ const Pricing = () => {
             Rent Payment and Collections
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -817,20 +924,70 @@ const Pricing = () => {
             Eviction Process Handling
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -841,20 +998,70 @@ const Pricing = () => {
             Property Accounting and Reporting
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -864,20 +1071,70 @@ const Pricing = () => {
             Owner and Tenant Portals
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -888,20 +1145,70 @@ const Pricing = () => {
             Filter Replacement Program
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -912,20 +1219,70 @@ const Pricing = () => {
             Pet Guarantee
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -936,20 +1293,70 @@ const Pricing = () => {
             Maintenance Guarantee
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -960,20 +1367,70 @@ const Pricing = () => {
             Leasing Guarantee
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -983,20 +1440,70 @@ const Pricing = () => {
             Property Inspections
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -1007,20 +1514,70 @@ const Pricing = () => {
             Lease Renewal Included
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -1031,19 +1588,62 @@ const Pricing = () => {
             Bill Pay - Utilities
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -1054,19 +1654,62 @@ const Pricing = () => {
             Bill Pay - Taxes
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-              <circle cx="12" cy="12" r="10" stroke="#9A7648" strokeWidth="2" fill="none" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#9A7648"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
           <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-r border-[#9A7648]">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6 text-[#9A7648]">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" stroke="#9A7648" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6 text-[#9A7648]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+                stroke="#9A7648"
+              />
             </svg>
           </div>
         </div>
@@ -1164,10 +1807,18 @@ const Pricing = () => {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectGroup>
-                              <SelectItem value="google-ad">Google Ad</SelectItem>
-                              <SelectItem value="biggerpockets">BiggerPockets</SelectItem>
-                              <SelectItem value="agent-referral">Agent Referral</SelectItem>
-                              <SelectItem value="owner-referral">Owner Referral</SelectItem>
+                              <SelectItem value="google-ad">
+                                Google Ad
+                              </SelectItem>
+                              <SelectItem value="biggerpockets">
+                                BiggerPockets
+                              </SelectItem>
+                              <SelectItem value="agent-referral">
+                                Agent Referral
+                              </SelectItem>
+                              <SelectItem value="owner-referral">
+                                Owner Referral
+                              </SelectItem>
                               <SelectItem value="other">Other</SelectItem>
                             </SelectGroup>
                           </SelectContent>
@@ -1208,7 +1859,9 @@ const Pricing = () => {
                               <SelectItem value="triplex">Triplex</SelectItem>
                               <SelectItem value="duplex">Duplex</SelectItem>
                               <SelectItem value="condo">Condo</SelectItem>
-                              <SelectItem value="townhouse">Townhouse</SelectItem>
+                              <SelectItem value="townhouse">
+                                Townhouse
+                              </SelectItem>
                               <SelectItem value="single-family-home">
                                 Single Family Home
                               </SelectItem>
@@ -1355,7 +2008,9 @@ const Pricing = () => {
                               <SelectItem value="monthly-management">
                                 Full Service
                               </SelectItem>
-                              <SelectItem value="leasing-only">Leasing Only</SelectItem>
+                              <SelectItem value="leasing-only">
+                                Leasing Only
+                              </SelectItem>
                             </SelectGroup>
                           </SelectContent>
                         </Select>
@@ -1394,7 +2049,7 @@ const Pricing = () => {
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
-                            selected={field.value}
+                            selected={field.value || undefined} // Convert `null` to `undefined`
                             onSelect={(date) => {
                               field.onChange(date);
                               form.trigger("startDate");

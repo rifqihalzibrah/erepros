@@ -140,33 +140,33 @@ const PropertyDetails = () => {
 
   const renderInteriorFeatures = () => {
     const features = [
-      { label: "Total Stories", value: property.total_stories || "N/A" },
-      { label: "Bedrooms", value: property.bedrooms || "N/A" },
-      { label: "Total Bathrooms", value: property.total_bathrooms || "N/A" },
-      { label: "Full Bathrooms", value: property.full_bathrooms || "N/A" },
+      { label: "Total Stories", value: property.city || "N/A" },
+      { label: "Bedrooms", value: property.no_bedrooms || "N/A" },
+      { label: "Total Bathrooms", value: property.no_bathrooms || "N/A" },
+      { label: "Full Bathrooms", value: property.no_bathrooms || "N/A" },
       {
         label: "Interior Features",
-        value: property.interior_features || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Appliances", value: property.appliances || "N/A" },
+      { label: "Appliances", value: property.tenantApplication || "N/A" },
       {
         label: "Laundry Description",
-        value: property.laundry_description || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Fireplace", value: property.fireplace ? "Yes" : "No" },
+      { label: "Fireplace", value: property.syndicate ? "Yes" : "No" },
       {
         label: "Fireplace Description",
-        value: property.fireplace_description || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Cooling", value: property.cooling ? "Yes" : "No" },
+      { label: "Cooling", value: property.syndicate ? "Yes" : "No" },
       {
         label: "Cooling Description",
-        value: property.cooling_description || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Heating", value: property.heating ? "Yes" : "No" },
+      { label: "Heating", value: property.syndicate ? "Yes" : "No" },
       {
         label: "Heating Description",
-        value: property.heating_description || "N/A",
+        value: property.city || "N/A",
       },
     ];
 
@@ -188,7 +188,7 @@ const PropertyDetails = () => {
   };
   const renderSchoolInformation = () => {
     const features = [
-      { label: "School District", value: property.total_stories || "N/A" },
+      { label: "School District", value: property.city || "N/A" },
     ];
 
     return (
@@ -209,30 +209,33 @@ const PropertyDetails = () => {
   };
   const renderOtherPropertyDetails = () => {
     const features = [
-      { label: "Area Name", value: property.total_stories || "N/A" },
-      { label: "Taxes", value: property.bedrooms || "N/A" },
-      { label: "Tax Frequency", value: property.total_bathrooms || "N/A" },
-      { label: "Association Fee", value: property.full_bathrooms || "N/A" },
+      { label: "Area Name", value: property.city || "N/A" },
+      { label: "Taxes", value: property.no_bedrooms || "N/A" },
+      { label: "Tax Frequency", value: property.no_bathrooms || "N/A" },
+      { label: "Association Fee", value: property.no_bathrooms || "N/A" },
       {
         label: "Association Fee Frequency",
-        value: property.interior_features || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Garage", value: property.appliances || "N/A" },
+      { label: "Garage", value: property.city || "N/A" },
       {
         label: "Garage Spaces",
-        value: property.laundry_description || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Parking", value: property.fireplace ? "Yes" : "No" },
+      {
+        label: "Parking",
+        value: property.is_published_for_sale ? "Yes" : "No",
+      },
       {
         label: "View",
-        value: property.fireplace_description || "N/A",
+        value: property.is_published_for_sale || "N/A",
       },
-      { label: "County", value: property.cooling ? "Yes" : "No" },
+      { label: "County", value: property.is_published_for_sale ? "Yes" : "No" },
       {
         label: "Water Source",
-        value: property.cooling_description || "N/A",
+        value: property.city || "N/A",
       },
-      { label: "Pool", value: property.heating ? "Yes" : "No" },
+      { label: "Pool", value: property.is_published_for_sale ? "Yes" : "No" },
     ];
 
     return (
@@ -426,12 +429,12 @@ const PropertyDetails = () => {
                   <span className="mr-2">•</span> Active
                 </div>
                 <div className="flex items-center">
-                  <span className="mr-2">🛏️</span> {property.bedrooms || "N/A"}{" "}
-                  Beds
+                  <span className="mr-2">🛏️</span>{" "}
+                  {property.no_bedrooms || "N/A"} Beds
                 </div>
                 <div className="flex items-center">
-                  <span className="mr-2">🛁</span> {property.bathrooms || "N/A"}{" "}
-                  Baths
+                  <span className="mr-2">🛁</span>{" "}
+                  {property.no_bathrooms || "N/A"} Baths
                 </div>
                 <div className="flex items-center">
                   <span className="mr-2">📐</span>{" "}
@@ -455,15 +458,15 @@ const PropertyDetails = () => {
                 <div className="flex justify-between">
                   <div>
                     <span className="block text-sm font-bold">MLS® ID</span>
-                    <span>{property.mls_id || "N/A"}</span>
+                    <span>{property.id || "N/A"}</span>
                   </div>
                   <div>
                     <span className="block text-sm font-bold">Listed</span>
-                    <span>{property.listed_date || "Invalid Date"}</span>
+                    <span>{property.available_date || "Invalid Date"}</span>
                   </div>
                   <div>
                     <span className="block text-sm font-bold">Updated</span>
-                    <span>{property.updated_date || "Invalid Date"}</span>
+                    <span>{property.available_date || "Invalid Date"}</span>
                   </div>
                 </div>
               </div>
@@ -494,7 +497,7 @@ const PropertyDetails = () => {
               <div className="text-sm text-gray-600 space-y-2 w-full">
                 <div className="flex justify-between">
                   <p className="font-semibold">Mobile number</p>
-                  <p>{property.propertyManagers?.[0]?.phone || "N/A"}</p>
+                  <p>{property.propertyManagers?.[0]?.work_phone || "N/A"}</p>
                 </div>
 
                 {/* Add the line here */}
