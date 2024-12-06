@@ -1,45 +1,41 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
-export const ImagesSliderCustom = ({
-  images,
-  children,
-  overlay = true,
-  overlayClassName,
-  className,
-  autoplay = true,
-}: {
+interface ImagesSliderCustomProps {
   images: string[];
   children: React.ReactNode;
   overlay?: React.ReactNode;
   overlayClassName?: string;
   className?: string;
   autoplay?: boolean;
+}
+
+export const ImagesSliderCustom: React.FC<ImagesSliderCustomProps> = ({
+  images,
+  children,
+  overlay = true,
+  overlayClassName,
+  className,
+  autoplay = true,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loading, setLoading] = useState(false);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 === images.length ? 0 : prevIndex + 1
     );
-  };
+  }, [images.length]);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images.length]);
 
-  useEffect(() => {
-    loadImages();
-  }, []);
-
-  const loadImages = () => {
-    setLoading(true);
+  const loadImages = useCallback(() => {
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -50,12 +46,15 @@ export const ImagesSliderCustom = ({
     });
 
     Promise.all(loadPromises)
-      .then((loadedImages) => {
-        setLoadedImages(loadedImages as string[]);
-        setLoading(false);
+      .then((resolvedImages) => {
+        setLoadedImages(resolvedImages as string[]);
       })
       .catch((error) => console.error("Failed to load images", error));
-  };
+  }, [images]);
+
+  useEffect(() => {
+    loadImages();
+  }, [loadImages]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -68,18 +67,18 @@ export const ImagesSliderCustom = ({
 
     window.addEventListener("keydown", handleKeyDown);
 
-    let interval: any;
+    let interval: number | undefined;
     if (autoplay) {
-      interval = setInterval(() => {
+      interval = window.setInterval(() => {
         handleNext();
       }, 5000);
     }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      clearInterval(interval);
+      if (interval !== undefined) clearInterval(interval);
     };
-  }, []);
+  }, [autoplay, handleNext, handlePrevious]);
 
   const slideVariants = {
     initial: {
@@ -114,9 +113,7 @@ export const ImagesSliderCustom = ({
     >
       {areImagesLoaded && children}
       {areImagesLoaded && overlay && (
-        <div
-          className={cn("absolute inset-0 bg-black/60 z-40", overlayClassName)}
-        />
+        <div className={cn("absolute inset-0 bg-black/60 z-40", overlayClassName)} />
       )}
 
       {/* Left Arrow */}

@@ -1,8 +1,9 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef, Row } from "@tanstack/react-table"
 import { format } from "date-fns"; // Import the format function from date-fns
-import { MoreHorizontal } from "lucide-react"
+import { MoreHorizontal, ArrowUp } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -12,10 +13,6 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-
-import { ArrowUp } from "lucide-react"
-
-import { useRouter } from "next/navigation"
 
 // Update the type for applications.
 export type Application = {
@@ -75,11 +72,11 @@ export const columns: ColumnDef<Application>[] = [
     },
     {
         id: "actions",
-        cell: ActionsCell, // Reference the new React component here
+        cell: ActionsCell,
     },
 ]
 
-function ActionsCell({ row }: { row: any }) {
+function ActionsCell({ row }: { row: Row<Application> }) {
     const router = useRouter()
     const application = row.original
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
+type Filters = Record<string, string | number | boolean>;
+
 interface FilterBarProps {
-  onApplyFilters: (filters: any) => void;
+  onApplyFilters: (filters: Filters) => void;
 }
 
 const FilterBarHomeListing: React.FC<FilterBarProps> = ({ onApplyFilters }) => {

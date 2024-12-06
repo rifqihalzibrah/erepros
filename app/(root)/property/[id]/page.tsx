@@ -35,8 +35,8 @@ const PropertyDetailsSkeleton = () => (
 const PropertyDetails = () => {
   const { id } = useParams();
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  // const searchParams = useSearchParams();
+  // const page = searchParams.get("page");
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -215,9 +215,8 @@ const PropertyDetails = () => {
                 property.Media[activeImageIndex]?.MediaURL || "/placeholder.jpg"
               }
               alt={`Image ${activeImageIndex + 1}`}
-              className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${
-                isImageLoading ? "opacity-0" : "opacity-100"
-              }`}
+              className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${isImageLoading ? "opacity-0" : "opacity-100"
+                }`}
               onLoad={() => setIsImageLoading(false)}
               onError={() => {
                 setIsImageLoading(false);
@@ -386,10 +385,8 @@ const PropertyDetails = () => {
         <button
           onClick={() =>
             router.push(
-              `/apply-tenants?property_id=${
-                property.ListingKey
-              }&address=${encodeURIComponent(property.City)}&bedrooms=${
-                property.BedroomsTotal || "N/A"
+              `/apply-tenants?property_id=${property.ListingKey
+              }&address=${encodeURIComponent(property.City)}&bedrooms=${property.BedroomsTotal || "N/A"
               }`
             )
           }

@@ -25,13 +25,7 @@ const propertyTypes = [
   { label: "Other", icon: "…" },
 ];
 
-const listingStatuses = [
-  "Active",
-  "Coming soon",
-  "Pending",
-  "Under contract",
-  "Sold",
-];
+// Removed unused listingStatuses and unused handlers
 
 interface FilterBarModalProps {
   isOpen: boolean;
@@ -66,47 +60,22 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
   filters,
   setFilters,
 }) => {
-  if (!isOpen) return null;
-
+  // Declare hooks before any returns
   const [isPriceCollapsed, setIsPriceCollapsed] = useState(false);
   const [isBedroomsCollapsed, setIsBedroomsCollapsed] = useState(false);
   const [isBathroomsCollapsed, setIsBathroomsCollapsed] = useState(false);
   const [isPropertyTypesCollapsed, setIsPropertyTypesCollapsed] =
     useState(false);
 
-  const handlePropertyTypeSelect = (type: string) => {
-    setFilters((prev) => {
-      const isSelected = prev.propertyType.includes(type);
-      const newPropertyTypes = isSelected
-        ? prev.propertyType.filter((t) => t !== type)
-        : [...prev.propertyType, type];
-      return { ...prev, propertyType: newPropertyTypes };
-    });
-  };
-
-  const handleBedsSelect = (bed: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      beds: bed,
-    }));
-  };
-
-  const handleBathsSelect = (bath: string) => {
-    setFilters((prev) => ({
-      ...prev,
-      baths: bath,
-    }));
-  };
+  // If isOpen is false, return after hooks are declared
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-4 border-b pb-2">
-          <button
-            className="text-gray-500 hover:text-gray-700"
-            onClick={onClose}
-          >
+          <button className="text-gray-500 hover:text-gray-700" onClick={onClose}>
             &times;
           </button>
           <h2 className="text-lg font-bold text-center flex-grow">Filters</h2>
@@ -115,21 +84,19 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
         {/* Toggle for Sale / Rent */}
         <div className="flex justify-center items-center gap-2 py-4">
           <button
-            className={`px-4 py-2 rounded-full ${
-              !filters.forRent
+            className={`px-4 py-2 rounded-full ${!filters.forRent
                 ? "bg-gray-200 text-black"
                 : "bg-white border border-gray-300"
-            }`}
+              }`}
             onClick={() => setFilters((prev) => ({ ...prev, forRent: false }))}
           >
             For sale
           </button>
           <button
-            className={`px-4 py-2 rounded-full ${
-              filters.forRent
+            className={`px-4 py-2 rounded-full ${filters.forRent
                 ? "bg-gray-200 text-black"
                 : "bg-white border border-gray-300"
-            }`}
+              }`}
             onClick={() => setFilters((prev) => ({ ...prev, forRent: true }))}
           >
             For rent
@@ -138,7 +105,6 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
 
         {/* Price Section */}
         <div className="py-4">
-          {/* Collapsible Header */}
           <div
             className="flex justify-between items-center cursor-pointer"
             onClick={() => setIsPriceCollapsed((prev) => !prev)}
@@ -146,8 +112,6 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
             <h3 className="text-lg font-semibold">Price</h3>
             <span>{isPriceCollapsed ? "▲" : "▼"}</span>
           </div>
-
-          {/* Collapsible Content */}
           {isPriceCollapsed && (
             <div className="mt-4">
               <div className="flex items-center gap-2">
@@ -198,17 +162,15 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
             <h3 className="text-lg font-semibold">Bedrooms</h3>
             <span>{isBedroomsCollapsed ? "▲" : "▼"}</span>
           </div>
-
           {isBedroomsCollapsed && (
             <div className="mt-4 flex gap-2">
               {bedOptions.map((bed) => (
                 <button
                   key={bed}
-                  className={`px-4 py-2 rounded-md font-medium text-sm transition ${
-                    filters.beds === bed
+                  className={`px-4 py-2 rounded-md font-medium text-sm transition ${filters.beds === bed
                       ? "bg-black text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
+                    }`}
                   onClick={() => setFilters((prev) => ({ ...prev, beds: bed }))}
                 >
                   {bed}
@@ -227,20 +189,16 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
             <h3 className="text-lg font-semibold">Bathrooms</h3>
             <span>{isBathroomsCollapsed ? "▲" : "▼"}</span>
           </div>
-
           {isBathroomsCollapsed && (
             <div className="mt-4 flex gap-2">
               {bathOptions.map((bath) => (
                 <button
                   key={bath}
-                  className={`px-4 py-2 rounded-md font-medium text-sm transition ${
-                    filters.baths === bath
+                  className={`px-4 py-2 rounded-md font-medium text-sm transition ${filters.baths === bath
                       ? "bg-black text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
-                  onClick={() =>
-                    setFilters((prev) => ({ ...prev, baths: bath }))
-                  }
+                    }`}
+                  onClick={() => setFilters((prev) => ({ ...prev, baths: bath }))}
                 >
                   {bath}
                 </button>
@@ -263,15 +221,12 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
               {propertyTypes.map((type) => (
                 <div
                   key={type.label}
-                  className={`flex flex-col items-center justify-center p-4 border rounded-lg cursor-pointer ${
-                    filters.propertyType.includes(type.label)
+                  className={`flex flex-col items-center justify-center p-4 border rounded-lg cursor-pointer ${filters.propertyType.includes(type.label)
                       ? "bg-gray-100 border-black"
                       : "border-gray-300 hover:bg-gray-200"
-                  }`}
+                    }`}
                   onClick={() => {
-                    const isSelected = filters.propertyType.includes(
-                      type.label
-                    );
+                    const isSelected = filters.propertyType.includes(type.label);
                     const updatedPropertyTypes = isSelected
                       ? filters.propertyType.filter((t) => t !== type.label)
                       : [...filters.propertyType, type.label];

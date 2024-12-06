@@ -2,7 +2,7 @@
 
 import { format } from 'date-fns';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import {

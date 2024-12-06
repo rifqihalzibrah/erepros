@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import Image from "next/image";
 
 const transition = {
@@ -13,19 +13,21 @@ const transition = {
   restSpeed: 0.001,
 };
 
-export const MenuItem = ({
-  setActive,
-  active,
-  item,
-  children,
-}: {
+interface MenuItemProps {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+}
+
+export const MenuItem: React.FC<MenuItemProps> = ({
+  setActive,
+  active,
+  item,
+  children,
 }) => {
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
@@ -60,33 +62,34 @@ export const MenuItem = ({
   );
 };
 
-export const Menu = ({
-  setActive,
-  children,
-}: {
+interface MenuProps {
   setActive: (item: string | null) => void;
   children: React.ReactNode;
-}) => {
+}
+
+export const Menu: React.FC<MenuProps> = ({ setActive, children }) => {
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
+      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6"
     >
       {children}
     </nav>
   );
 };
 
-export const ProductItem = ({
-  title,
-  description,
-  href,
-  src,
-}: {
+interface ProductItemProps {
   title: string;
   description: string;
   href: string;
   src: string;
+}
+
+export const ProductItem: React.FC<ProductItemProps> = ({
+  title,
+  description,
+  href,
+  src,
 }) => {
   return (
     <Link href={href} className="flex space-x-2">
@@ -109,11 +112,16 @@ export const ProductItem = ({
   );
 };
 
-export const HoveredLink = ({ children, ...rest }: any) => {
+interface HoveredLinkProps extends LinkProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const HoveredLink: React.FC<HoveredLinkProps> = ({ children, ...rest }) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
+      className="text-neutral-700 dark:text-neutral-200 hover:text-black"
     >
       {children}
     </Link>

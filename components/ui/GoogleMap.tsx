@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 
-// Extend the window object to include initMap
 declare global {
   interface Window {
     initMap: () => void;
+    google: any;
   }
 }
 
@@ -15,7 +15,7 @@ interface GoogleMapComponentProps {
 
 const GoogleMapComponent = ({ lat, lng, address }: GoogleMapComponentProps) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const googleMapApiKey = "AIzaSyDOK76m7BqhVMRzHrPotzSxejDellh4SMI"; // Replace with your actual Google Maps API key
+  const googleMapApiKey = "YOUR_GOOGLE_MAPS_API_KEY";
 
   useEffect(() => {
     const initMap = () => {
@@ -25,8 +25,7 @@ const GoogleMapComponent = ({ lat, lng, address }: GoogleMapComponentProps) => {
           zoom: 14,
         });
 
-        // Revert back to google.maps.Marker instead of AdvancedMarkerElement
-        const marker = new window.google.maps.Marker({
+        new window.google.maps.Marker({
           position: { lat, lng },
           map,
           title: address,
@@ -34,7 +33,6 @@ const GoogleMapComponent = ({ lat, lng, address }: GoogleMapComponentProps) => {
       }
     };
 
-    // Async loading of the Google Maps API
     const loadGoogleMapsAPI = () => {
       const script = document.createElement("script");
       script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapApiKey}&libraries=places&callback=initMap`;
@@ -44,7 +42,7 @@ const GoogleMapComponent = ({ lat, lng, address }: GoogleMapComponentProps) => {
     };
 
     if (!window.google) {
-      window.initMap = initMap; // Assign initMap to window to be callable by API
+      window.initMap = initMap;
       loadGoogleMapsAPI();
     } else {
       initMap();

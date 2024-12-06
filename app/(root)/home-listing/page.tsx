@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
         // and you calculate totalPages from it. Otherwise, set it manually.
         const totalCount = 100; // Replace with API response if available
         setTotalPages(Math.ceil(totalCount / pageSize));
-      } catch (err) {
+      } catch {
         setError("Failed to load properties");
       } finally {
         setLoading(false);

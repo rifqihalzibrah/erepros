@@ -406,10 +406,10 @@ const ApplyTenants = () => {
     const watchAdditionalIncome = form.watch("additional_income")
     const watchRefusedRent = form.watch("refused_rent")
     const watchFelony = form.watch("felony")
-    const watchJudgment = form.watch("judgment")
-    const watchRentedFromElite = form.watch("rented_from_elite")
-    const watchRentersInsurance = form.watch("renters_insurance")
-    const watchCosigner = form.watch("cosigner")
+    // const watchJudgment = form.watch("judgment")
+    // const watchRentedFromElite = form.watch("rented_from_elite")
+    // const watchRentersInsurance = form.watch("renters_insurance")
+    // const watchCosigner = form.watch("cosigner")
     const watchPets = form.watch("pets")
 
     const stepNames = [
@@ -1746,7 +1746,7 @@ const ApplyTenants = () => {
                                         rules={{ required: 'This field is required' }}
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Driver's License / Photo ID</FormLabel>
+                                                <FormLabel>Driver&apos;s License / Photo ID</FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         type="file"

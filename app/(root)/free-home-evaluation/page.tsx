@@ -37,7 +37,7 @@ const formSchema = z.object({
 });
 
 const FreeHomeEvaluation = () => {
-  const [place, setPlace] = useState<any>(null);
+  const [place, setPlace] = useState<google.maps.places.PlaceResult | null>(null);
   const { toast } = useToast();
 
   const form = useForm({
@@ -98,7 +98,7 @@ const FreeHomeEvaluation = () => {
     }
   };
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: FormValues) => {
     try {
       const res = await fetch("/api/free-home-evaluation", {
         method: "POST",
