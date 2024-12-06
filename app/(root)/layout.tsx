@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from "react";
 import Footer from "@/components/templates/base/footer";
 import Header from "@/components/templates/base/header";
 import { Toaster } from "@/components/ui/toaster";
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      {children}
+      <Suspense>{children}</Suspense>
       {!excludeTopFooter && <TopFooter />}
       <Footer />
       <Toaster />

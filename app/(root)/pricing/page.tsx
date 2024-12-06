@@ -73,8 +73,6 @@ const formSchema = z.object({
   additionalInfo: z.string().optional(),
 });
 
-type FormValues = z.infer<typeof formSchema>;
-
 const Pricing = () => {
   const { toast } = useToast();
 

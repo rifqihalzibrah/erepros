@@ -131,7 +131,7 @@ export async function POST(req: NextRequest) {
                     })),
                 },
                 documents: {
-                    create: documents.map((doc) => ({
+                    create: documents.map((doc: { name: string; url: string }) => ({
                         name: doc.name,
                         url: doc.url,
                     })),

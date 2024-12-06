@@ -1,15 +1,18 @@
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import React, { useEffect, useRef, useState, ReactNode } from "react";
 
 interface AnimatedSectionProps {
-  children: ReactNode[]; // Accept an array of ReactNode as children
+  children: ReactNode; // Accept single or multiple ReactNode(s)
 }
 
 const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children }) => {
-  // Define state for section visibility
-  const [visibleSections, setVisibleSections] = useState<boolean[]>(Array(children.length).fill(false));
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>(Array(children.length).fill(null));
+  const normalizedChildren = React.Children.toArray(children); // Normalize children to an array
+  const [visibleSections, setVisibleSections] = useState<boolean[]>(
+    Array(normalizedChildren.length).fill(false)
+  );
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>(
+    Array(normalizedChildren.length).fill(null)
+  );
 
-  // Function to handle visibility change for each section
   const handleVisibilityChange = (index: number) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -19,7 +22,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children }) => {
           return newVisibleSections;
         });
       },
-      { threshold: 0.3 } // 30% of the section must be visible to trigger
+      { threshold: 0.3 } // Trigger when 30% is visible
     );
 
     if (sectionRefs.current[index]) {
@@ -34,21 +37,27 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    const cleanupFunctions = sectionRefs.current.map((_, index) => handleVisibilityChange(index));
+    const cleanupFunctions = sectionRefs.current.map((_, index) =>
+      handleVisibilityChange(index)
+    );
     return () => {
       cleanupFunctions.forEach((cleanup) => cleanup && cleanup());
     };
-  }, [children]);
+  }, [normalizedChildren]);
 
   return (
     <div>
-      {React.Children.map(children, (child, index) => (
+      {normalizedChildren.map((child, index) => (
         <div
           key={index}
-          ref={(el) => (sectionRefs.current[index] = el)}
+          ref={(el) => {
+            if (el) {
+              sectionRefs.current[index] = el;
+            }
+          }}
           className={visibleSections[index] ? "opacity-100 fade-up-1s" : "opacity-0"}
         >
-          {child} {/* Render the child directly */}
+          {child}
         </div>
       ))}
     </div>

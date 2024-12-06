@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     try {
         // Save submission to the database with evaluationStatus = 'pending'
-        const newSubmission = await db.Evaluation.create({
+        const newSubmission = await db.evaluation.create({
             data: {
                 fullName,
                 email,

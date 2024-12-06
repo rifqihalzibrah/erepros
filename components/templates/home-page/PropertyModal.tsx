@@ -63,7 +63,7 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
             <div className="text-sm text-gray-600 space-y-2 mt-4">
               <div>
                 <strong>Mobile number:</strong>{" "}
-                {property.propertyManagers?.[0]?.phone || "N/A"}
+                {property.propertyManagers?.[0]?.work_phone || "N/A"}
               </div>
               <div>
                 <strong>Email:</strong>{" "}

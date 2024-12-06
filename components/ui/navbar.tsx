@@ -112,7 +112,7 @@ const TopMenuItem: React.FC<{ item: TopMenuItemProps }> = ({ item }) => {
       </Link>
       {hasSubItems && isOpen && (
         <div className="absolute right-0 mt-2 w-56 p-2 bg-gold z-[100]">
-          {item.subItems.map((subItem, subIdx) => (
+          {item.subItems?.map((subItem, subIdx) => (
             <Link
               key={subIdx}
               href={subItem.href}

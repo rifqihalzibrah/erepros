@@ -109,9 +109,8 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
             onClick={() => toggleDropdown(setIsPriceDropdownOpen)}
           >
             {filters.minPrice || filters.maxPrice
-              ? `${filters.minPrice || "No Min"} to ${
-                  filters.maxPrice || "No Max"
-                }`
+              ? `${filters.minPrice || "No Min"} to ${filters.maxPrice || "No Max"
+              }`
               : "Any Price"}
           </button>
           {isPriceDropdownOpen && (
@@ -162,11 +161,10 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
               {propertyTypes.map((type) => (
                 <div
                   key={type.label}
-                  className={`flex flex-col items-center p-2 border rounded-lg cursor-pointer ${
-                    filters.propertyType.includes(type.label)
+                  className={`flex flex-col items-center p-2 border rounded-lg cursor-pointer ${filters.propertyType.includes(type.label)
                       ? "bg-gray-100 border-black"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   onClick={() => handlePropertyTypeSelect(type.label)}
                 >
                   <div className="text-2xl">{type.icon}</div>
@@ -190,11 +188,10 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
               {bedOptions.map((bed) => (
                 <button
                   key={bed}
-                  className={`px-4 py-2 rounded-md ${
-                    filters.beds === bed
+                  className={`px-4 py-2 rounded-md ${filters.beds === bed
                       ? "bg-black text-white"
                       : "bg-gray-200 hover:bg-gray-300"
-                  }`}
+                    }`}
                   onClick={() => setFilters((prev) => ({ ...prev, beds: bed }))}
                 >
                   {bed}
@@ -217,11 +214,10 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
               {bathOptions.map((bath) => (
                 <button
                   key={bath}
-                  className={`px-4 py-2 rounded-md ${
-                    filters.baths === bath
+                  className={`px-4 py-2 rounded-md ${filters.baths === bath
                       ? "bg-black text-white"
                       : "bg-gray-200 hover:bg-gray-300"
-                  }`}
+                    }`}
                   onClick={() =>
                     setFilters((prev) => ({ ...prev, baths: bath }))
                   }

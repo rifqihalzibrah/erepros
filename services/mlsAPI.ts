@@ -126,6 +126,12 @@ export const fetchSingleProperty = async (
       Latitude: property.Latitude,
       Longitude: property.Longitude,
       PropertyType: property.PropertyType,
+      BK15_LA1_State: property.BK15_LA1_State,
+      BK15_LA1_Zip: property.BK15_LA1_Zip,
+      BK15_L_Address: property.BK15_L_Address,
+      YearBuilt: property.YearBuilt,
+      OnMarketDate: property.OnMarketDate,
+      BK15_LMD_MP_UpdateDate: property.BK15_LMD_MP_UpdateDate,
     };
   } catch (error: any) {
     console.error("Error fetching single property:", error.message);

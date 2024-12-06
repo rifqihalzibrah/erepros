@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { CheckCircleIcon } from "lucide-react";
 
+export const dynamic = "force-dynamic"; // Ensure this page is rendered dynamically
+
 export default function Success() {
     const [countdown, setCountdown] = useState(10);
     const [verificationStatus, setVerificationStatus] = useState<string | null>(null);

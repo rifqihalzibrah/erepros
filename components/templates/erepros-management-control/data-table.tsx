@@ -1,18 +1,17 @@
 "use client"
 
-import * as React from "react"
 import {
     ColumnDef,
+    ColumnFiltersState,
     SortingState,
     flexRender,
     getCoreRowModel,
     getFilteredRowModel,
     getPaginationRowModel,
     getSortedRowModel,
-    useReactTable,
-    Row,
-    FilterFn,
+    useReactTable
 } from "@tanstack/react-table"
+import * as React from "react"
 
 import {
     Table,
@@ -24,26 +23,6 @@ import {
 } from "@/components/ui/table"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-
-type RowData = {
-    id: number;
-    fullName: string;
-    email: string;
-    createdAt: string;
-    paymentStatus: string;
-};
-
-// Define a global filter function
-const globalFilterFn: FilterFn<RowData> = (row: Row<RowData>, columnId: string, filterValue: string) => {
-    return row
-        .getVisibleCells()
-        .some((cell) =>
-            String(cell.getValue())
-                .toLowerCase()
-                .includes(filterValue.toLowerCase())
-        );
-};
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -55,7 +34,9 @@ export function DataTable<TData, TValue>({
     data,
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
-    const [globalFilter, setGlobalFilter] = React.useState("")
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+        []
+    )
 
     const table = useReactTable({
         data,
@@ -63,13 +44,13 @@ export function DataTable<TData, TValue>({
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
+        onColumnFiltersChange: setColumnFilters,
         getFilteredRowModel: getFilteredRowModel(),
         onSortingChange: setSorting,
         state: {
             sorting,
-            globalFilter,
+            columnFilters,
         },
-        globalFilterFn,
         initialState: {
             pagination: {
                 pageSize: 5, // Set the default number of rows per page to 5
@@ -80,12 +61,12 @@ export function DataTable<TData, TValue>({
     return (
         <div>
             <div className="flex items-center py-4">
-                <Input
+                {/* <Input
                     placeholder="Search data..."
-                    value={globalFilter ?? ""}
+                    value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
                     onChange={(event) => setGlobalFilter(event.target.value)}
                     className="max-w-sm"
-                />
+                /> */}
             </div>
             <div className="rounded-md border">
                 <Table>

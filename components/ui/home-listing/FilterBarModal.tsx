@@ -30,6 +30,7 @@ interface FilterBarModalProps {
   filters: {
     search: string;
     forRent: boolean;
+    priceRange: string; // Add priceRange here
     propertyType: string[];
     beds: string;
     baths: string;
@@ -40,6 +41,7 @@ interface FilterBarModalProps {
     React.SetStateAction<{
       search: string;
       forRent: boolean;
+      priceRange: string; // Add priceRange here
       propertyType: string[];
       beds: string;
       baths: string;
@@ -87,21 +89,19 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
         {/* For Sale / Rent Toggle */}
         <div className="flex justify-center gap-4 mb-6">
           <button
-            className={`px-4 py-2 rounded-full font-semibold ${
-              !filters.forRent
+            className={`px-4 py-2 rounded-full font-semibold ${!filters.forRent
                 ? "bg-black text-white"
                 : "bg-gray-200 text-gray-700"
-            }`}
+              }`}
             onClick={() => setFilters((prev) => ({ ...prev, forRent: false }))}
           >
             For Sale
           </button>
           <button
-            className={`px-4 py-2 rounded-full font-semibold ${
-              filters.forRent
+            className={`px-4 py-2 rounded-full font-semibold ${filters.forRent
                 ? "bg-black text-white"
                 : "bg-gray-200 text-gray-700"
-            }`}
+              }`}
             onClick={() => setFilters((prev) => ({ ...prev, forRent: true }))}
           >
             For Rent
@@ -170,11 +170,10 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
               {bedOptions.map((bed) => (
                 <button
                   key={bed}
-                  className={`px-4 py-2 rounded-md ${
-                    filters.beds === bed
+                  className={`px-4 py-2 rounded-md ${filters.beds === bed
                       ? "bg-black text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
+                    }`}
                   onClick={() => setFilters((prev) => ({ ...prev, beds: bed }))}
                 >
                   {bed}
@@ -198,11 +197,10 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
               {bathOptions.map((bath) => (
                 <button
                   key={bath}
-                  className={`px-4 py-2 rounded-md ${
-                    filters.baths === bath
+                  className={`px-4 py-2 rounded-md ${filters.baths === bath
                       ? "bg-black text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                  }`}
+                    }`}
                   onClick={() =>
                     setFilters((prev) => ({ ...prev, baths: bath }))
                   }
@@ -228,11 +226,10 @@ const FilterBarModal: React.FC<FilterBarModalProps> = ({
               {propertyTypes.map((type) => (
                 <div
                   key={type.label}
-                  className={`flex flex-col items-center p-2 border rounded-md cursor-pointer ${
-                    filters.propertyType.includes(type.label)
+                  className={`flex flex-col items-center p-2 border rounded-md cursor-pointer ${filters.propertyType.includes(type.label)
                       ? "bg-gray-200 border-black"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   onClick={() => {
                     const isSelected = filters.propertyType.includes(
                       type.label

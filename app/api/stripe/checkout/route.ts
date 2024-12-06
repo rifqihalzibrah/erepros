@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2024-10-28.acacia' });
-
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2024-11-20.acacia' });
 export async function POST(req: Request) {
     try {
         const { applicationId, fee } = await req.json();
@@ -35,7 +34,11 @@ export async function POST(req: Request) {
 
         // Return session ID to the frontend
         return NextResponse.json({ sessionId: session.id });
-    } catch (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ error: error.message }, { status: 500 });
+        } else {
+            // Handle other types of errors
+        }
     }
 }

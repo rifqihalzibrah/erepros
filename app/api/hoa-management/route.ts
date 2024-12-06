@@ -90,11 +90,19 @@ export async function POST(request: Request) {
             { message: 'Form submitted successfully!', data: newSubmission },
             { status: 200 }
         );
-    } catch (error) {
-        console.error('Error handling form submission:', error);
-        return NextResponse.json(
-            { message: error.message },
-            { status: 500 }
-        );
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.error('Error handling form submission:', error);
+            return NextResponse.json(
+                { message: error.message },
+                { status: 500 }
+            );
+        } else {
+            console.error('Unknown error:', error);
+            return NextResponse.json(
+                { message: 'An unknown error occurred' },
+                { status: 500 }
+            );
+        }
     }
 }

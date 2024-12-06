@@ -1027,7 +1027,7 @@ const ApplyTenants = () => {
                                         {index > 0 && (
                                             <Button
                                                 type="button"
-                                                variant="destructive"
+                                                variant="outline"
                                                 onClick={() => removePerson(index)}
                                             >
                                                 Remove
@@ -1491,7 +1491,7 @@ const ApplyTenants = () => {
                                         {index > 0 && (
                                             <Button
                                                 type="button"
-                                                variant="destructive"
+                                                variant="outline"
                                                 onClick={() => removeReference(index)}
                                             >
                                                 Remove
