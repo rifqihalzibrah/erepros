@@ -1,10 +1,7 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import db from '@/lib/db';
 
-export async function GET(
-    req: Request,
-    { params }: { params: { id: string } } // Correctly destructure params
-) {
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
     try {
         const { id } = params; // Access id from params
 
