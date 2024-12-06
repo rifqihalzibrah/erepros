@@ -1,18 +1,17 @@
 "use client"
 
-import { ColumnDef, Row } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns"; // Import the format function from date-fns
-import { MoreHorizontal, ArrowUp } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { ArrowUp, MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 // Update the type for applications.
 export type Application = {
@@ -76,9 +75,7 @@ export const columns: ColumnDef<Application>[] = [
     },
 ]
 
-function ActionsCell({ row }: { row: Row<Application> }) {
-    const router = useRouter()
-    const application = row.original
+function ActionsCell() {
 
     return (
         <DropdownMenu>
@@ -91,15 +88,7 @@ function ActionsCell({ row }: { row: Row<Application> }) {
             <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
                 <DropdownMenuItem>View applicant</DropdownMenuItem>
-                <DropdownMenuItem
-                    onClick={() =>
-                        router.push(
-                            `/erepros-management-control/applications/${application.id}`
-                        )
-                    }
-                >
-                    View application details
-                </DropdownMenuItem>
+                <DropdownMenuItem>View applicantion details</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )
