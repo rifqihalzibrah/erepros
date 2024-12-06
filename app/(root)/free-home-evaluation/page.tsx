@@ -6,14 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from "@/components/ui/form";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -24,36 +17,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Form,
-  FormControl,
   FormField,
   FormItem,
   FormLabel,
+  FormControl,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Script from "next/script";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 const formSchema = z.object({
-  fullName: z.string().min(1, "Full Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number is required"),
-  consent: z.boolean().refine((val) => val, "Consent is required"),
-  address: z.string().min(1, "Address is required"),
   fullName: z.string().min(1, "Full Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number is required"),
@@ -62,9 +37,7 @@ const formSchema = z.object({
 });
 
 const FreeHomeEvaluation = () => {
-  const [place, setPlace] = useState(null);
-  const { toast } = useToast();
-  const [place, setPlace] = useState(null);
+  const [place, setPlace] = useState<any>(null);
   const { toast } = useToast();
 
   const form = useForm({
@@ -77,57 +50,25 @@ const FreeHomeEvaluation = () => {
       address: "",
     },
   });
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      fullName: "",
-      email: "",
-      phone: "",
-      consent: false,
-      address: "",
-    },
-  });
 
-  const consent = form.watch("consent");
   const consent = form.watch("consent");
 
   useEffect(() => {
     const initializeAutocomplete = () => {
       const input = document.getElementById("autocomplete") as HTMLInputElement;
       if (!input) return;
-  useEffect(() => {
-    const initializeAutocomplete = () => {
-      const input = document.getElementById("autocomplete") as HTMLInputElement;
-      if (!input) return;
-
       const autocomplete = new google.maps.places.Autocomplete(input);
-      const autocomplete = new google.maps.places.Autocomplete(input);
-
       autocomplete.addListener("place_changed", () => {
         const selectedPlace = autocomplete.getPlace();
-        if (!selectedPlace.geometry) {
-          console.error("No details available for input: ", selectedPlace.name);
+        if (!selectedPlace || !selectedPlace.geometry) {
+          console.error("No details available for input");
           return;
         }
         setPlace(selectedPlace);
         form.setValue("address", selectedPlace.formatted_address || "");
       });
-    };
-      autocomplete.addListener("place_changed", () => {
-        const selectedPlace = autocomplete.getPlace();
-        if (!selectedPlace.geometry) {
-          console.error("No details available for input: ", selectedPlace.name);
-          return;
-        }
-        setPlace(selectedPlace);
-        form.setValue("address", selectedPlace.formatted_address || "");
-      });
-    };
-
-    if (typeof google !== "undefined") {
-      initializeAutocomplete();
     }
-  }, [form]);
+
     if (typeof google !== "undefined") {
       initializeAutocomplete();
     }
@@ -148,12 +89,6 @@ const FreeHomeEvaluation = () => {
       title: "Selected Location",
     });
   };
-    new google.maps.Marker({
-      position: { lat, lng },
-      map,
-      title: "Selected Location",
-    });
-  };
 
   const handleDialogOpen = () => {
     if (place && place.geometry) {
@@ -162,23 +97,7 @@ const FreeHomeEvaluation = () => {
       initializeMap(lat, lng);
     }
   };
-  const handleDialogOpen = () => {
-    if (place && place.geometry) {
-      const lat = place.geometry.location.lat();
-      const lng = place.geometry.location.lng();
-      initializeMap(lat, lng);
-    }
-  };
 
-  const onSubmit = async (values: any) => {
-    try {
-      const res = await fetch("/api/free-home-evaluation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
   const onSubmit = async (values: any) => {
     try {
       const res = await fetch("/api/free-home-evaluation", {
@@ -225,15 +144,8 @@ const FreeHomeEvaluation = () => {
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOK76m7BqhVMRzHrPotzSxejDellh4SMI&libraries=places"
         strategy="beforeInteractive"
       />
-  return (
-    <>
-      {/* Google Places API script */}
-      <Script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOK76m7BqhVMRzHrPotzSxejDellh4SMI&libraries=places"
-        strategy="beforeInteractive"
-      />
 
-      {/* Section 1: Hero Section */}
+      {/* Hero Section */}
       <div
         className="relative bg-cover bg-center h-screen flex items-center justify-center"
         style={{
@@ -249,7 +161,6 @@ const FreeHomeEvaluation = () => {
             Instant property valuation · Expert advice Sell for me
           </p>
           <div className="mt-4 flex items-center justify-center space-x-4">
-            {/* Autocomplete Input */}
             <input
               id="autocomplete"
               type="text"
@@ -300,11 +211,7 @@ const FreeHomeEvaluation = () => {
                           <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                              <Input
-                                type="email"
-                                placeholder="Email"
-                                {...field}
-                              />
+                              <Input type="email" placeholder="Email" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -317,16 +224,13 @@ const FreeHomeEvaluation = () => {
                           <FormItem>
                             <FormLabel>Phone</FormLabel>
                             <FormControl>
-                              <Input
-                                type="tel"
-                                placeholder="Phone"
-                                {...field}
-                              />
+                              <Input type="tel" placeholder="Phone" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
+                      {/* Hidden address field */}
                       <FormField
                         control={form.control}
                         name="address"
@@ -406,16 +310,15 @@ const FreeHomeEvaluation = () => {
         </div>
       </div>
 
-      {/* Section 2: What’s Your Property Worth */}
+      {/* Section: What’s Your Property Worth */}
       <div className="flex flex-col md:flex-row items-center justify-between px-8 md:px-16 lg:px-32 py-16 bg-white">
-        {/* Left Text Section */}
         <div className="md:w-1/2 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-marcellus text-[#9A7648] mb-6">
             WHAT’S YOUR PROPERTY WORTH?
           </h2>
           <p className="text-lg text-gray-700 mb-4">
-            Understanding your home's value is crucial for making informed
-            decisions about your property. Whether you're planning to sell,
+            Understanding your home&apos;s value is crucial for making informed
+            decisions about your property. Whether you&apos;re planning to sell,
             refinance, or simply want to stay updated on your equity, accurate
             property valuation is key.
           </p>
@@ -425,8 +328,6 @@ const FreeHomeEvaluation = () => {
             make smart financial choices.
           </p>
         </div>
-
-        {/* Right Image Section */}
         <div className="mt-8 md:mt-0 md:w-1/2 flex justify-center">
           <img
             src="https://erepros.com/wp-content/uploads/2024/10/pexels-andreaedavis-12474787-650x650.jpg"
@@ -435,24 +336,23 @@ const FreeHomeEvaluation = () => {
           />
         </div>
       </div>
-      {/* Section 3: Why Home Valuation Matters */}
+
+      {/* Section: Why Home Valuation Matters */}
       <div className="bg-white px-8 md:px-16 lg:px-32 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
           <div className="border rounded-lg shadow-sm p-6">
             <h3 className="text-xl font-marcellus text-[#9A7648] mb-4">
               Why a Home Valuation Matters?
             </h3>
             <p className="text-gray-700">
               A professional home valuation gives you an accurate assessment of
-              your property's market value. This is crucial for real estate
-              transactions and ensuring you don't over-borrow. If you're getting
+              your property&apos;s market value. This is crucial for real estate
+              transactions and ensuring you don&apos;t over-borrow. If you&apos;re getting
               a mortgage, the home serves as collateral, and a thorough
               valuation helps protect both your interests and those of your
               lender.
             </p>
           </div>
-          {/* Card 2 */}
           <div className="border rounded-lg shadow-sm p-6">
             <h3 className="text-xl font-marcellus text-[#9A7648] mb-4">
               How We Determine Your Home’s Value
@@ -464,7 +364,6 @@ const FreeHomeEvaluation = () => {
               market conditions and buyer sentiment, unlike basic online tools.
             </p>
           </div>
-          {/* Card 3 */}
           <div className="border rounded-lg shadow-sm p-6">
             <h3 className="text-xl font-marcellus text-[#9A7648] mb-4">
               Online Valuation vs. Professional Appraisal
@@ -479,7 +378,6 @@ const FreeHomeEvaluation = () => {
           </div>
         </div>
 
-        {/* Browse Market Listings Section */}
         <div className="mt-16 text-center bg-[#9A7648] py-12 rounded-md text-white">
           <h2 className="text-3xl md:text-4xl font-marcellus mb-4">
             BROWSE MARKET LISTINGS
@@ -492,7 +390,6 @@ const FreeHomeEvaluation = () => {
 
       {/* Vertical Alternating Timeline */}
       <div className="bg-white px-8 md:px-16 lg:px-32 py-16">
-        {/* Title and Subtitle */}
         <h2 className="text-3xl md:text-4xl font-marcellus text-center text-[#9A7648] mb-4">
           WHY IS A HOME VALUATION IMPORTANT?
         </h2>
@@ -500,143 +397,10 @@ const FreeHomeEvaluation = () => {
           Situations When a Home Valuation May Be Necessary
         </p>
 
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#9A7648]"></div>
-        {/* Timeline Container */}
         <div className="relative">
           {/* Vertical Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#9A7648]"></div>
 
-          {/* Timeline Items */}
-          <div className="space-y-12">
-            {/* Timeline Item 1 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Text on Left */}
-              <div className="w-1/2 text-right pr-6">
-                <p className="text-gray-700 text-lg">
-                  Comparative Market Analysis A Comparative Market Analysis
-                  (CMA) is a key tool used by real estate agents to determine
-                  your home’s value. It involves comparing your property with
-                  recently sold homes in the same area. Agents analyze three to
-                  five similar properties (comps) that have recently sold and
-                  adjust their prices to reflect differences from your home.
-                  This method helps estimate your home’s market value based on
-                  recent sales data.
-                </p>
-              </div>
-              {/* Button on Right */}
-              <div className="w-1/2 pl-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Refinancing
-                </button>
-              </div>
-            </div>
-          {/* Timeline Items */}
-          <div className="space-y-12">
-            {/* Timeline Item 1 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Text on Left */}
-              <div className="w-1/2 text-right pr-6">
-                <p className="text-gray-700 text-lg">
-                  Comparative Market Analysis A Comparative Market Analysis
-                  (CMA) is a key tool used by real estate agents to determine
-                  your home’s value. It involves comparing your property with
-                  recently sold homes in the same area. Agents analyze three to
-                  five similar properties (comps) that have recently sold and
-                  adjust their prices to reflect differences from your home.
-                  This method helps estimate your home’s market value based on
-                  recent sales data.
-                </p>
-              </div>
-              {/* Button on Right */}
-              <div className="w-1/2 pl-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Refinancing
-                </button>
-              </div>
-            </div>
-
-            {/* Timeline Item 2 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Button on Left */}
-              <div className="w-1/2 pr-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Market Analysis
-                </button>
-              </div>
-              {/* Text on Right */}
-              <div className="w-1/2 text-left pl-6">
-                <p className="text-gray-700 text-lg">
-                  Comparative Market Analysis A Comparative Market Analysis
-                  (CMA) is a key tool used by real estate agents to determine
-                  your home’s value. It involves comparing your property with
-                  recently sold homes in the same area. Agents analyze three to
-                  five similar properties (comps) that have recently sold and
-                  adjust their prices to reflect differences from your home.
-                  This method helps estimate your home’s market value based on
-                  recent sales data.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-            {/* Timeline Item 2 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Button on Left */}
-              <div className="w-1/2 pr-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Market Analysis
-                </button>
-              </div>
-              {/* Text on Right */}
-              <div className="w-1/2 text-left pl-6">
-                <p className="text-gray-700 text-lg">
-                  Comparative Market Analysis A Comparative Market Analysis
-                  (CMA) is a key tool used by real estate agents to determine
-                  your home’s value. It involves comparing your property with
-                  recently sold homes in the same area. Agents analyze three to
-                  five similar properties (comps) that have recently sold and
-                  adjust their prices to reflect differences from your home.
-                  This method helps estimate your home’s market value based on
-                  recent sales data.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Vertical Alternating Timeline 2*/}
-      <div className="bg-white px-8 md:px-16 lg:px-32 py-16">
-        {/* Title and Subtitle */}
-        <h2 className="text-3xl md:text-4xl font-marcellus text-center text-[#9A7648] mb-4">
-          WHY IS A HOME VALUATION IMPORTANT?
-        </h2>
-        <p className="text-lg text-center text-gray-700 mb-12">
-          Situations When a Home Valuation May Be Necessary
-        </p>
-
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#9A7648]"></div>
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#9A7648]"></div>
-
-          {/* Timeline Items */}
           <div className="space-y-12">
             {/* Timeline Item 1 */}
             <div className="relative flex items-center">
@@ -648,31 +412,7 @@ const FreeHomeEvaluation = () => {
                   Planning home improvements? A valuation can help you avoid
                   over-investing in upgrades. By understanding your home’s
                   current value and market position, you can make informed
-                  decisions on improvements that enhance resale value without
-                  pricing out of your neighborhood.
-                </p>
-              </div>
-              {/* Button on Right */}
-              <div className="w-1/2 pl-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Refinancing
-                </button>
-              </div>
-            </div>
-          {/* Timeline Items */}
-          <div className="space-y-12">
-            {/* Timeline Item 1 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Text on Left */}
-              <div className="w-1/2 text-right pr-6">
-                <p className="text-gray-700 text-lg">
-                  Planning home improvements? A valuation can help you avoid
-                  over-investing in upgrades. By understanding your home’s
-                  current value and market position, you can make informed
-                  decisions on improvements that enhance resale value without
-                  pricing out of your neighborhood.
+                  decisions on improvements that enhance resale value.
                 </p>
               </div>
               {/* Button on Right */}
@@ -697,31 +437,9 @@ const FreeHomeEvaluation = () => {
               <div className="w-1/2 text-left pl-6">
                 <p className="text-gray-700 text-lg">
                   When refinancing, lenders base the amount of their loans on
-                  the value of your property and usually allow you to borrow a
-                  maximum of 75% to 96.5% against your property. Knowing your
-                  home’s worth helps you understand your equity, which can lead
-                  to better refinance terms.
-                </p>
-              </div>
-            </div>
-            {/* Timeline Item 2 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Button on Left */}
-              <div className="w-1/2 pr-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Market Analysis
-                </button>
-              </div>
-              {/* Text on Right */}
-              <div className="w-1/2 text-left pl-6">
-                <p className="text-gray-700 text-lg">
-                  When refinancing, lenders base the amount of their loans on
-                  the value of your property and usually allow you to borrow a
-                  maximum of 75% to 96.5% against your property. Knowing your
-                  home’s worth helps you understand your equity, which can lead
-                  to better refinance terms.
+                  the value of your property. Knowing your home’s worth helps
+                  you understand your equity, which can lead to better refinance
+                  terms.
                 </p>
               </div>
             </div>
@@ -735,28 +453,7 @@ const FreeHomeEvaluation = () => {
                 <p className="text-gray-700 text-lg">
                   Even if you’re not currently buying, selling, or refinancing,
                   knowing your home’s value is beneficial. It helps with future
-                  planning, whether for unexpected expenses or potential
-                  relocations.
-                </p>
-              </div>
-              {/* Button on Right */}
-              <div className="w-1/2 pl-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Qualifying For Credits
-                </button>
-              </div>
-            </div>
-            {/* Timeline Item 3 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Text on Left */}
-              <div className="w-1/2 text-right pr-6">
-                <p className="text-gray-700 text-lg">
-                  Even if you’re not currently buying, selling, or refinancing,
-                  knowing your home’s value is beneficial. It helps with future
-                  planning, whether for unexpected expenses or potential
-                  relocations.
+                  planning, whether for unexpected expenses or potential moves.
                 </p>
               </div>
               {/* Button on Right */}
@@ -780,35 +477,9 @@ const FreeHomeEvaluation = () => {
               {/* Text on Right */}
               <div className="w-1/2 text-left pl-6">
                 <p className="text-gray-700 text-lg">
-                  Considering a Home Equity Line of Credit (HELOC)? Lenders
-                  require a certain level of equity to approve your
-                  application—typically at least 20%. A home valuation confirms
-                  your equity status and supports your credit application.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-            {/* Timeline Item 4 */}
-            <div className="relative flex items-center">
-              {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
-              {/* Button on Left */}
-              <div className="w-1/2 pr-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
-                  Planning
-                </button>
-              </div>
-              {/* Text on Right */}
-              <div className="w-1/2 text-left pl-6">
-                <p className="text-gray-700 text-lg">
-                  Considering a Home Equity Line of Credit (HELOC)? Lenders
-                  require a certain level of equity to approve your
-                  application—typically at least 20%. A home valuation confirms
-                  your equity status and supports your credit application.
+                  Considering a HELOC? A home valuation confirms your equity
+                  status and supports your credit application, ensuring you meet
+                  the lender’s requirements.
                 </p>
               </div>
             </div>

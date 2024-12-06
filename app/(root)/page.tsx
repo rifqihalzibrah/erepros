@@ -1,10 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import CountUp from "react-countup";
-import { useInView } from "react-intersection-observer";
 import Accordion from "../../components/templates/home-page/Accordion";
 import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
 import LogoCarousel from "../../components/templates/home-page/logo-carousel";
@@ -142,15 +139,6 @@ export default function HomePage() {
         });
       }
     };
-    const handleScroll = () => {
-      if (currentTarget) {
-        const rect = currentTarget.getBoundingClientRect();
-        setPopupPosition({
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height + 10,
-        });
-      }
-    };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -194,9 +182,8 @@ export default function HomePage() {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute inset-0 h-full w-full bg-cover bg-center transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
               style={{
                 backgroundImage: `url(${image.url})`,
               }}
@@ -207,13 +194,12 @@ export default function HomePage() {
           {images.map((image, index) => (
             <h1
               key={index}
-              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${
-                index === currentIndex
+              className={`absolute text-center text-3xl font-marcellus font-thin text-white md:text-5xl transition-all duration-500 ${index === currentIndex
                   ? isTextAnimating
                     ? "opacity-0 translate-y-8"
                     : "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
-              }`}
+                }`}
             >
               {image.text}
             </h1>
