@@ -9,8 +9,10 @@ import { PulseLoader } from "react-spinners";
 
 const PropertyDetailsSkeleton = () => (
   <div className="container mx-auto p-6 pt-[136px]">
-    {/* Skeleton structure */}
+    {/* Back Button */}
     <div className="h-4 bg-gray-300 rounded w-1/4 mb-6"></div>
+
+    {/* Main Image Skeleton */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
       <div className="h-96 bg-gray-300 rounded-lg md:col-span-2"></div>
       <div className="grid grid-cols-2 gap-2">
@@ -20,9 +22,19 @@ const PropertyDetailsSkeleton = () => (
         <div className="h-12 bg-gray-300 rounded-lg col-span-2"></div>
       </div>
     </div>
+
+    {/* Property Info Skeleton */}
     <div className="h-6 bg-gray-300 rounded w-1/3 mb-4"></div>
     <div className="h-4 bg-gray-300 rounded w-1/4 mb-4"></div>
+
+    {/* Price and Details */}
     <div className="h-6 bg-gray-300 rounded w-1/4 mb-6"></div>
+    <div className="grid grid-cols-2 gap-6">
+      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+    </div>
+
+    {/* Features & Details */}
     <div className="mt-10">
       {Array.from({ length: 8 }).map((_, index) => (
         <div key={index} className="h-4 bg-gray-300 rounded w-full mb-4"></div>
@@ -305,7 +317,7 @@ const PropertyDetails = () => {
             {/* Right Column */}
             <div className="space-y-4">
               <p className="text-gray-700">
-                {property.ListingId || "No description available."}
+                {property.PublicRemarks || "No description available."}
               </p>
               <div className="flex justify-between">
                 <div>
@@ -314,15 +326,22 @@ const PropertyDetails = () => {
                 </div>
                 <div>
                   <span className="block text-sm font-bold">Listed</span>
-                  <span>{property.OnMarketDate || "Invalid Date"}</span>
+                  <span>{property.ListingId || "Invalid Date"}</span>
                 </div>
                 <div>
                   <span className="block text-sm font-bold">Updated</span>
-                  <span>
-                    {property.BK15_LMD_MP_UpdateDate || "Invalid Date"}
-                  </span>
+                  <span>{property.ListingId || "Invalid Date"}</span>
                 </div>
               </div>
+            </div>
+            {/* Google Map */}
+            <div className="md:col-span-2">
+              <hr className="border-t border-gray-300 my-4" />
+              <GoogleMapComponent
+                lat={property.Latitude || 0}
+                lng={property.Longitude || 0}
+                address={`${property.BK15_L_Address}, ${property.City}, ${property.BK15_LA1_State} ${property.BK15_LA1_Zip}`}
+              />
             </div>
           </div>
         </div>
@@ -337,11 +356,9 @@ const PropertyDetails = () => {
                 className="w-14 h-14 rounded-full"
               />
               <div>
-                <h2 className="text-lg font-bold">
-                  {property.ListingId || "Jennifer Oliver"}
-                </h2>
+                <h2 className="text-lg font-bold">{"Jennifer Oliver"}</h2>
                 <p className="text-sm text-gray-600">
-                  {property.ListingId || "N/A"}
+                  {"Elite Professional Management"}
                 </p>
               </div>
             </div>
@@ -349,14 +366,14 @@ const PropertyDetails = () => {
             <div className="text-sm text-gray-600 space-y-2 w-full">
               <div className="flex justify-between">
                 <p className="font-semibold">Mobile number</p>
-                <p>{property.ListingId || "N/A"}</p>
+                <p>{"(810) 715-5486"}</p>
               </div>
 
               <hr className="border-t border-gray-300 my-4" />
 
               <div className="flex justify-between">
                 <p className="font-semibold">Email</p>
-                <p>{property.ListingId || "Leasing@erepros.com"}</p>
+                <p>{"Leasing@erepros.com"}</p>
               </div>
             </div>
 
@@ -365,16 +382,6 @@ const PropertyDetails = () => {
             </button>
           </div>
         </aside>
-      </div>
-
-      {/* Google Map */}
-      <div className="md:col-span-2">
-        <hr className="border-t border-gray-300 my-4" />
-        <GoogleMapComponent
-          lat={property.Latitude || 0}
-          lng={property.Longitude || 0}
-          address={`${property.BK15_L_Address}, ${property.City}, ${property.BK15_LA1_State} ${property.BK15_LA1_Zip}`}
-        />
       </div>
 
       {/* Apply Now Button */}

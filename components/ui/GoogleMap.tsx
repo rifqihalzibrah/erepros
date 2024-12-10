@@ -15,7 +15,7 @@ interface GoogleMapComponentProps {
 
 const GoogleMapComponent = ({ lat, lng, address }: GoogleMapComponentProps) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const googleMapApiKey = "YOUR_GOOGLE_MAPS_API_KEY";
+  const googleMapApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   useEffect(() => {
     const initMap = () => {

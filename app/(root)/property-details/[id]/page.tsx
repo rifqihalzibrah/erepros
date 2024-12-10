@@ -148,7 +148,7 @@ const PropertyDetails = () => {
         label: "Interior Features",
         value: property.city || "N/A",
       },
-      { label: "Appliances", value: property.tenantApplication || "N/A" },
+      { label: "Appliances", value: property.no_bathrooms || "N/A" },
       {
         label: "Laundry Description",
         value: property.city || "N/A",

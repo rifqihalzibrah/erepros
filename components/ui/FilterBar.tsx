@@ -99,7 +99,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, search: e.target.value }))
             }
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gold"
           />
         </div>
 
@@ -110,7 +110,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
               filters.forRent
                 ? "bg-white border border-gray-300 text-gray-700"
                 : "bg-white border border-gray-300 text-gray-700"
-            }`}
+            }focus:outline-none focus:ring-2 focus:ring-gold`}
             onClick={handleToggleDropdown}
           >
             {filters.forRent ? "For rent" : "For sale"}
@@ -148,7 +148,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         {/* Any Price Dropdown */}
         <div className="relative">
           <button
-            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700"
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={togglePriceDropdown}
           >
             {filters.minPrice || filters.maxPrice
@@ -203,7 +203,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         {/* Property Type Dropdown */}
         <div className="relative">
           <button
-            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700"
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={togglePropertyTypeDropdown}
           >
             {filters.propertyType.length > 0
@@ -233,7 +233,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         {/* Beds Dropdown */}
         <div className="relative">
           <button
-            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700"
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={toggleBedsDropdown}
           >
             {filters.beds === "Any" ? "All beds" : `${filters.beds} beds`}
@@ -245,7 +245,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
                   key={bed}
                   className={`px-4 py-2 rounded-md font-medium text-sm transition ${
                     filters.beds === bed
-                      ? "bg-black text-white"
+                      ? "bg-gold text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                   onClick={() => handleBedsSelect(bed)}
@@ -260,7 +260,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         {/* Baths Dropdown */}
         <div className="relative">
           <button
-            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700"
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={toggleBathsDropdown}
           >
             {filters.baths === "Any" ? "All baths" : `${filters.baths} baths`}
@@ -272,7 +272,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
                   key={bath}
                   className={`px-4 py-2 rounded-md font-medium text-sm transition ${
                     filters.baths === bath
-                      ? "bg-black text-white"
+                      ? "bg-gold text-white"
                       : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                   }`}
                   onClick={() => handleBathsSelect(bath)}
@@ -286,14 +286,14 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
 
         {/* All Filters Button */}
         <button
-          className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700"
+          className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
           onClick={handleOpenModal}
         >
           All filters
         </button>
 
         {/* Save Search Button */}
-        <button className="px-4 py-2 bg-black text-white rounded-lg">
+        <button className="px-4 py-2 bg-gold text-white rounded-lg">
           Save search
         </button>
 
