@@ -1,19 +1,67 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 const Overview = () => {
+  // State for each section visibility
+  const [isSection1Visible, setIsSection1Visible] = useState(false);
+  const [isSection2Visible, setIsSection2Visible] = useState(false);
+
+  const section1Ref = useRef<HTMLDivElement>(null);
+  const section2Ref = useRef<HTMLDivElement>(null);
+
+  // Reusable function to handle Intersection Observer
+  const handleVisibilityChange = (
+    ref: React.RefObject<HTMLDivElement>,
+    setVisibility: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisibility(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  };
+
+  useEffect(() => {
+    const cleanup1 = handleVisibilityChange(section1Ref, setIsSection1Visible);
+    const cleanup2 = handleVisibilityChange(section2Ref, setIsSection2Visible);
+
+    return () => {
+      cleanup1?.();
+      cleanup2?.();
+    };
+  }, []);
+
   return (
     <>
       {/* First Section */}
       <div className="pt-[136px] bg-white">
-        <section className="py-6">
+        <section
+          ref={section1Ref}
+          className={`py-6 transition-all duration-1000 transform ${
+            isSection1Visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
             {/* Text Section */}
-            <div className="w-full lg:w-1/2 text-center lg:text-left lg:pr-8">
-              <h1 className="text-2xl lg:text-4xl font-marcellus text-gold mb-10 text-center">
+            <div className="w-full lg:w-1/2 text-center lg:text-left lg:pr-8 lg:order-1 order-2">
+              <h1 className="text-2xl lg:text-4xl font-marcellus text-gold mb-10 text-center hidden lg:block">
                 PROPERTY MANAGEMENT
               </h1>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {/* Left Column Content */}
                 <div>
                   <h2 className="text-xl font-thin tracking-wide text-gold font-marcellus uppercase mb-4">
                     Comprehensive Tenant Management Services:
@@ -22,30 +70,28 @@ const Overview = () => {
                     As your dedicated property management company, we handle all
                     aspects of tenant management, including addressing tenant
                     concerns, rent collection, maintenance & repairs, city &
-                    township inspections, and the careful screening and placement of
-                    new tenants. Enjoy peace of mind knowing that your investment is
-                    expertly managed and cared for.
+                    township inspections, and the careful screening and
+                    placement of new tenants.
                   </p>
                 </div>
-                {/* Right Column Content */}
                 <div>
                   <h2 className="text-xl font-thin tracking-wide text-gold font-marcellus uppercase mb-4">
                     Online Account Management for Owners and Tenants:
                   </h2>
                   <p className="leading-relaxed text-justify">
-                    Our user-friendly online portal serves both property owners and
-                    tenants alike. Tenants benefit from convenient features such as
-                    rent payments, maintenance request submissions, access to lease
-                    agreements, and tracking of payment history. Meanwhile, property
-                    owners have access to real-time financial data, lease
-                    agreements, paid invoices, and more, ensuring transparent and
-                    efficient management of their properties.
+                    Our user-friendly online portal serves both property owners
+                    and tenants alike. Tenants benefit from convenient features
+                    such as rent payments, maintenance requests, access to lease
+                    agreements, and tracking of payment history.
                   </p>
                 </div>
               </div>
             </div>
             {/* Image Section */}
-            <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
+            <div className="w-full lg:w-1/2 mt-12 lg:mt-0  lg:order-2 order-1 mb-6">
+              <h2 className="font-marcellus lg:hidden text-3xl text-[#917648] mb-6 text-center">
+                PROPERTY MANAGEMENT
+              </h2>
               <img
                 src="https://erepros.com/wp-content/uploads/2024/07/pexels-thirdman-8469939-scaled.jpg"
                 alt="Property Management"
@@ -56,13 +102,18 @@ const Overview = () => {
         </section>
 
         {/* Second Section */}
-        <section className="py-6">
+        <section
+          ref={section2Ref}
+          className={`py-6 transition-all duration-1000 transform ${
+            isSection2Visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
             {/* Text Section */}
             <div className="w-full lg:w-1/2 text-center lg:text-left lg:order-2">
-              {/* ... (Your text content goes here) */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {/* Left Column Content */}
                 <div>
                   <h2 className="text-xl font-thin tracking-wide text-gold font-marcellus uppercase mb-4">
                     24/7 Maintenance Support:
@@ -70,22 +121,17 @@ const Overview = () => {
                   <p className="leading-relaxed text-justify">
                     We offer round-the-clock maintenance assistance for tenants,
                     ensuring prompt resolution of any issues that may arise with
-                    your rental property. Through our extensive network of trusted
-                    contractors, we guarantee timely and reliable maintenance
-                    services in all areas.
+                    your rental property.
                   </p>
                 </div>
-                {/* Right Column Content */}
                 <div>
                   <h2 className="text-xl font-thin tracking-wide text-gold font-marcellus uppercase mb-4">
                     Expert Tenant Placement Services:
                   </h2>
                   <p className="leading-relaxed text-justify">
-                    For property owners who prefer a more hands-on approach, we
-                    provide tailored tenant placement services. From advertising
-                    your property and conducting showings to thorough tenant
-                    screening and lease creation, we handle every step of the
-                    process to secure qualified tenants for your rental property.
+                    From advertising your property and conducting showings to
+                    thorough tenant screening and lease creation, we handle
+                    every step of the process.
                   </p>
                 </div>
               </div>
@@ -95,19 +141,12 @@ const Overview = () => {
                 </h2>
                 <p className="leading-relaxed text-justify">
                   Our Full-Service Property Management Company Goes Beyond Just
-                  Management – We’re Your Partners in Property Flipping Success! At
-                  Elite Real Estate Professionals, we specialize in transforming
-                  distressed properties into lucrative assets. From acquisition to
-                  renovation to resale, our expert team guides you through every
-                  step of the flipping process. Tap into our market insights and
-                  strategic upgrades to maximize your returns. Contact us to turn
-                  your flipping dreams into reality!
+                  Management – We’re Your Partners in Property Flipping Success!
                 </p>
               </div>
             </div>
             {/* Image Section */}
-            <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:mr-8 lg:order-1
-             mt-12 lg:mt-0">
+            <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:mr-8 lg:order-1 mt-12 lg:mt-0">
               <img
                 src="https://erepros.com/wp-content/uploads/2024/07/pexels-orlovamaria-4913437-scaled.jpg"
                 alt="Maintenance Support"
