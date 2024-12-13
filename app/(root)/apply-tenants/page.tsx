@@ -29,6 +29,14 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
+import { FilePond, registerPlugin } from "react-filepond";
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
+import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
+import "filepond/dist/filepond.min.css";
+
+// Register the plugins
+registerPlugin(FilePondPluginFileValidateType, FilePondPluginFileValidateSize);
+
 type FormValues = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
@@ -107,7 +115,7 @@ const formSchema = z.object({
     // Step 8: Required Documents
     documents_1: z.instanceof(File).optional(),
     documents_2: z.instanceof(File).optional(),
-    documents_3: z.instanceof(File).optional(),
+    documents_3: z.array(z.instanceof(File)).optional(),
     documents: z.array(
         z.object({
             name: z.string(),
@@ -274,30 +282,43 @@ const ApplyTenants = () => {
             // Initialize an array to hold upload promises
             const fileUploadPromises = [];
 
-            // Loop through the documents and upload them to Firebase Storage
+            // Loop through documents_1, documents_2 (single file), and documents_3 (multiple files)
             for (let i = 1; i <= 3; i++) {
                 const fileKey = `documents_${i}` as keyof FormValues;
                 const file = values[fileKey];
-                if (file instanceof File) {
-                    const fileRef = ref(storage, `applications/${Date.now()}_${file.name}`);
-                    const uploadPromise = uploadBytes(fileRef, file)
-                        .then(snapshot => getDownloadURL(snapshot.ref))
-                        .then(downloadURL => ({ name: file.name, url: downloadURL }));
-                    fileUploadPromises.push(uploadPromise);
+
+                if (file) {
+                    // Handle multiple files in documents_3
+                    if (Array.isArray(file)) {
+                        const uploadTasks = file.map((singleFile) => {
+                            const fileRef = ref(storage, `applications/${Date.now()}_${singleFile.name}`);
+                            return uploadBytes(fileRef, singleFile)
+                                .then((snapshot) => getDownloadURL(snapshot.ref))
+                                .then((downloadURL) => ({ name: singleFile.name, url: downloadURL }));
+                        });
+                        fileUploadPromises.push(...uploadTasks);
+                    } else if (file instanceof File) {
+                        // Handle single files in documents_1 and documents_2
+                        const fileRef = ref(storage, `applications/${Date.now()}_${file.name}`);
+                        const uploadPromise = uploadBytes(fileRef, file)
+                            .then((snapshot) => getDownloadURL(snapshot.ref))
+                            .then((downloadURL) => ({ name: file.name, url: downloadURL }));
+                        fileUploadPromises.push(uploadPromise);
+                    }
                 }
             }
 
             // Wait for all files to be uploaded
             const uploadedFiles = await Promise.all(fileUploadPromises);
 
-            // Prepare the data to send to the backend
+            // Prepare the application data
             const applicationData = { ...values };
             delete applicationData.documents_1;
             delete applicationData.documents_2;
             delete applicationData.documents_3;
             applicationData.documents = uploadedFiles;
 
-            // Send the application data to your backend
+            // Send application data to your backend
             const response = await fetch('/api/apply-tenants', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -305,7 +326,6 @@ const ApplyTenants = () => {
             });
 
             if (!response.ok) throw new Error('Failed to submit application');
-
             const result = await response.json();
             console.log('Application submitted:', result);
 
@@ -333,28 +353,18 @@ const ApplyTenants = () => {
             });
 
             if (!emailResponse.ok) throw new Error('Failed to send confirmation email');
-
-            const emailResult = await emailResponse.json();
-            console.log('Confirmation email sent:', emailResult);
+            console.log('Confirmation email sent.');
 
             const { sessionId } = await paymentResponse.json();
-
-            // Redirect to Stripe Checkout
             const stripe = await stripePromise;
 
-            if (!stripe) {
-                throw new Error("Stripe initialization failed. Please check your Stripe publishable key.");
-            }
-
+            if (!stripe) throw new Error("Stripe initialization failed.");
             const { error } = await stripe.redirectToCheckout({ sessionId });
 
-            if (error) {
-                console.error("Stripe checkout error:", error);
-                throw new Error("Failed to initiate payment. Please try again.");
-            }
+            if (error) throw new Error("Failed to initiate payment. Please try again.");
         } catch (error) {
             console.error('Submission error:', error);
-            alert('There was an error submitting your application or initiating the payment. Please try again.');
+            alert('There was an error submitting your application. Please try again.');
         }
     };
 
@@ -1774,80 +1784,63 @@ const ApplyTenants = () => {
                                     Disclaimer: Please upload files in JPEG, JPG, PNG, PDF, or PSD format, with a maximum size of 5MB.
                                 </p>
 
-                                <div className="mt-4">
+                                <div className="mt-4 space-y-6">
                                     {/* Driver's License / Photo ID */}
-                                    <Controller
-                                        name="documents_1"
+                                    <FormField
                                         control={form.control}
-                                        rules={{ required: 'This field is required' }}
+                                        name="documents_1"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Driver&apos;s License / Photo ID</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="file"
-                                                        accept=".pdf,.png,.jpg,.jpeg,.psd"
-                                                        onChange={(e) => {
-                                                            const files = e.target.files;
-                                                            if (files && files[0]) {
-                                                                field.onChange(files[0]);
-                                                            }
-                                                        }}
-                                                        required
-                                                    />
-                                                </FormControl>
+                                                <FilePond
+                                                    acceptedFileTypes={['application/pdf', 'image/jpeg', 'image/png', 'image/psd']}
+                                                    maxFileSize="5MB"
+                                                    onupdatefiles={(fileItems) => {
+                                                        // Extract the file from the FilePond item
+                                                        field.onChange(fileItems[0]?.file || null);
+                                                    }}
+                                                />
                                                 <FormMessage />
                                             </FormItem>
                                         )}
                                     />
 
                                     {/* Social Security Card */}
-                                    <Controller
-                                        name="documents_2"
+                                    <FormField
                                         control={form.control}
-                                        rules={{ required: 'This field is required' }}
+                                        name="documents_2"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Social Security Card</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="file"
-                                                        accept=".pdf,.png,.jpg,.jpeg,.psd"
-                                                        onChange={(e) => {
-                                                            const files = e.target.files;
-                                                            if (files && files[0]) {
-                                                                field.onChange(files[0]);
-                                                            }
-                                                        }}
-                                                        required
-                                                    />
-                                                </FormControl>
+                                                <FilePond
+                                                    acceptedFileTypes={['application/pdf', 'image/jpeg', 'image/png', 'image/psd']}
+                                                    maxFileSize="5MB"
+                                                    onupdatefiles={(fileItems) => {
+                                                        field.onChange(fileItems[0]?.file || null);
+                                                    }}
+                                                />
                                                 <FormMessage />
                                             </FormItem>
                                         )}
                                     />
 
-                                    {/* Proof of Income for the Last 30 Days */}
-                                    <Controller
-                                        name="documents_3"
+                                    {/* Proof of Income */}
+                                    <FormField
                                         control={form.control}
-                                        rules={{ required: 'This field is required' }}
+                                        name="documents_3"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Proof of Income for the Last 30 Days</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="file"
-                                                        accept=".pdf,.png,.jpg,.jpeg,.psd"
-                                                        onChange={(e) => {
-                                                            const files = e.target.files;
-                                                            if (files && files[0]) {
-                                                                field.onChange(files[0]);
-                                                            }
-                                                        }}
-                                                        required
-                                                    />
-                                                </FormControl>
+                                                <FilePond
+                                                    allowMultiple={true} // Allow multiple uploads
+                                                    acceptedFileTypes={['application/pdf', 'image/jpeg', 'image/png', 'image/psd']}
+                                                    maxFileSize="5MB"
+                                                    onupdatefiles={(fileItems) => {
+                                                        // Convert FilePond files to an array of File objects
+                                                        const filesArray = fileItems.map((item) => item.file);
+                                                        field.onChange(filesArray); // Ensure field value is an array
+                                                    }}
+                                                />
                                                 <FormMessage />
                                             </FormItem>
                                         )}
