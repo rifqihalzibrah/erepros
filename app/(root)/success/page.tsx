@@ -37,7 +37,7 @@ export default function Success() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCountdown((prev) => prev - 1);
+            setCountdown((prev) => (prev > 0 ? prev - 1 : 0)); // Ensure countdown stops at 0
         }, 1000);
 
         const timeout = setTimeout(() => {
@@ -64,7 +64,7 @@ export default function Success() {
 
                 {verificationStatus === 'success' ? (
                     <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-prose">
-                        Your payment has been confirmed! Please check your email for further details. We’re excited to assist you.
+                        Your payment has been confirmed! Please check your email for further details. We&apos;re excited to assist you.
                     </p>
                 ) : verificationStatus === 'failed' ? (
                     <p className="text-lg md:text-xl lg:text-2xl text-red-600 dark:text-red-400 max-w-prose">

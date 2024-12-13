@@ -42,7 +42,7 @@ export const columns: ColumnDef<Application>[] = [
             const isSorted = column.getIsSorted(); // Check the current sort state
             return (
                 <Button
-                    variant="outline"
+                    variant="ghost"
                     onClick={() => column.toggleSorting(isSorted === "asc")}
                 >
                     Created At

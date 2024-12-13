@@ -20,10 +20,11 @@ interface SubItem {
 
 // Define the types for MenuItem props
 interface MenuItemProps {
-  href?: string; // Made optional
+  href?: string;
   label: string;
   subItems?: SubItem[];
   mobile?: boolean;
+  closeMenu?: () => void; // Add this
 }
 
 // Logo Component
@@ -128,7 +129,7 @@ const TopMenuItem: React.FC<{ item: TopMenuItemProps }> = ({ item }) => {
 };
 
 // MenuItem Component
-export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobile }) => {
+export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobile, closeMenu }) => {
   const [isOpenSubItems, setIsOpenSubItems] = useState(false); // State for sub-items
   const [openNestedSubItemIndex, setOpenNestedSubItemIndex] = useState<number | null>(null); // State for nested sub-items
   const hasSubItems = subItems && subItems.length > 0;
@@ -222,12 +223,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
   };
 
   if (mobile) {
-    // **Mobile View Modification Starts Here**
     return (
       <div className="block text-base font-medium text-white">
-        {/* Mobile Version */}
         {hasSubItems ? (
-          // Render a button if the item has sub-items
           <button
             className="flex justify-between items-center w-full px-3 py-2 rounded-md focus:outline-none"
             onClick={() => setIsOpenSubItems(!isOpenSubItems)}
@@ -243,19 +241,16 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
               viewBox="0 0 20 20"
               stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 8l4 4 4-4"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8l4 4 4-4" />
             </svg>
           </button>
         ) : (
-          // Render a Link if the item does not have sub-items
           <Link
             href={href || '#'}
             className="flex justify-between items-center px-3 py-2 rounded-md"
+            onClick={() => {
+              if (closeMenu) closeMenu();
+            }} // Close the menu upon click
           >
             <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out">
               {label}
@@ -358,8 +353,11 @@ interface MobileMenuProps {
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
+  setIsOpen,
   children,
 }) => {
+  const pathname = usePathname();
+
   useEffect(() => {
     // Function to check if the screen size is mobile (sm and below)
     const handleBodyOverflow = () => {
@@ -383,19 +381,24 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    // Close the menu whenever the pathname changes
+    setIsOpen(false);
+  }, [pathname, setIsOpen]);
+
   return (
     <>
-
-      {/* Mobile Menu */}
       <div
         className={`fixed top-19 right-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 h-[calc(100vh_-_4rem)] bg-gold z-50 transform transition-transform duration-300 ease-in-out xl:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         id="mobile-menu"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          {/* Render main menu items */}
           {children.map((child, idx) => (
-            <div key={idx}>{React.cloneElement(child, { mobile: true })}</div>
+            // Pass closeMenu function to each child
+            <div key={idx}>
+              {React.cloneElement(child, { mobile: true, closeMenu: () => setIsOpen(false) })}
+            </div>
           ))}
         </div>
       </div>

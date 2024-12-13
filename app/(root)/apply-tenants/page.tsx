@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loadStripe } from '@stripe/stripe-js';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useSearchParams } from 'next/navigation';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -120,6 +120,7 @@ const ApplyTenants = () => {
     const searchParams = useSearchParams(); // For accessing query parameters
     const [currentStep, setCurrentStep] = useState(1)
     const totalSteps = 8
+    const petOptions = ["Dog", "Cat", "Other", "None"];
 
     // Extract query parameters from the URL
     const property_id = searchParams.get("property_id") || ""; // Default to empty string if not present
@@ -318,6 +319,24 @@ const ApplyTenants = () => {
                 }),
             });
 
+            const emailResponse = await fetch('/api/apply-tenants/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: applicationData.email,
+                    full_name: applicationData.full_name,
+                    address: applicationData.address,
+                    bedrooms: applicationData.bedrooms,
+                    move_in_date: applicationData.move_in_date,
+                    fee: values.fee,
+                }),
+            });
+
+            if (!emailResponse.ok) throw new Error('Failed to send confirmation email');
+
+            const emailResult = await emailResponse.json();
+            console.log('Confirmation email sent:', emailResult);
+
             const { sessionId } = await paymentResponse.json();
 
             // Redirect to Stripe Checkout
@@ -426,6 +445,13 @@ const ApplyTenants = () => {
         "Emergency Contact",
         "Required Documents"
     ];
+
+    useEffect(() => {
+        // Default to "None" if no option is selected initially
+        if (!form.getValues("pets")) {
+            form.setValue("pets", ["None"]);
+        }
+    }, [form]);
 
     return (
         <div className="pt-[136px] flex justify-center">
@@ -1063,29 +1089,35 @@ const ApplyTenants = () => {
                                         <FormItem>
                                             <FormLabel>Do you have any pets?</FormLabel>
                                             <div className="flex flex-col space-y-2">
-                                                {["Dog", "Cat", "Other", "None"].map((pet) => (
-                                                    <FormField
-                                                        key={pet}
-                                                        control={form.control}
-                                                        name="pets"
-                                                        render={() => (
-                                                            <FormItem className="flex items-center space-x-3">
-                                                                <FormControl>
-                                                                    <Checkbox
-                                                                        checked={field.value?.includes(pet)}
-                                                                        onCheckedChange={(checked) => {
-                                                                            if (checked) {
-                                                                                field.onChange([...field.value, pet]);
-                                                                            } else {
-                                                                                field.onChange(field.value?.filter((value) => value !== pet));
-                                                                            }
-                                                                        }}
-                                                                    />
-                                                                </FormControl>
-                                                                <FormLabel className="font-normal">{pet}</FormLabel>
-                                                            </FormItem>
-                                                        )}
-                                                    />
+                                                {petOptions.map((pet) => (
+                                                    <FormItem key={pet} className="flex items-center space-x-3">
+                                                        <FormControl>
+                                                            <Checkbox
+                                                                checked={field.value?.includes(pet)}
+                                                                disabled={
+                                                                    field.value?.includes("None") && pet !== "None" // Disable others when "None" is selected
+                                                                }
+                                                                onCheckedChange={(checked) => {
+                                                                    if (pet === "None") {
+                                                                        // If "None" is selected, uncheck everything else
+                                                                        field.onChange(checked ? ["None"] : []);
+                                                                    } else {
+                                                                        // If not "None", allow multiple selections
+                                                                        if (checked) {
+                                                                            field.onChange(
+                                                                                [...field.value.filter((v) => v !== "None"), pet]
+                                                                            );
+                                                                        } else {
+                                                                            field.onChange(
+                                                                                field.value.filter((value) => value !== pet)
+                                                                            );
+                                                                        }
+                                                                    }
+                                                                }}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">{pet}</FormLabel>
+                                                    </FormItem>
                                                 ))}
                                             </div>
                                             <FormMessage />
