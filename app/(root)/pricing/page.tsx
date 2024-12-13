@@ -140,7 +140,7 @@ const Pricing = () => {
   return (
     <div className="pt-[136px] bg-white">
       <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-center text-3xl font-semibold text-gold font-marcellus uppercase mb-8">
+        <h1 className="text-center text-3xl text-gold font-marcellus uppercase mb-8">
           Property Management Pricing & Services
         </h1>
 

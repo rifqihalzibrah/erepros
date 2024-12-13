@@ -11,7 +11,7 @@ export default function Header() {
           label: "Tenant Portal Login",
         },
         { href: "/available-rentals", label: "Apply Now" },
-        { href: "/top-menu-item1", label: "Move In Move Out" },
+        { href: "/move-in-move-out", label: "Move In Move Out" },
         { href: "/tenant-faq", label: "Tenant FAQ" },
         { href: "/tenant-service-request", label: "Tenant Service Request" },
         {

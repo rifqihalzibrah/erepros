@@ -158,6 +158,8 @@ const FreeHomeEvaluation = () => {
         style={{
           backgroundImage:
             "url('https://erepros.com/wp-content/uploads/2024/11/4.jpg')",
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // black with 50% opacity
+          backgroundBlendMode: "darken"
         }}
       >
         <div className="text-center text-white p-4">
