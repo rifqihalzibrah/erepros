@@ -148,7 +148,7 @@ const PropertyDetails = () => {
         label: "Interior Features",
         value: property.city || "N/A",
       },
-      { label: "Appliances", value: property.tenantApplication || "N/A" },
+      { label: "Appliances", value: property.no_bathrooms || "N/A" },
       {
         label: "Laundry Description",
         value: property.city || "N/A",
@@ -422,7 +422,7 @@ const PropertyDetails = () => {
             {/* Add the line here */}
             <hr className="border-t border-gray-300 my-4" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
               {/* Left column with icons */}
               <div className="space-y-2">
                 <div className="flex items-center">
@@ -451,8 +451,8 @@ const PropertyDetails = () => {
               </div>
 
               {/* Right column with description and MLS information */}
-              <div className="space-y-4">
-                <p className="text-gray-700">
+              <div className="space-y-4 col-span-2">
+                <p className="text-gray-700 text-justify">
                   {property.description || "No description available."}
                 </p>
                 <div className="flex justify-between">

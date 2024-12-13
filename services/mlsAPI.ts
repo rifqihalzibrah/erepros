@@ -45,33 +45,81 @@ export interface Property {
   YearBuilt: number;
   OnMarketDate: string;
   BK15_LMD_MP_UpdateDate: string;
+  PublicRemarks: string;
 }
 
 /**
- * Fetches exactly `pageSize` properties with images.
+ * Builds an OData $filter query based on the provided filters.
+ * @param filters - Object containing filter values.
+ * @returns A string representing the OData $filter query.
+ */
+const buildFilterQuery = (filters: any): string | null => {
+  const filterClauses: string[] = [];
+
+  if (filters.search) {
+    filterClauses.push(
+      `contains(City, '${filters.search}') or contains(PostalCode, '${filters.search}')`
+    );
+  }
+
+  if (filters.minPrice) {
+    filterClauses.push(`ListPrice ge ${filters.minPrice}`);
+  }
+
+  if (filters.maxPrice) {
+    filterClauses.push(`ListPrice le ${filters.maxPrice}`);
+  }
+
+  if (filters.beds && filters.beds !== "Any") {
+    filterClauses.push(`BedroomsTotal ge ${filters.beds.replace("+", "")}`);
+  }
+
+  if (filters.baths && filters.baths !== "Any") {
+    filterClauses.push(`BathroomsFull ge ${filters.baths.replace("+", "")}`);
+  }
+
+  if (filters.propertyType.length > 0) {
+    const typeFilters = filters.propertyType.map(
+      (type: string) => `PropertyType eq '${type}'`
+    );
+    filterClauses.push(`(${typeFilters.join(" or ")})`);
+  }
+
+  return filterClauses.length > 0 ? filterClauses.join(" and ") : null;
+};
+
+/**
+ * Fetches exactly `pageSize` properties with images and applies filters.
  * @param page - The page number to start fetching from.
  * @param pageSize - The desired number of properties with images.
+ * @param filters - Object containing filtering criteria.
  * @returns A promise resolving to an array of properties with images.
  */
 export const fetchPropertiesByPage = async (
   page: number,
-  pageSize: number
+  pageSize: number,
+  filters: any
 ): Promise<Property[]> => {
   const propertiesWithImages: Property[] = [];
   let currentPage = page;
 
+  const filterQuery = buildFilterQuery(filters);
+
   try {
     while (propertiesWithImages.length < pageSize) {
-      const response = await axiosInstance.get("/Properties", {
-        params: {
-          $top: pageSize,
-          $skip: (currentPage - 1) * pageSize,
-          $orderby: "ListPrice desc",
-          $select:
-            "ListingKey,ListPrice,City,PostalCode,Coordinates,Media,BedroomsTotal,BathroomsFull,LotSizeArea,Latitude,Longitude,ListingId,PropertyType,BK15_LA1_State,BK15_LA1_Zip,BK15_L_Address,YearBuilt,OnMarketDate,BK15_LMD_MP_UpdateDate",
-        },
-      });
+      const params: any = {
+        $top: pageSize,
+        $skip: (currentPage - 1) * pageSize,
+        $orderby: "ListPrice desc",
+        $select:
+          "ListingKey,ListPrice,City,PostalCode,Coordinates,Media,BedroomsTotal,BathroomsFull,LotSizeArea,Latitude,Longitude,ListingId,PropertyType,BK15_LA1_State,BK15_LA1_Zip,BK15_L_Address,YearBuilt,OnMarketDate,BK15_LMD_MP_UpdateDate,PublicRemarks",
+      };
 
+      if (filterQuery) {
+        params.$filter = filterQuery;
+      }
+
+      const response = await axiosInstance.get("/Properties", { params });
       const fetchedProperties = response.data.value;
 
       // Filter properties to include only those with images
@@ -81,7 +129,7 @@ export const fetchPropertiesByPage = async (
 
       propertiesWithImages.push(...propertiesWithImagesInPage);
 
-      // If fewer properties are returned than `pageSize` or no more pages are available, stop
+      // Stop fetching if fewer properties are returned than `pageSize`
       if (
         fetchedProperties.length < pageSize ||
         !response.data["@odata.nextLink"]
@@ -132,6 +180,7 @@ export const fetchSingleProperty = async (
       YearBuilt: property.YearBuilt,
       OnMarketDate: property.OnMarketDate,
       BK15_LMD_MP_UpdateDate: property.BK15_LMD_MP_UpdateDate,
+      PublicRemarks: property.PublicRemarks,
     };
   } catch (error: any) {
     console.error("Error fetching single property:", error.message);

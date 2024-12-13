@@ -30,7 +30,11 @@ const HomePage: React.FC = () => {
     const fetchProperties = async () => {
       try {
         setLoading(true);
-        const fetchedProperties = await fetchPropertiesByPage(page, pageSize);
+        const fetchedProperties = await fetchPropertiesByPage(
+          page,
+          pageSize,
+          filters
+        );
         if (!fetchedProperties || !Array.isArray(fetchedProperties)) {
           throw new Error("Invalid properties data");
         }
@@ -43,7 +47,7 @@ const HomePage: React.FC = () => {
     };
 
     fetchProperties();
-  }, [page]);
+  }, [page, filters]);
 
   const handlePageChange = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages) return; // Prevent invalid page numbers

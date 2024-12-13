@@ -3,7 +3,7 @@
 import Accordion from "@/components/ui/Accordion";
 import PropertyModal from "@/components/ui/PropertyModal";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { fetchData, getAccessKey } from "../../../services/propertywareAPI";
 import { Property } from "../../../types/types";
 
@@ -97,17 +97,75 @@ const StorageUnitPage = () => {
     setSelectedProperty(null);
   };
 
+  // State for each section visibility
+  const [isSection1Visible, setIsSection1Visible] = useState(false);
+  const [isSection2Visible, setIsSection2Visible] = useState(false);
+  const [isSection3Visible, setIsSection3Visible] = useState(false);
+
+  const section1Ref = useRef<HTMLDivElement>(null);
+  const section2Ref = useRef<HTMLDivElement>(null);
+  const section3Ref = useRef<HTMLDivElement>(null);
+
+  // Reusable function to handle Intersection Observer
+  const handleVisibilityChange = (
+    ref: React.RefObject<HTMLDivElement>,
+    setVisibility: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisibility(entry.isIntersecting);
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  };
+
+  useEffect(() => {
+    const cleanup1 = handleVisibilityChange(section1Ref, setIsSection1Visible);
+    const cleanup2 = handleVisibilityChange(section2Ref, setIsSection2Visible);
+    const cleanup3 = handleVisibilityChange(section3Ref, setIsSection3Visible);
+
+    return () => {
+      cleanup1?.();
+      cleanup2?.();
+      cleanup3?.();
+    };
+  }, []);
+
   return (
     <div className="container mx-auto pt-[136px] px-4 py-10">
       {/* Heading Section */}
-      <section className="text-center mb-12">
+      <section
+        ref={section1Ref}
+        className={`text-center mb-12 py-6 transition-all duration-1000 transform ${
+          isSection1Visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-[-10px]"
+        }`}
+      >
         <h1 className="text-4xl font-marcellus text-gold mb-4">
           Storage Unit Management Services
         </h1>
       </section>
 
       {/* Section 1 */}
-      <section className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-12">
+      <section
+        ref={section2Ref}
+        className={`flex flex-col lg:flex-row items-center justify-between gap-8 mb-12 py-6 transition-all duration-1000 transform ${
+          isSection2Visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-12"
+        }`}
+      >
         {/* Text Content */}
         <div className="lg:w-1/2">
           <h2 className="text-lg font-marcellus tracking-wide text-gold uppercase mb-4">
@@ -144,7 +202,14 @@ const StorageUnitPage = () => {
       </section>
 
       {/* Section 3 */}
-      <section className="mb-12">
+      <section
+        className={`mb-12 py-6 transition-all duration-1000 transform ${
+          isSection3Visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-12"
+        }`}
+        ref={section3Ref}
+      >
         <h2 className="text-center text-3xl font-marcellus text-gold ">
           Get Started with Us
         </h2>
@@ -174,46 +239,46 @@ const StorageUnitPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {loading
             ? Array.from({ length: 6 }).map((_, index) => (
-              <div
-                key={index}
-                className="border rounded-lg p-4 animate-pulse bg-gray-200"
-              >
-                <div className="h-64 bg-gray-300 rounded-md mb-4"></div>
-                <div className="h-6 bg-gray-300 rounded-md mb-2"></div>
-                <div className="h-4 bg-gray-300 rounded-md"></div>
-              </div>
-            ))
-            : properties
-              .slice(0, properties.length - (properties.length % 3)) // Exclude the last row
-              .map((property) => (
                 <div
-                  key={property.id}
-                  className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                  onClick={() => openModal(property)} // Open modal on click
+                  key={index}
+                  className="border rounded-lg p-4 animate-pulse bg-gray-200"
                 >
-                  <img
-                    src={
-                      property.images[0]?.original_image_url ||
-                      "/placeholder-image.svg"
-                    }
-                    alt={property.address}
-                    className="w-full h-64 object-cover rounded-md mb-4"
-                  />
-                  <h2 className="text-2xl font-semibold">
-                    {property.address}
-                  </h2>
-                  <p className="text-gray-600">
-                    {property.city}, {property.state} {property.zip}
-                  </p>
-                  <p className="text-lg font-bold text-gray-900">
-                    ${property.target_rent}
-                  </p>
-                  <p className="text-gray-500">Storage Unit</p>
-                  <p className="text-sm text-gray-600 mt-2">
-                    {property.total_area} Sq Ft
-                  </p>
+                  <div className="h-64 bg-gray-300 rounded-md mb-4"></div>
+                  <div className="h-6 bg-gray-300 rounded-md mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded-md"></div>
                 </div>
-              ))}
+              ))
+            : properties
+                .slice(0, properties.length - (properties.length % 3)) // Exclude the last row
+                .map((property) => (
+                  <div
+                    key={property.id}
+                    className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                    onClick={() => openModal(property)} // Open modal on click
+                  >
+                    <img
+                      src={
+                        property.images[0]?.original_image_url ||
+                        "/placeholder-image.svg"
+                      }
+                      alt={property.address}
+                      className="w-full h-64 object-cover rounded-md mb-4"
+                    />
+                    <h2 className="text-2xl font-semibold">
+                      {property.address}
+                    </h2>
+                    <p className="text-gray-600">
+                      {property.city}, {property.state} {property.zip}
+                    </p>
+                    <p className="text-lg font-bold text-gray-900">
+                      ${property.target_rent}
+                    </p>
+                    <p className="text-gray-500">Storage Unit</p>
+                    <p className="text-sm text-gray-600 mt-2">
+                      {property.total_area} Sq Ft
+                    </p>
+                  </div>
+                ))}
         </div>
 
         {/* Center the last row if it has fewer items */}
