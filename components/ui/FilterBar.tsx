@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FilterBarModal from "../ui/FilterBarModal";
+import { useSearchParams } from "next/navigation"; // For accessing query parameters
 
 const propertyTypes = [
   { label: "House", icon: "🏠" },
@@ -43,6 +44,7 @@ interface FilterBarProps {
 }
 
 const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
+  const searchParams = useSearchParams(); // Hook to access query parameters
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
   const [isPropertyTypeDropdownOpen, setIsPropertyTypeDropdownOpen] =
@@ -86,6 +88,14 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
 
   const handleOpenModal = () => setIsFilterBarModalOpen(true);
   const handleCloseModal = () => setIsFilterBarModalOpen(false);
+
+  // Set the initial filter based on the "name" query parameter
+  useEffect(() => {
+    const nameParam = searchParams.get("name");
+    if (nameParam) {
+      setFilters((prev) => ({ ...prev, search: nameParam }));
+    }
+  }, [searchParams, setFilters]);
 
   return (
     <div className=" pt-[136px]">
