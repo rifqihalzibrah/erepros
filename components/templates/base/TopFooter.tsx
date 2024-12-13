@@ -5,7 +5,7 @@ const TopFooter = () => {
       className="relative bg-cover bg-center h-[400px] flex items-center justify-center"
       style={{
         backgroundImage:
-          "url('https://erepros.com/wp-content/uploads/2024/08/pexels-carlos-montelara-3450804-5982764-copy-scaled.jpg')",
+          "url('https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-carlos-montelara-3450804-5982764-copy-scaled.jpg?alt=media&token=9c9a401c-fbe2-4e51-ae50-0db4b437f34b')",
       }}
     >
       <div className="p-8 text-center text-white max-w-xl">

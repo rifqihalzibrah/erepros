@@ -85,7 +85,7 @@ const ContactUs: React.FC = () => {
           {/* Left Section */}
           <div className="w-full md:w-1/2 p-8 flex flex-col items-center md:items-start lg:order-1 order-2">
             <Image
-              src="https://erepros.com/wp-content/uploads/2024/08/pexels-tatianasyrikova-3975590-1024x683.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-tatianasyrikova-3975590-1024x683.jpg?alt=media&token=6813da01-9a30-424c-b9eb-d9c66afe4e3b"
               alt="Contact Us Image"
               width={400}
               height={250}

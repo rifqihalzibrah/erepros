@@ -7,7 +7,7 @@ const RealEstatePage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://erepros.com/wp-content/uploads/2024/11/pexels-fotoaibe-1571453-scaled.jpg')`,
+            backgroundImage: `url('https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-fotoaibe-1571453-scaled.jpg?alt=media&token=4d392f26-088e-44b1-92ad-1d127e9a7e61')`,
           }}
         />
         {/* Overlay */}
@@ -25,7 +25,7 @@ const RealEstatePage = () => {
         {/* Image Section */}
         <div className="flex-shrink-0">
           <img
-            src="https://erepros.com/wp-content/uploads/2024/08/Jen-2.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FJen-2.jpg?alt=media&token=6b4cc4f0-24ff-4e5c-b442-b2aecabac13a"
             alt="Real Estate Partner"
             className="rounded-lg shadow-lg w-full max-w-sm"
           />
@@ -161,7 +161,7 @@ const RealEstatePage = () => {
           {/* Card 1 */}
           <div className="relative group overflow-hidden rounded-lg shadow-lg">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/11/pexels-pixabay-210617-2-scaled.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-pixabay-210617-2-scaled.jpg?alt=media&token=021bf41e-1edb-4789-a336-48635286f382"
               alt="Find My Dream Home"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             />
@@ -175,7 +175,7 @@ const RealEstatePage = () => {
           {/* Card 2 */}
           <div className="relative group overflow-hidden rounded-lg shadow-lg">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/11/pexels-fotoaibe-1571460-2-scaled.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-fotoaibe-1571460-2-scaled.jpg?alt=media&token=db3e50b6-1caf-4019-8f9f-aef7852d2365"
               alt="What's My Home Worth?"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             />
@@ -189,7 +189,7 @@ const RealEstatePage = () => {
           {/* Card 3 */}
           <div className="relative group overflow-hidden rounded-lg shadow-lg">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/11/pexels-ketut-subiyanto-4246097-1-2-scaled.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-ketut-subiyanto-4246097-1-2-scaled.jpg?alt=media&token=934ebd5c-ab49-4272-9d15-73b9d09aecef"
               alt="Help Me Relocate"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             />

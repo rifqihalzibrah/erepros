@@ -55,8 +55,9 @@ const MoveInMoveOutSection = () => {
       {/* First Section */}
       <section
         ref={section1Ref}
-        className={`flex justify-center items-center h-40 bg-white transition-opacity duration-1000 transform ${isSection1Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-          }`}
+        className={`flex justify-center items-center h-40 bg-white transition-opacity duration-1000 transform ${
+          isSection1Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+        }`}
       >
         <h1 className="text-4xl md:text-5xl font-serif text-[#9A7648]">
           MOVING IN OR OUT
@@ -66,13 +67,14 @@ const MoveInMoveOutSection = () => {
       {/* Second Section */}
       <section
         ref={section2Ref}
-        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${isSection2Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-          }`}
+        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${
+          isSection2Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+        }`}
       >
         {/* Left Side: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src="https://erepros.com/wp-content/uploads/2024/07/pexels-mart-production-7415039-1-1024x683.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-mart-production-7415039-1-1024x683.jpg?alt=media&token=f773b599-6138-400d-855d-cb2e795d9ed7"
             alt="Family moving in"
             className="w-full h-auto object-cover rounded-lg"
           />
@@ -109,8 +111,9 @@ const MoveInMoveOutSection = () => {
       {/* Third Section */}
       <section
         ref={section3Ref}
-        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${isSection3Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-          }`}
+        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${
+          isSection3Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+        }`}
       >
         {/* Left Side: Text Content */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left px-4 md:pr-10">
@@ -150,7 +153,7 @@ const MoveInMoveOutSection = () => {
         {/* Right Side: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src="https://erepros.com/wp-content/uploads/2024/07/pexels-cottonbro-4568697-1-1024x683.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-cottonbro-4568697-1-1024x683.jpg?alt=media&token=3d090e30-ef4e-4b3b-aec8-3ca730fee2be"
             alt="Family moving out"
             className="w-full h-auto object-cover rounded-lg"
           />
@@ -160,13 +163,14 @@ const MoveInMoveOutSection = () => {
       {/* Fourth Section */}
       <section
         ref={section4Ref}
-        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${isSection4Visible ? "opacity-100 fade-up-1s" : "opacity-0"
-          }`}
+        className={`flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-10 bg-white min-h-screen transition-opacity duration-1000 transform ${
+          isSection4Visible ? "opacity-100 fade-up-1s" : "opacity-0"
+        }`}
       >
         {/* Left Side: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src="https://erepros.com/wp-content/uploads/2024/07/pexels-cottonbro-4569340-1-1024x683.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-cottonbro-4569340-1-1024x683.jpg?alt=media&token=f97a0d81-cda7-4c02-9146-adb72b273409"
             alt="Family key turn-in"
             className="w-full h-auto object-cover rounded-lg"
           />

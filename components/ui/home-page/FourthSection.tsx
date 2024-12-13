@@ -20,7 +20,7 @@ const FourthSection = () => {
       <div
         className="absolute inset-0 w-full h-full bg-fixed"
         style={{
-          backgroundImage: `url("https://erepros.com/wp-content/uploads/2024/08/pexels-jonathanborba-5570222-1-scaled.jpg")`,
+          backgroundImage: `url("https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-jonathanborba-5570222-1-scaled.jpg?alt=media&token=a457d134-905f-4ce4-a1ff-1442706fa4b1")`,
           backgroundSize: "cover",
           backgroundPosition: `center ${50 - scrollPos * 0.1}%`, // Moves background image
           backgroundRepeat: "no-repeat",

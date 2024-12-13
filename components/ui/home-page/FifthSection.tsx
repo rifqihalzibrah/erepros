@@ -25,7 +25,8 @@ export default function MapSection() {
       name: "Saginaw",
       cx: 436.8,
       cy: 452,
-      image: "https://erepros.com/wp-content/uploads/2024/08/Saginaw.jpg",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FSaginaw.jpg?alt=media&token=bd6e69c3-6382-465d-a23a-97d13efd41bf",
       description:
         "Saginaw is a vibrant city with scenic views and rich history.",
     },
@@ -34,7 +35,7 @@ export default function MapSection() {
       cx: 304,
       cy: 650,
       image:
-        "https://erepros.com/wp-content/uploads/2024/08/Shiawassee-County.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FShiawassee-County.jpg?alt=media&token=505249f7-a8b7-4795-b171-be9846a5af96",
       description:
         "Shiawassee is a vibrant city with scenic views and rich history.",
     },
@@ -43,7 +44,7 @@ export default function MapSection() {
       cx: 353,
       cy: 747.5,
       image:
-        "https://erepros.com/wp-content/uploads/2024/08/Ingham-County-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FIngham-County-scaled.jpg?alt=media&token=95d1fedf-3cc2-4ccc-a9b9-3045f7f57556",
       description: "Ingham is known for its community and lively events.",
     },
     {
@@ -51,7 +52,7 @@ export default function MapSection() {
       cx: 355,
       cy: 800,
       image:
-        "https://erepros.com/wp-content/uploads/2024/07/Ann-Arbor-MI-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FAnn-Arbor-MI-scaled.jpg?alt=media&token=a7d88477-dedd-40e4-8d1f-8eb5ed871da8",
       description:
         "Washtenaw offers historic neighborhoods and beautiful scenery.",
     },
@@ -60,7 +61,7 @@ export default function MapSection() {
       cx: 915,
       cy: 791.5,
       image:
-        "https://erepros.com/wp-content/uploads/2024/07/Wayne-County-1-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FWayne-County-1-scaled.jpg?alt=media&token=0c127b09-6284-4c44-b492-50c524f2d195",
       description:
         "Wayne County boasts bustling urban life and cultural landmarks.",
     },
@@ -69,7 +70,7 @@ export default function MapSection() {
       cx: 927,
       cy: 650,
       image:
-        "https://erepros.com/wp-content/uploads/2024/07/Oakland-County-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FOakland-County-scaled.jpg?alt=media&token=8379093b-ab22-4cab-b0be-808476fdaa47",
       description:
         "Oakland County is full of energy and modern infrastructure.",
     },
@@ -78,7 +79,7 @@ export default function MapSection() {
       cx: 823,
       cy: 505,
       image:
-        "https://erepros.com/wp-content/uploads/2024/08/Genesee-County-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FGenesee-County-scaled.jpg?alt=media&token=f27b6023-7c45-4b5d-87ab-12b4496dfb10",
       description:
         "Genesee County combines rural charm with modern convenience.",
     },
@@ -147,7 +148,7 @@ export default function MapSection() {
 
         <div className="relative md:w-1/2" ref={mapContainerRef}>
           <img
-            src="https://erepros.com/wp-content/uploads/2024/08/MAP-Newest-2-cropped-1024x920.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FMAP-Newest-2-cropped-1024x920.jpg?alt=media&token=20e03d6a-62d7-4059-a9b9-5c55183e4bd3"
             alt="Map"
             className="w-full rounded-lg"
           />

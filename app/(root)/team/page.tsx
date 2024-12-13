@@ -22,43 +22,43 @@ const Team = () => {
       name: "Madison Laframboise",
       position: "Head of Maintenance",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Maddy--400x350.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FMaddy--400x350.jpg?alt=media&token=57d66d7b-e6fd-401c-a15f-183a35233350",
     },
     {
       name: "Jaidyn Snider",
       position: "Front Desk",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Jaidyn-1-400x350.png",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FJaidyn-1-400x350.png?alt=media&token=731641ed-0dde-47bc-a9fa-33ef4ab4ca00",
     },
     {
       name: "Calista Zwerican",
       position: "Leasing Agent",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Calista-400x350.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FCalista-400x350.jpg?alt=media&token=95e34511-bbf7-48c6-b08a-941b1e26f847",
     },
     {
       name: "Taylor Kietzman",
       position: "Head Administrator",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Taylor-400x350.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FTaylor-400x350.jpg?alt=media&token=1e98e53e-c395-4900-8fd0-d879c49ff2eb",
     },
     {
       name: "Tanya Asraf",
       position: "Rent Collection",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Tanya-400x350.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FTanya-400x350.jpg?alt=media&token=a8a515c2-04bf-4f21-a126-9a5fe62a8307",
     },
     {
       name: "Keelie Alridge",
       position: "Real Estate Agent",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Keelie-400x350.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FKeelie-400x350.jpg?alt=media&token=5e961297-8cbf-4f94-a3b3-c686a9cd97e2",
     },
     {
       name: "Jaiden Oliver",
       position: "Storage Unit Manager/Billing",
       imageUrl:
-        "https://erepros.com/wp-content/uploads/2023/01/Jaiden-400x350.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FJaiden-400x350.jpg?alt=media&token=62c172f5-2fa5-402d-8799-2200e51c29fa",
     },
   ];
 
@@ -70,7 +70,7 @@ const Team = () => {
           {/* Image Section */}
           <div className="w-full lg:w-1/2">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/07/IMG_8514-1024x1024.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FIMG_8514-1024x1024.jpg?alt=media&token=73450beb-6b90-4483-8ae9-1c6f7574509a"
               alt="Meet Our Team"
               className="w-full h-auto object-cover rounded-lg shadow-lg"
             />
@@ -89,10 +89,11 @@ const Team = () => {
             </h1>
             <p className="mt-4 text-lg text-gray-700 leading-relaxed text-justify">
               Our team is a dynamic and diverse group of professionals who are
-              passionate about Elite Real Estate & Professional Management&apos;s
-              vision and values. They are dedicated to delivering exceptional
-              experiences for both property owners and residents while fostering
-              growth and development within their teams.
+              passionate about Elite Real Estate & Professional
+              Management&apos;s vision and values. They are dedicated to
+              delivering exceptional experiences for both property owners and
+              residents while fostering growth and development within their
+              teams.
             </p>
           </div>
         </div>
@@ -125,7 +126,9 @@ const Team = () => {
                           <h3 className="text-lg font-serif font-medium">
                             {member.name}
                           </h3>
-                          <p className="text-gray-500 text-sm">{member.position}</p>
+                          <p className="text-gray-500 text-sm">
+                            {member.position}
+                          </p>
                         </div>
                       </CardContent>
                     </Card>

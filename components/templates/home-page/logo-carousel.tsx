@@ -3,10 +3,10 @@
 import React from "react";
 
 const logos = [
-  "https://erepros.com/wp-content/uploads/elementor/thumbs/resized_image_3-qsx2sm15toxz7uywpagm3pc56gz2vakeowskx4jsow.png",
-  "https://erepros.com/wp-content/uploads/elementor/thumbs/resized_image_2-qsx2ssm15j6zh4pcmvb035odc62nd6aj1tcza2a1hc.png",
-  "https://erepros.com/wp-content/uploads/elementor/thumbs/resized_image_0-qsx2sz6whdfzqefskg5e2m0lhv67v20nepxdn00a9s.png",
-  "https://erepros.com/wp-content/uploads/elementor/thumbs/resized_image_1-qsx2svfjq1aufyl96eivsmyr4bor09lq27bfpw5uyo.png",
+  "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2Fresized_image_3-qsx2sm15toxz7uywpagm3pc56gz2vakeowskx4jsow.png?alt=media&token=57be097c-06d1-41cf-9e00-58eeceae8854",
+  "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2Fresized_image_2-qsx2ssm15j6zh4pcmvb035odc62nd6aj1tcza2a1hc.png?alt=media&token=3b624c30-00a8-4cbf-82b8-81ea0a78860c",
+  "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2Fresized_image_0-qsx2sz6whdfzqefskg5e2m0lhv67v20nepxdn00a9s.png?alt=media&token=3e9cb910-9e76-4358-9670-2c4800276f93",
+  "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2Fresized_image_1-qsx2svfjq1aufyl96eivsmyr4bor09lq27bfpw5uyo.png?alt=media&token=13c798a8-79c2-4419-9334-dec13fc200d8",
 ];
 
 export default function LogoCarousel() {
