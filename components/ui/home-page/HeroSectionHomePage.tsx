@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 
 const images = [
   {
-    url: "https://erepros.com/wp-content/uploads/2024/08/pexels-jonathanborba-5570226-scaled.jpg",
+    url: "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-jonathanborba-5570226-scaled.jpg?alt=media&token=691c14a8-afdc-462a-9f8b-3d8cf931692f",
     text: "LET US HELP YOU FIND YOUR DREAM HOME.",
   },
   {
-    url: "https://erepros.com/wp-content/uploads/2024/08/pexels-curtis-adams-1694007-5178034-scaled.jpg",
+    url: "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-curtis-adams-1694007-5178034-scaled.jpg?alt=media&token=9decff42-d8b0-43ec-9e99-b4f2213d593f",
     text: "LET US HELP YOU FIND YOUR DREAM HOME.",
   },
   {
-    url: "https://erepros.com/wp-content/uploads/2024/08/446814346_1224622515588256_5530116749449355341_n.jpg",
+    url: "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2F446814346_1224622515588256_5530116749449355341_n.jpg?alt=media&token=19fcb75a-5d11-4625-a3d0-75fd80b16f83",
     text: "LET US HELP YOU FIND YOUR DREAM HOME.",
   },
 ];

@@ -9,7 +9,7 @@ const TenantServiceRequest = () => {
       {/* Third Section */}
       <AnimatedSection>
         <ContentWithImage
-          imageUrl="https://erepros.com/wp-content/uploads/2024/07/pexels-cottonbro-4568697-1-1024x683.jpg"
+          imageUrl="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-cottonbro-4568697-1-1024x683.jpg?alt=media&token=3d090e30-ef4e-4b3b-aec8-3ca730fee2be"
           imageAlt="Family moving out"
           reverse={false} // Set to true to reverse the layout
         >
@@ -45,7 +45,7 @@ const TenantServiceRequest = () => {
       {/* Fourth Section */}
       <AnimatedSection>
         <ContentWithImage
-          imageUrl="https://erepros.com/wp-content/uploads/2024/07/pexels-cottonbro-4569340-1-1024x683.jpg"
+          imageUrl="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-cottonbro-4569340-1-1024x683.jpg?alt=media&token=f97a0d81-cda7-4c02-9146-adb72b273409"
           imageAlt="Family key turn-in"
           reverse={true} // Set to true to reverse the layout
         >

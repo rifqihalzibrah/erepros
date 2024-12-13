@@ -1,9 +1,9 @@
 // ui/navbar.tsx
 "use client";
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 // Define the types for nested sub-items
 interface NestedSubItem {
@@ -104,7 +104,7 @@ const TopMenuItem: React.FC<{ item: TopMenuItemProps }> = ({ item }) => {
       onMouseLeave={handleMouseLeave}
     >
       <Link
-        href={item.href || '#'}
+        href={item.href || "#"}
         className="block py-2 rounded-md text-base font-medium text-gold"
       >
         <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out uppercase text-sm">
@@ -129,9 +129,17 @@ const TopMenuItem: React.FC<{ item: TopMenuItemProps }> = ({ item }) => {
 };
 
 // MenuItem Component
-export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobile, closeMenu }) => {
+export const MenuItem: React.FC<MenuItemProps> = ({
+  href,
+  label,
+  subItems,
+  mobile,
+  closeMenu,
+}) => {
   const [isOpenSubItems, setIsOpenSubItems] = useState(false); // State for sub-items
-  const [openNestedSubItemIndex, setOpenNestedSubItemIndex] = useState<number | null>(null); // State for nested sub-items
+  const [openNestedSubItemIndex, setOpenNestedSubItemIndex] = useState<
+    number | null
+  >(null); // State for nested sub-items
   const hasSubItems = subItems && subItems.length > 0;
 
   // Timer for delayed closing
@@ -156,8 +164,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
   };
 
   // Render nested sub-items
-  const renderNestedSubItems = (nestedSubItems: NestedSubItem[], nestedIndex: number) => (
-    <div className={`pl-6 ${openNestedSubItemIndex === nestedIndex ? 'block' : 'hidden'}`}>
+  const renderNestedSubItems = (
+    nestedSubItems: NestedSubItem[],
+    nestedIndex: number
+  ) => (
+    <div
+      className={`pl-6 ${
+        openNestedSubItemIndex === nestedIndex ? "block" : "hidden"
+      }`}
+    >
       {nestedSubItems.map((nestedItem, idx) => (
         <Link
           key={idx}
@@ -175,7 +190,8 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
   // Render sub-items, including nested ones
   const renderSubItems = () => {
     return subItems?.map((item, idx) => {
-      const hasNestedSubItems = item.nestedSubItems && item.nestedSubItems.length > 0;
+      const hasNestedSubItems =
+        item.nestedSubItems && item.nestedSubItems.length > 0;
 
       return (
         <div key={idx}>
@@ -190,8 +206,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
                   {item.label}
                 </span>
                 <svg
-                  className={`h-4 w-4 transform transition-transform duration-200 ml-2 ${openNestedSubItemIndex === idx ? 'rotate-180' : ''
-                    }`}
+                  className={`h-4 w-4 transform transition-transform duration-200 ml-2 ${
+                    openNestedSubItemIndex === idx ? "rotate-180" : ""
+                  }`}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 20 20"
@@ -209,7 +226,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
             </div>
           ) : (
             <Link
-              href={item.href || '#'}
+              href={item.href || "#"}
               className="block px-3 py-2 rounded-md text-base font-medium text-white font-marcellus"
             >
               <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out">
@@ -234,19 +251,25 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
               {label}
             </span>
             <svg
-              className={`h-4 w-4 transform transition-transform duration-200 ${isOpenSubItems ? 'rotate-180' : ''
-                }`}
+              className={`h-4 w-4 transform transition-transform duration-200 ${
+                isOpenSubItems ? "rotate-180" : ""
+              }`}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 20 20"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 8l4 4 4-4" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 8l4 4 4-4"
+              />
             </svg>
           </button>
         ) : (
           <Link
-            href={href || '#'}
+            href={href || "#"}
             className="flex justify-between items-center px-3 py-2 rounded-md"
             onClick={() => {
               if (closeMenu) closeMenu();
@@ -257,7 +280,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
             </span>
           </Link>
         )}
-        {hasSubItems && isOpenSubItems && <div className="pl-6">{renderSubItems()}</div>}
+        {hasSubItems && isOpenSubItems && (
+          <div className="pl-6">{renderSubItems()}</div>
+        )}
       </div>
     );
   }
@@ -277,7 +302,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({ href, label, subItems, mobil
           </button>
         ) : (
           // If the item does not have sub-items, render a Link
-          <Link href={href || '#'} className="text-xs text-white uppercase tracking-widest pb-1 focus:outline-none">
+          <Link
+            href={href || "#"}
+            className="text-xs text-white uppercase tracking-widest pb-1 focus:outline-none"
+          >
             {label}
           </Link>
         )}
@@ -363,9 +391,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     const handleBodyOverflow = () => {
       const isMobile = window.innerWidth < 1280;
       if (isOpen && isMobile) {
-        document.body.classList.add('overflow-hidden');
+        document.body.classList.add("overflow-hidden");
       } else {
-        document.body.classList.remove('overflow-hidden');
+        document.body.classList.remove("overflow-hidden");
       }
     };
 
@@ -373,11 +401,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     handleBodyOverflow();
 
     // Add resize event listener to handle window resizing
-    window.addEventListener('resize', handleBodyOverflow);
+    window.addEventListener("resize", handleBodyOverflow);
 
     return () => {
-      document.body.classList.remove('overflow-hidden'); // Clean up
-      window.removeEventListener('resize', handleBodyOverflow); // Cleanup resize event listener
+      document.body.classList.remove("overflow-hidden"); // Clean up
+      window.removeEventListener("resize", handleBodyOverflow); // Cleanup resize event listener
     };
   }, [isOpen]);
 
@@ -389,15 +417,19 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <>
       <div
-        className={`fixed top-19 right-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 h-[calc(100vh_-_4rem)] bg-gold z-50 transform transition-transform duration-300 ease-in-out xl:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+        className={`fixed top-19 right-0 w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 h-[calc(100vh_-_4rem)] bg-gold z-50 transform transition-transform duration-300 ease-in-out xl:hidden ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
         id="mobile-menu"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {children.map((child, idx) => (
             // Pass closeMenu function to each child
             <div key={idx}>
-              {React.cloneElement(child, { mobile: true, closeMenu: () => setIsOpen(false) })}
+              {React.cloneElement(child, {
+                mobile: true,
+                closeMenu: () => setIsOpen(false),
+              })}
             </div>
           ))}
         </div>
@@ -420,7 +452,7 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
   const [isSticky, setIsSticky] = useState(false); // To track if the menu is sticky
   const toggleMenu = () => setIsOpen(!isOpen);
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === "/";
 
   // Scroll event handler to show/hide menu based on scroll direction and stickiness
   const handleScroll = () => {
@@ -442,17 +474,18 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
 
   // Attach the scroll event listener
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll); // Cleanup event listener on unmount
+      window.removeEventListener("scroll", handleScroll); // Cleanup event listener on unmount
     };
   }, [lastScrollY]);
 
   return (
     <>
       <nav
-        className={`fixed w-full z-50 transition-transform duration-500 ease-in-out ${showMenu ? 'translate-y-0' : '-translate-y-full'
-          } ${isSticky || !isHomePage ? 'bg-gold' : 'bg-gold xl:bg-transparent'}`}
+        className={`fixed w-full z-50 transition-transform duration-500 ease-in-out ${
+          showMenu ? "translate-y-0" : "-translate-y-full"
+        } ${isSticky || !isHomePage ? "bg-gold" : "bg-gold xl:bg-transparent"}`}
       >
         {/* Render TopMenu if topMenuItems are provided */}
         {topMenuItems && <TopMenu items={topMenuItems} />}
@@ -462,7 +495,7 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
             {/* Logo Section for Mobile */}
             <div className="flex items-center flex-shrink-0 xl:hidden">
               <Logo
-                src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-full-white-1.png"
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2FREAL-ESTATE-full-white-1.png?alt=media&token=de6858f1-3083-4609-80e3-257d7d68e508"
                 alt="Elite Real Estate"
               />
             </div>
@@ -478,7 +511,7 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
                 {/* Logo Section for Desktop */}
                 <div className="flex justify-center items-center flex-shrink-0 mx-12">
                   <Logo
-                    src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-full-white-1.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2FREAL-ESTATE-full-white-1.png?alt=media&token=de6858f1-3083-4609-80e3-257d7d68e508"
                     alt="Elite Real Estate"
                   />
                 </div>
@@ -493,7 +526,7 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
                 {/* Logo on the Left */}
                 <div className="flex items-center flex-shrink-0">
                   <Logo
-                    src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-full-white-1.png"
+                    src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2FREAL-ESTATE-full-white-1.png?alt=media&token=de6858f1-3083-4609-80e3-257d7d68e508"
                     alt="Elite Real Estate"
                   />
                 </div>
@@ -520,11 +553,14 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
         </div>
 
         {/* Mobile Navigation (All items) */}
-        <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} topMenuItems={topMenuItems}>
+        <MobileMenu
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          topMenuItems={topMenuItems}
+        >
           {children}
         </MobileMenu>
       </nav>
     </>
   );
 };
-

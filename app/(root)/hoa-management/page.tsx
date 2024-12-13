@@ -206,7 +206,7 @@ const HOAManagement = () => {
         {/* Image Section */}
         <div>
           <img
-            src="https://erepros.com/wp-content/uploads/2024/07/pexels-thelazyartist-1642125-scaled.jpg" // Replace with the actual image path
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-thelazyartist-1642125-scaled.jpg?alt=media&token=c8b8c80c-8de5-48c6-b39f-e028fd84c31f" // Replace with the actual image path
             alt="HOA Community"
             className="rounded-lg shadow-lg object-cover h-[600px] w-full"
           />

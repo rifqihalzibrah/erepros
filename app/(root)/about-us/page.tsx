@@ -61,7 +61,7 @@ const AboutUs = () => {
           {/* Image Section - Left on Laptop */}
           <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:text-left lg:pr-12 order-2 lg:order-1">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/07/IMG_8514-1024x1024.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FIMG_8514-1024x1024.jpg?alt=media&token=73450beb-6b90-4483-8ae9-1c6f7574509a"
               alt="Jennifer Oliver"
               className="rounded-lg w-full h-auto object-cover mb-4"
               loading="lazy"
@@ -147,7 +147,7 @@ const AboutUs = () => {
           {/* Right Image Section */}
           <div className="w-full lg:w-1/2 mt-12 lg:mt-0 order-1 lg:order-2">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/08/pexels-a-darmel-7641903-683x1024-2.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-a-darmel-7641903-683x1024-2.jpg?alt=media&token=a9e92bf2-22f0-4b7e-aab2-f78fa44e51a7"
               alt="Happy Couple with Keys"
               className="rounded-lg w-full h-auto object-cover"
               loading="lazy"
@@ -168,7 +168,7 @@ const AboutUs = () => {
           {/* Left Image Section */}
           <div className="w-full lg:w-1/2">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/08/pexels-orlovamaria-4946438-683x1024-1.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-orlovamaria-4946438-683x1024-1.jpg?alt=media&token=b070f4b0-0a1a-4c65-9347-bae4f67f615e"
               alt="Beautiful Balcony with Flowers"
               className="rounded-lg w-full h-auto object-cover"
               loading="lazy"

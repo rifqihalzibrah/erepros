@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Layer 1: Logo - Left Aligned */}
         <div className="flex justify-start mb-8">
           <Image
-            src="https://erepros.com/wp-content/uploads/2024/08/REAL-ESTATE-real-logo-2-1024x642.png"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2FREAL-ESTATE-real-logo-2-1024x642.png?alt=media&token=c3f29aea-f715-426d-8903-1eb4dc35d483"
             alt="Company Logo"
             className="w-36 md:w-48"
             width={300}
@@ -141,12 +141,12 @@ const Footer = () => {
 
           <div className="flex justify-center md:justify-start mt-6 space-x-8">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/08/resized_image_3-1024x264.png"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2Fresized_image_3-1024x264.png?alt=media&token=df6eaa40-e2e8-4c82-9d26-2a1cdc8334b2"
               alt="Realtor Logo"
               className="h-10"
             />
             <img
-              src="https://erepros.com/wp-content/uploads/2024/08/equal-housing-opportunity-logo-black-1024x978.png"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLogo%2Fequal-housing-opportunity-logo-black-1024x978.png?alt=media&token=36d2dcdb-a1ae-48ed-8ce1-49ff7cc4665c"
               alt="Equal Housing Logo"
               className="h-10"
             />

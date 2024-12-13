@@ -93,7 +93,7 @@ const Overview = () => {
                 PROPERTY MANAGEMENT
               </h2>
               <img
-                src="https://erepros.com/wp-content/uploads/2024/07/pexels-thirdman-8469939-scaled.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-thirdman-8469939-scaled.jpg?alt=media&token=cbe1a0b9-43b8-446c-a21b-bbdf65087ac1"
                 alt="Property Management"
                 className="rounded-lg shadow-lg w-full h-auto"
               />
@@ -148,7 +148,7 @@ const Overview = () => {
             {/* Image Section */}
             <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:mr-8 lg:order-1 mt-12 lg:mt-0">
               <img
-                src="https://erepros.com/wp-content/uploads/2024/07/pexels-orlovamaria-4913437-scaled.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-orlovamaria-4913437-scaled.jpg?alt=media&token=7ba90c47-93e2-4f6b-9b7f-1159fa4939c1"
                 alt="Maintenance Support"
                 className="rounded-lg shadow-lg w-full h-auto"
               />

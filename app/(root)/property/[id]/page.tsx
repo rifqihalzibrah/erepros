@@ -357,7 +357,7 @@ const PropertyDetails = () => {
             <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-center items-start">
               <div className="flex items-center space-x-4 mb-4">
                 <img
-                  src="https://erepros.com/wp-content/uploads/2024/07/IMG_8514-1024x1024.jpg"
+                  src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FPerson%2FIMG_8514-1024x1024.jpg?alt=media&token=73450beb-6b90-4483-8ae9-1c6f7574509a"
                   alt="Agent"
                   className="w-14 h-14 rounded-full"
                 />

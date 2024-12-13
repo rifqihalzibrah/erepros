@@ -19,7 +19,7 @@ const TenantBenefitPackage = () => {
               Tenant Benefit Package
             </h2>
             <IconWithTitle
-              iconSrc="https://erepros.com/wp-content/uploads/2024/08/Monthly-and-Annual-Accounting-Statement-Preparation-1-1024x936.png"
+              iconSrc="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FMonthly-and-Annual-Accounting-Statement-Preparation-1-1024x936.png?alt=media&token=13831cb2-8fdf-4ce6-a15b-15d7b92cce4e"
               title="Online Tenant Portal"
             />
             <ul className="list-disc list-inside text-gray-600 mb-8">
@@ -31,7 +31,7 @@ const TenantBenefitPackage = () => {
             </ul>
 
             <IconWithTitle
-              iconSrc="https://erepros.com/wp-content/uploads/2024/08/Maintenance-and-Repairs-1-1024x982.png"
+              iconSrc="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FMaintenance-and-Repairs-1-1024x982.png?alt=media&token=0c128140-9210-43cc-99a5-bef423ed4cf8"
               title="24/7 Emergency Maintenance"
             />
             <p className="mb-8">
@@ -40,7 +40,7 @@ const TenantBenefitPackage = () => {
             </p>
 
             <IconWithTitle
-              iconSrc="https://erepros.com/wp-content/uploads/2024/08/Monthly-and-Annual-Accounting-Statement-Preparation-1-1-1024x936.png"
+              iconSrc="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FMonthly-and-Annual-Accounting-Statement-Preparation-1-1-1024x936.png?alt=media&token=0dafb807-0bcd-421b-aaa5-91861da14f86"
               title="Credit Reporting"
             />
             <p>
@@ -52,7 +52,7 @@ const TenantBenefitPackage = () => {
           {/* Right Side: Image */}
           <div className="w-full md:w-1/2 flex justify-center">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/07/pexels-cottonbro-4568697-1-1024x683.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-cottonbro-4568697-1-1024x683.jpg?alt=media&token=3d090e30-ef4e-4b3b-aec8-3ca730fee2be"
               alt="Family moving out"
               className="w-full h-auto object-cover rounded-lg"
             />
@@ -68,7 +68,7 @@ const TenantBenefitPackage = () => {
           {/* Left Side: Image */}
           <div className="w-full md:w-1/2 flex justify-center">
             <img
-              src="https://erepros.com/wp-content/uploads/2024/07/pexels-cottonbro-4569340-1-1024x683.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-cottonbro-4569340-1-1024x683.jpg?alt=media&token=f97a0d81-cda7-4c02-9146-adb72b273409"
               alt="Family key turn-in"
               className="w-full h-auto object-cover rounded-lg"
             />

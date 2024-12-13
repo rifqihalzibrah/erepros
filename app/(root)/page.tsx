@@ -31,15 +31,15 @@ const itemVariants = {
 
 const images = [
   {
-    url: "https://erepros.com/wp-content/uploads/2024/08/pexels-jonathanborba-5570226-scaled.jpg",
+    url: "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-jonathanborba-5570226-scaled.jpg?alt=media&token=691c14a8-afdc-462a-9f8b-3d8cf931692f",
     text: "LET US HELP YOU FIND YOUR DREAM HOME.",
   },
   {
-    url: "https://erepros.com/wp-content/uploads/2024/08/pexels-curtis-adams-1694007-5178034-scaled.jpg",
+    url: "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-curtis-adams-1694007-5178034-scaled.jpg?alt=media&token=9decff42-d8b0-43ec-9e99-b4f2213d593f",
     text: "LET US HELP YOU FIND YOUR DREAM HOME.",
   },
   {
-    url: "https://erepros.com/wp-content/uploads/2024/08/446814346_1224622515588256_5530116749449355341_n.jpg",
+    url: "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2F446814346_1224622515588256_5530116749449355341_n.jpg?alt=media&token=19fcb75a-5d11-4625-a3d0-75fd80b16f83",
     text: "LET US HELP YOU FIND YOUR DREAM HOME.",
   },
 ];
@@ -114,7 +114,8 @@ export default function HomePage() {
       name: "",
       cx: 436.8, // Adjust coordinates based on the map
       cy: 452,
-      image: "https://erepros.com/wp-content/uploads/2024/08/Saginaw.jpg",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FSaginaw.jpg?alt=media&token=bd6e69c3-6382-465d-a23a-97d13efd41bf",
       description:
         "Saginaw is a vibrant city with scenic views and rich history.",
     },
@@ -123,7 +124,7 @@ export default function HomePage() {
       cx: 304, // Adjust coordinates based on the map
       cy: 650,
       image:
-        "https://erepros.com/wp-content/uploads/2024/08/Shiawassee-County.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FShiawassee-County.jpg?alt=media&token=505249f7-a8b7-4795-b171-be9846a5af96",
       description:
         "Shiawassee is a vibrant city with scenic views and rich history.",
     },
@@ -132,7 +133,7 @@ export default function HomePage() {
       cx: 353, // Adjust coordinates based on the map
       cy: 747.5,
       image:
-        "https://erepros.com/wp-content/uploads/2024/08/Ingham-County-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FIngham-County-scaled.jpg?alt=media&token=95d1fedf-3cc2-4ccc-a9b9-3045f7f57556",
       description:
         "Ingham is a vibrant city with scenic views and rich history.",
     },
@@ -141,7 +142,7 @@ export default function HomePage() {
       cx: 355, // Adjust coordinates based on the map
       cy: 800,
       image:
-        "https://erepros.com/wp-content/uploads/2024/07/Ann-Arbor-MI-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FAnn-Arbor-MI-scaled.jpg?alt=media&token=a7d88477-dedd-40e4-8d1f-8eb5ed871da8",
       description:
         "Washtenaw is a vibrant city with scenic views and rich history.",
     },
@@ -150,7 +151,7 @@ export default function HomePage() {
       cx: 915,
       cy: 791.5,
       image:
-        "https://erepros.com/wp-content/uploads/2024/07/Wayne-County-1-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FWayne-County-1-scaled.jpg?alt=media&token=0c127b09-6284-4c44-b492-50c524f2d195",
       description:
         "Wayne County boasts bustling urban life and cultural landmarks.",
     },
@@ -159,7 +160,7 @@ export default function HomePage() {
       cx: 927,
       cy: 650,
       image:
-        "https://erepros.com/wp-content/uploads/2024/07/Oakland-County-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FOakland-County-scaled.jpg?alt=media&token=8379093b-ab22-4cab-b0be-808476fdaa47",
       description:
         "Oakland County boasts bustling urban life and cultural landmarks.",
     },
@@ -168,7 +169,7 @@ export default function HomePage() {
       cx: 823,
       cy: 505,
       image:
-        "https://erepros.com/wp-content/uploads/2024/08/Genesee-County-scaled.jpg",
+        "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FGenesee-County-scaled.jpg?alt=media&token=f27b6023-7c45-4b5d-87ab-12b4496dfb10",
       description:
         "Genesee County boasts bustling urban life and cultural landmarks.",
     },
@@ -321,7 +322,7 @@ export default function HomePage() {
           >
             <div className="absolute top-0 left-0 z-10 w-[70%] translate-y-[-20%] translate-x-[10%] md:translate-x-[40%] rounded-lg shadow-lg">
               <Image
-                src="https://erepros.com/wp-content/uploads/2024/07/pexels-rdne-8293773-1024x683.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-rdne-8293773-1024x683.jpg?alt=media&token=dfbbb393-eddf-4329-8c08-3d1b39956145"
                 alt="House"
                 width={1024}
                 height={683}
@@ -330,7 +331,7 @@ export default function HomePage() {
             </div>
             <div className="absolute bottom-0 right-0 z-0 w-[70%] translate-y-[20%] translate-x-[-70%] md:translate-x-[-40%] rounded-lg shadow-lg">
               <Image
-                src="https://erepros.com/wp-content/uploads/2024/07/pexels-heyho-5997996-1024x683.jpg"
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-heyho-5997996-1024x683.jpg?alt=media&token=760fd473-3823-4340-8ea0-621f78f402ea"
                 alt="Couple taking a selfie"
                 width={1024}
                 height={683}
@@ -356,7 +357,7 @@ export default function HomePage() {
             >
               <div className="flex-shrink-0">
                 <img
-                  src="https://erepros.com/wp-content/uploads/2024/07/Icon5.png"
+                  src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon5.png?alt=media&token=83d5764e-c8d2-43d1-8c8b-9eb389a43679"
                   alt="Property Management"
                   className="h-12 w-12"
                 />
@@ -381,7 +382,7 @@ export default function HomePage() {
             >
               <div className="flex-shrink-0">
                 <img
-                  src="https://erepros.com/wp-content/uploads/2024/07/Icon60.png"
+                  src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon60.png?alt=media&token=69da163a-11da-4d0d-87b8-30c893cdbfc0"
                   alt="HOA"
                   className="h-12 w-12"
                 />
@@ -404,7 +405,7 @@ export default function HomePage() {
             >
               <div className="flex-shrink-0">
                 <img
-                  src="https://erepros.com/wp-content/uploads/2024/07/Icon3.png"
+                  src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon3.png?alt=media&token=76d14556-47ed-4dec-8e48-a5e3b115b841"
                   alt="Real Estate"
                   className="h-12 w-12"
                 />
@@ -487,7 +488,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-fixed bg-center bg-cover"
           style={{
-            backgroundImage: `url('https://erepros.com/wp-content/uploads/2024/08/pexels-jonathanborba-5570222-1-scaled.jpg')`,
+            backgroundImage: `url('https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-jonathanborba-5570222-1-scaled.jpg?alt=media&token=a457d134-905f-4ce4-a1ff-1442706fa4b1')`,
           }}
         ></div>
       </section>
@@ -511,7 +512,7 @@ export default function HomePage() {
           <div className="relative md:w-1/2">
             {/* Map Image */}
             <img
-              src="https://erepros.com/wp-content/uploads/2024/08/MAP-Newest-2-cropped-1024x920.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FLocations%2FMAP-Newest-2-cropped-1024x920.jpg?alt=media&token=20e03d6a-62d7-4059-a9b9-5c55183e4bd3"
               alt="Map of Michigan"
               className="rounded-lg"
             />

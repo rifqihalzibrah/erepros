@@ -157,9 +157,9 @@ const FreeHomeEvaluation = () => {
         className="relative bg-cover bg-center h-screen flex items-center justify-center"
         style={{
           backgroundImage:
-            "url('https://erepros.com/wp-content/uploads/2024/11/4.jpg')",
+            "url('https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2F4.jpg?alt=media&token=9097aad8-5e24-4140-a725-430c75e3e481')",
           backgroundColor: "rgba(0, 0, 0, 0.5)", // black with 50% opacity
-          backgroundBlendMode: "darken"
+          backgroundBlendMode: "darken",
         }}
       >
         <div className="text-center text-white p-4">
@@ -347,7 +347,7 @@ const FreeHomeEvaluation = () => {
         </div>
         <div className="mt-8 md:mt-0 md:w-1/2 flex justify-center">
           <img
-            src="https://erepros.com/wp-content/uploads/2024/10/pexels-andreaedavis-12474787-650x650.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-andreaedavis-12474787-650x650.jpg?alt=media&token=06df9f81-9661-4c41-8f0d-e232d7e6b071"
             alt="Property Interior"
             className="rounded-lg shadow-lg max-w-full h-auto"
           />

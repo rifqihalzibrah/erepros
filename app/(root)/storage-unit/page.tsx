@@ -185,7 +185,7 @@ const StorageUnitPage = () => {
         {/* Image Section */}
         <div className="lg:w-1/2 flex justify-center">
           <Image
-            src="https://erepros.com/wp-content/uploads/2024/08/10x20-1024x1024.png"
+            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2F10x20-1024x1024.png?alt=media&token=ce01f77e-7406-4cb6-b29e-c1094bd4ee26"
             alt="Storage Unit Illustration"
             width={600}
             height={600}

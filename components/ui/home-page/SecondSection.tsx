@@ -50,7 +50,7 @@ const SecondSection = () => {
         >
           <div className="relative left-[-12%] w-3/4 lg:w-2/3">
             <Image
-              src="https://erepros.com/wp-content/uploads/2024/07/pexels-heyho-5997996-1024x683.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-heyho-5997996-1024x683.jpg?alt=media&token=760fd473-3823-4340-8ea0-621f78f402ea"
               alt="Property"
               width={1024}
               height={683}
@@ -59,7 +59,7 @@ const SecondSection = () => {
           </div>
           <div className="absolute bottom-[-40%] right-[-2%] w-3/4 lg:w-2/3">
             <Image
-              src="https://erepros.com/wp-content/uploads/2024/07/pexels-rdne-8293773-1024x683.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-rdne-8293773-1024x683.jpg?alt=media&token=dfbbb393-eddf-4329-8c08-3d1b39956145"
               alt="Happy Family"
               width={1024}
               height={683}
@@ -80,7 +80,7 @@ const SecondSection = () => {
             style={{ transitionDelay: "700ms" }}
           >
             <Image
-              src="https://erepros.com/wp-content/uploads/2024/07/Icon5.png"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon5.png?alt=media&token=83d5764e-c8d2-43d1-8c8b-9eb389a43679"
               alt="Property Management Icon"
               width={40}
               height={40}
@@ -109,7 +109,7 @@ const SecondSection = () => {
             style={{ transitionDelay: "900ms" }}
           >
             <Image
-              src="https://erepros.com/wp-content/uploads/2024/07/Icon60.png"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon60.png?alt=media&token=69da163a-11da-4d0d-87b8-30c893cdbfc0"
               alt="HOA Icon"
               width={40}
               height={40}
@@ -135,7 +135,7 @@ const SecondSection = () => {
             style={{ transitionDelay: "1100ms" }}
           >
             <Image
-              src="https://erepros.com/wp-content/uploads/2024/07/Icon3.png"
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon3.png?alt=media&token=76d14556-47ed-4dec-8e48-a5e3b115b841"
               alt="Real Estate Icon"
               width={40}
               height={40}
