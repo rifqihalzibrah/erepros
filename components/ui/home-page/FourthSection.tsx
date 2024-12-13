@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const FourthSection = () => {
   const [scrollPos, setScrollPos] = useState(0);
