@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -39,6 +38,7 @@ import { cn } from "@/lib/utils"; // Classname utility function
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -177,69 +177,93 @@ const HOAManagement = () => {
       {/* Side-by-Side Header and Content with Image */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Text Section */}
-        <div className="text-justify">
-          <h1 className="text-4xl text-gold font-marcellus uppercase mb-4">
-            HOA Management
-          </h1>
-          <p className="text-lg text-gray-700 mb-6">
-            Elite Real Estate Professionals is dedicated to providing resources
-            that promote a better understanding of townhome, condominium, and
-            single-family homeowner associations throughout Michigan.
-          </p>
-          <h2 className="text-xl font-semibold text-gold mb-4">
-            Why Is There A Need For Professional Association Management?
-          </h2>
-          <p className="text-gray-700 mb-6">
-            However, the effective management of these amenities and services
-            requires dedicated oversight. While HOA board members shoulder many
-            responsibilities, the demands of community management can often
-            exceed their available time and expertise.
-          </p>
-          <p className="text-gray-700 mb-6">
-            Living within an HOA community offers numerous benefits. Residents
-            gain access to shared amenities such as pools, clubhouses, and
-            fitness centers, alongside convenient services like common area
-            maintenance, trash removal, and landscaping.
-          </p>
-        </div>
+        <section
+          ref={section1Ref}
+          className={`py-6 transition-all duration-1000 transform ${isSection1Visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-12"
+            }`}
+        >
+          <div className="text-justify">
+            <h1 className="text-4xl text-gold font-marcellus uppercase mb-4">
+              HOA Management
+            </h1>
+            <p className="text-lg text-gray-700 mb-6">
+              Elite Real Estate Professionals is dedicated to providing resources
+              that promote a better understanding of townhome, condominium, and
+              single-family homeowner associations throughout Michigan.
+            </p>
+            <h2 className="text-xl font-semibold text-gold mb-4">
+              Why Is There A Need For Professional Association Management?
+            </h2>
+            <p className="text-gray-700 mb-6">
+              However, the effective management of these amenities and services
+              requires dedicated oversight. While HOA board members shoulder many
+              responsibilities, the demands of community management can often
+              exceed their available time and expertise.
+            </p>
+            <p className="text-gray-700 mb-6">
+              Living within an HOA community offers numerous benefits. Residents
+              gain access to shared amenities such as pools, clubhouses, and
+              fitness centers, alongside convenient services like common area
+              maintenance, trash removal, and landscaping.
+            </p>
+          </div>
+        </section>
 
         {/* Image Section */}
-        <div>
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-thelazyartist-1642125-scaled.jpg?alt=media&token=c8b8c80c-8de5-48c6-b39f-e028fd84c31f" // Replace with the actual image path
-            alt="HOA Community"
-            className="rounded-lg shadow-lg object-cover h-[600px] w-full"
-          />
-        </div>
+        <section
+          ref={section2Ref}
+          className={`py-6 transition-all duration-1000 transform ${isSection2Visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-12"
+            }`}
+        >
+          <div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-thelazyartist-1642125-scaled.jpg?alt=media&token=c8b8c80c-8de5-48c6-b39f-e028fd84c31f" // Replace with the actual image path
+              alt="HOA Community"
+              className="rounded-lg shadow-lg object-cover h-[600px] w-full"
+            />
+          </div>
+        </section>
       </div>
 
       {/* Services Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <h2 className="text-2xl text-gold mb-6 text-left font-marcellus uppercase">
-          Elite Real Estate Professionals Can Provide a Range of Essential
-          Services:
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-justify">
-          <ul className="list-disc pl-6 space-y-2 text-gray-700">
-            <li>Resolving disputes between owners</li>
-            <li>Facilitating communication with residents</li>
-            <li>
-              Collecting dues and assessments, even pursuing unpaid balances
-            </li>
-            <li>Crafting and managing the association&apos;s budget</li>
-            <li>Ensuring the upkeep of common areas</li>
-          </ul>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700">
-            <li>Cultivating and managing vendor relationships</li>
-            <li>Addressing homeowner concerns promptly</li>
-            <li>Coordinating service requests and repairs</li>
-            <li>
-              These services streamline operations and foster a harmonious
-              living environment for residents.
-            </li>
-          </ul>
+      <section
+        ref={section3Ref}
+        className={`py-6 transition-all duration-1000 transform ${isSection3Visible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-12"
+          }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+          <h2 className="text-2xl text-gold mb-6 text-left font-marcellus uppercase">
+            Elite Real Estate Professionals Can Provide a Range of Essential
+            Services:
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-justify">
+            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Resolving disputes between owners</li>
+              <li>Facilitating communication with residents</li>
+              <li>
+                Collecting dues and assessments, even pursuing unpaid balances
+              </li>
+              <li>Crafting and managing the association&apos;s budget</li>
+              <li>Ensuring the upkeep of common areas</li>
+            </ul>
+            <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Cultivating and managing vendor relationships</li>
+              <li>Addressing homeowner concerns promptly</li>
+              <li>Coordinating service requests and repairs</li>
+              <li>
+                These services streamline operations and foster a harmonious
+                living environment for residents.
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Call-to-Action Section */}
       <div className="justify-center flex p-4">

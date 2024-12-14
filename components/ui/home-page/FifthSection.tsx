@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import { useRef, useState } from "react";
 
 interface Location {
   name: string;
@@ -108,7 +108,7 @@ export default function MapSection() {
 
       setPopupDirection(isOnRightSide ? "left" : "right");
 
-      let x = isOnRightSide
+      const x = isOnRightSide
         ? circleRect.left - containerRect.left - popupWidth - 10
         : circleRect.left - containerRect.left + circleRect.width / 2 + 10;
 
@@ -172,9 +172,8 @@ export default function MapSection() {
           {/* Popup */}
           {activeLocation && (
             <div
-              className={`absolute z-50 bg-white rounded-lg shadow-lg p-2 cursor-pointer hover:shadow-md transition-shadow ${
-                popupDirection === "left" ? "text-right" : ""
-              }`}
+              className={`absolute z-50 bg-white rounded-lg shadow-lg p-2 cursor-pointer hover:shadow-md transition-shadow ${popupDirection === "left" ? "text-right" : ""
+                }`}
               style={{
                 left: `${popupPosition.x}px`,
                 top: `${popupPosition.y}px`,
