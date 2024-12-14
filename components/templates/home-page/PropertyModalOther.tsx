@@ -29,8 +29,8 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
           <strong>City:</strong> {property.city}
         </p>
         <p>
-          <strong>Details:</strong> This modal is specifically for "Other" type
-          properties.
+          <strong>Details:</strong> This modal is specifically for
+          &quot;Other&quot; type properties.
         </p>
         <button
           onClick={onClose}

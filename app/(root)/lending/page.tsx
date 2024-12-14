@@ -25,10 +25,10 @@ export default function HomePage() {
         </h2>
         <p className="text-lg leading-relaxed mb-6 text-justify">
           At Elite Real Estate & Professional Management, we understand that
-          finding the perfect home is just the beginning. That’s why we’ve
-          partnered with USA Mortgage to bring you low mortgage rates,
-          affordable down payment options, and expert guidance to help you
-          finance the home you’ve always dreamed of.
+          finding the perfect home is just the beginning. That&apos;s why
+          we&apos;ve partnered with USA Mortgage to bring you low mortgage
+          rates, affordable down payment options, and expert guidance to help
+          you finance the home you&apos;ve always dreamed of.
         </p>
         <div className="text-left mx-auto max-w-2xl">
           <h3 className="text-xl font-semibold mb-3">
@@ -48,15 +48,16 @@ export default function HomePage() {
       {/* Section3 */}
       <section className="bg-gold text-white py-16 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-marcellus mb-6">
-          We’re Here to Help You Achieve Your Dream Home
+          We&apos;re Here to Help You Achieve Your Dream Home
         </h2>
         <p className="text-lg text-justify leading-relaxed max-w-4xl mx-auto">
-          At Elite Real Estate & Professional Management, we’ve partnered with
-          USA Mortgage to simplify your home financing journey. With USA
-          Mortgage Loan Originator, Loran Trigger, you’ll receive personalized
-          attention, timely updates, and customized home financing options
-          tailored to fit your unique needs. Take the first step today—contact
-          Loran Trigger to get pre-qualified and explore your options.
+          At Elite Real Estate & Professional Management, we&apos;ve partnered
+          with USA Mortgage to simplify your home financing journey. With USA
+          Mortgage Loan Originator, Loran Trigger, you&apos;ll receive
+          personalized attention, timely updates, and customized home financing
+          options tailored to fit your unique needs. Take the first step
+          today—contact Loran Trigger to get pre-qualified and explore your
+          options.
         </p>
       </section>
 
@@ -123,12 +124,12 @@ export default function HomePage() {
       <section className="text-center py-12 px-6">
         {/* Description Text */}
         <p className="text-gray-800 text-lg leading-relaxed max-w-3xl mx-auto mb-8 text-justify">
-          Before you start searching for your dream home, it's crucial to know
-          how much home you can afford. By getting pre-qualified for a mortgage,
-          you'll gain a clear understanding of your home buying budget and be
-          better prepared to make competitive offers. Pre-qualification helps
-          you set realistic expectations, so you can confidently dream big while
-          staying within your financial limits.
+          Before you start searching for your dream home, it&apos;s crucial to
+          know how much home you can afford. By getting pre-qualified for a
+          mortgage, you&apos;ll gain a clear understanding of your home buying
+          budget and be better prepared to make competitive offers.
+          Pre-qualification helps you set realistic expectations, so you can
+          confidently dream big while staying within your financial limits.
         </p>
 
         {/* Button */}
