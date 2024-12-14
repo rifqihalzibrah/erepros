@@ -14,7 +14,7 @@ const RealEstatePage = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40" />
         {/* Text Content */}
         <div className="relative flex items-center justify-center h-full text-center">
-          <h1 className="text-white font-marcellus text-5xl tracking-wider">
+          <h1 className="text-white font-marcellus text-7xl tracking-wider">
             REAL ESTATE
           </h1>
         </div>
@@ -160,44 +160,51 @@ const RealEstatePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Card 1 */}
           <div className="relative group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-pixabay-210617-2-scaled.jpg?alt=media&token=021bf41e-1edb-4789-a336-48635286f382"
-              alt="Find My Dream Home"
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-lg font-semibold uppercase">
-                Find My <br /> Dream Home
-              </h3>
-            </div>
+            <a href="https://michiganhomesandcottages.com/find-my-dream-home/">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-pixabay-210617-2-scaled.jpg?alt=media&token=021bf41e-1edb-4789-a336-48635286f382"
+                alt="Find My Dream Home"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
+                <h3 className="text-white text-lg font-semibold uppercase">
+                  Find My <br /> Dream Home
+                </h3>
+              </div>
+            </a>
           </div>
 
           {/* Card 2 */}
           <div className="relative group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-fotoaibe-1571460-2-scaled.jpg?alt=media&token=db3e50b6-1caf-4019-8f9f-aef7852d2365"
-              alt="What's My Home Worth?"
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-lg font-semibold uppercase">
-                What&apos;s My <br /> Home Worth?
-              </h3>
-            </div>
+            <a href="https://michiganhomesandcottages.com/what-is-my-home-worth/">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-fotoaibe-1571460-2-scaled.jpg?alt=media&token=db3e50b6-1caf-4019-8f9f-aef7852d2365"
+                alt="What's My Home Worth?"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
+                <h3 className="text-white text-lg font-semibold uppercase">
+                  What&apos;s My <br /> Home Worth?
+                </h3>
+              </div>
+            </a>
           </div>
 
           {/* Card 3 */}
           <div className="relative group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-ketut-subiyanto-4246097-1-2-scaled.jpg?alt=media&token=934ebd5c-ab49-4272-9d15-73b9d09aecef"
-              alt="Help Me Relocate"
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
-              <h3 className="text-white text-lg font-semibold uppercase">
-                Help Me <br /> Relocate
-              </h3>
-            </div>
+            <a href="https://michiganhomesandcottages.com/help-me-relocate/">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-ketut-subiyanto-4246097-1-2-scaled.jpg?alt=media&token=934ebd5c-ab49-4272-9d15-73b9d09aecef"
+                alt="Help Me Relocate"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center transition-opacity duration-300 group-hover:bg-opacity-70">
+                <h3 className="text-white text-lg font-semibold uppercase">
+                  Help Me <br /> Relocate
+                </h3>
+              </div>
+            </a>
           </div>
         </div>
       </div>

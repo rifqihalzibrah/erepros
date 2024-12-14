@@ -78,7 +78,7 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
 
           {/* Property Details */}
           <div className="flex justify-between">
-            <div className="w-2/3">
+            <div className="w">
               <h2 className="text-3xl font-marcellus text-gray-900">
                 {property.address}
               </h2>
@@ -112,29 +112,10 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
 
               <div className="mt-4">
                 <h3 className="text-xl font-semibold">Description</h3>
-                <p className="text-gray-700 mt-2">{property.description}</p>
+                <p className="text-gray-700 mt-2 text-justify">
+                  {property.description}
+                </p>
               </div>
-            </div>
-
-            {/* Agent Information */}
-            <div className="w-1/3 bg-gray-100 p-4 rounded-lg">
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://via.placeholder.com/50"
-                  alt="Agent"
-                  className="rounded-full h-12 w-12 mr-4"
-                />
-                <div>
-                  <h4 className="font-semibold text-gray-900">
-                    Remax Grand Haven
-                  </h4>
-                  <p className="text-gray-600 text-sm">Sandi Gentry</p>
-                </div>
-              </div>
-
-              <button className="w-full px-4 py-2 bg-black text-white rounded-md hover:bg-opacity-80">
-                Contact Agent
-              </button>
             </div>
           </div>
 

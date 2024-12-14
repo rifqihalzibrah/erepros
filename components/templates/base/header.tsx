@@ -2,51 +2,62 @@
 import { Menu, MenuItem } from "../../ui/navbar"; // Adjust the import path accordingly
 
 export default function Header() {
-  const topMenuItems = [
-    {
-      label: "Tenant",
-      subItems: [
-        {
-          href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
-          label: "Tenant Portal Login",
-        },
-        { href: "/available-rentals", label: "Apply Now" },
-        { href: "/move-in-move-out", label: "Move In Move Out" },
-        { href: "/tenant-faq", label: "Tenant FAQ" },
-        { href: "/tenant-service-request", label: "Tenant Service Request" },
-        {
-          href: "/tenant/tenant-benefit-package",
-          label: "Tenant Benefit Package",
-        },
-      ],
-    },
-    {
-      label: "Owner",
-      subItems: [
-        {
-          href: "https://app.propertyware.com/pw/index.html#/login/owner/eliteprofessionalmanagement",
-          label: "Owner Portal",
-        },
-        { href: "/owner-faq", label: "Owner FAQ" },
-      ],
-    },
-    {
-      label: "HOA",
-      subItems: [
-        {
-          href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
-          label: "Resident Portal Login HOA",
-        },
-        { href: "/hoa-resident-faq", label: "HOA Resident FAQ" },
-        { href: "/hoa-homeowner-faq", label: "HOA Homeowner FAQ" },
-      ],
-    },
-    // Add more top menu items if needed
-  ];
+  // const topMenuItems = [
+  //   {
+  //     label: "Tenant",
+  //     subItems: [
+  //       {
+  //         href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
+  //         label: "Tenant Portal Login",
+  //       },
+  //       { href: "/available-rentals", label: "Apply Now" },
+  //       { href: "/move-in-move-out", label: "Move In Move Out" },
+  //       { href: "/tenant-faq", label: "Tenant FAQ" },
+  //       { href: "/tenant-service-request", label: "Tenant Service Request" },
+  //       {
+  //         href: "/tenant/tenant-benefit-package",
+  //         label: "Tenant Benefit Package",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     label: "Owner",
+  //     subItems: [
+  //       {
+  //         href: "https://app.propertyware.com/pw/index.html#/login/owner/eliteprofessionalmanagement",
+  //         label: "Owner Portal",
+  //       },
+  //       { href: "/owner-faq", label: "Owner FAQ" },
+  //     ],
+  //   },
+  //   {
+  //     label: "HOA",
+  //     subItems: [
+  //       {
+  //         href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
+  //         label: "Resident Portal Login HOA",
+  //       },
+  //       { href: "/hoa-resident-faq", label: "HOA Resident FAQ" },
+  //       { href: "/hoa-homeowner-faq", label: "HOA Homeowner FAQ" },
+  //     ],
+  //   },
+  //   // Add more top menu items if needed
+  // ];
 
   return (
-    <Menu topMenuItems={topMenuItems}>
-      <MenuItem href="/" label="Home Listings" />
+    // <Menu topMenuItems={topMenuItems}>
+    <Menu>
+      <MenuItem
+        href="/"
+        label="Real Estate"
+        subItems={[
+          { href: "/available-rentals", label: "Overview" },
+          { href: "/home-listing", label: "Home Listings" },
+          { href: "/lending", label: "Lending" },
+          { href: "/free-home-evaluation", label: "Free Home Evaluation" },
+          { href: "/mortgage-calculator", label: "Free Mortgage Calculator" },
+        ]}
+      />
       <MenuItem
         label="Available Rentals"
         subItems={[
@@ -76,13 +87,63 @@ export default function Header() {
         ]}
       />
       <MenuItem
-        label="Resources"
+        label="community portal"
         subItems={[
-          { href: "/mortgage-calculator", label: "Mortgage Calculator" },
-          { href: "/free-home-evaluation", label: "Free Home Evaluation" },
+          {
+            label: "Tenant",
+            nestedSubItems: [
+              {
+                href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
+                label: "Tenant Portal Login",
+              },
+              { href: "/available-rentals", label: "Apply Now" },
+              { href: "/move-in-move-out", label: "Move In Move Out" },
+              { href: "/tenant-faq", label: "Tenant FAQ" },
+              {
+                href: "/tenant-service-request",
+                label: "Tenant Service Request",
+              },
+              {
+                href: "/tenant/tenant-benefit-package",
+                label: "Tenant Benefit Package",
+              },
+            ],
+          },
+          {
+            label: "Owner",
+            nestedSubItems: [
+              {
+                href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
+                label: "Tenant Portal Login",
+              },
+              { href: "/available-rentals", label: "Apply Now" },
+              { href: "/move-in-move-out", label: "Move In Move Out" },
+              { href: "/tenant-faq", label: "Tenant FAQ" },
+              {
+                href: "/tenant-service-request",
+                label: "Tenant Service Request",
+              },
+              {
+                href: "/tenant/tenant-benefit-package",
+                label: "Tenant Benefit Package",
+              },
+            ],
+          },
+
+          {
+            label: "HOA",
+            nestedSubItems: [
+              {
+                href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
+                label: "Resident Portal Login HOA",
+              },
+              { href: "/hoa-resident-faq", label: "HOA Resident FAQ" },
+              { href: "/hoa-homeowner-faq", label: "HOA Homeowner FAQ" },
+            ],
+          },
         ]}
       />
-      <MenuItem href="/contact-us" label="Contact Us" />
+      {/* <MenuItem href="/contact-us" label="Contact Us" /> */}
     </Menu>
   );
 }
