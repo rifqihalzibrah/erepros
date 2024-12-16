@@ -145,65 +145,65 @@ const Pricing = () => {
         </h1>
 
         {/* Table Header */}
-        <div className="grid grid-cols-4 bg-[#9A7648] text-white font-semibold">
+        <div className="grid grid-cols-4 bg-[#bfaf9e] text-white font-semibold">
           <div></div>
-          <div className="p-4 border-l border-[#9A7648]">Standard Fee</div>
-          <div className="p-4 border-l border-[#9A7648]">Flat Fee</div>
-          <div className="p-4 border-l border-[#9A7648]">Placement Only</div>
+          <div className="p-4 border-l border-[#bfaf9e]">Standard Fee</div>
+          <div className="p-4 border-l border-[#bfaf9e]">Flat Fee</div>
+          <div className="p-4 border-l border-[#bfaf9e]">Placement Only</div>
         </div>
 
         {/* Table Rows */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Monthly Management Fee
           </div>
-          <div className="p-4 bg-white border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-[#bfaf9e]">
             10% Management Fee
           </div>
-          <div className="p-4 bg-white border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-[#bfaf9e]">
             $100 Management Fee
           </div>
-          <div className="p-4 bg-white border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-r border-[#bfaf9e]">
             N/A
           </div>
         </div>
 
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Tenant Placement Fee
           </div>
-          <div className="p-4 bg-white border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-[#bfaf9e]">
             50% of 1st Month&apos;s Rent
           </div>
-          <div className="p-4 bg-white border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-[#bfaf9e]">
             75% of 1st Month&apos;s Rent
           </div>
-          <div className="p-4 bg-white border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-r border-[#bfaf9e]">
             100% of 1st Month&apos;s Rent
           </div>
         </div>
 
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Lease Renewal Fee
           </div>
-          <div className="p-4 bg-white border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-[#bfaf9e]">
             FREE
           </div>
-          <div className="p-4 bg-white border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-[#bfaf9e]">
             FREE
           </div>
-          <div className="p-4 bg-white border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white border-l border-t border-r border-[#bfaf9e]">
             N/A
           </div>
         </div>
 
         {/* Row with Checkmarks */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Rent Assessment
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -215,7 +215,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -224,11 +224,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -240,7 +240,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -249,11 +249,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -265,7 +265,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -274,17 +274,17 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
         </div>
         {/* Row for "Rent Assessment" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Rent Assessment
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -296,7 +296,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -305,11 +305,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -321,7 +321,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -330,11 +330,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -346,7 +346,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -355,7 +355,7 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -363,10 +363,10 @@ const Pricing = () => {
 
         {/* Row for "Marketing the Property" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Marketing the Property
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -378,7 +378,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -387,11 +387,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -403,7 +403,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -412,11 +412,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -428,7 +428,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -437,7 +437,7 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -445,10 +445,10 @@ const Pricing = () => {
 
         {/* Row for "Finding Tenants" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Finding Tenants
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -460,7 +460,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -469,11 +469,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -485,7 +485,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -494,11 +494,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -510,7 +510,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -519,7 +519,7 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -527,10 +527,10 @@ const Pricing = () => {
 
         {/* Row for "Tenant Screening" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Tenant Screening
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -542,7 +542,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -551,11 +551,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -567,7 +567,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -576,11 +576,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -592,7 +592,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -601,7 +601,7 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -609,10 +609,10 @@ const Pricing = () => {
 
         {/* Row for "Pet Screening" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Pet Screening
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -624,7 +624,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -633,11 +633,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -649,7 +649,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -658,11 +658,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -674,7 +674,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -683,7 +683,7 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -691,10 +691,10 @@ const Pricing = () => {
 
         {/* Row for "Full Legal Compliance" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Full Legal Compliance
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -706,7 +706,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -715,11 +715,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -731,7 +731,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -740,11 +740,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -756,7 +756,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -765,17 +765,17 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
         </div>
         {/* Row for "Property Maintenance" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Property Maintenance
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -787,7 +787,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -796,11 +796,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -812,7 +812,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -821,24 +821,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -846,10 +846,10 @@ const Pricing = () => {
 
         {/* Row for "Rent Payment and Collections" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Rent Payment and Collections
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -861,7 +861,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -870,11 +870,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -886,7 +886,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -895,24 +895,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -920,10 +920,10 @@ const Pricing = () => {
 
         {/* Row for "Eviction Process Handling" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Eviction Process Handling
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -935,7 +935,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -944,11 +944,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -960,7 +960,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -969,24 +969,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -994,10 +994,10 @@ const Pricing = () => {
 
         {/* Row for "Property Accounting and Reporting" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Property Accounting and Reporting
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1009,7 +1009,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1018,11 +1018,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1034,7 +1034,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1043,34 +1043,34 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
         </div>
         {/* Row for "Owner and Tenant Portals" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Owner and Tenant Portals
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1082,7 +1082,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1091,11 +1091,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1107,7 +1107,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1116,24 +1116,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1141,10 +1141,10 @@ const Pricing = () => {
 
         {/* Row for "Filter Replacement Program" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Filter Replacement Program
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1156,7 +1156,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1165,11 +1165,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1181,7 +1181,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1190,24 +1190,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1215,10 +1215,10 @@ const Pricing = () => {
 
         {/* Row for "Pet Guarantee" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Pet Guarantee
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1230,7 +1230,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1239,11 +1239,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1255,7 +1255,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1264,24 +1264,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1289,10 +1289,10 @@ const Pricing = () => {
 
         {/* Row for "Maintenance Guarantee" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Maintenance Guarantee
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1304,7 +1304,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1313,11 +1313,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1329,7 +1329,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1338,24 +1338,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1363,10 +1363,10 @@ const Pricing = () => {
 
         {/* Row for "Leasing Guarantee" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Leasing Guarantee
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1378,7 +1378,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1387,11 +1387,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1403,7 +1403,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1412,34 +1412,34 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
         </div>
         {/* Row for "Property Inspections" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Property Inspections
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1451,7 +1451,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1460,11 +1460,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1476,7 +1476,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1485,24 +1485,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1510,10 +1510,10 @@ const Pricing = () => {
 
         {/* Row for "Lease Renewal Included" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Lease Renewal Included
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1525,7 +1525,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1534,11 +1534,11 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1550,7 +1550,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1559,24 +1559,24 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1584,10 +1584,10 @@ const Pricing = () => {
 
         {/* Row for "Bill Pay - Utilities" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-[#bfaf9e]">
             Bill Pay - Utilities
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1599,7 +1599,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1608,41 +1608,41 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -1650,10 +1650,10 @@ const Pricing = () => {
 
         {/* Row for "Bill Pay - Taxes" */}
         <div className="grid grid-cols-4 text-gray-700">
-          <div className="p-4 bg-gray-100 border-l border-t border-b border-[#9A7648]">
+          <div className="p-4 bg-gray-100 border-l border-t border-b border-[#bfaf9e]">
             Bill Pay - Taxes
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -1665,7 +1665,7 @@ const Pricing = () => {
                 cx="12"
                 cy="12"
                 r="10"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
                 strokeWidth="2"
                 fill="none"
               />
@@ -1674,41 +1674,41 @@ const Pricing = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M9 12l2 2 4-4"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
-          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-r border-[#9A7648]">
+          <div className="p-4 bg-white flex justify-center items-center border-l border-t border-b border-r border-[#bfaf9e]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 text-[#9A7648]"
+              className="h-6 w-6 text-[#bfaf9e]"
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M6 18L18 6M6 6l12 12"
-                stroke="#9A7648"
+                stroke="#bfaf9e"
               />
             </svg>
           </div>
@@ -2085,7 +2085,7 @@ const Pricing = () => {
                 <div className="flex justify-center">
                   <Button
                     type="submit"
-                    className="px-6 py-2 bg-[#9A7648] text-white hover:bg-[#7b5c36]"
+                    className="px-6 py-2 bg-[#bfaf9e] text-white hover:bg-[#7b5c36]"
                   >
                     Submit Request
                   </Button>

@@ -59,7 +59,7 @@ const MoveInMoveOutSection = () => {
           isSection1Visible ? "opacity-100 fade-up-1s" : "opacity-0"
         }`}
       >
-        <h1 className="text-4xl md:text-5xl font-serif text-[#9A7648]">
+        <h1 className="text-4xl md:text-5xl font-serif text-[#bfaf9e]">
           MOVING IN OR OUT
         </h1>
       </section>
@@ -82,21 +82,21 @@ const MoveInMoveOutSection = () => {
 
         {/* Right Side: Centered Text */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left md:pl-10 px-4">
-          <h2 className="text-4xl font-serif text-[#9A7648] mb-6">MOVING IN</h2>
+          <h2 className="text-4xl font-serif text-[#bfaf9e] mb-6">MOVING IN</h2>
           <p className="text-gray-600 mb-6 text-justify">
             Rental Property Inspection New renters of an apartment, house, or
             condo must complete and submit a{" "}
-            <a href="#" className="text-[#9A7648] underline">
+            <a href="#" className="text-[#bfaf9e] underline">
               Rental Property Inspection form
             </a>
             . This form can be filled out online, printed, and faxed or mailed.
           </p>
-          <h3 className="text-xl font-serif text-[#9A7648] mb-4">
+          <h3 className="text-xl font-serif text-[#bfaf9e] mb-4">
             TENANT UPDATE RESPONSIBILITY
           </h3>
           <p className="text-gray-600 text-justify">
             Tenants must{" "}
-            <a href="#" className="text-[#9A7648] underline">
+            <a href="#" className="text-[#bfaf9e] underline">
               notify
             </a>{" "}
             Elite Real Estate & Professional Management of any changes,
@@ -117,29 +117,29 @@ const MoveInMoveOutSection = () => {
       >
         {/* Left Side: Text Content */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left px-4 md:pr-10">
-          <h2 className="text-4xl font-serif text-[#9A7648] mb-6">
+          <h2 className="text-4xl font-serif text-[#bfaf9e] mb-6">
             MOVING OUT
           </h2>
           <p className="text-gray-600 mb-6">
             <strong>WE NEED A 30 DAY WRITTEN NOTICE FOR A MOVE OUT.</strong>
           </p>
-          <h3 className="text-xl font-serif text-[#9A7648] mb-4">
+          <h3 className="text-xl font-serif text-[#bfaf9e] mb-4">
             SECURITY DEPOSIT INFORMATION
           </h3>
           <p className="text-gray-600 mb-6 text-justify">
             Your security deposit statement will be mailed within 14 days of{" "}
-            <a href="#" className="text-[#9A7648] underline">
+            <a href="#" className="text-[#bfaf9e] underline">
               returning your keys
             </a>{" "}
             to the corporate office. Checks will not be mailed without a
             forwarding address. We need a forwarding address before/after move
             out. Please review our{" "}
-            <a href="#" className="text-[#9A7648] underline">
+            <a href="#" className="text-[#bfaf9e] underline">
               Security Deposit Instructions
             </a>{" "}
             form for details.
           </p>
-          <h3 className="text-xl font-serif text-[#9A7648] mb-4">
+          <h3 className="text-xl font-serif text-[#bfaf9e] mb-4">
             CLEANING CHECKLIST
           </h3>
           <p className="text-gray-600 text-justify">
@@ -178,13 +178,13 @@ const MoveInMoveOutSection = () => {
 
         {/* Right Side: Text Content */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left md:pl-10 px-4">
-          <h3 className="text-xl font-serif text-[#9A7648] mb-4">
+          <h3 className="text-xl font-serif text-[#bfaf9e] mb-4">
             KEY TURN-IN FORM
           </h3>
           <p className="text-gray-600 mb-6 text-justify">
             After cleaning your unit and removing all your belongings, submit
             your keys along with the{" "}
-            <a href="#" className="text-[#9A7648] underline">
+            <a href="#" className="text-[#bfaf9e] underline">
               Key Turn-In form
             </a>
             . You can turn in your keys in person at the office or use the drop
@@ -197,27 +197,27 @@ const MoveInMoveOutSection = () => {
           </p>
           <ul className="list-disc list-inside text-gray-600">
             <li>
-              <a href="#" className="text-[#9A7648] underline">
+              <a href="#" className="text-[#bfaf9e] underline">
                 Security Deposit Instructions
               </a>
             </li>
             <li>
-              <a href="#" className="text-[#9A7648] underline">
+              <a href="#" className="text-[#bfaf9e] underline">
                 Inspection of Rental
               </a>
             </li>
             <li>
-              <a href="#" className="text-[#9A7648] underline">
+              <a href="#" className="text-[#bfaf9e] underline">
                 Key Turn In Directions
               </a>
             </li>
             <li>
-              <a href="#" className="text-[#9A7648] underline">
+              <a href="#" className="text-[#bfaf9e] underline">
                 Cleaning Checklist
               </a>
             </li>
             <li>
-              <a href="#" className="text-[#9A7648] underline">
+              <a href="#" className="text-[#bfaf9e] underline">
                 30 Day Notice to Vacate
               </a>
             </li>

@@ -179,28 +179,30 @@ const HOAManagement = () => {
         {/* Text Section */}
         <section
           ref={section1Ref}
-          className={`py-6 transition-all duration-1000 transform ${isSection1Visible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-12"
-            }`}
+          className={`py-6 transition-all duration-1000 transform ${
+            isSection1Visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
         >
           <div className="text-justify">
             <h1 className="text-4xl text-gold font-marcellus uppercase mb-4">
               HOA Management
             </h1>
             <p className="text-lg text-gray-700 mb-6">
-              Elite Real Estate Professionals is dedicated to providing resources
-              that promote a better understanding of townhome, condominium, and
-              single-family homeowner associations throughout Michigan.
+              Elite Real Estate Professionals is dedicated to providing
+              resources that promote a better understanding of townhome,
+              condominium, and single-family homeowner associations throughout
+              Michigan.
             </p>
             <h2 className="text-xl font-semibold text-gold mb-4">
               Why Is There A Need For Professional Association Management?
             </h2>
             <p className="text-gray-700 mb-6">
               However, the effective management of these amenities and services
-              requires dedicated oversight. While HOA board members shoulder many
-              responsibilities, the demands of community management can often
-              exceed their available time and expertise.
+              requires dedicated oversight. While HOA board members shoulder
+              many responsibilities, the demands of community management can
+              often exceed their available time and expertise.
             </p>
             <p className="text-gray-700 mb-6">
               Living within an HOA community offers numerous benefits. Residents
@@ -214,10 +216,11 @@ const HOAManagement = () => {
         {/* Image Section */}
         <section
           ref={section2Ref}
-          className={`py-6 transition-all duration-1000 transform ${isSection2Visible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-12"
-            }`}
+          className={`py-6 transition-all duration-1000 transform ${
+            isSection2Visible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
         >
           <div>
             <img
@@ -232,10 +235,11 @@ const HOAManagement = () => {
       {/* Services Section */}
       <section
         ref={section3Ref}
-        className={`py-6 transition-all duration-1000 transform ${isSection3Visible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-12"
-          }`}
+        className={`py-6 transition-all duration-1000 transform ${
+          isSection3Visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-12"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
           <h2 className="text-2xl text-gold mb-6 text-left font-marcellus uppercase">
@@ -617,7 +621,7 @@ const HOAManagement = () => {
                 <div className="flex justify-center">
                   <Button
                     type="submit"
-                    className="px-6 py-2 bg-[#9A7648] text-white hover:bg-[#7b5c36]"
+                    className="px-6 py-2 bg-[#bfaf9e] text-white hover:bg-[#7b5c36]"
                   >
                     Submit Request
                   </Button>

@@ -14,9 +14,7 @@ const RealEstatePage = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40" />
         {/* Text Content */}
         <div className="relative flex items-center justify-center h-full text-center">
-          <h1 className="text-white font-marcellus text-7xl tracking-wider">
-            REAL ESTATE
-          </h1>
+          <h1 className="text-white text-7xl tracking-wider">REAL ESTATE</h1>
         </div>
       </div>
 
@@ -33,7 +31,7 @@ const RealEstatePage = () => {
 
         {/* Text Section */}
         <div className="flex-grow">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-marcellus text-center md:text-left text-[#9A7648] mb-4">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-center md:text-left text-[#bfaf9e] mb-4">
             Your Trusted Real Estate Partner
           </h2>
           <p className="text-gray-700 text-justify leading-relaxed">
@@ -52,8 +50,8 @@ const RealEstatePage = () => {
       </div>
 
       {/* Buyers Section */}
-      <div className="bg-[#9A7648] py-6 px-6 md:px-12 lg:px-24">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-marcellus text-white">
+      <div className="bg-[#bfaf9e] py-6 px-6 md:px-12 lg:px-24">
+        <h2 className="text-xl md:text-2xl lg:text-3xl text-white">
           For Buyers: Find Your Dream Home
         </h2>
       </div>
@@ -65,7 +63,7 @@ const RealEstatePage = () => {
           perfect property that matches your needs, lifestyle, and budget.
         </p>
 
-        <h3 className="text-lg font-semibold text-[#9A7648] mb-4">
+        <h3 className="text-lg font-semibold text-[#bfaf9e] mb-4">
           Why Buy with Us?
         </h3>
         <ul className="list-disc list-inside text-gray-700 space-y-2">
@@ -94,11 +92,11 @@ const RealEstatePage = () => {
         <p className="text-gray-700 mt-6">
           <span className="font-semibold">Ready to Start Your Search?</span>{" "}
           Check out our{" "}
-          <a href="#" className="text-[#9A7648] underline hover:text-[#7A5A34]">
+          <a href="#" className="text-[#bfaf9e] underline hover:text-[#7A5A34]">
             current listings
           </a>{" "}
           or{" "}
-          <a href="#" className="text-[#9A7648] underline hover:text-[#7A5A34]">
+          <a href="#" className="text-[#bfaf9e] underline hover:text-[#7A5A34]">
             contact us
           </a>{" "}
           for a personalized consultation with one of our real estate experts.
@@ -106,8 +104,8 @@ const RealEstatePage = () => {
       </div>
 
       {/* Buyers Section */}
-      <div className="bg-[#9A7648] py-6 px-6 md:px-12 lg:px-24">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-marcellus text-white">
+      <div className="bg-[#bfaf9e] py-6 px-6 md:px-12 lg:px-24">
+        <h2 className="text-xl md:text-2xl lg:text-3xl text-white">
           For Sellers: Sell Your Property with Confidence
         </h2>
       </div>
@@ -120,7 +118,7 @@ const RealEstatePage = () => {
           quickly.
         </p>
 
-        <h3 className="text-lg font-semibold text-[#9A7648] mb-4">
+        <h3 className="text-lg font-semibold text-[#bfaf9e] mb-4">
           Why Sell with Us?
         </h3>
         <ul className="list-disc list-inside text-gray-700 space-y-2">

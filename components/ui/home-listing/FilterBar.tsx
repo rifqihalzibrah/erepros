@@ -65,10 +65,10 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
   };
 
   return (
-    <div className="pt-[136px]">
+    <div className="pt-[100px]">
       <div className="flex flex-wrap items-center gap-4 bg-white p-4 shadow-md rounded-lg mb-6">
         {/* Search Input */}
-        <div className="flex-grow">
+        <div className="flex-grow w-full md:flex-1">
           <input
             type="text"
             placeholder="City, neighborhood, ZIP code..."
@@ -81,7 +81,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         </div>
 
         {/* For Rent / For Sale Dropdown */}
-        <div className="relative">
+        <div className="relative hidden md:block  ">
           <button
             className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={() => toggleDropdown(setIsDropdownOpen)}
@@ -103,7 +103,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         </div>
 
         {/* Any Price Dropdown */}
-        <div className="relative z-50">
+        <div className="relative z-50 hidden md:block">
           <button
             className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={() => toggleDropdown(setIsPriceDropdownOpen)}
@@ -148,7 +148,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         </div>
 
         {/* Property Type Dropdown */}
-        <div className="relative z-50">
+        <div className="relative z-50 hidden md:block">
           <button
             className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={() => toggleDropdown(setIsPropertyTypeDropdownOpen)}
@@ -178,7 +178,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         </div>
 
         {/* Beds Dropdown */}
-        <div className="relative z-50">
+        <div className="relative z-50 hidden md:block">
           <button
             className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={() => toggleDropdown(setIsBedsDropdownOpen)}
@@ -205,7 +205,7 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
         </div>
 
         {/* Baths Dropdown */}
-        <div className="relative z-50">
+        <div className="relative z-50 hidden md:block">
           <button
             className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
             onClick={() => toggleDropdown(setIsBathsDropdownOpen)}
@@ -233,18 +233,20 @@ const FilterBar: React.FC<FilterBarProps> = ({ filters, setFilters }) => {
           )}
         </div>
 
-        {/* All Filters Button */}
-        <button
-          className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
-          onClick={() => setIsFilterBarModalOpen(true)}
-        >
-          All Filters
-        </button>
+        <div className="grid grid-cols-2 gap-4 w-full md:w-auto md:flex md:items-center md:gap-2">
+          {/* All Filters Button */}
+          <button
+            className="w-full md:w-auto px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"
+            onClick={() => setIsFilterBarModalOpen(true)}
+          >
+            All Filters
+          </button>
 
-        {/* Save Search Button */}
-        <button className="px-4 py-2 bg-gold text-white rounded-lg">
-          Save Search
-        </button>
+          {/* Save Search Button */}
+          <button className="w-full md:w-auto px-4 py-2 bg-gold text-white rounded-lg">
+            Save Search
+          </button>
+        </div>
 
         {/* FilterBarModal */}
         {isFilterBarModalOpen && (

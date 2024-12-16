@@ -1,9 +1,9 @@
 export default function HomePage() {
   return (
-    <main className="pt-[136px]">
+    <main className="">
       {/* Hero Section */}
       <div
-        className="relative h-[500px] flex items-center justify-center"
+        className="relative h-screen flex items-center justify-center"
         style={{
           backgroundImage:
             "url('https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Flending1.jpg?alt=media&token=01b6a1cc-29c3-4563-976a-9ce6cf5329bc')",
@@ -11,30 +11,33 @@ export default function HomePage() {
           backgroundPosition: "center",
         }}
       >
-        <h1 className="text-white text-5xl md:text-7xl font-marcellus z-10">
-          LENDING
-        </h1>
+        <h1 className="text-white text-5xl md:text-7xl z-10">LENDING</h1>
         {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
 
       {/* Section 2 */}
-      <section className="max-w-4xl mx-auto py-16 px-6 text-center text-gray-800">
-        <h2 className="text-3xl md:text-4xl font-marcellus text-[#9A7648] mb-6">
+      <section className="max-w-3xl mx-auto py-16 px-6 text-gray-800">
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl text-gold text-center mb-6 leading-snug">
           Affordable Home Financing <br /> with Exceptional Service
         </h2>
-        <p className="text-lg leading-relaxed mb-6 text-justify">
+
+        {/* Description Paragraph */}
+        <p className="text-base md:text-lg leading-relaxed text-justify mb-6">
           At Elite Real Estate & Professional Management, we understand that
           finding the perfect home is just the beginning. That&apos;s why
           we&apos;ve partnered with USA Mortgage to bring you low mortgage
           rates, affordable down payment options, and expert guidance to help
           you finance the home you&apos;ve always dreamed of.
         </p>
-        <div className="text-left mx-auto max-w-2xl">
-          <h3 className="text-xl font-semibold mb-3">
+
+        {/* Why Choose Section */}
+        <div className="text-left">
+          <h3 className="text-lg md:text-xl font-semibold mb-3 text-[#383838]">
             Why Choose Elite Real Estate & USA Mortgage?
           </h3>
-          <ul className="list-disc list-inside space-y-2">
+          <ul className="list-disc list-inside space-y-2 text-base md:text-lg text-gray-700">
             <li>Competitive mortgage rates to save you money.</li>
             <li>Flexible down payment options tailored to your budget.</li>
             <li>
@@ -45,20 +48,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section3 */}
-      <section className="bg-gold text-white py-16 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-marcellus mb-6">
-          We&apos;re Here to Help You Achieve Your Dream Home
-        </h2>
-        <p className="text-lg text-justify leading-relaxed max-w-4xl mx-auto">
-          At Elite Real Estate & Professional Management, we&apos;ve partnered
-          with USA Mortgage to simplify your home financing journey. With USA
-          Mortgage Loan Originator, Loran Trigger, you&apos;ll receive
-          personalized attention, timely updates, and customized home financing
-          options tailored to fit your unique needs. Take the first step
-          today—contact Loran Trigger to get pre-qualified and explore your
-          options.
-        </p>
+      {/* Section 3 */}
+      <section className=" bg-gold text-white py-16 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl mb-6 leading-snug">
+            We&apos;re Here to Help You Achieve Your Dream Home
+          </h2>
+          <p className="text-base md:text-lg text-justify leading-relaxed">
+            At Elite Real Estate & Professional Management, we&apos;ve partnered
+            with USA Mortgage to simplify your home financing journey. With USA
+            Mortgage Loan Originator, Loran Trigger, you&apos;ll receive
+            personalized attention, timely updates, and customized home
+            financing options tailored to fit your unique needs. Take the first
+            step today—contact Loran Trigger to get pre-qualified and explore
+            your options.
+          </p>
+        </div>
       </section>
 
       {/* Section 4 */}
@@ -76,12 +81,8 @@ export default function HomePage() {
         <div className="flex flex-col md:flex-row items-center justify-center h-full md:space-x-12 max-w-6xl mx-auto">
           {/* Left Content */}
           <div className="flex flex-col md:text-left mb-6 md:mb-0">
-            <h2 className="text-4xl font-marcellus text-gray-900 mb-4">
-              Preferred Lenders
-            </h2>
-            <h3 className="text-3xl font-marcellus text-gray-700 mb-4">
-              Loran Trigger
-            </h3>
+            <h2 className="text-4xl text-gray-900 mb-4">Preferred Lenders</h2>
+            <h3 className="text-3xl text-gray-700 mb-4">Loran Trigger</h3>
             <p className="text-gray-800 leading-relaxed">
               Mortgage Loan Originator <br />
               <span className="font-semibold">USA Mortgage</span> <br />
@@ -115,7 +116,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Text */}
-        <h2 className="text-white text-3xl md:text-5xl font-marcellus z-10 text-center px-4">
+        <h2 className="text-white text-3xl md:text-5xl z-10 text-center px-4">
           Why Get Prequalified for a Mortgage?
         </h2>
       </section>

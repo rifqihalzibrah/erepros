@@ -32,12 +32,12 @@ const SecondSection = () => {
     <section ref={sectionRef} className="py-12 px-6 lg:py-16 lg:px-12 bg-white">
       {/* Title */}
       <h2
-        className={`text-center text-3xl lg:text-5xl font-marcellus text-[#9A7648] mb-12 transition-all duration-1000 ease-out transform ${
+        className={`text-center text-3xl lg:text-5xl font-newsreader text-[#bfaf9e] mb-12 transition-all duration-1000 ease-out transform ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
         style={{ transitionDelay: "200ms" }}
       >
-        WHAT WE OFFER
+        Our Specialty
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -79,16 +79,16 @@ const SecondSection = () => {
             }`}
             style={{ transitionDelay: "700ms" }}
           >
-            <Image
+            {/* <Image
               src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon5.png?alt=media&token=83d5764e-c8d2-43d1-8c8b-9eb389a43679"
               alt="Property Management Icon"
               width={40}
               height={40}
               className="w-12 h-12"
-            />
+            /> */}
             <div>
-              <h3 className="text-xl font-semibold text-[#9A7648]">
-                PROPERTY MANAGEMENT
+              <h3 className="text-xl font-normal text-gold">
+                Property Management
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 From comprehensive tenant management to seamless online account
@@ -108,15 +108,15 @@ const SecondSection = () => {
             }`}
             style={{ transitionDelay: "900ms" }}
           >
-            <Image
+            {/* <Image
               src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon60.png?alt=media&token=69da163a-11da-4d0d-87b8-30c893cdbfc0"
               alt="HOA Icon"
               width={40}
               height={40}
               className="w-12 h-12"
-            />
+            /> */}
             <div>
-              <h3 className="text-xl font-semibold text-[#9A7648]">HOA</h3>
+              <h3 className="text-xl font-normal  text-gold">HOA</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 From administrative tasks to maintenance coordination, financial
                 management, and community engagement, we ensure smooth
@@ -134,17 +134,15 @@ const SecondSection = () => {
             }`}
             style={{ transitionDelay: "1100ms" }}
           >
-            <Image
+            {/* <Image
               src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FIcons%2FIcon3.png?alt=media&token=76d14556-47ed-4dec-8e48-a5e3b115b841"
               alt="Real Estate Icon"
               width={40}
               height={40}
               className="w-12 h-12"
-            />
+            /> */}
             <div>
-              <h3 className="text-xl font-semibold text-[#9A7648]">
-                REAL ESTATE
-              </h3>
+              <h3 className="text-xl font-normal text-gold">Real Estate</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
                 Elevate your real estate ventures with our premier services.
                 Whether you’re buying, selling, or investing, our expert team

@@ -32,7 +32,9 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
                 property.property_type.toLowerCase() ===
                 filterType.toLowerCase()
             )
-          : data;
+          : data.filter(
+              (property: Property) => property.property_type !== "Other"
+            ); // Exclude "Other"
 
         setProperties(filtered);
         setLoading(false);
@@ -84,6 +86,15 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
     setSelectedProperty(null);
   };
 
+  // Pre-filter properties
+  const otherProperties = properties.filter(
+    (property) => property.property_type === "Other"
+  );
+
+  const defaultProperties = properties.filter(
+    (property) => property.property_type !== "Other"
+  );
+
   return (
     <div className="relative px-8" style={{ overflow: "hidden" }}>
       {loading ? (
@@ -110,7 +121,41 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
                 }%)`,
               }}
             >
-              {properties.map((property: Property) => (
+              {/* Render "Other" property cards */}
+              {/* <div className="flex"> */}
+              {otherProperties.map((property: Property) => (
+                <div
+                  key={property.id}
+                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-2"
+                  onClick={() => openModal(property)}
+                >
+                  <div className="border rounded-lg p-4 hover:shadow-lg cursor-pointer">
+                    <img
+                      src={
+                        property.images[0]?.original_image_url ||
+                        "/placeholder-image.svg"
+                      }
+                      alt={property.address}
+                      className="w-full h-64 object-cover rounded-md mb-4"
+                    />
+                    <h2 className="text-lg font-bold">{property.address}</h2>
+                    <p className="text-gray-600">
+                      {property.city}, {property.state} {property.zip}
+                    </p>
+                    <p className="text-lg font-bold text-gray-900">
+                      ${property.target_rent}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {property.total_area} Sq Ft • {property.posting_title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              {/* </div> */}
+
+              {/* Render Default Property Cards */}
+              {/* <div className="flex"> */}
+              {defaultProperties.map((property: Property) => (
                 <div
                   key={property.id}
                   className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-2"
@@ -139,6 +184,7 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
                   </div>
                 </div>
               ))}
+              {/* </div> */}
             </div>
           </div>
           {/* Navigation */}

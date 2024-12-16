@@ -51,7 +51,7 @@ export default function Header() {
         href="/"
         label="Real Estate"
         subItems={[
-          { href: "/available-rentals", label: "Overview" },
+          { href: "/real-estate", label: "Overview" },
           { href: "/home-listing", label: "Home Listings" },
           { href: "/lending", label: "Lending" },
           { href: "/free-home-evaluation", label: "Free Home Evaluation" },

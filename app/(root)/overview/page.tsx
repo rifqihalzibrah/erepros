@@ -95,7 +95,7 @@ const Overview = () => {
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-thirdman-8469939-scaled.jpg?alt=media&token=cbe1a0b9-43b8-446c-a21b-bbdf65087ac1"
                 alt="Property Management"
-                className="rounded-lg shadow-lg w-full h-auto"
+                className="rounded-lg shadow-lg w-full h-[80vh]"
               />
             </div>
           </div>
@@ -150,7 +150,7 @@ const Overview = () => {
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2Fpexels-orlovamaria-4913437-scaled.jpg?alt=media&token=7ba90c47-93e2-4f6b-9b7f-1159fa4939c1"
                 alt="Maintenance Support"
-                className="rounded-lg shadow-lg w-full h-auto"
+                className="rounded-lg shadow-lg w-full h-[80vh]"
               />
             </div>
           </div>

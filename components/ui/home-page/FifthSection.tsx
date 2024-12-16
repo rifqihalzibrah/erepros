@@ -137,7 +137,7 @@ export default function MapSection() {
     <section className="relative max-w-7xl mx-auto py-16 px-4 bg-white">
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="md:w-1/2 mb-8 md:mb-0">
-          <h2 className="text-3xl font-marcellus text-black leading-snug">
+          <h2 className="text-3xl  text-black leading-snug">
             Elite Real Estate & Professional Management{" "}
             <span className="text-gold">
               specializes in single-family houses, condos, storage units,
@@ -162,7 +162,7 @@ export default function MapSection() {
                   cx={location.cx}
                   cy={location.cy}
                   r="12"
-                  className="cursor-pointer fill-[#9A7648] hover:fill-[#b89f67] transition-colors duration-300"
+                  className="cursor-pointer fill-[#bfaf9e] hover:fill-[#b89f67] transition-colors duration-300"
                   onClick={(e) => openPopup(location, e)}
                 />
               </g>
@@ -172,8 +172,9 @@ export default function MapSection() {
           {/* Popup */}
           {activeLocation && (
             <div
-              className={`absolute z-50 bg-white rounded-lg shadow-lg p-2 cursor-pointer hover:shadow-md transition-shadow ${popupDirection === "left" ? "text-right" : ""
-                }`}
+              className={`absolute z-50 bg-white rounded-lg shadow-lg p-2 cursor-pointer hover:shadow-md transition-shadow ${
+                popupDirection === "left" ? "text-right" : ""
+              }`}
               style={{
                 left: `${popupPosition.x}px`,
                 top: `${popupPosition.y}px`,

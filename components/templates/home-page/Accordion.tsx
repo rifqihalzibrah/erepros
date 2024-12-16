@@ -10,7 +10,7 @@ const locations = [
       Located in southeastern Michigan, is the most populous county in the state and is home to the city of Detroit.
     `,
     backgroundImage:
-      "http://erepros.com/wp-content/uploads/2024/07/Wayne-County-1-scaled.jpg",
+      "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2FWayne.jpg?alt=media&token=8880edf5-9468-4f85-b7e8-448243237a97",
     link: "/area-we-service-e/#wayne",
   },
   {
@@ -21,7 +21,7 @@ const locations = [
       With picturesque small towns, fertile farmland, and historic sites, the county is a hidden gem.
     `,
     backgroundImage:
-      "http://erepros.com/wp-content/uploads/2024/08/Shiawassee-County.jpg",
+      "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2FShiawassee.jpg?alt=media&token=6f7e71f1-6fe6-4ba7-a1d3-2ecc64f05bb4",
     link: "/area-we-service-e/#shiawassee",
   },
   {
@@ -32,7 +32,7 @@ const locations = [
       It offers a dynamic blend of government, education, and culture, making it a vibrant community.
     `,
     backgroundImage:
-      "http://erepros.com/wp-content/uploads/2024/08/Ingham-County-scaled.jpg",
+      "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2FIngham.jpg?alt=media&token=733aa472-5889-4518-9cf6-40108f243ece",
     link: "/area-we-service-e/#ingham",
   },
   {
@@ -43,7 +43,7 @@ const locations = [
       Explore upscale malls, enjoy outdoor activities, or attend cultural events.
     `,
     backgroundImage:
-      "http://erepros.com/wp-content/uploads/2024/07/Oakland-County-scaled.jpg",
+      "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2FOakland.jpg?alt=media&token=0c03f6a9-52d9-4ca8-981f-ef62dcd1a9e2",
     link: "/area-we-service-e/#oakland",
   },
   {
@@ -54,7 +54,7 @@ const locations = [
       Home to Ann Arbor and the University of Michigan, it is a hub for education and recreation.
     `,
     backgroundImage:
-      "http://erepros.com/wp-content/uploads/2024/07/Ann-Arbor-MI-scaled.jpg",
+      "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2FArbor.jpg?alt=media&token=aa3c2d81-2f7c-4c84-a3a2-82e89416d87c",
     link: "/area-we-service-e/#washtenaw",
   },
   {
@@ -65,7 +65,7 @@ const locations = [
       Discover the natural beauty of Crossroads Village or explore the Flint Institute of Arts.
     `,
     backgroundImage:
-      "http://erepros.com/wp-content/uploads/2024/08/Genesee-County-scaled.jpg",
+      "https://firebasestorage.googleapis.com/v0/b/erepros-35fe1.firebasestorage.app/o/erepros-assets%2FImages%2FGenesee.jpg?alt=media&token=22082c3b-b251-456f-b6f7-62272f589ee4",
     link: "/area-we-service-e/#genesee",
   },
 ];
