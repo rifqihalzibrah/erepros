@@ -21,7 +21,7 @@ const AnimatedText = ({
       {words.map((word, index) => (
         <span
           key={index}
-          className={`inline-block transition-all duration-700 ease-out transform text-xl sm:text-2xl md:text-3xl lg:text-4xl font-marcellus text-center md:text-left ${
+          className={`inline-block transition-all duration-700 ease-out transform text-xl sm:text-2xl md:text-3xl lg:text-4xl font-newsreader text-center md:text-left ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
           style={{ transitionDelay: `${delayBase + index * 100}ms` }}
@@ -78,7 +78,7 @@ const ThirdSection = () => {
           {/* Mobile View */}
           <div className="md:hidden flex flex-col items-center space-y-2">
             <span
-              className={`block text-4xl sm:text-5xl  text-[#9A7648] transition-all duration-700 ease-out transform ${
+              className={`block text-4xl sm:text-5xl  text-[#bfaf9e] transition-all duration-700 ease-out transform ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -98,7 +98,7 @@ const ThirdSection = () => {
           <div className="hidden md:block space-y-2">
             <div className="flex justify-center items-baseline">
               <span
-                className={`text-4xl sm:text-5xl lg:text-4xl  text-[#9A7648] transition-all duration-700 ease-out transform ${
+                className={`text-4xl sm:text-5xl lg:text-4xl italic text-[#bfaf9e] transition-all duration-700 ease-out transform ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
@@ -108,18 +108,11 @@ const ThirdSection = () => {
                 {startCount && <CountUp start={0} end={2000} duration={2} />}+
               </span>
               <AnimatedText
-                text="PROPERTIES ACROSS"
+                text=" PROPERTIES ACROSS MICHIGAN"
                 delayBase={1200}
                 isVisible={isVisible}
               />
             </div>
-            <span className="pt-8">
-              <AnimatedText
-                text="MICHIGAN"
-                delayBase={1600}
-                isVisible={isVisible}
-              />
-            </span>
           </div>
         </div>
       </div>
@@ -133,7 +126,7 @@ const ThirdSection = () => {
         />
         <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-2">
           <span
-            className={`text-4xl sm:text-5xl lg:text-4xl text-[#9A7648] transition-all duration-700 ease-out transform ${
+            className={`text-4xl sm:text-5xl italic lg:text-4xl text-[#bfaf9e] transition-all duration-700 ease-out transform ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
@@ -142,7 +135,7 @@ const ThirdSection = () => {
           >
             {startSecondCount && <CountUp start={0} end={20} duration={2} />}+
           </span>
-          <span>
+          <span className="italic text-gold">
             <AnimatedText
               text="OF EXPERIENCE"
               delayBase={2400}

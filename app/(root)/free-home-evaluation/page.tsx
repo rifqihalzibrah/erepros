@@ -173,7 +173,7 @@ const FreeHomeEvaluation = () => {
             <input
               id="autocomplete"
               type="text"
-              className="w-3/4 md:w-1/2 p-3 rounded-md border focus:outline-none focus:ring-2 text-black focus:ring-[#9A7648]"
+              className="w-3/4 md:w-1/2 p-3 rounded-md border focus:outline-none focus:ring-2 text-black focus:ring-[#bfaf9e]"
               placeholder="Enter your home address..."
             />
             <Dialog>
@@ -330,8 +330,8 @@ const FreeHomeEvaluation = () => {
       {/* Section: What’s Your Property Worth */}
       <div className="flex flex-col md:flex-row items-center justify-between px-8 md:px-16 lg:px-32 py-16 bg-white">
         <div className="md:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-marcellus text-[#9A7648] mb-6">
-            WHAT’S YOUR PROPERTY WORTH?
+          <h2 className="text-3xl md:text-4xl font-marcellus text-[#bfaf9e] mb-6">
+            WHAT&apos;S YOUR PROPERTY WORTH?
           </h2>
           <p className="text-lg text-gray-700 mb-4">
             Understanding your home&apos;s value is crucial for making informed
@@ -358,7 +358,7 @@ const FreeHomeEvaluation = () => {
       <div className="bg-white px-8 md:px-16 lg:px-32 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="border rounded-lg shadow-sm p-6">
-            <h3 className="text-xl font-marcellus text-[#9A7648] mb-4">
+            <h3 className="text-xl font-marcellus text-[#bfaf9e] mb-4">
               Why a Home Valuation Matters?
             </h3>
             <p className="text-gray-700">
@@ -371,7 +371,7 @@ const FreeHomeEvaluation = () => {
             </p>
           </div>
           <div className="border rounded-lg shadow-sm p-6">
-            <h3 className="text-xl font-marcellus text-[#9A7648] mb-4">
+            <h3 className="text-xl font-marcellus text-[#bfaf9e] mb-4">
               How We Determine Your Home’s Value
             </h3>
             <p className="text-gray-700">
@@ -382,7 +382,7 @@ const FreeHomeEvaluation = () => {
             </p>
           </div>
           <div className="border rounded-lg shadow-sm p-6">
-            <h3 className="text-xl font-marcellus text-[#9A7648] mb-4">
+            <h3 className="text-xl font-marcellus text-[#bfaf9e] mb-4">
               Online Valuation vs. Professional Appraisal
             </h3>
             <p className="text-gray-700">
@@ -395,11 +395,11 @@ const FreeHomeEvaluation = () => {
           </div>
         </div>
 
-        <div className="mt-16 text-center bg-[#9A7648] py-12 rounded-md text-white">
+        <div className="mt-16 text-center bg-[#bfaf9e] py-12 rounded-md text-white">
           <h2 className="text-3xl md:text-4xl font-marcellus mb-4">
             BROWSE MARKET LISTINGS
           </h2>
-          <button className="mt-4 px-6 py-3 bg-white text-[#9A7648] font-bold rounded-md hover:bg-gray-200">
+          <button className="mt-4 px-6 py-3 bg-white text-[#bfaf9e] font-bold rounded-md hover:bg-gray-200">
             Learn More
           </button>
         </div>
@@ -407,7 +407,85 @@ const FreeHomeEvaluation = () => {
 
       {/* Vertical Alternating Timeline */}
       <div className="bg-white px-8 md:px-16 lg:px-32 py-16">
-        <h2 className="text-3xl md:text-4xl font-marcellus text-center text-[#9A7648] mb-4">
+        <h2 className="text-3xl md:text-4xl font-marcellus text-center text-[#bfaf9e] mb-4">
+          How Is a Home <br /> Valuation Performed?
+        </h2>
+        <p className="text-lg text-center text-gray-700 mb-12">
+          Two Accurate Ways to Value Your Property
+        </p>
+
+        <div className="relative">
+          {/* Vertical Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#bfaf9e]"></div>
+
+          <div className="space-y-12">
+            {/* Timeline Item 1 */}
+            <div className="relative flex items-center">
+              {/* Dot */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#bfaf9e] rounded-full"></div>
+              {/* Button on Left */}
+              <div className="w-1/2 pr-6 text-center">
+                <button className="bg-[#bfaf9e] text-white px-6 py-3 rounded-md">
+                  Market Analysis
+                </button>
+              </div>
+              {/* Text on Right */}
+              <div className="w-1/2 text-left pl-6">
+                <p className="text-gray-700 text-lg">
+                  Comparative Market Analysis
+                </p>
+                <p>
+                  <br />
+                </p>
+                <p className="text-gray-700 text-lg">
+                  A Comparative Market Analysis (CMA) is a key tool used by real
+                  estate agents to determine your home's value. It involves
+                  comparing your property with recently sold homes in the same
+                  area. Agents analyze three to five similar properties (comps)
+                  that have recently sold and adjust their prices to reflect
+                  differences from your home. This method helps estimate your
+                  home's market value based on recent sales data.
+                </p>
+              </div>
+            </div>
+
+            {/* Timeline Item 2 */}
+            <div className="relative flex items-center">
+              {/* Dot */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#bfaf9e] rounded-full"></div>
+              {/* Text on Left */}
+              <div className="w-1/2 text-right pr-6">
+                <p className="text-gray-700 text-lg">
+                  Based on Professional’s Opinion
+                </p>
+                <p>
+                  <br />
+                </p>
+                <p className="text-gray-700 text-lg">
+                  An appraisal provides an unbiased valuation based on a
+                  professional’s opinion. Typically ordered by lenders for home
+                  purchases or refinances, appraisals involve a thorough
+                  inspection of your home, both interior and exterior. The
+                  appraiser considers recent sales of similar properties and
+                  current market trends. They deliver a detailed report
+                  including a building sketch, street map, photos, and a
+                  breakdown of how the value was determined.
+                </p>
+              </div>
+              {/* Button on Right */}
+              <div className="w-1/2 pl-6 text-center">
+                <button className="bg-[#bfaf9e] text-white px-6 py-3 rounded-md">
+                  Appraisals
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Vertical Alternating Timeline */}
+      <div className="bg-white px-8 md:px-16 lg:px-32 py-16">
+        <h2 className="text-3xl md:text-4xl font-marcellus text-center text-[#bfaf9e] mb-4">
           WHY IS A HOME VALUATION IMPORTANT?
         </h2>
         <p className="text-lg text-center text-gray-700 mb-12">
@@ -416,25 +494,25 @@ const FreeHomeEvaluation = () => {
 
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#9A7648]"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[#bfaf9e]"></div>
 
           <div className="space-y-12">
             {/* Timeline Item 1 */}
             <div className="relative flex items-center">
               {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#bfaf9e] rounded-full"></div>
               {/* Text on Left */}
               <div className="w-1/2 text-right pr-6">
                 <p className="text-gray-700 text-lg">
                   Planning home improvements? A valuation can help you avoid
-                  over-investing in upgrades. By understanding your home’s
+                  over-investing in upgrades. By understanding your home&apos;s
                   current value and market position, you can make informed
                   decisions on improvements that enhance resale value.
                 </p>
               </div>
               {/* Button on Right */}
               <div className="w-1/2 pl-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
+                <button className="bg-[#bfaf9e] text-white px-6 py-3 rounded-md">
                   Refinancing
                 </button>
               </div>
@@ -443,10 +521,10 @@ const FreeHomeEvaluation = () => {
             {/* Timeline Item 2 */}
             <div className="relative flex items-center">
               {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#bfaf9e] rounded-full"></div>
               {/* Button on Left */}
               <div className="w-1/2 pr-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
+                <button className="bg-[#bfaf9e] text-white px-6 py-3 rounded-md">
                   Market Analysis
                 </button>
               </div>
@@ -454,9 +532,9 @@ const FreeHomeEvaluation = () => {
               <div className="w-1/2 text-left pl-6">
                 <p className="text-gray-700 text-lg">
                   When refinancing, lenders base the amount of their loans on
-                  the value of your property. Knowing your home’s worth helps
-                  you understand your equity, which can lead to better refinance
-                  terms.
+                  the value of your property. Knowing your home&apos;s worth
+                  helps you understand your equity, which can lead to better
+                  refinance terms.
                 </p>
               </div>
             </div>
@@ -464,18 +542,19 @@ const FreeHomeEvaluation = () => {
             {/* Timeline Item 3 */}
             <div className="relative flex items-center">
               {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#bfaf9e] rounded-full"></div>
               {/* Text on Left */}
               <div className="w-1/2 text-right pr-6">
                 <p className="text-gray-700 text-lg">
-                  Even if you’re not currently buying, selling, or refinancing,
-                  knowing your home’s value is beneficial. It helps with future
-                  planning, whether for unexpected expenses or potential moves.
+                  Even if you&apos;re not currently buying, selling, or
+                  refinancing, knowing your home&apos;s value is beneficial. It
+                  helps with future planning, whether for unexpected expenses or
+                  potential moves.
                 </p>
               </div>
               {/* Button on Right */}
               <div className="w-1/2 pl-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
+                <button className="bg-[#bfaf9e] text-white px-6 py-3 rounded-md">
                   Qualifying For Credits
                 </button>
               </div>
@@ -484,10 +563,10 @@ const FreeHomeEvaluation = () => {
             {/* Timeline Item 4 */}
             <div className="relative flex items-center">
               {/* Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#9A7648] rounded-full"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-[#bfaf9e] rounded-full"></div>
               {/* Button on Left */}
               <div className="w-1/2 pr-6 text-center">
-                <button className="bg-[#9A7648] text-white px-6 py-3 rounded-md">
+                <button className="bg-[#bfaf9e] text-white px-6 py-3 rounded-md">
                   Planning
                 </button>
               </div>
@@ -496,7 +575,7 @@ const FreeHomeEvaluation = () => {
                 <p className="text-gray-700 text-lg">
                   Considering a HELOC? A home valuation confirms your equity
                   status and supports your credit application, ensuring you meet
-                  the lender’s requirements.
+                  the lender&apos;s requirements.
                 </p>
               </div>
             </div>

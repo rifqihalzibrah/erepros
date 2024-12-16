@@ -15,7 +15,7 @@ const TenantBenefitPackage = () => {
         >
           {/* Left Side: Text Content */}
           <div className="w-full md:w-1/2 flex flex-col justify-center items-start text-left px-4 md:pr-10">
-            <h2 className="text-4xl font-serif text-[#9A7648] mb-16 uppercase">
+            <h2 className="text-4xl font-serif text-[#bfaf9e] mb-16 uppercase">
               Tenant Benefit Package
             </h2>
             <IconWithTitle

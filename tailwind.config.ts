@@ -19,8 +19,12 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["Mulish", "sans-serif"], // Adding Mulish as the default sans font
+        sans: ["garamond", "sans-serif"], // Adding Mulish as the default sans font
         marcellus: ["Marcellus", "serif"], // Adding Marcellus as a custom font
+        newsreader: ["Newsreader", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+        mulish: ["Mulish", "serif"],
+        syncopate: ["Syncopate", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -56,7 +60,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: "#9A7648",
+        gold: "#bfaf9e",
         zeus: "#231F20",
         pampas: "#EFECE9",
       },

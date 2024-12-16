@@ -45,7 +45,7 @@ const HeroSectionHomePage = () => {
   }, []);
 
   return (
-    <div className="relative h-[70vh] md:h-screen w-full overflow-hidden">
+    <div className="relative h-[100vh] md:h-screen w-full overflow-hidden">
       {/* Image Background */}
       <div className="absolute inset-0 h-full w-full">
         {images.map((image, index) => (
@@ -62,18 +62,22 @@ const HeroSectionHomePage = () => {
       {/* Text Overlay */}
       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 px-4">
         <h1
-          className={`text-center text-2xl md:text-5xl font-marcellus font-thin text-white leading-snug transition-all duration-700 ${
+          className={`text-center text-2xl md:text-5xl font-newsreader font-thin text-white leading-snug transition-all duration-700 ${
             isTextAnimating
               ? "opacity-0 translate-y-8"
               : "opacity-100 translate-y-0"
           }`}
         >
           {/* First Line: Different for Mobile and Larger Screens */}
-          <span className="block lg:hidden">LET US HELP YOU FIND</span>
-          <span className="hidden lg:inline">LET US HELP YOU FIND YOUR</span>
+          <span className="block lg:hidden font-normal">
+            Let Us Help You Find
+          </span>
+          <span className="hidden lg:inline font-normal">
+            Let Us Help You Find Your
+          </span>
           {/* Second Line */}
-          <span className="hidden lg:block">DREAM HOME.</span>
-          <span className="block lg:hidden">YOUR DREAM HOME.</span>
+          <span className="hidden lg:block font-normal">Dream Home</span>
+          <span className="block lg:hidden font-normal">Your Dream Home</span>
         </h1>
       </div>
 

@@ -17,6 +17,9 @@ export const filterProperties = (
 ): Property[] => {
   let filtered = properties;
 
+  // Exclude property_type "Other"
+  filtered = filtered.filter((property) => property.property_type !== "Other");
+
   // Search filter
   if (filters.search) {
     filtered = filtered.filter(
@@ -59,7 +62,6 @@ export const filterProperties = (
     filtered = filtered.filter((property) => property.no_bedrooms === beds);
   }
 
-  // Baths filter
   // Baths filter
   if (filters.baths !== "Any") {
     const baths = filters.baths === "5+" ? 5 : parseInt(filters.baths);

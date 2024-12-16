@@ -21,10 +21,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-gray-800">
           {/* Contact Us */}
           <div className="space-y-4">
-            <p className="uppercase text-sm font-semibold text-[#9a7648]">
+            <p className=" text-md font-normal font-newsreader text-gold">
               Contact Us
             </p>
-            <div className="text-sm">
+            <div className="text-sm font-garamond">
               <p>5349 Fenton Rd, Grand Blanc MI 48507</p>
               <p>(810) 715-5486</p>
               <p>
@@ -37,7 +37,7 @@ const Footer = () => {
 
           {/* Office Hours */}
           <div className="space-y-4">
-            <p className="uppercase text-sm font-semibold text-[#9a7648]">
+            <p className="text-md font-normal font-newsreader text-gold">
               Office Hours
             </p>
             <ul className="text-sm space-y-1">
@@ -66,7 +66,7 @@ const Footer = () => {
 
           {/* Owner & Investor Quick Links */}
           <div className="space-y-4">
-            <p className="uppercase text-sm font-semibold text-[#9a7648]">
+            <p className="text-md font-normal font-newsreader text-gold">
               Owner & Investor Quick Links
             </p>
             <ul className="text-sm space-y-1">
@@ -85,7 +85,7 @@ const Footer = () => {
 
           {/* Tenant Quick Links */}
           <div className="space-y-4">
-            <p className="uppercase text-sm font-semibold text-[#9a7648]">
+            <p className="text-md font-normal font-newsreader text-gold">
               Tenant Quick Links
             </p>
             <ul className="text-sm space-y-1">
@@ -110,18 +110,18 @@ const Footer = () => {
 
         {/* Layer 3: Get Social - Left Aligned */}
         <div className="flex items-center space-x-4 mt-8">
-          <p className="uppercase text-sm font-semibold text-[#9a7648]">
+          <p className="uppercase text-sm font-semibold text-[#bfaf9e]">
             Get Social
           </p>
           <a
             href="#"
-            className="flex items-center justify-center w-10 h-10 border-2 border-[#9a7648] rounded-full text-[#9a7648] hover:bg-[#9a7648] hover:text-white transition duration-300 text-xl"
+            className="flex items-center justify-center w-10 h-10 border-2 border-[#bfaf9e] rounded-full text-[#bfaf9e] hover:bg-[#bfaf9e] hover:text-white transition duration-300 text-xl"
           >
             <FaFacebookF />
           </a>
           <a
             href="#"
-            className="flex items-center justify-center w-10 h-10 border-2 border-[#9a7648] rounded-full text-[#9a7648] hover:bg-[#9a7648] hover:text-white transition duration-300 text-xl"
+            className="flex items-center justify-center w-10 h-10 border-2 border-[#bfaf9e] rounded-full text-[#bfaf9e] hover:bg-[#bfaf9e] hover:text-white transition duration-300 text-xl"
           >
             <FaInstagram />
           </a>

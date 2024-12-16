@@ -458,15 +458,20 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
-    // Check if the scroll position is greater than 100px to mark the menu as sticky
-    setIsSticky(currentScrollY > 100);
-
-    if (currentScrollY > lastScrollY) {
-      // If scrolling down, hide the menu
-      setShowMenu(false);
-    } else {
-      // If scrolling up, show the menu
+    if (currentScrollY === 0) {
+      // At the top of the page, always show the navbar
       setShowMenu(true);
+      setIsSticky(false); // Not sticky at the very top
+    } else {
+      // Make the navbar sticky if not at the top
+      setIsSticky(true);
+
+      // Hide the navbar when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY) {
+        setShowMenu(false); // Scrolling down
+      } else {
+        setShowMenu(true); // Scrolling up
+      }
     }
 
     setLastScrollY(currentScrollY);
@@ -538,11 +543,13 @@ export const Menu: React.FC<MenuProps> = ({ children, topMenuItems }) => {
               </div>
             )}
 
-            <div className="absolute right-24 top-[85px] transform -translate-y-1/2 hidden xl:flex items-center justify-center">
-              <button className="bg-white text-gold border-2 border-gold rounded-lg px-8 py-8 font-semibold text-center hover:shadow-lg hover:border-pampas hover:bg-gold hover:text-white transition flex flex-col items-center justify-center h-12 w-auto text-sm">
-                <p>REGISTER</p>
-                <p>INTEREST</p>
-              </button>
+            <div className="absolute right-24 top-[50px] transform -translate-y-1/2 hidden xl:flex items-center justify-center">
+              <Link href="/contact-us" passHref>
+                <button className="bg-white text-gold border-2 border-gold rounded-lg px-8 py-8 font-semibold text-center hover:shadow-lg hover:border-pampas hover:bg-gold hover:text-white transition flex flex-col items-center justify-center h-12 w-auto text-sm">
+                  <p>REGISTER</p>
+                  <p>INTEREST</p>
+                </button>
+              </Link>
             </div>
 
             {/* Mobile Hamburger Button */}

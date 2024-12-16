@@ -1,20 +1,22 @@
-"use client"; // Add this directive at the top for client-side rendering in Next.js 13+
+"use client";
 
 import React, { useState } from "react";
-import { Property } from "../../types/types"; // Import Property type
+import { Property } from "../../../types/types";
 import { FaBed, FaBath, FaRulerCombined, FaBuilding } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import { useRouter } from "next/navigation"; // Ensure we use client-side router navigation
 import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toast styles
 
-interface PropertyModalProps {
+interface PropertyModalOtherProps {
   property: Property | null;
   isOpen: boolean;
   onClose: () => void;
 }
 
-const PropertyModal: React.FC<PropertyModalProps> = ({
+const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
   property,
   isOpen,
   onClose,
@@ -26,6 +28,15 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
+
+  const [showApplyModal, setShowApplyModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const openModal = (index: number) => {
     setActiveImageIndex(index);
@@ -63,6 +74,64 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
     setActiveImageIndex((prevIndex) =>
       prevIndex === 0 ? property.images.length - 1 : prevIndex - 1
     );
+  };
+
+  // Handle input change
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, property }),
+      });
+
+      const result = await response.json(); // Parse response message
+
+      if (response.ok) {
+        toast.success("Application submitted successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        setShowApplyModal(false);
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        toast.error(`Failed to send application: ${result.message}`, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred. Please try again later.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -209,10 +278,10 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div className="flex items-center">
-                  <FaBed className="mr-2" /> {property.no_bedrooms} Beds
+                  {/* <FaBed className="mr-2" /> {property.no_bedrooms} Beds */}
                 </div>
                 <div className="flex items-center">
-                  <FaBath className="mr-2" /> {property.no_bathrooms} Baths
+                  {/* <FaBath className="mr-2" /> {property.no_bathrooms} Baths */}
                 </div>
                 <div className="flex items-center">
                   <FaRulerCombined className="mr-2" /> {property.total_area} Sq
@@ -233,17 +302,27 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
                   {property.description}
                 </p>
               </div>
+
+              <div className="mt-4">
+                <h3 className="text-xl font-semibold">Size</h3>
+                <p className="text-gray-700 mt-2 text-justify">
+                  {property.posting_title}
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Apply Button */}
           <div className="flex justify-center mt-6">
-            <button
-              onClick={() => setShowConfirmation(true)}
-              className="px-6 py-2 bg-black text-white font-semibold rounded-md hover:bg-opacity-80"
-            >
-              Apply Now
-            </button>
+            {/* Apply Now Button */}
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={() => setShowApplyModal(true)}
+                className="px-6 py-2 bg-black text-white font-semibold rounded-md hover:bg-opacity-80"
+              >
+                Apply Online
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -310,8 +389,99 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
           </div>
         </div>
       )}
+
+      {/* Apply Online Modal */}
+      {showApplyModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-60">
+          <div className="bg-white border-2 border-gray-300 rounded-lg p-6 w-full max-w-lg">
+            <button
+              onClick={() => setShowApplyModal(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl"
+            >
+              &times;
+            </button>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Apply Online
+            </h3>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-gray-700 mb-1">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 mb-1">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 mb-1">Phone</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 mb-1">
+                  Storage Unit Size
+                </label>
+                <input
+                  type="text"
+                  value={property.posting_title || "N/A"}
+                  readOnly
+                  className="w-full p-2 border border-gray-300 rounded bg-gray-100 cursor-not-allowed"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-700 mb-1">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  rows={4}
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-black text-white py-2 rounded hover:bg-opacity-80"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit Application"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Toast Notifications */}
+      <ToastContainer />
     </div>
   );
 };
 
-export default PropertyModal;
+export default PropertyModalOther;

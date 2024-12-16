@@ -2,11 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { Property } from "../../../types/types"; // Ensure your Property type is correctly imported
-import {
-  getAccessKey,
-  fetchData,
-} from "../../../services/propertywareAPI"; // Import your API functions
-import PropertyModal from "@/components/ui/PropertyModal"; // Import the modal
+import { getAccessKey, fetchData } from "../../../services/propertywareAPI"; // Import your API functions
+import PropertyModal from "@/components/ui/PropertyModal"; // Default modal
+import PropertyModalOther from "@/components/templates/home-page/PropertyModalOther"; // New modal for 'Other'
 
 interface PropertyCarouselProps {
   filterType?: string; // Optional filter prop to filter properties by type
@@ -30,11 +28,13 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
         // Apply filter if filterType is provided
         const filtered = filterType
           ? data.filter(
-            (property: Property) =>
-              property.property_type.toLowerCase() ===
-              filterType.toLowerCase()
-          )
-          : data;
+              (property: Property) =>
+                property.property_type.toLowerCase() ===
+                filterType.toLowerCase()
+            )
+          : data.filter(
+              (property: Property) => property.property_type !== "Other"
+            ); // Exclude "Other"
 
         setProperties(filtered);
         setLoading(false);
@@ -51,10 +51,8 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
     const updateSlidesToShow = () => {
       const width = window.innerWidth;
       if (width >= 1024) {
-        // lg:
         setSlidesToShow(3);
       } else if (width >= 768) {
-        // md:
         setSlidesToShow(2);
       } else {
         setSlidesToShow(1);
@@ -88,13 +86,18 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
     setSelectedProperty(null);
   };
 
+  // Pre-filter properties
+  const otherProperties = properties.filter(
+    (property) => property.property_type === "Other"
+  );
+
+  const defaultProperties = properties.filter(
+    (property) => property.property_type !== "Other"
+  );
+
   return (
-    <div
-      className="relative px-8"
-      style={{ overflow: "hidden" }} // Ensure content doesn't overflow
-    >
+    <div className="relative px-8" style={{ overflow: "hidden" }}>
       {loading ? (
-        // Skeleton Loader
         <div className="flex gap-4">
           {Array.from({ length: slidesToShow }).map((_, index) => (
             <div
@@ -104,40 +107,37 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
               <div className="h-40 bg-gray-300 rounded-md mb-4"></div>
               <div className="h-6 bg-gray-300 rounded-md mb-2"></div>
               <div className="h-4 bg-gray-300 rounded-md mb-2"></div>
-              <div className="h-4 bg-gray-300 rounded-md mb-2"></div>
-              <div className="h-4 bg-gray-300 rounded-md"></div>
             </div>
           ))}
         </div>
       ) : (
         <div className="relative">
           <div className="flex overflow-hidden">
-            {/* Carousel Wrapper */}
             <div
               className="relative flex w-full transition-transform duration-300"
               style={{
-                transform: `translateX(-${(currentIndex * 100) / slidesToShow
-                  }%)`,
+                transform: `translateX(-${
+                  (currentIndex * 100) / slidesToShow
+                }%)`,
               }}
             >
-              {properties.map((property: Property) => (
+              {/* Render "Other" property cards */}
+              {/* <div className="flex"> */}
+              {otherProperties.map((property: Property) => (
                 <div
                   key={property.id}
                   className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-2"
                   onClick={() => openModal(property)}
                 >
-                  {/* Property Card */}
-                  <div className="border rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                    <div className="overflow-hidden rounded-md mb-4">
-                      <img
-                        src={
-                          property.images[0]?.original_image_url ||
-                          "/placeholder-image.svg"
-                        }
-                        alt={property.address}
-                        className="w-full h-64 object-cover transform transition duration-500 hover:scale-105"
-                      />
-                    </div>
+                  <div className="border rounded-lg p-4 hover:shadow-lg cursor-pointer">
+                    <img
+                      src={
+                        property.images[0]?.original_image_url ||
+                        "/placeholder-image.svg"
+                      }
+                      alt={property.address}
+                      className="w-full h-64 object-cover rounded-md mb-4"
+                    />
                     <h2 className="text-lg font-bold">{property.address}</h2>
                     <p className="text-gray-600">
                       {property.city}, {property.state} {property.zip}
@@ -146,25 +146,58 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
                       ${property.target_rent}
                     </p>
                     <p className="text-sm text-gray-500">
-                      {property.no_bedrooms} Beds • {property.no_bathrooms} Baths •{" "}
-                      {property.total_area} Sq Ft
+                      {property.total_area} Sq Ft • {property.posting_title}
                     </p>
                   </div>
                 </div>
               ))}
+              {/* </div> */}
+
+              {/* Render Default Property Cards */}
+              {/* <div className="flex"> */}
+              {defaultProperties.map((property: Property) => (
+                <div
+                  key={property.id}
+                  className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-2"
+                  onClick={() => openModal(property)}
+                >
+                  <div className="border rounded-lg p-4 hover:shadow-lg cursor-pointer">
+                    <img
+                      src={
+                        property.images[0]?.original_image_url ||
+                        "/placeholder-image.svg"
+                      }
+                      alt={property.address}
+                      className="w-full h-64 object-cover rounded-md mb-4"
+                    />
+                    <h2 className="text-lg font-bold">{property.address}</h2>
+                    <p className="text-gray-600">
+                      {property.city}, {property.state} {property.zip}
+                    </p>
+                    <p className="text-lg font-bold text-gray-900">
+                      ${property.target_rent}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {property.no_bedrooms} Beds • {property.no_bathrooms}{" "}
+                      Baths • {property.total_area} Sq Ft
+                    </p>
+                  </div>
+                </div>
+              ))}
+              {/* </div> */}
             </div>
           </div>
-          {/* Navigation Arrows */}
+          {/* Navigation */}
           {properties.length > slidesToShow && (
             <>
               <button
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 -ml-[32px] bg-gray-200 hover:bg-gray-300 p-2 rounded-full"
+                className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full"
                 onClick={prevSlide}
               >
                 &#8592;
               </button>
               <button
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 -mr-[32px] bg-gray-200 hover:bg-gray-300 p-2 rounded-full"
+                className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-200 p-2 rounded-full"
                 onClick={nextSlide}
               >
                 &#8594;
@@ -174,12 +207,20 @@ const PropertyCarousel: React.FC<PropertyCarouselProps> = ({ filterType }) => {
         </div>
       )}
 
-      {/* Modal */}
-      <PropertyModal
-        property={selectedProperty}
-        isOpen={!!selectedProperty}
-        onClose={closeModal}
-      />
+      {/* Conditional Modal Rendering */}
+      {filterType === "Other" ? (
+        <PropertyModalOther
+          property={selectedProperty}
+          isOpen={!!selectedProperty}
+          onClose={closeModal}
+        />
+      ) : (
+        <PropertyModal
+          property={selectedProperty}
+          isOpen={!!selectedProperty}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };

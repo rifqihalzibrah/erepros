@@ -13,7 +13,7 @@ const TenantServiceRequest = () => {
           imageAlt="Family moving out"
           reverse={false} // Set to true to reverse the layout
         >
-          <h2 className="text-4xl font-serif text-[#9A7648] mb-6 uppercase">
+          <h2 className="text-4xl font-serif text-[#bfaf9e] mb-6 uppercase">
             Tenant Service Request
           </h2>
           <p className="text-gray-600 mb-6">
@@ -49,7 +49,7 @@ const TenantServiceRequest = () => {
           imageAlt="Family key turn-in"
           reverse={true} // Set to true to reverse the layout
         >
-          <h3 className="text-xl font-serif text-[#9A7648] mb-4">
+          <h3 className="text-xl font-serif text-[#bfaf9e] mb-4">
             Emergency Situations
           </h3>
           <p className="text-gray-600 mb-6 text-justify">
@@ -57,7 +57,7 @@ const TenantServiceRequest = () => {
             than 50° or an active water leak outside of normal business hours
             please, call our 24/7 emergency service line at (810) 715-5486.
           </p>
-          <h3 className="text-xl font-serif text-[#9A7648] mb-4">
+          <h3 className="text-xl font-serif text-[#bfaf9e] mb-4">
             If You Smell or Suspect a Natural Gas Leak
           </h3>
           <p className="text-gray-600 mb-6 text-justify">

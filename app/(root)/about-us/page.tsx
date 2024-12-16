@@ -67,7 +67,7 @@ const AboutUs = () => {
               loading="lazy"
             />
             <div className="mt-4">
-              <h3 className="text-2xl text-[#9a7648]">JENNIFER OLIVER</h3>
+              <h3 className="text-2xl text-[#bfaf9e]">JENNIFER OLIVER</h3>
               <p className="text-lg text-gray-600">Founder & CEO</p>
             </div>
           </div>

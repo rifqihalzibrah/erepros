@@ -1,11 +1,12 @@
 "use client";
 
 import Accordion from "@/components/ui/Accordion";
-import PropertyModal from "@/components/ui/PropertyModal";
+// import PropertyModal from "@/components/ui/PropertyModal";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { fetchData, getAccessKey } from "../../../services/propertywareAPI";
 import { Property } from "../../../types/types";
+import PropertyModalOther from "@/components/templates/home-page/PropertyModalOther"; // New modal for 'Other'
 
 const faqs = [
   {
@@ -321,7 +322,7 @@ const StorageUnitPage = () => {
       </section>
 
       {/* Property Modal */}
-      <PropertyModal
+      <PropertyModalOther
         property={selectedProperty}
         isOpen={!!selectedProperty}
         onClose={closeModal}
