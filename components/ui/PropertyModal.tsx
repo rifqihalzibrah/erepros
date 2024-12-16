@@ -19,7 +19,7 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  // const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const router = useRouter(); // Use client-side router
 
@@ -67,11 +67,10 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${
-        isOpen
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${isOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
-      }`}
+        }`}
     >
       <div className="bg-white rounded-lg shadow-lg overflow-auto max-w-5xl w-full max-h-[90vh] relative">
         {/* Close Button */}
@@ -167,9 +166,8 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
                     "/placeholder-image.svg"
                   }
                   alt={`Image ${activeImageIndex + 1}`}
-                  className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${
-                    isImageLoading ? "opacity-0" : "opacity-100"
-                  }`}
+                  className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${isImageLoading ? "opacity-0" : "opacity-100"
+                    }`}
                   onLoad={() => setIsImageLoading(false)}
                   onError={() => {
                     setIsImageLoading(false);

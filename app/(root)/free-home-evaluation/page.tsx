@@ -439,12 +439,12 @@ const FreeHomeEvaluation = () => {
                 </p>
                 <p className="text-gray-700 text-lg">
                   A Comparative Market Analysis (CMA) is a key tool used by real
-                  estate agents to determine your home's value. It involves
+                  estate agents to determine your home&apos;s value. It involves
                   comparing your property with recently sold homes in the same
                   area. Agents analyze three to five similar properties (comps)
                   that have recently sold and adjust their prices to reflect
                   differences from your home. This method helps estimate your
-                  home's market value based on recent sales data.
+                  home&apos;s market value based on recent sales data.
                 </p>
               </div>
             </div>
@@ -456,14 +456,14 @@ const FreeHomeEvaluation = () => {
               {/* Text on Left */}
               <div className="w-1/2 text-right pr-6">
                 <p className="text-gray-700 text-lg">
-                  Based on Professional’s Opinion
+                  Based on Professional&apos;s Opinion
                 </p>
                 <p>
                   <br />
                 </p>
                 <p className="text-gray-700 text-lg">
                   An appraisal provides an unbiased valuation based on a
-                  professional’s opinion. Typically ordered by lenders for home
+                  professional&apos;s opinion. Typically ordered by lenders for home
                   purchases or refinances, appraisals involve a thorough
                   inspection of your home, both interior and exterior. The
                   appraiser considers recent sales of similar properties and

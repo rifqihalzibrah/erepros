@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { Property } from "../../../types/types";
-import { FaBed, FaBath, FaRulerCombined, FaBuilding } from "react-icons/fa";
-import { MdHome } from "react-icons/md";
 import { useRouter } from "next/navigation"; // Ensure we use client-side router navigation
-import { AiOutlineLeft, AiOutlineRight, AiOutlineClose } from "react-icons/ai";
+import React, { useState } from "react";
+import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { FaBuilding, FaRulerCombined } from "react-icons/fa";
+import { MdHome } from "react-icons/md";
 import { PulseLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toast styles
+import { Property } from "../../../types/types";
 
 interface PropertyModalOtherProps {
   property: Property | null;
@@ -21,7 +21,7 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  // const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
   const router = useRouter(); // Use client-side router
 
@@ -136,11 +136,10 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${
-        isOpen
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${isOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
-      }`}
+        }`}
     >
       <div className="bg-white rounded-lg shadow-lg overflow-auto max-w-5xl w-full max-h-[90vh] relative">
         {/* Close Button */}
@@ -236,9 +235,8 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
                     "/placeholder-image.svg"
                   }
                   alt={`Image ${activeImageIndex + 1}`}
-                  className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${
-                    isImageLoading ? "opacity-0" : "opacity-100"
-                  }`}
+                  className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${isImageLoading ? "opacity-0" : "opacity-100"
+                    }`}
                   onLoad={() => setIsImageLoading(false)}
                   onError={() => {
                     setIsImageLoading(false);
