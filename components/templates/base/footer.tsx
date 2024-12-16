@@ -24,7 +24,7 @@ const Footer = () => {
             <p className=" text-md font-normal font-newsreader text-gold">
               Contact Us
             </p>
-            <div className="text-sm font-garamond">
+            <div className="text-sm font-sans">
               <p>5349 Fenton Rd, Grand Blanc MI 48507</p>
               <p>(810) 715-5486</p>
               <p>

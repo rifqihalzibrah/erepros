@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["garamond", "sans-serif"], // Adding Mulish as the default sans font
+        sans: ["EB Garamond", "sans-serif"], // Adding Mulish as the default sans font
         marcellus: ["Marcellus", "serif"], // Adding Marcellus as a custom font
         newsreader: ["Newsreader", "serif"],
         poppins: ["Poppins", "sans-serif"],
