@@ -177,7 +177,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         <Link
           key={idx}
           href={nestedItem.href}
-          className="block px-3 py-2 rounded-md text-base font-medium text-white font-marcellus"
+          className="block px-3 py-2 rounded-md text-base font-medium text-white "
         >
           <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out">
             {nestedItem.label}
@@ -198,7 +198,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           {hasNestedSubItems ? (
             <div>
               <button
-                className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-white font-marcellus focus:outline-none"
+                className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-white focus:outline-none"
                 onClick={() => handleToggleNestedSubItems(idx)}
               >
                 {/* Label and arrow positioned in flex container */}
@@ -227,7 +227,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           ) : (
             <Link
               href={item.href || "#"}
-              className="block px-3 py-2 rounded-md text-base font-medium text-white font-marcellus"
+              className="block px-3 py-2 rounded-md text-base font-medium text-white"
             >
               <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out">
                 {item.label}
