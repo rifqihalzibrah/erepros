@@ -29,7 +29,10 @@ const SecondSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 px-6 lg:py-16 lg:px-12 bg-white">
+    <section
+      ref={sectionRef}
+      className="px-6  py-12  lg:py-16 lg:px-12 bg-white"
+    >
       {/* Title */}
       <h2
         className={`text-center text-3xl lg:text-5xl font-newsreader text-[#bfaf9e] mb-12 transition-all duration-1000 ease-out transform ${
@@ -54,7 +57,7 @@ const SecondSection = () => {
               alt="Property"
               width={1024}
               height={683}
-              className="rounded-lg shadow-lg"
+              // className="rounded-lg shadow-lg"
             />
           </div>
           <div className="absolute bottom-[-40%] right-[-2%] w-3/4 lg:w-2/3">
@@ -63,7 +66,7 @@ const SecondSection = () => {
               alt="Happy Family"
               width={1024}
               height={683}
-              className="rounded-lg shadow-lg"
+              // className="rounded-lg shadow-lg"
             />
           </div>
         </div>
@@ -87,10 +90,10 @@ const SecondSection = () => {
               className="w-12 h-12"
             /> */}
             <div>
-              <h3 className="text-xl font-normal text-gold">
+              <h3 className="text-xl font-normal text-gold pb-2">
                 Property Management
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">
                 From comprehensive tenant management to seamless online account
                 access for owners and tenants, 24/7 maintenance support, and
                 expert tenant placement, we ensure your investment is in the
@@ -116,8 +119,8 @@ const SecondSection = () => {
               className="w-12 h-12"
             /> */}
             <div>
-              <h3 className="text-xl font-normal  text-gold">HOA</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <h3 className="text-xl font-normal text-gold pb-2">HOA</h3>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">
                 From administrative tasks to maintenance coordination, financial
                 management, and community engagement, we ensure smooth
                 operations and enhanced living experiences for all residents.
@@ -142,12 +145,14 @@ const SecondSection = () => {
               className="w-12 h-12"
             /> */}
             <div>
-              <h3 className="text-xl font-normal text-gold">Real Estate</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <h3 className="text-xl font-normal text-gold pb-2">
+                Real Estate
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">
                 Elevate your real estate ventures with our premier services.
-                Whether you’re buying, selling, or investing, our expert team
-                provides personalized solutions to meet your goals. We turn your
-                real estate aspirations into reality.
+                Whether you&apos;re buying, selling, or investing, our expert
+                team provides personalized solutions to meet your goals. We turn
+                your real estate aspirations into reality.
               </p>
             </div>
           </div>

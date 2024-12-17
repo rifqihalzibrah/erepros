@@ -2,9 +2,10 @@ import HeroSectionHomePage from "../../components/ui/home-page/HeroSectionHomePa
 import SecondSection from "../../components/ui/home-page/SecondSection";
 import ThirdSection from "@/components/ui/home-page/ThirdSection";
 import FourthSection from "@/components/ui/home-page/FourthSection";
-import FifthSection from "@/components/ui/home-page/FifthSection";
+// import FifthSection from "@/components/ui/home-page/FifthSection";
 import SixthSection from "@/components/ui/home-page/SixSection";
-import Accordion from "@/components/templates/home-page/Accordion";
+import SeventhSection from "@/components/ui/home-page/SeventSection";
+// import Accordion from "@/components/templates/home-page/Accordion";
 import LogoCarousel from "@/components/templates/home-page/logo-carousel";
 import PropertyCarousel from "../../components/templates/home-page/carousel-component"; // Adjust the path based on your folder structure
 
@@ -18,8 +19,9 @@ export default function Home() {
       <ThirdSection />
       <FourthSection />
       <SixthSection />
-      <FifthSection />
-      <Accordion />
+      {/* <FifthSection /> */}
+      <SeventhSection />
+      {/* <Accordion /> */}
       {/* Logo Carousel Section */}
       <section className="max-w-7xl mx-auto py-16 sm:px-8 px-4 transition-opacity duration-1000">
         <LogoCarousel />

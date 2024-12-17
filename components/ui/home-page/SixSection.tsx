@@ -1,6 +1,6 @@
 export default function SixthSection() {
   return (
-    <section className="max-w-7xl mx-auto py-16 sm:px-8 px-4 transition-opacity duration-1000">
+    <section className="max-w-7xl mx-auto py-24 sm:px-8 px-4 transition-opacity duration-1000">
       <h2 className="text-4xl font-poppins sm:text-5xl font-light text-gold mb-6">
         COMMUNITIES
       </h2>
