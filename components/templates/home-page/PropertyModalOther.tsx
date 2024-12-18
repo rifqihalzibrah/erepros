@@ -96,39 +96,18 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
         body: JSON.stringify({ ...formData, property }),
       });
 
-      const result = await response.json(); // Parse response message
+      const result = await response.json();
 
       if (response.ok) {
-        toast.success("Application submitted successfully!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast.success("Application submitted successfully!");
         setShowApplyModal(false);
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
-        toast.error(`Failed to send application: ${result.message}`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast.error(`Failed to send application: ${result.message}`);
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred. Please try again later.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -136,10 +115,11 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${isOpen
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${
+        isOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
-        }`}
+      }`}
     >
       <div className="bg-white rounded-lg shadow-lg overflow-auto max-w-5xl w-full max-h-[90vh] relative">
         {/* Close Button */}
@@ -235,8 +215,9 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
                     "/placeholder-image.svg"
                   }
                   alt={`Image ${activeImageIndex + 1}`}
-                  className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${isImageLoading ? "opacity-0" : "opacity-100"
-                    }`}
+                  className={`max-w-[80%] max-h-[80vh] rounded-lg transition-opacity duration-300 ${
+                    isImageLoading ? "opacity-0" : "opacity-100"
+                  }`}
                   onLoad={() => setIsImageLoading(false)}
                   onError={() => {
                     setIsImageLoading(false);
@@ -316,7 +297,7 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
             <div className="flex justify-center mt-6">
               <button
                 onClick={() => setShowApplyModal(true)}
-                className="px-6 py-2 bg-black text-white font-semibold rounded-md hover:bg-opacity-80"
+                className="px-6 py-2 bg-gold text-white font-semibold rounded-md hover:bg-opacity-80"
               >
                 Apply Online
               </button>
@@ -466,7 +447,7 @@ const PropertyModalOther: React.FC<PropertyModalOtherProps> = ({
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-2 rounded hover:bg-opacity-80"
+                className="w-full bg-gold text-white py-2 rounded hover:bg-opacity-80"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}

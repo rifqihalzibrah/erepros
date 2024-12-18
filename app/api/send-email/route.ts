@@ -1,53 +1,60 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const { name, email, phone, message, property } = await req.json();
+    // Parse incoming JSON data
+    const body = await req.json();
+    const { name, email, phone, message, property } = body;
 
-    // Input validation
-    if (!name || !email || !phone || !message) {
-      return NextResponse.json(
-        { message: "All fields are required." },
-        { status: 400 }
-      );
-    }
-
-    // SMTP Configuration
+    // Configure Nodemailer
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
-      secure: false, // Use `true` for 465, `false` for 587
+      secure: false, // TLS for port 587
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
 
-    // Send Email
+    // 1. Send Thank You Email to Submitter
     await transporter.sendMail({
-      from: `"Property Inquiry" <${process.env.SMTP_USER}>`,
-      to: "recipient-email@example.com",
-      subject: `New Application Submission for ${property.posting_title}`,
-      html: `
-        <h3>New Application Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong> ${message}</p>
-        <h4>Property Details:</h4>
-        <p>${property.posting_title}, ${property.address}, ${property.city}</p>
-      `,
+      from: `"Erepros Team" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: "Thank You for Your Application",
+      text: `Hi ${name},\n\nThank you for applying for ${property.address}. We'll review it and respond soon.\n\nBest regards,\nErepros Team`,
+    });
+
+    // 2. Send Data to Billing Email
+    await transporter.sendMail({
+      from: `"Application Notification" <${process.env.SMTP_USER}>`,
+      to: "marketing@tsusetech.com",
+      subject: "New Property Application Received",
+      text: `
+New application received:
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Message: ${message}
+
+Property Details:
+- Address: ${property.address}
+- Bedrooms: ${property.no_bedrooms}
+- Size: ${property.total_area} Sq Ft
+
+Erepros System`,
     });
 
     return NextResponse.json(
-      { message: "Email sent successfully!" },
+      { message: "Emails sent successfully!" },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error sending emails:", error);
     return NextResponse.json(
-      { message: "Failed to send email." },
+      { message: "Failed to send emails." },
       { status: 500 }
     );
   }
