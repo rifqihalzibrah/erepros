@@ -30,7 +30,7 @@ export default function ShiawasseeCountyPage() {
             hidden gem for those seeking a slower pace of life.
           </p>
           <p className="leading-relaxed text-justify">
-            Experience the charm of Owosso's historic downtown, explore the
+            Experience the charm of Owosso&apos;s historic downtown, explore the
             trails at Curwood Castle Park, or attend events at the Shiawassee
             County Fairgrounds. Shiawassee County is a welcoming community with
             a strong sense of history and tradition.

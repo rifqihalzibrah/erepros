@@ -65,12 +65,12 @@ export default function GeneeseCountyPage() {
             investors with its affordable real estate prices. Compared to many
             other cities in the United States, Flint offers some of the best
             property deals, making it an attractive option for those looking to
-            maximize their investment potential. The city's steady rental
+            maximize their investment potential. The city&apos;s steady rental
             demand, bolstered by a local university, hospitals, and numerous
             employers, ensures a constant need for rental properties.
           </p>
           <p className="leading-relaxed text-justify">
-            This steady demand, combined with Flint's affordable property
+            This steady demand, combined with Flint&apos;s affordable property
             prices, creates a lucrative chance for investors to achieve positive
             cash flow from their rentals. Moreover, while past trends do not
             guarantee future outcomes, there is potential for property
