@@ -65,7 +65,7 @@ const ThirdSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-12 px-4 sm:py-16 sm:px-6 lg:px-12 bg-white text-center space-y-16"
+      className="py-12 px-4 sm:py-24 sm:px-6 lg:px-12 bg-white text-center space-y-16"
     >
       {/* First Row */}
       <div className="space-y-4">
@@ -87,11 +87,13 @@ const ThirdSection = () => {
             >
               {startCount && <CountUp start={0} end={2000} duration={2} />}+
             </span>
-            <AnimatedText
-              text="PROPERTIES ACROSS MICHIGAN"
-              delayBase={1200}
-              isVisible={isVisible}
-            />
+            <span className="pt-3">
+              <AnimatedText
+                text="PROPERTIES ACROSS MICHIGAN"
+                delayBase={1200}
+                isVisible={isVisible}
+              />
+            </span>
           </div>
 
           {/* Desktop View */}
@@ -135,7 +137,7 @@ const ThirdSection = () => {
           >
             {startSecondCount && <CountUp start={0} end={20} duration={2} />}+
           </span>
-          <span className="italic text-gold">
+          <span className="italic text-gold pt-3">
             <AnimatedText
               text="OF EXPERIENCE"
               delayBase={2400}

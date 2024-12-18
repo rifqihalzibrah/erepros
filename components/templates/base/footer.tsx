@@ -22,7 +22,7 @@ const Footer = () => {
           {/* Contact Us */}
           <div className="space-y-4">
             <p className=" text-md font-normal font-newsreader text-gold">
-              Contact Us
+              <a href="/contact-us">Contact Us</a>
             </p>
             <div className="text-sm font-sans">
               <p>5349 Fenton Rd, Grand Blanc MI 48507</p>
@@ -71,12 +71,15 @@ const Footer = () => {
             </p>
             <ul className="text-sm space-y-1">
               <li>
-                <a href="#" className="hover:underline">
+                <a
+                  href="https://app.propertyware.com/pw/index.html#/login/owner/eliteprofessionalmanagement"
+                  className="hover:underline"
+                >
                   Owner Login
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/owner-faq" className="hover:underline">
                   FAQs
                 </a>
               </li>
@@ -90,17 +93,20 @@ const Footer = () => {
             </p>
             <ul className="text-sm space-y-1">
               <li>
-                <a href="#" className="hover:underline">
+                <a
+                  href="https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement"
+                  className="hover:underline"
+                >
                   Tenant Login
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/tenant-faq" className="hover:underline">
                   FAQs
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
+                <a href="/move-in-move-out" className="hover:underline">
                   Move-in Checklist
                 </a>
               </li>
@@ -114,13 +120,13 @@ const Footer = () => {
             Get Social
           </p>
           <a
-            href="#"
+            href="https://www.facebook.com/share/1B1pMARsug/?mibextid=wwXIfr"
             className="flex items-center justify-center w-10 h-10 border-2 border-[#bfaf9e] rounded-full text-[#bfaf9e] hover:bg-[#bfaf9e] hover:text-white transition duration-300 text-xl"
           >
             <FaFacebookF />
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/elite.professionals/profilecard/?igsh=Ymhocm53MWk2b2Jn"
             className="flex items-center justify-center w-10 h-10 border-2 border-[#bfaf9e] rounded-full text-[#bfaf9e] hover:bg-[#bfaf9e] hover:text-white transition duration-300 text-xl"
           >
             <FaInstagram />

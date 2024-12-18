@@ -87,7 +87,7 @@ export default function Header() {
         ]}
       />
       <MenuItem
-        label="community portal"
+        label="Community Portal"
         subItems={[
           {
             label: "Tenant",
@@ -113,20 +113,10 @@ export default function Header() {
             label: "Owner",
             nestedSubItems: [
               {
-                href: "https://app.propertyware.com/pw/index.html#/login/tenant/eliteprofessionalmanagement",
-                label: "Tenant Portal Login",
+                href: "https://app.propertyware.com/pw/index.html#/login/owner/eliteprofessionalmanagement",
+                label: "Owner Portal",
               },
-              { href: "/available-rentals", label: "Apply Now" },
-              { href: "/move-in-move-out", label: "Move In Move Out" },
-              { href: "/tenant-faq", label: "Tenant FAQ" },
-              {
-                href: "/tenant-service-request",
-                label: "Tenant Service Request",
-              },
-              {
-                href: "/tenant/tenant-benefit-package",
-                label: "Tenant Benefit Package",
-              },
+              { href: "/owner-faq", label: "Owner FAQ" },
             ],
           },
 

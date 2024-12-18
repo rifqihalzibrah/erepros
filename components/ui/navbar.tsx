@@ -34,7 +34,7 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ src, alt }) => (
-  <Link href="/" className="text-2xl font-bold text-white">
+  <Link href="/" className="text-2xl text-white">
     <Image
       src={src}
       alt={alt}
@@ -177,7 +177,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         <Link
           key={idx}
           href={nestedItem.href}
-          className="block px-3 py-2 rounded-md text-base font-medium text-white font-marcellus"
+          className="block px-3 py-2 rounded-md text-base font-medium text-white "
         >
           <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out">
             {nestedItem.label}
@@ -198,7 +198,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           {hasNestedSubItems ? (
             <div>
               <button
-                className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-white font-marcellus focus:outline-none"
+                className="flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-white focus:outline-none"
                 onClick={() => handleToggleNestedSubItems(idx)}
               >
                 {/* Label and arrow positioned in flex container */}
@@ -227,7 +227,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           ) : (
             <Link
               href={item.href || "#"}
-              className="block px-3 py-2 rounded-md text-base font-medium text-white font-marcellus"
+              className="block px-3 py-2 rounded-md text-base text-white"
             >
               <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_1px] bg-no-repeat hover:bg-[length:100%_1px] transition-all duration-300 ease-out">
                 {item.label}
@@ -297,14 +297,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       <div className="relative text-center">
         {hasSubItems ? (
           // If the item has sub-items, render a button to trigger dropdown
-          <button className="text-xs text-white uppercase tracking-widest pb-1 focus:outline-none">
+          <button className="text-white tracking-widest pb-1 focus:outline-none">
             {label}
           </button>
         ) : (
           // If the item does not have sub-items, render a Link
           <Link
             href={href || "#"}
-            className="text-xs text-white uppercase tracking-widest pb-1 focus:outline-none"
+            className="text-xs text-white tracking-widest pb-1 focus:outline-none"
           >
             {label}
           </Link>
@@ -315,7 +315,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       {/* Dropdown for sub-items */}
       {hasSubItems && isOpenSubItems && (
         <div className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-60 bg-gold shadow-lg opacity-100 z-50 p-3 transition-opacity duration-300">
-          <div className="py-1">{renderSubItems()}</div>
+          <div className="py-1 font-garamond">{renderSubItems()}</div>
         </div>
       )}
     </div>
