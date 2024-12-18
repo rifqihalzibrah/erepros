@@ -13,6 +13,13 @@ export default function Success() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const sessionId = searchParams.get('session_id');
+    const email = searchParams.get('email');
+    const fullName = searchParams.get('full_name');
+    const address = searchParams.get('address');
+    const bedrooms = searchParams.get('bedrooms');
+    const moveInDate = searchParams.get('move_in_date');
+    const fee = searchParams.get('fee');
+    const propertyId = searchParams.get('property_id');
 
     useEffect(() => {
         async function verifyPayment() {
@@ -26,6 +33,24 @@ export default function Success() {
 
                 if (response.ok) {
                     setVerificationStatus('success');
+
+                    const emailResponse = await fetch("/api/success-email", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            email: email,
+                            fullName: fullName,
+                            address: address,
+                            bedrooms: bedrooms,
+                            moveInDate: moveInDate,
+                            fee: fee,
+                            propertyId: propertyId
+                        }),
+                    });
+
+                    if (!emailResponse.ok)
+                        throw new Error("Failed to send confirmation email");
+                    console.log("Confirmation email sent.");
                 } else {
                     console.error('Payment verification failed:', data.error);
                     setVerificationStatus('failed');

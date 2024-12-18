@@ -358,6 +358,12 @@ const ApplyTenants = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           applicationId: result.application.id,
+          propertyId: values.property_id,
+          email: values.email,
+          fullName: values.full_name,
+          addres: address,
+          bedrooms: values.bedrooms,
+          moveInDate: values.move_in_date,
           fee: values.fee,
         }),
       });
@@ -365,14 +371,7 @@ const ApplyTenants = () => {
       const emailResponse = await fetch("/api/apply-tenants/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: applicationData.email,
-          full_name: applicationData.full_name,
-          address: applicationData.address,
-          bedrooms: applicationData.bedrooms,
-          move_in_date: applicationData.move_in_date,
-          fee: values.fee,
-        }),
+        body: JSON.stringify(applicationData),
       });
 
       if (!emailResponse.ok)
@@ -506,25 +505,22 @@ const ApplyTenants = () => {
               {[...Array(totalSteps)].map((_, index) => (
                 <div
                   key={index}
-                  className={`progress-step flex flex-col items-center ${
-                    currentStep === index + 1 ? "active" : ""
-                  } ${currentStep > index + 1 ? "completed" : ""}`}
+                  className={`progress-step flex flex-col items-center ${currentStep === index + 1 ? "active" : ""
+                    } ${currentStep > index + 1 ? "completed" : ""}`}
                 >
                   <div
-                    className={`progress-step-icon w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border-2 ${
-                      currentStep >= index + 1
-                        ? "bg-[#bfaf9e] border-[#bfaf9e] text-white"
-                        : "border-gray-300 text-gray-400"
-                    }`}
+                    className={`progress-step-icon w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border-2 ${currentStep >= index + 1
+                      ? "bg-[#bfaf9e] border-[#bfaf9e] text-white"
+                      : "border-gray-300 text-gray-400"
+                      }`}
                   >
                     {index + 1}
                   </div>
                   <span
-                    className={`progress-step-title mt-2 text-xs md:text-sm font-medium text-center ${
-                      currentStep >= index + 1
-                        ? "text-[#bfaf9e]"
-                        : "text-gray-400"
-                    }`}
+                    className={`progress-step-title mt-2 text-xs md:text-sm font-medium text-center ${currentStep >= index + 1
+                      ? "text-[#bfaf9e]"
+                      : "text-gray-400"
+                      }`}
                     style={{ whiteSpace: "break-spaces" }}
                   >
                     {stepNames[index]}
@@ -1999,26 +1995,6 @@ const ApplyTenants = () => {
                 >
                   {isLoading ? (
                     <>
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8v8H4z"
-                        ></path>
-                      </svg>
                       Loading...
                     </>
                   ) : (

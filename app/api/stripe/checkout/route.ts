@@ -4,7 +4,7 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2024-11-20.acacia' });
 export async function POST(req: Request) {
     try {
-        const { applicationId, fee } = await req.json();
+        const { applicationId, propertyId, email, fullName, address, bedrooms, moveInDate, fee } = await req.json();
 
         // Create a Stripe Checkout session
         const session = await stripe.checkout.sessions.create({
@@ -20,8 +20,8 @@ export async function POST(req: Request) {
                 },
             ],
             mode: 'payment',
-            success_url: `${process.env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/cancel`,
+            success_url: `${process.env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}&email=${email}&full_name=${fullName}&address=${address}&bedrooms=${bedrooms}&move_in_date=${moveInDate}&fee=${fee}&property_id=${propertyId}`,
+            cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/apply-tenants?property_id=${propertyId}&address=${address}bedrooms=${bedrooms}`,
             metadata: {
                 applicationId: applicationId.toString(), // Ensure it's a string
             },
